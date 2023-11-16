@@ -1,7 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../Header';
+import { redirectToLogin } from '../../tech/checking';
+import { formatDate } from '../../tech/formatterDate';
+import { showAlert } from '../../tech/alert';
+import { url_api } from '../../tech/config';
+
 
 const A_Organization = () => {
+    const [data, setData] = useState([]);
+    const authkey = JSON.parse(sessionStorage.getItem("userInfo")).authkey;
+
+    useEffect(() => {
+        redirectToLogin();
+        
+        fetch(url_api+'/api/dataExpEmployee', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                'authkey': authkey,
+              }),
+        })
+        .then(response => response.json())
+        .then(data => setData(data))
+        .catch(error => showAlert(error.message));
+      }, []);
+
+    const queryParams = new URLSearchParams(window.location.search);
+    const idDocParam = queryParams.get('id_doc');
+    
     return (
         <div>
         <Header />
@@ -21,14 +49,26 @@ const A_Organization = () => {
             <thead>
                 <tr>
                 <th>ID (отладка)</th>
-                <th>Логин</th>
                 <th>Наименование организации</th>
-                <th>Дата регистрации</th>
+                <th>Дата создания</th>
                 <th>Город</th>
                 <th>Область</th>
                 </tr>
             </thead>
-            <tbody id="workersTableBody"></tbody>
+            <tbody id="organizationTableBody"></tbody>
+            {data.map((item) => (
+                    item.disabled === 1 ? '' : (
+                    <tr className='zoom-5' key={item.id}>
+                        <td>{item.id}</td>
+                        <td>{item.userName}</td>
+                        <td>{item.orgName}</td>
+                        <td>{formatDate(item.dateCreate)}</td>
+                        <td>{item.cityName}</td>
+                        <td>{item.regionName}</td>
+                        <td><a className='btn btn-primary zoom-5'>Редактировать</a><button className='btn btn-danger mx-1 zoom-5'>Удалить</button></td>
+                    </tr>
+                )
+                ))}
             </table>
         </div>
 

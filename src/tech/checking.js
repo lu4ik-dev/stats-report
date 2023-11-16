@@ -1,3 +1,4 @@
+import {url_api} from './config'
 export const isAuthenticated = () => {
     return sessionStorage.getItem('authIs') && sessionStorage.getItem('authIs') === 'true';
   };
@@ -24,7 +25,7 @@ export const isAuthenticated = () => {
 
   export const checkAdmin = async (authKey) => {
 
-      const response = await fetch('http://localhost:3110/api/checkAdmin/', {
+      const response = await fetch(url_api+'/api/checkAdmin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',

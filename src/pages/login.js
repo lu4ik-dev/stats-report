@@ -84,13 +84,7 @@ function Login() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                       />
-                      <button
-                        className="btn btn-outline-primary"
-                        type="button"
-                        onClick={() => setPasswordVisible(!passwordVisible)}
-                      >
-                        <FontAwesomeIcon icon={passwordVisible ? faEyeSlash : faEye} />
-                      </button>
+                     
                     </div>
                   </div>
                   <button

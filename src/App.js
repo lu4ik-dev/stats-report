@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Template_table from './pages/template_table';
 import { GlobalContextProvider } from './context/context';
 import Experince from './pages/Experince';
-import Inv from './pages/Inv';
+import Invalids from './pages/Invalids';
 import Eduction from './pages/Eduction';
 import Contingent from './pages/Contingent';
 import ErrorPage from './pages/error-page';
@@ -18,7 +18,9 @@ import A_Configurate from './pages/admin/A_Configurate';
 import Signin from './pages/Signin'
 import Restore from './pages/Restore';
 import A_Organization from './pages/admin/A_Organization';
-
+import Testiq from './pages/test';
+import ContingentTable from './pages/ContingentTable';
+import InvalidsTables from './pages/InvalidsTables';
 function App() {
   return (
     <GlobalContextProvider>
@@ -27,11 +29,19 @@ function App() {
             <Route path="/" exact element={<Template_table/>}/>
             <Route path="/login" exact element={<Login/>} />
             <Route path="/experience" exact element={<Experince/>} />
-            <Route path="/invalid" exact  element={<Inv/>} />
             <Route path="/eductions" exact element={<Eduction/>} />
+
             <Route path="/contingent" exact element={<Contingent/>} />
+            <Route path="/contingent-table" exact element={<ContingentTable/>} />
+
+            <Route path="/invalids" exact  element={<Invalids/>} />
+            <Route path="/invalids-tables" exact element={<InvalidsTables/>} />
+
             <Route path="/registration" exact element={<Signin/>} />
             <Route path="/restore-password" exact element={<Restore/>} />
+
+
+            <Route path="/test" exact element={<Testiq/>} />
 
             <Route path="/admin-panel" exact element={<A_Main/>} />
             <Route path="/admin-panel/users" element={<A_users />} />

@@ -8,7 +8,6 @@ const A_accepts = () => {
     return (
         <div>
             <Header />
-            
         </div>
     );
 };

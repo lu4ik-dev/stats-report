@@ -165,7 +165,7 @@ const DynamicTable = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        showAlert('Таблица успешно сохранена!\n<a href="#"><strong>Перейти к списку</strong></a>');
+        showAlert('Таблица успешно сохранена!');
       })
       .catch((error) => {
         console.error('Ошибка при отправке запроса:', error);

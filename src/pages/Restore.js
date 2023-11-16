@@ -7,7 +7,6 @@ const Restore = () => {
     const [authResult, setAuthResult] = useState(null);
     const [loading, setLoading] = useState(false);
     const handleLoginPressButton = async () => {
-        console.log('123');
     }
     return (
         <section className="vh-100 gradient-custom">

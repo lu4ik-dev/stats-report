@@ -31,7 +31,7 @@ const Index = () => {
         <div>
             <main>
             <div className="container px-4 py-5" id="featured-3">
-                <h3 className="pb-2 border-bottom">{greeting}, <span className='font-weight-bold'>{userInfo.complectName}</span></h3>
+                <h3 className="pb-2 border-bottom text-secondary"><b>{greeting},</b> <span className=''>{userInfo.complectName}</span></h3>
                 <div className="row">
                     <div className="col-sm-6 pb-3">
                         <div className="card">
@@ -67,7 +67,7 @@ const Index = () => {
                             <p className="card-text">
                             Сведения по численности студентов, относящихся к категории инвалиды и лица с ОВЗ, по специальностям, профессиям
                             </p>
-                            <Link to='/invalid' className="btn btn-primary zoom-5">
+                            <Link to='/invalids' className="btn btn-primary zoom-5">
                             Перейти
                             </Link>
                         </div>

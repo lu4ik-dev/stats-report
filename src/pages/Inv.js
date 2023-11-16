@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { redirectToLogin} from '../tech/checking';
 import Header from './Header';
-import Restrict from './Restrict';
+import Restrict from './InvalidsTables';
 
 const Invalid = () => {
     useEffect(() => {

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { showAlert } from '../tech/alert';
 import { url_api } from '../tech/config';
 import * as XLSX from 'xlsx';
+import { formatDate } from '../tech/formatterDate';
 
 const DynamicTable = () => {
   const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
@@ -19,10 +20,10 @@ const DynamicTable = () => {
 
       if (!id_doc || id_doc === "newDoc") {
         setTableData([
-          { col1: '1замени на данные с api', col2: '', col3: 1, col4: 0, col5: 0, col6: 0, col7: 0, col8: 0, col9: 0, col10: 0, col11: 0, col12: 0, col13: 0, col14: 0, col15: 0, col16: 0, col17: 0, col18: 0 },
+          { col1: userInfo.complectName, col2: '', col3: 1, col4: 0, col5: 0, col6: 0, col7: 0, col8: 0, col9: 0, col10: 0, col11: 0, col12: 0, col13: 0, col14: 0, col15: 0, col16: 0, col17: 0, col18: 0 },
         ]);
       } else {
-        // If id_doc is present, fetch data from the server
+
         const response = await fetch(url_api + '/api/dataExpEmployee/' + id_doc);
         const result = await response.json();
 
@@ -30,7 +31,6 @@ const DynamicTable = () => {
           setTableData((prevData) => [
             ...prevData.slice(1),
             ...result.table.map((rowData, index) => {
-              console.log(result);
               const allExpObject = JSON.parse(rowData.all_exp);
               const teachExpObject = JSON.parse(rowData.teach_exp);
 
@@ -39,9 +39,10 @@ const DynamicTable = () => {
               setLastTimeEdit(result.timeLastEdit);
               setCity(result.cityname);
               setRegion(result.r_name);
+              setDateCreateDoc(result.dateCreate);
 
               return {
-                col1: result.name_org,
+                col1: result.complectName,
                 col2: rowData.name_of_indicators || '',
                 col3: prevData.length + 1 + index,
                 col4: ((allExpObject.col5 || 0) + (allExpObject.col6 || 0) + (allExpObject.col7 || 0) + (allExpObject.col8 || 0) + (allExpObject.col9 || 0) + (allExpObject.col10 || 0)) || 0,
@@ -120,27 +121,37 @@ const DynamicTable = () => {
     const jsonSchema = {
       table: tableRows,
     };
-
+    var now = new Date();
     const requestBody = {
+      timeLastEdit: formatDate(now),
       user_id: userInfo.id,
       table: tableRows,
     };
 
-    console.log('JSON Schema:', jsonSchema);
-
-    const apiUrl = id_doc ? '/api/setWorkExperience/' + id_doc : '/api/addWorkExperience';
+    const apiUrl = id_doc !== 'newDoc' ? '/api/updateWorkExperienceBody' : '/api/addWorkExperience';
 
     fetch(url_api + apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(requestBody),
+      body: JSON.stringify({
+        user_id: userInfo.id,
+        id_doc: id_doc,
+        table: tableRows,
+        timeLastEdit: formatDate(now),
+      }),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        showAlert('Таблица успешно сохранена!\n<a href="#"><strong>Перейти к списку</strong></a>');
+        showAlert('Таблица успешно сохранена!');
+        const currentUrl = window.location.href;
+        const targetUrl = `http://localhost:3000/experience?id_doc=${data.id}`;
+        if (currentUrl !== targetUrl) {
+          window.location.href = targetUrl;
+        } else {
+          window.location.reload();
+        }
       })
       .catch((error) => {
         console.error('Ошибка при отправке запроса:', error);
@@ -170,6 +181,7 @@ const DynamicTable = () => {
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
     XLSX.writeFile(wb, 'Персонал2.xls');
   };
+
 
   const handlerInsert = () => {
     setTableData((prevData) => [
@@ -261,7 +273,7 @@ const DynamicTable = () => {
           </tr>
           <tbody>
           {tableData.map((row, rowIndex) => (
-            <tr key={row.id}>
+            <tr key={rowIndex}>
               {Object.keys(row).map((colName, index) => (
                 <td key={colName}>
                   <span className='d-none'>{row[colName]}</span>
@@ -282,8 +294,8 @@ const DynamicTable = () => {
           ))}
         </tbody>
       </table>
-      <button className='position-absolute start-100 btn btn-sm btn-primary zoom-5 rounded-pill' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
-      <button className='position-absolute start-100 btn btn-sm btn-success zoom-5 rounded-pill' style={{'margin': '0px -3rem'}} onClick={() => handleSave(0)}><i className="fas fa-save"></i> </button>
+      <button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
+      <button className='position-relative start-100 btn btn-sm btn-success zoom-5 rounded-pill' style={{'margin': '0px -3rem'}} onClick={() => handleSave(0)}><i className="fas fa-save"></i> </button>
 
       {id_doc !== "newDoc" && (
         <div className="container">
@@ -293,15 +305,13 @@ const DynamicTable = () => {
               <tr>
                 <th>Автор</th>
                 <th>Дата создания</th>
-                <th>Последнее редактирование:</th>
                 <th>Время последнего редактирования:</th>
               </tr>
             </thead>
             <tbody id="infoAboutDoc">
               <tr>
                 <td>{author}</td>
-                <td>скоро сделаю</td>
-                <td>{lastEditor}</td>
+                <td>{formatDate(dateCreateDoc)}</td>
                 <td>{lastTimeEdit}</td>
               </tr>
             </tbody>

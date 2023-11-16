@@ -53,7 +53,7 @@ function A_Main() {
                         <div className="card-body">
                             <h5 className="card-title">Заявки</h5>
                             <p className="card-text">
-                            Заявки на смену наименования организации / Почты / Паролей
+                            Заявки на регистрацию пользователя / организации
                             </p>
                             <Link to='/admin-panel/accepts' className="btn btn-primary">
                             Перейти

@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../Header';
+import { url_api } from '../../tech/config';
+import { formatDate } from '../../tech/formatterDate';
+import { showAlert } from '../../tech/alert';
+import { redirectToLogin } from '../../tech/checking';
 
 const A_users = () => {
+    const [data, setData] = useState([]);
+    const authkey = JSON.parse(sessionStorage.getItem("userInfo")).authkey;
+    useEffect(() => {
+        redirectToLogin();
+        
+        fetch(url_api+'/api/dataExpEmployee', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                'authkey': authkey,
+              }),
+        })
+        .then(response => response.json())
+        .then(data => setData(data))
+        .catch(error => showAlert(error.message));
+      }, []);
     return (
         <div>
         <Header />
@@ -21,17 +43,29 @@ const A_users = () => {
             <thead>
                 <tr>
                 <th>ID (отладка)</th>
+                <th>ФИО</th>
                 <th>Логин</th>
                 <th>Email</th>
                 <th>Дата регистрации</th>
                 <th>Город</th>
                 <th>Область</th>
-                <th>ФИО</th>
-                <th>Организация</th>
                 <th>Действие</th>
                 </tr>
             </thead>
-            <tbody id="workersTableBody"></tbody>
+            <tbody id="usersTableBody"></tbody>
+                {data.map((item) => (
+                    item.disabled === 1 ? '' : (
+                    <tr className='zoom-5' key={item.id}>
+                        <td>{item.id}</td>
+                        <td>{item.userName}</td>
+                        <td>{item.orgName}</td>
+                        <td>{formatDate(item.dateCreate)}</td>
+                        <td>{item.cityName}</td>
+                        <td>{item.regionName}</td>
+                        <td><a href={`/experience?id_doc=${item.id}`} className='btn btn-primary zoom-5'>Перейти</a><button className='btn btn-danger mx-1 zoom-5'>Удалить</button></td>
+                    </tr>
+                )
+                ))}
             </table>
         </div>
 

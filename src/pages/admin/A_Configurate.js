@@ -27,8 +27,8 @@ const A_Configurate = () => {
 
                 <div className="card mt-2 zoom-5">
                     <div className="card-body">
-                        <h5 className="card-title">?????</h5>
-                        <p className="card-text">а тут даже придумать не могу</p>
+                        <h5 className="card-title">Специальности</h5>
+                        <p className="card-text">Код профессии, специальности</p>
                         <a href="tech.php" className="btn btn-primary zoom-10">Перейти</a>
                     </div>
                 </div>

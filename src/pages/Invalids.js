@@ -1,37 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import { showAlert } from '../tech/alert';
 import { redirectToLogin} from '../tech/checking';
 import { formatDate } from '../tech/formatterDate';
 import Header from './Header';
-import DynamicTable from './table';
 import { url_api } from '../tech/config';
+import { showAlert } from '../tech/alert';
+import InvalidsTables from './InvalidsTables';
 
-const Experince = () => {
+const Invalids = () => {
     redirectToLogin();
     const [data, setData] = useState([]);
     const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
     const authkey = JSON.parse(sessionStorage.getItem("userInfo")).authkey;
-
     useEffect(() => {
         redirectToLogin();
-fetch(url_api+'/api/dataExpEmployee', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: new URLSearchParams({
-                'authkey': authkey,
-              }),
-        })
-        .then(response => response.json())
-        .then(data => setData(data))
-        .catch(error => showAlert(error.message));
-      }, []);
+        fetch(url_api+'/api/dataInvalids', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    'authkey': authkey,
+                  }),
+            })
+            .then(response => response.json())
+            .then(data => setData(data))
+            .catch(error => showAlert(error.message));
+          }, []);
     const queryParams = new URLSearchParams(window.location.search);
     const idDocParam = queryParams.get('id_doc');
 
     const handleDelete = (id) => {
-        fetch(`${url_api}/api/deleteWorkExperience/${id}`, {
+        fetch(`${url_api}/api/deleteInvalids/${id}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -54,11 +53,11 @@ fetch(url_api+'/api/dataExpEmployee', {
     const handlerTest = () => {
         showAlert('Кнопка для напоминания!!! Фильтры по городу / области / организации\nИ возможно сортировка');
     }
-    return (        
+    return (
     <div>
         <Header />
         {idDocParam ? (
-        <DynamicTable />
+        <InvalidsTables />
       ) : (
         <div className="container">
             <div className="row justify-content">
@@ -69,7 +68,7 @@ fetch(url_api+'/api/dataExpEmployee', {
                 <button className="btn btn-danger zoom-5 mx-3" onClick={handlerTest}>
                     для администратора добавить фильтры по организации / области / городу*
                 </button>
-                <a href="experience?id_doc=newDoc" className="btn btn-primary zoom-5">
+                <a href="invalids-tables?id_doc=newDoc" className="btn btn-primary zoom-5">
                     Добавить новый документ
                 </a>
             </div>
@@ -84,14 +83,14 @@ fetch(url_api+'/api/dataExpEmployee', {
                 <th>Действие</th>
                 </tr>
             </thead>
-            <tbody id="organizationsTable">
+            <tbody id="invalidsTables">
                 {data.map((item) => (
                     item.disabled === 1 ? '' : (
                 <tr className='zoom-5' key={item.id}>
                     <td>{item.id}</td>
                     <td>{item.userName}</td>
                     <td>{formatDate(item.dateCreate)}</td>
-                    <td><a href={`/experience?id_doc=${item.id}`} className='btn btn-primary zoom-5'>Перейти</a><button className='btn btn-danger mx-1 zoom-5' onClick={() => handleDelete(item.id)}>Удалить</button></td>
+                    <td><a href={`/invalids-tables?id_doc=${item.id}`} className='btn btn-primary zoom-5'>Перейти</a><button className='btn btn-danger mx-1 zoom-5' onClick={() => handleDelete(item.id)}>Удалить</button></td>
                 </tr>
                 )
                 ))}
@@ -103,4 +102,4 @@ fetch(url_api+'/api/dataExpEmployee', {
     );
 };
 
-export default Experince;
+export default Invalids;

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { checkAdmin, logout, redirectToLogin } from '../tech/checking';
 import { Link, useLocation  } from 'react-router-dom';
+import { url_api } from '../tech/config';
+import { showAlert } from '../tech/alert';
 
 const Header = () => {
 
@@ -44,7 +46,6 @@ const Header = () => {
         }
     }
     
-    console.log(checkAdmin(sessionStorage.getItem("auth")))
     
     const handleLogout = () => {
         logout();
@@ -56,6 +57,59 @@ const Header = () => {
 
     const email = userInfo.email;
     const [useremail, domain] = email.split('@');
+
+    const [oldPassword, setOldPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmNewPassword, setConfirmNewPassword] = useState('');
+
+  const handleConfirmChangePassword = async () => {
+    if (newPassword !== confirmNewPassword) {
+      console.error('Новый пароль и подтверждение не совпадают');
+      showAlert('Новый пароль и подтверждение не совпадают');
+      setNewPassword('');
+      setConfirmNewPassword('');
+      return;
+    }
+
+    try {
+      const response = await fetch(url_api+'/api/updatePassword', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          authkey: sessionStorage.getItem('auth'),
+          oldpassword: oldPassword,
+          newpassword: newPassword,
+          confirmpassword: confirmNewPassword,
+        }),
+      });
+
+      if (response.ok) {
+        showAlert('Пароль успешно обновлен');
+        handleChangerPwd();
+
+        setOldPassword('');
+        setNewPassword('');
+        setConfirmNewPassword('');
+      } else {
+        const errorData = await response.json();
+        console.error('Ошибка при обновлении пароля:', errorData.message);
+        showAlert(`Ошибка при обновлении пароля:\n${errorData.message}`);
+        setOldPassword('');
+        setNewPassword('');
+        setConfirmNewPassword('');
+      }
+    } catch (error) {
+      showAlert(`Ошибка при обновлении пароля:\n${error}`);
+      console.error('Ошибка при выполнении fetch запроса:', error);
+      setOldPassword('');
+      setNewPassword('');
+      setConfirmNewPassword('');
+    }
+
+  };
+
     return (
         <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a
@@ -93,34 +147,54 @@ const Header = () => {
             </li>
         </ul>
 
-      <div id="confirmModal2" className={`modal fade ${changePwd}`} tabIndex="-1" aria-labelledby="confirmModalLabel2" aria-modal="true" role={`${changePwdRole}`} >
-    <div className="modal-dialog modal-dialog-centered">
+        <div id="confirmModal2" className={`modal fade ${changePwd}`} tabIndex="-1" aria-labelledby="confirmModalLabel2" aria-modal="true" role={`${changePwdRole}`} >
+        <div className="modal-dialog modal-dialog-centered">
       <div className="modal-content">
         <div className="modal-header">
           <h5 className="modal-title" id="confirmModalLabel2">Смена пароля</h5>
           <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Закрыть" onClick={handleChangerPwd}></button>
         </div>
-        <div className="modal-body">
-          <p>Введите старый пароль:</p>
-          <input type="text" id="inputOldPwd" className="form-control"/>
-        </div>
-        <div className="modal-body">
-          <p>Введите новый пароль:</p>
-          <input type="text" id="inputNewPwd" className="form-control"/>
-        </div>
-        <div className="modal-body">
-          <p>Подтвердите новый пароль:</p>
-          <input type="text" id="confirmNewPwd" className="form-control"/>
-        </div>
-        <div className="alert mx-3" id="changePasswordAlert" role="alert">
-        </div>
-        <div className="modal-footer">
-          <button type="button" className="btn btn-secondary px-4" id="cancelChangePasswordButton" data-bs-dismiss="modal" onClick={handleChangerPwd}>Отмена</button>
-          <button type="button" className="btn btn-primary px-4" id="confirmChangePasswordButton">Подтвердить</button>
-        </div>
+      <div className="modal-body">
+        <p>Введите старый пароль:</p>
+        <input
+          type="text"
+          id="inputOldPwd"
+          className="form-control"
+          value={oldPassword}
+          onChange={(e) => setOldPassword(e.target.value)}
+        />
       </div>
+      <div className="modal-body">
+        <p>Введите новый пароль:</p>
+        <input
+          type="text"
+          id="inputNewPwd"
+          className="form-control"
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+        />
+      </div>
+      <div className="modal-body">
+        <p>Подтвердите новый пароль:</p>
+        <input
+          type="text"
+          id="confirmNewPwd"
+          className="form-control"
+          value={confirmNewPassword}
+          onChange={(e) => setConfirmNewPassword(e.target.value)}
+        />
+      </div>
+      <button
+        type="button"
+        className="btn btn-primary px-4"
+        id="confirmChangePasswordButton"
+        onClick={handleConfirmChangePassword}
+      >
+        Подтвердить
+      </button>
     </div>
-  </div>
+    </div>
+    </div>
 
     <div id="confirmModal" className={`modal fade ${confirmExit}`} tabIndex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true" role={`${confirmExitRole}`}>
     <div className="modal-dialog modal-dialog-centered">
@@ -139,8 +213,7 @@ const Header = () => {
       </div>
     </div>
   </div>
-
-        </header>
+</header>
     );
 };
 
