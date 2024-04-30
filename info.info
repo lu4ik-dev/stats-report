@@ -1,0 +1,11 @@
+(admin) login -> 5 tables selector (index) -> view tables (show, del)
+                                           -> reports
+              -> users (EO)
+              -> notify (about change info user / add new user)
+              -> change info about self
+              -> logs
+(user) login -> 5 tables selector (index) -> add / edit tables
+             -> change info about self
+
+(guest) login -> register -> Wait pls...
+              -> restore pwd -> Wait pls...

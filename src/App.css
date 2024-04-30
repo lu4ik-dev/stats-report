@@ -1,0 +1,90 @@
+.gradient-custom {
+    background-color:#99faff;
+    background-image:
+    radial-gradient(at 25% 74%, hsla(187,69%,69%,1) 0px, transparent 50%),
+    radial-gradient(at 38% 26%, hsla(97,66%,63%,1) 0px, transparent 50%),
+    radial-gradient(at 84% 80%, hsla(117,72%,66%,1) 0px, transparent 50%),
+    radial-gradient(at 67% 41%, hsla(107,92%,74%,1) 0px, transparent 50%),
+    radial-gradient(at 12% 97%, hsla(108,100%,60%,1) 0px, transparent 50%),
+    radial-gradient(at 94% 9%, hsla(208,80%,67%,1) 0px, transparent 50%),
+    radial-gradient(at 55% 76%, hsla(237,54%,37%,1) 0px, transparent 50%);
+    }
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.47)!important;
+    border-radius: 16px!important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)!important;
+    backdrop-filter: blur(5.8px)!important;
+    -webkit-backdrop-filter: blur(5.8px)!important;
+}
+
+table.iksweb{
+	width: 100%;
+	border-collapse:collapse;
+	border-spacing:0;
+	height: auto;
+}
+table.iksweb,table.iksweb td, table.iksweb th {
+	border: 1px solid #595959;
+}
+table.iksweb td,table.iksweb th {
+	padding: 3px;
+	width: 30px;
+	height: 35px;
+}
+table.iksweb th {
+	color: #fff; 
+	font-weight: normal;
+}
+
+
+  
+
+.jump, .jump-10, .jump-15, .jump-20{
+    transition: transform 0.3s ease-in-out;
+  }
+ 
+  .jump:hover {
+    transform: translateY(-5px);
+  }  
+  .jump-10:hover {
+    transform: translateY(-10px);
+  }
+  .jump-15:hover {
+    transform: translateY(-15px);
+  }
+  .jump-20:hover {
+    transform: translateY(-20px);
+  }
+
+
+  .zoom-5, .zoom-10, .zoom-15, .zoom-20{
+	transition: transform 0.3s;
+  }
+
+  .zoom-5:hover {
+	transform: scale(1.05);
+  }
+  .zoom-10:hover {
+	transform: scale(1.1);
+  }
+  .zoom-15:hover {
+	transform: scale(1.15);
+  }
+  .zoom-20:hover {
+	transform: scale(1.2);
+  }
+
+
+  .highlight {
+    animation: mirrorEffect 1s ease-in-out alternate;
+  }
+
+
+.bg-lite-light  {
+  background: #ecf0f3;
+}
+
+.modal {
+  background-color: #03030fab;
+}

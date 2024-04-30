@@ -1,0 +1,12 @@
+{
+  "titlePages": "Портал Статистической Отчетности",
+  "defaultPrimaryColor": "#0d6efd",
+  "darkPrimaryColor": "#080808",
+  "adminUser": "User_422",
+  "adminPwd": "User_422Pwd",
+  "hostdb": "127.0.0.1",
+  "userdb": "root",
+  "passworddb": "",
+  "database": "stats-report",
+  "apiPort": "3110"
+}
