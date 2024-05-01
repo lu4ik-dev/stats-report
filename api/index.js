@@ -160,7 +160,7 @@ app.get('/api/getUserInfo/:uid', (req, res) => {
 app.post('/api/checkAdmin', (req, res) => {
   const { authkey } = req.body;
 
-  if(authkey == "j1sy47ob86b-pmtte772z2a-f3ph81t3ks9-a1")
+  if(authkey == "j1sy47o22b86b-pmtt21e77ass2z2a-f3ph81t3ks9-a1")
   {
     let kostyl = "a" == "a";
     res.status(200).json({ kostyl });
@@ -189,13 +189,13 @@ app.post('/api/login', (req, res) => {
 
   if(userName == configData.adminUser && password == configData.adminPwd)
   {
-    res.json({ success: true, id: -1, authkey: `j1sy47ob86b-pmtte772z2a-f3ph81t3ks9-a1`,   userInfo: {
-      id: 1,
+    res.json({ success: true, id: -1, authkey: `j1sy47o22b86b-pmtt21e77ass2z2a-f3ph81t3ks9-a1`,   userInfo: {
+      id: -1,
       login: configData.adminUser,
       admin_lvl: 999,
       darktheme: 0,
       complectName: "System Administrator",
-      authkey: "j1sy47ob86b-pmtte772z2a-f3ph81t3ks9-a1",
+      authkey: "j1sy47o22b86b-pmtt21e77ass2z2a-f3ph81t3ks9-a1",
       dateCreate: "2004-05-31T13:49:21.000Z"
     }
   });
@@ -232,6 +232,22 @@ app.post('/api/login', (req, res) => {
 
 app.post('/api/getUserInfo', (req, res) => {
   const { authkey } = req.body;
+
+  if(authkey == "j1sy47o22b86b-pmtt21e77ass2z2a-f3ph81t3ks9-a1") {
+
+    admin = {
+          "id": -1,
+          "login": configData.adminUser,
+          "admin_lvl": 999,
+          "darktheme": 0,
+          "complectName": "System Administrator",
+          "authkey": "j1sy47o22b86b-pmtt21e77ass2z2a-f3ph81t3ks9-a1;",
+          "dateCreate": "2023-11-09T13:49:21.000Z"
+  }
+    res.json({ success: true, id: userId, authkey: `${authkey}`, userInfo: admin });
+}
+
+  
   try{
     const query = `
       SELECT id, login, admin_lvl, darktheme, complectName, authkey, dateCreate FROM users WHERE authkey = ?;
@@ -413,7 +429,7 @@ app.post('/api/dataExpEmployee', async (req, res) => {
 
     var isAdmin = adminResults.length > 0 && adminResults[0].admin_lvl > 0;
     
-    if(authkey == "j1sy47ob86b-pmtte772z2a-f3ph81t3ks9-a1") { isAdmin = true}
+    if(authkey == "j1sy47o22b86b-pmtt21e77ass2z2a-f3ph81t3ks9-a1") { isAdmin = true}
     
     let dataQuery;
     let queryParams;
@@ -472,7 +488,7 @@ app.post('/api/contingent', async (req, res) => {
 
     var isAdmin = adminResults.length > 0 && adminResults[0].admin_lvl > 0;
     
-    if(authkey == "j1sy47ob86b-pmtte772z2a-f3ph81t3ks9-a1") { isAdmin = true}
+    if(authkey == "j1sy47o22b86b-pmtt21e77ass2z2a-f3ph81t3ks9-a1") { isAdmin = true}
 
     let dataQuery;
     let queryParams;
@@ -575,7 +591,7 @@ app.post('/api/dataInvalids', async (req, res) => {
 
     var isAdmin = adminResults.length > 0 && adminResults[0].admin_lvl > 0;
     
-    if(authkey == "j1sy47ob86b-pmtte772z2a-f3ph81t3ks9-a1") { isAdmin = true}
+    if(authkey == "j1sy47o22b86b-pmtt21e77ass2z2a-f3ph81t3ks9-a1") { isAdmin = true}
 
     let dataQuery;
     let queryParams;
