@@ -867,6 +867,23 @@ app.post('/api/updatePassword', (req, res) => {
   );
 });
 
+app.get('/api/get/professions', (req, res) => {
+  fs.readFile('specialnosti.json', 'utf8', (err, data) => {
+      if (err) {
+          console.error('Error reading JSON file:', err);
+          res.status(500).send('Internal Server Error');
+          return;
+      }
+      try {
+          const schema = JSON.parse(data);
+          res.json(schema);
+      } catch (error) {
+          console.error('Error parsing JSON:', error);
+          res.status(500).send('Internal Server Error');
+      }
+  });
+});
+
 app.listen(port, () => {
     console.log(`Сервер запущен на порту: ${port}`);
     console.log(`Используй: localhost:${port}/api/testServerApi`);
