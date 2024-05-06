@@ -1757,3 +1757,7 @@
 [Dmitriy] [05.05.2024 - 19:04:27]: POST - http://localhost:3110/api/checkAdmin
 [Dmitriy] [05.05.2024 - 19:04:27]: POST - http://localhost:3110/api/getUserInfo
 [Dmitriy] [05.05.2024 - 19:04:27]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [06.05.2024 - 19:29:50]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [06.05.2024 - 19:29:50]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [06.05.2024 - 20:29:50]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [06.05.2024 - 20:29:50]: GET - http://localhost:3110/api/testServerApi

@@ -55,7 +55,7 @@ const Header = () => {
    
     const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
 
-    const email = 'pivozavr@mail.xui';
+    const email = 'bisquirt@lu4ik.com';
     const [useremail, domain] = email.split('@');
 
     const [oldPassword, setOldPassword] = useState('');

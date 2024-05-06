@@ -105,9 +105,9 @@ function A_Main() {
                     <div className="col-sm-6 pb-3">
                         <div className="card">
                         <div className="card-body">
-                            <h5 className="card-title">Не придумал</h5>
+                            <h5 className="card-title">В разработке</h5>
                             <p className="card-text">
-                            ну а рил чё сюда вставить? рекламу крипто-биржи? 
+                            ну а рил чё сюда вставить? рекламу 1x? 
                             </p>
                         </div>
                         </div>
