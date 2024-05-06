@@ -107,7 +107,7 @@ function A_Main() {
                         <div className="card-body">
                             <h5 className="card-title">В разработке</h5>
                             <p className="card-text">
-                            ну а рил чё сюда вставить? рекламу 1x? 
+                            ну а рил чё сюда вставить? рекламу? 
                             </p>
                         </div>
                         </div>
