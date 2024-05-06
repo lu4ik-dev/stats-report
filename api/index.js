@@ -884,6 +884,47 @@ app.get('/api/get/professions', (req, res) => {
   });
 });
 
+
+app.get('/api/dataEduction/:id_doc', (req, res) => {
+  const query = `
+    SELECT o.dateCreate, u.login, u.complectName, ob.*
+    FROM obrazovanie o
+    JOIN users u ON o.id_user = u.id
+    JOIN obrazovanie_body ob ON o.id = ob.id_doc
+    WHERE ob.id_doc = ?
+  `;
+  const id_doc = req.query.id_doc; // Параметр id_doc из запроса
+  connection.query(query, [id_doc], (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    if (results && results.length > 0) {
+      const data = {
+        obrazovanie: {
+          dateCreate: results[0].dateCreate,
+          login: results[0].login,
+          complectName: results[0].complectName,
+          city: results[0].city
+        },
+        obrazovanie_body: results.map(row => ({
+          id: row.id,
+          name_of_indicators: row.name_of_indicators,
+          all_obr: row.all_obr,
+          have_obr: JSON.parse(row.have_obr),
+          full_zan: row.full_zan
+        }))
+      };
+      res.json(data);
+    } else {
+      res.status(404).json({ error: 'Data not found' });
+    }
+  });
+});
+
+
+
 app.listen(port, () => {
     console.log(`Сервер запущен на порту: ${port}`);
     console.log(`Используй: localhost:${port}/api/testServerApi`);
