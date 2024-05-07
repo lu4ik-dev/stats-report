@@ -55,31 +55,31 @@ function Login() {
   };
 
   return (
-    <section className="vh-100 gradient-custom pt-5">
+    <section className="vh-100 custom-body pt-5 add-font-arturito-slab">
      <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-12 col-md-8 col-lg-6 col-xl-5">
-            <div className="card glass-effect text-primary" style={{ borderRadius: '1rem' }}>
+            <div className="card  text-primary" style={{ borderRadius: '1rem', backgroundColor: '#00000000', borderColor: '#0000'}}> {/*   glass-effect */}
               <div className="card-body p-5 text-center">
                 <div className="mb-md-5 mt-md-4 pb-1">
-                  <h2 className="fw-bold text-primary mb-2 text-uppercase">Портал статистической отчетности</h2>
+                  <h2 className="fw-bold text-white mb-4 text-uppercase"><span style={{fontSize: '4.8rem'}}>Портал</span> статистической <span style={{fontSize: '2.8rem'}}>отчетности</span></h2>
 
-                  <div className="form-outline form-primary mb-4">
+                  <div className="form-outline form-primary mb-2">
                     <input
                       type="email"
                       id="typeEmail"
-                      className="form-control form-control-lg"
+                      className="form-control custom-grad-login-input form-control-lg"
                       placeholder="Логин"
                       value={login}
                       onChange={(e) => setLogin(e.target.value)}
                     />
                   </div>
-                  <div className="form-outline form-primary mb-4">
+                  <div className="form-outline  form-primary mb-4">
                     <div className="input-group">
                       <input
                         type={passwordVisible ? 'text' : 'password'}
                         id="typePassword"
-                        className="form-control form-control-lg"
+                        className="form-control custom-grad-login-input form-control-lg"
                         placeholder="Пароль"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
@@ -88,7 +88,7 @@ function Login() {
                     </div>
                   </div>
                   <button
-                    className="btn btn-outline-primary btn-lg me-2 px-5"
+                    className="btn btn-outline-primary custom-grad-login-btn w-100 btn-lg me-2 px-5"
                     onClick={handleLoginPressButton}
                     disabled={loading}
                   >
@@ -97,25 +97,25 @@ function Login() {
                 </div>
 
                 {authResult === true && (
-                  <div className="alert alert-success" role="alert">
+                  <div className="alert alert-success custom-grad-login-alert" role="alert">
                     Успешно
                   </div>
                 )}
 
                 {authResult === false && (
-                  <div className="alert alert-danger" role="alert">
+                  <div className="alert alert-danger custom-grad-login-alert" role="alert">
                     Авторизация не удалась <FontAwesomeIcon icon={faClose} size="xl" />
                   </div>
                 )}
-
                 <div>
-                  <p className="mb-0">
-                    <a href="/restore-password" className="link-primary fw-bold link-underline link-underline-opacity-0">
+                { /* <p className="mb-0">
+                    <a href="/restore-password" className="link-primary fw-bold text-white link-underline link-underline-opacity-0">
                       Забыли пароль?
                     </a>
                   </p>
-                  <p className="mb-0">
-                    <a href="/registration" className="link-primary fw-bold link-underline link-underline-opacity-0">
+                */ }
+                  <p className="mb-0 custom-grad-login-input py-2">
+                    <a href="/registration" className="link-primary fw-bold text-black link-underline link-underline-opacity-0">
                       Зарегистрироваться?
                     </a>
                   </p>
@@ -124,7 +124,10 @@ function Login() {
             </div>
           </div>
         </div>
+        
       </div>
+      
+
   </section>
   );
 }

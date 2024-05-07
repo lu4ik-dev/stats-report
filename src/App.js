@@ -25,6 +25,7 @@ import ContingentTable from './pages/ContingentTable';
 import InvalidsTables from './pages/InvalidsTables';
 import ErrorPageServer from './pages/ErrorPageServer';
 
+import EductionTable from './pages/EductionTable';
 import { url_api, url_web } from './tech/config'
 function App() {
   const [apiAvailable, setApiAvailable] = useState(true);
@@ -55,7 +56,6 @@ function App() {
       try {
         if(sessionStorage.getItem('auth')){
         const response = await fetch(url_api + '/api/getUserInfo', {
-          mode: 'no-cors',
           method: 'POST',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -94,6 +94,7 @@ function App() {
           <Route path="/login" element={apiAvailable ? <Login /> : <Navigate to="/ErrorPageServer" />} />
           <Route path="/experience" element={apiAvailable ? <Experince /> : <Navigate to="/ErrorPageServer" />} />
           <Route path="/eductions" element={apiAvailable ? <Eduction /> : <Navigate to="/ErrorPageServer" />} />
+          <Route path="/eduction-table" element={apiAvailable ? <EductionTable/> : <Navigate to="/ErrorPageServer" />} />
           <Route path="/contingent" element={apiAvailable ? <Contingent /> : <Navigate to="/ErrorPageServer" />} />
           <Route path="/contingent-table" element={apiAvailable ? <ContingentTable /> : <Navigate to="/ErrorPageServer" />} />
           <Route path="/invalids" element={apiAvailable ? <Invalids /> : <Navigate to="/ErrorPageServer" />} />

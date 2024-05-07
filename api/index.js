@@ -120,7 +120,77 @@ function hashPassword(password) {
     return res.json({ postval: `${rand()}:${JSON.stringify(req.body)}` });
   });
 
+  app.get('/generateExcel/:id_doc', (req, res) => {
+    const id_doc = req.params.id_doc;
+    console.log(`Получен запрос для id: ${id_doc}`);
+    connection.query('SELECT * FROM employee_work_exp WHERE id = ?', [id_doc], (error, expResults, fields) => {
+      if (error) {
+        console.error('Ошибка выполнения запроса к employee_work_exp:', error);
+        res.status(500).send('Ошибка выполнения запроса к employee_work_exp');
+        return;
+      }
+      console.log('Результаты запроса к employee_work_exp:', expResults);
+      
+      connection.query('SELECT * FROM employee_work_exp_body WHERE id_doc = ?', [id_doc], (error, bodyResults, fields) => {
+        if (error) {
+          console.error('Ошибка выполнения запроса к employee_work_exp_body:', error);
+          res.status(500).send('Ошибка выполнения запроса к employee_work_exp_body');
+          return;
+        }
+        console.log('Результаты запроса к employee_work_exp_body:', bodyResults);
+        
+        const sourceFileName = 'exp_template.xlsx';
+        const intermediateFileName = 'exp_template_temp.xlsx';
+        const resultFileName = `res_${Date.now()}.xlsx`;
+  
+        fs.copyFile(sourceFileName, intermediateFileName, (err) => {
+          if (err) {
+            console.error(`Ошибка копирования файла ${sourceFileName}:`, err);
+            res.status(500).send(`Ошибка копирования файла ${sourceFileName}`);
+            return;
+          }
+          console.log(`Файл ${sourceFileName} успешно скопирован как ${intermediateFileName}`);
+  
+          XlsxPopulate.fromFileAsync(intermediateFileName)
+          .then(workbook => {
+            const sheet = workbook.sheet(0);
+  
+              for (let i = 0; i < results.length; i++) {
+                const row = results[i];
+                sheet.cell(`A${i + 8}`).value(row.id_user);
+                // Добавьте остальную логику для заполнения данных из базы
+              }
+              return workbook.toFileAsync(resultFileName);
+            })
+            .then(() => {
+              console.log(`Результат сохранен в файл ${resultFileName}`);
+              fs.unlink(intermediateFileName, (err) => {
+                if (err) {
+                  console.error(`Ошибка удаления промежуточного файла ${intermediateFileName}:`, err);
+                  res.status(500).send(`Ошибка удаления промежуточного файла ${intermediateFileName}`);
+                  return;
+                }
+                console.log(`Промежуточный файл ${intermediateFileName} удален`);
+                res.download(resultFileName, (err) => {
+                  if (err) {
+                    console.error(`Ошибка отправки файла ${resultFileName}:`, err);
+                    res.status(500).send(`Ошибка отправки файла ${resultFileName}`);
+                    return;
+                  }
+                  console.log(`Файл ${resultFileName} успешно отправлен`);
+                });
+              });
+            })
+            .catch((error) => {
+              console.error('Произошла ошибка:', error);
+              res.status(500).send('Произошла ошибка');
+            });
+        });
+      });
+    });
+  });
 
+  
 app.get('/api/testServerApi', (req, res) => {
       res.status(200).json( { success: true, message: 'API работает' } );
 });
@@ -553,6 +623,142 @@ app.get('/api/contingent-table/:id_doc', async (req, res) => {
 });
 
 
+app.post('/api/deleteContingent/:id_doc', (req, res) => {
+  const id = req.params.id_doc;
+
+  if (!id) {
+    return res.status(400).json({ error: 'ID is required' });
+  }
+
+  connection.query('UPDATE enrollment SET disabled = 1 WHERE id = ?', [id], (err, result) => {
+    if (err) {
+      console.error('Error deleting work experience:', err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    res.status(200).json({ message: 'Work experience deleted successfully' });
+  });
+});
+
+
+app.post('/api/addContingent', (req, res) => {
+  const { user_id, id_doc, table, timeLastEdit } = req.body;
+
+  connection.query('INSERT INTO enrollment (id_user, timeLastEdit) VALUES (?, ?)', [user_id, timeLastEdit], (err, result) => {
+    if (err) {
+      console.error('Ошибка при вставке в contingent:', err);
+      res.status(500).send('Ошибка сервера');
+    } else {
+
+      const id_doc = result.insertId;
+      const insertInvalidsBodyQuery =
+      'INSERT INTO enrollment_body (id_doc, Training_Program, Standard_Category, Occupation_Code, Specialty_Name, Duration_of_Study, Form_of_Education, Course, Average_Grade_of_Certificate, Number_of_KCP_According_to_Founder_Order, Total_Students_Count, Federal_Budget_Students_Count, Regional_Budget_Students_Count, Targeted_Training_Students_Count, Tuition_Paying_Students_Count, Foreign_Students_Count, Orphan_Children_Count, Children_without_Parental_Care_Count, Students_in_Need_of_Housing_Count, Provided_Dormitory_Space_Count, Denied_Dormitory_Space_Count, Graduation_Year_2024_Count, Number_of_Taking_Demonstration_Exam_GIA, Number_of_Taking_Demonstration_Exam_Intermediate_Assessment, Demonstration_Exam_Basic_Level_Count, Demonstration_Exam_Professional_Level_Count) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    table.forEach((row) => {
+      const { Training_Program, Standard_Category, Occupation_Code, Specialty_Name, Duration_of_Study, Form_of_Education, Course, Average_Grade_of_Certificate, Number_of_KCP_According_to_Founder_Order, Total_Students_Count, Federal_Budget_Students_Count, Regional_Budget_Students_Count, Targeted_Training_Students_Count, Tuition_Paying_Students_Count, Foreign_Students_Count, Orphan_Children_Count, Children_without_Parental_Care_Count, Students_in_Need_of_Housing_Count, Provided_Dormitory_Space_Count, Denied_Dormitory_Space_Count, Graduation_Year_2024_Count, Number_of_Taking_Demonstration_Exam_GIA, Number_of_Taking_Demonstration_Exam_Intermediate_Assessment, Demonstration_Exam_Basic_Level_Count, Demonstration_Exam_Professional_Level_Count } = row;
+    
+      connection.query(
+        insertInvalidsBodyQuery,
+        [id_doc, Training_Program, Standard_Category, Occupation_Code, Specialty_Name, Duration_of_Study, Form_of_Education, Course, Average_Grade_of_Certificate, Number_of_KCP_According_to_Founder_Order, Total_Students_Count, Federal_Budget_Students_Count, Regional_Budget_Students_Count, Targeted_Training_Students_Count, Tuition_Paying_Students_Count, Foreign_Students_Count, Orphan_Children_Count, Children_without_Parental_Care_Count, Students_in_Need_of_Housing_Count, Provided_Dormitory_Space_Count, Denied_Dormitory_Space_Count, Graduation_Year_2024_Count, Number_of_Taking_Demonstration_Exam_GIA, Number_of_Taking_Demonstration_Exam_Intermediate_Assessment, Demonstration_Exam_Basic_Level_Count, Demonstration_Exam_Professional_Level_Count],
+        (err) => {
+          if (err) {
+            console.error('Error inserting into contingent_body:', err);
+            res.status(500).send('Internal Server Error');
+          }
+        }
+      );
+    });
+      const updateInvalidsQuery = 'UPDATE enrollment SET timeLastEdit = ? WHERE id = ?';
+
+      connection.query(updateInvalidsQuery, [timeLastEdit, id_doc], (err) => {
+        if (err) {
+          console.error('Error updating timeLastEdit in contingent:', err);
+          res.status(500).send('Internal Server Error');
+        } else {
+          res.status(200).json({ success: true, id: id_doc });
+        }
+      });
+    }
+  });
+});
+
+
+
+app.post('/api/updateContingent', (req, res) => {
+  const { id_doc, table, timeLastEdit } = req.body;
+  
+  // Delete old records for the given id_doc
+  const deleteQuery = 'DELETE FROM enrollment_body WHERE id_doc = ?';
+  connection.query(deleteQuery, [id_doc], (err) => {
+      if (err) {
+          console.error('Error deleting old records in enrollment_body:', err);
+          return res.status(500).json({ success: false, error: 'Internal Server Error' });
+      } 
+      
+      // Insert new records
+      const insertQuery =
+          'INSERT INTO enrollment_body (id_doc, Training_Program, Standard_Category, Occupation_Code, Specialty_Name, Duration_of_Study, Form_of_Education, Course, Average_Grade_of_Certificate, Number_of_KCP_According_to_Founder_Order, Total_Students_Count, Federal_Budget_Students_Count, Regional_Budget_Students_Count, Targeted_Training_Students_Count, Tuition_Paying_Students_Count, Foreign_Students_Count, Orphan_Children_Count, Children_without_Parental_Care_Count, Students_in_Need_of_Housing_Count, Provided_Dormitory_Space_Count, Denied_Dormitory_Space_Count, Graduation_Year_2024_Count, Number_of_Taking_Demonstration_Exam_GIA, Number_of_Taking_Demonstration_Exam_Intermediate_Assessment, Demonstration_Exam_Basic_Level_Count, Demonstration_Exam_Professional_Level_Count) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+      
+      // Use a loop to insert each row from the table
+      table.forEach(row => {
+          const values = [
+              id_doc,
+              row.Training_Program,
+              row.Standard_Category,
+              row.Occupation_Code,
+              row.Specialty_Name,
+              row.Duration_of_Study,
+              row.Form_of_Education,
+              row.Course,
+              row.Average_Grade_of_Certificate,
+              row.Number_of_KCP_According_to_Founder_Order,
+              row.Total_Students_Count,
+              row.Federal_Budget_Students_Count,
+              row.Regional_Budget_Students_Count,
+              row.Targeted_Training_Students_Count,
+              row.Tuition_Paying_Students_Count,
+              row.Foreign_Students_Count,
+              row.Orphan_Children_Count,
+              row.Children_without_Parental_Care_Count,
+              row.Students_in_Need_of_Housing_Count,
+              row.Provided_Dormitory_Space_Count,
+              row.Denied_Dormitory_Space_Count,
+              row.Graduation_Year_2024_Count,
+              row.Number_of_Taking_Demonstration_Exam_GIA,
+              row.Number_of_Taking_Demonstration_Exam_Intermediate_Assessment,
+              row.Demonstration_Exam_Basic_Level_Count,
+              row.Demonstration_Exam_Professional_Level_Count
+          ];
+          
+          connection.query(insertQuery, values, (err) => {
+              if (err) {
+                  console.error('Error inserting into enrollment_body:', err);
+                  return res.status(500).json({ success: false, error: 'Internal Server Error' });
+              }
+          });
+      });
+      
+      // Update timeLastEdit in another table (contingent)
+      const updateQuery = 'UPDATE enrollment SET timeLastEdit = ? WHERE id = ?';
+connection.query(updateQuery, [timeLastEdit, id_doc], (err, result) => {
+    if (err) {
+        console.error('Error updating timeLastEdit in contingent:', err);
+        return res.status(500).json({ success: false, error: 'Internal Server Error' });
+    }
+    
+    // Check if any rows were affected
+    if (result.affectedRows === 0) {
+        console.error('No rows were updated.');
+        return res.status(404).json({ success: false, error: 'No rows were updated.' });
+    }
+    
+    // If everything is successful, send a success response
+    res.status(200).json({ success: true, id: id_doc });
+});
+
+  });
+});
+
+
 
 app.post('/api/checkAdmin', (req, res) => {
   const { authkey } = req.body;
@@ -685,8 +891,6 @@ app.post('/api/addInvalids', (req, res) => {
       res.status(500).send('Internal Server Error');
     } else {
       const id = result.rows[0].id;
-
-      // Insert records into invalids_body
       const insertInvalidsBodyQuery =
       'INSERT INTO invalids_body (id_doc, name_poo, specialnost, code_of_specialnost, counts, diagnoses) VALUES (?, ?, ?, ?, ?, ?)';
     
@@ -922,6 +1126,185 @@ app.get('/api/dataEduction/:id_doc', (req, res) => {
     }
   });
 });
+
+
+app.post('/api/dataEduction', async (req, res) => {
+  const { authkey } = req.body;
+
+  const checkAdminQuery = `
+    SELECT admin_lvl FROM users WHERE authkey = ?;
+  `;
+  connection.query(checkAdminQuery, [authkey], (adminErr, adminResults) => {
+    if (adminErr) {
+      console.error('Error checking admin_lvl:', adminErr);
+      res.status(500).json({ error: 'Internal Server Error' });
+      return;
+    }
+
+    const isAdmin = adminResults.length > 0 && adminResults[0].admin_lvl > 0;
+    let dataQuery;
+    let queryParams;
+
+    if (isAdmin) {
+      dataQuery = `
+      SELECT 
+        ewe.id, 
+        u.complectName AS userName, 
+        ewe.dateCreate, 
+        ewe.disabled, 
+        ewe.timeLastEdit, 
+        u.complectName AS lastEditFrom
+      FROM obrazovanie ewe
+      INNER JOIN users u ON ewe.id_user = u.id
+    `;
+      queryParams = [];
+    } else {
+      dataQuery = `
+      SELECT 
+        ewe.id, 
+        u.complectName AS userName, 
+        ewe.dateCreate, 
+        ewe.disabled, 
+        ewe.timeLastEdit
+      FROM obrazovanie ewe
+      INNER JOIN users u ON ewe.id_user = u.id
+      WHERE u.authkey = ?;
+    `;
+      queryParams = [authkey];
+    }
+
+    connection.query(dataQuery, queryParams, (err, results) => {
+      if (err) {
+        console.error('Error executing query:', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+        return;
+      }
+      res.json(results);
+    });
+  });
+});
+app.get('/api/eduction-table/:id_doc', async (req, res) => {
+  const id_doc = req.params.id_doc;
+  const sql = `
+    SELECT
+      i.*,
+      ib.*,
+      u.complectName
+    FROM obrazovanie i
+    JOIN obrazovanie_body ib ON i.id = ib.id_doc
+    JOIN users u ON i.id_user = u.id
+    WHERE i.id = ?
+  `;
+  connection.query(sql, [id_doc], (error, results, fields) => {
+    if (error) {
+      console.error('Ошибка запроса: ' + error.message);
+      res.status(500).send('Ошибка сервера');
+      return;
+    }
+    res.json(results);
+  });
+});
+app.post('/api/addEduction', (req, res) => {
+  const { user_id, table, timeLastEdit } = req.body;
+  console.log(req.body)
+  console.log(JSON.stringify(table))
+
+  connection.query('INSERT INTO obrazovanie (id_user, timeLastEdit) VALUES (?, ?)', [user_id, timeLastEdit], (err, result) => {
+    if (err) {
+      console.error('Error inserting into edu:', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+
+
+      const id_doc = result.insertId;
+
+      // Вставка записей в таблицу "obrazovanie_body" для каждой строки в таблице "table"
+      const insertEducationBodyQuery = 'INSERT INTO obrazovanie_body (id_doc, name_of_indicators, all_obr, have_obr, kval_cat, full_zan) VALUES (?, ?, ?, ?, ?, ?)';
+      table.forEach((row) => {
+        const { col1, col2, col5, col6, col7, col8, col9, col10, col11, col12, col13, col14, col15, col16, col17, col18 } = row;
+  
+        // Формирование JSON-схемы для have_obr и kval_cat
+        const have_obr_json = JSON.stringify({ col5, col6, col7, col8, col9, col10, col11, col12, col13, col14 });
+        const kval_cat_json = JSON.stringify({ col15, col16, col17, col18 });
+  
+        connection.query(insertEducationBodyQuery, [id_doc, col2, 'test', have_obr_json, kval_cat_json, ''], (err) => {
+          if (err) {
+            console.error('Ошибка вставки в таблицу obrazovanie_body:', err);
+            return res.status(500).json({ error: 'Ошибка сервера' });
+          }
+        });
+      });
+  
+
+      const updateQuery = 'UPDATE obrazovanie SET timeLastEdit = ? WHERE id = ?';
+      connection.query(updateQuery, [timeLastEdit, id_doc], (err) => {
+        if (err) {
+          console.error('Error updating timeLastEdit in edu:', err);
+          res.status(500).send('Internal Server Error');
+        } else {
+          res.status(200).json({ success: true, id: id_doc });
+        }
+      });
+    }
+  });
+});
+
+app.post('/api/updateEduction', (req, res) => {
+  const { table, timeLastEdit } = req.body;
+  const id_doc = table[0].id_doc;
+
+  const deleteQuery = 'DELETE FROM obrazovanie_body WHERE id_doc = ?';
+  connection.query(deleteQuery, [id_doc], (err) => {
+    if (err) {
+      console.error('Error deleting old records in edu_body:', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      const insertEduBodyQuery =
+        'INSERT INTO obrazovanie_body (id_doc, name_of_indicators, all_obr, have_obr, kval_cat, full_zan ) VALUES (?, ?, ?, ?, ?, ?)';
+
+      table.forEach((row) => {
+        const { name_of_indicators, all_obr, have_obr, kval_cat, full_zan } = row;
+        connection.query(
+          insertEduBodyQuery,
+          [id_doc, name_of_indicators, all_obr, have_obr, kval_cat, full_zan],
+          (err) => {
+            if (err) {
+              console.error('Error inserting into edu_body:', err);
+              res.status(500).send('Internal Server Error');
+            }
+          }
+        );
+      });
+
+      const updateQuery = 'UPDATE obrazovanie SET timeLastEdit = ? WHERE id = ?';
+      connection.query(updateQuery, [timeLastEdit, id_doc], (err) => {
+        if (err) {
+          console.error('Error updating timeLastEdit in edu:', err);
+          res.status(500).send('Internal Server Error');
+        } else {
+          res.status(200).json({ success: true, id: id_doc });
+        }
+      });
+    }
+  });
+});
+app.post('/api/deleteEducation/:id_doc', (req, res) => {
+  const id = req.params.id_doc;
+
+  if (!id) {
+    return res.status(400).json({ error: 'ID is required' });
+  }
+
+  connection.query('UPDATE obrazovanie SET disabled = 1 WHERE id = ?', [id], (err, result) => {
+    if (err) {
+      console.error('Error deleting work experience:', err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    res.status(200).json({ message: 'Work experience deleted successfully' });
+  });
+});
+
 
 
 

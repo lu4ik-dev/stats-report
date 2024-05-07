@@ -34,6 +34,7 @@ const Index = () => {
                 <h3 className="pb-2 border-bottom text-secondary"><b>{greeting},</b>  <span className={userInfo.complectName === "System Administrator" ? "text-danger" : ""}>{userInfo.complectName}
   </span></h3>
                 <div className="row">
+                <div className="row">
                     <div className="col-sm-6 pb-3">
                         <div className="card">
                         <div className="card-body">
@@ -59,9 +60,10 @@ const Index = () => {
                             </Link>
                         </div>
                         </div>
-                    </div>
+    </div>
+    
 
-                    <div className="col-sm-6 pb-3">
+                    <div className="col-sm-12pb-3">
                         <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">Инвалиды и лица с ОВЗ</h5>
@@ -74,7 +76,7 @@ const Index = () => {
                         </div>
                         </div>
                     </div>
-                    <div className="col-sm-6 pb-3">
+                    { /*     <div className="col-sm-12 pb-3">
                         <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">Программы</h5>
@@ -86,6 +88,7 @@ const Index = () => {
                             </Link>
                         </div>
                         </div>
+                    </div>*/}
                     </div>
                     <div className="col-sm-12">
                         <div className="card">

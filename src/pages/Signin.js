@@ -42,42 +42,42 @@ const Signin = () => {
   const handleLoginPressButton = async () => {}
 
     return (
-        <section className="vh-100 gradient-custom">
-        <div className="container py-5 h-100">
+        <section className="vh-100 custom-body add-font-arturito-slab">
+        <div className="container  h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-12 col-md-8 col-lg-6 col-xl-5">
-              <div className="card glass-effect text-primary" style={{ borderRadius: '1rem' }}>
+              <div className="card text-primary" style={{ borderRadius: '1rem', backgroundColor: '#00000000', borderColor: '#0000'}}>
                 <div className="card-body p-5 text-center">
                   <div className="mb-md-1 mt-md-0 pb-0">
-                    <h3 className="fw-bold text-primary mb-2 text-uppercase">Портал статистической отчетности</h3>
-  
-                    <div className="form-outline form-primary mb-4">
+                  <h2 className="fw-bold text-white mb-4 text-uppercase"><span style={{fontSize: '4.8rem'}}>Портал</span> статистической <span style={{fontSize: '2.8rem'}}>отчетности</span></h2>
+
+                    <div className="form-outline form-primary mb-2">
                       <input
                         type="email"
                         id="typeEmail"
-                        className="form-control"
+                        className="form-control custom-grad-login-input"
                         placeholder="Почта"
                       //  value={login}
                       //  onChange={(e) => setLogin(e.target.value)}
                       />
                     </div>
 
-                    <div className="form-outline form-primary mb-4">
+                    <div className="form-outline form-primary mb-2">
                       <input
                         type="text"
                         id="typeEmail"
-                        className="form-control"
+                        className="form-control custom-grad-login-input"
                         placeholder="Логин"
                       //  value={login}
                       //  onChange={(e) => setLogin(e.target.value)}
                       />
                     </div>
 
-                    <div className="form-outline mt-3 form-primary mb-4">
+                    <div className="form-outline mt-2 form-primary mb-2">
                       <input
                         type="text"
                         id="typeEmail"
-                        className="form-control"
+                        className="form-control custom-grad-login-input"
                         placeholder="Фамилия"
                       //  value={login}
                       //  onChange={(e) => setLogin(e.target.value)}
@@ -85,11 +85,11 @@ const Signin = () => {
                     </div>
 
                     
-                    <div className="form-outline form-primary mb-4">
+                    <div className="form-outline form-primary mb-2">
                       <input
                         type="text"
                         id="typeEmail"
-                        className="form-control"
+                        className="form-control custom-grad-login-input"
                         placeholder="Имя"
                       //  value={login}
                       //  onChange={(e) => setLogin(e.target.value)}
@@ -97,7 +97,7 @@ const Signin = () => {
                     </div>
                    
                     <select
-                    className="form-control"
+                    className="form-control custom-grad-login-input"
                     id="regionSelect"
                     onChange={handleRegionChange}
                     value={selectedRegion}
@@ -109,7 +109,7 @@ const Signin = () => {
                   </select>
 
                   <select
-                    className={`form-control mt-4 ${selectedRegion === "" ? "disabled" : ""}`}
+                    className={`form-control custom-grad-login-input mt-2 ${selectedRegion === "" ? "disabled" : ""}`}
                     id="citySelect"
                     disabled={selectedRegion === ""}
                   >
@@ -119,7 +119,7 @@ const Signin = () => {
                     ))}
                   </select>
 
-                    <select className="form-control mt-4" id="exampleFormControlSelect1">
+                    <select className="form-control mt-2 custom-grad-login-input" id="exampleFormControlSelect1">
                         <option selected disabled>Выберите организацию</option>
                         <option>2</option>
                         <option>3</option>
@@ -127,11 +127,11 @@ const Signin = () => {
                         <option>5</option>
                     </select>
                  
-                    <div className="form-outline form-primary mb-4 mt-3">
+                    <div className="form-outline form-primary mb-2 mt-2">
                       <input
                         type="password"
                         id="typeEmail"
-                        className="form-control"
+                        className="form-control custom-grad-login-input"
                         placeholder="Пароль"
                       //  value={login}
                       //  onChange={(e) => setLogin(e.target.value)}
@@ -142,7 +142,7 @@ const Signin = () => {
                       <input
                         type="password"
                         id="typeEmail"
-                        className="form-control"
+                        className="form-control custom-grad-login-input"
                         placeholder="Подтверждение пароля"
                       //  value={login}
                       //  onChange={(e) => setLogin(e.target.value)}
@@ -150,7 +150,7 @@ const Signin = () => {
                     </div>
 
                     <button
-                    className="btn btn-outline-primary btn-lg me-2 px-5"
+                    className="btn btn-outline-primary custom-grad-login-btn w-100 btn-lg me-2 px-5"
                     onClick={handleLoginPressButton}
                     disabled={loading}
                   >
@@ -158,21 +158,21 @@ const Signin = () => {
                   </button>
 
                   {authResult === true && (
-                    <div className="alert alert-success" role="alert">
+                    <div className="alert alert-success custom-grad-login-alert" role="alert">
                       Успешно
                     </div>
                   )}
   
                   {authResult === false && (
-                    <div className="alert alert-danger" role="alert">
+                    <div className="alert alert-danger custom-grad-login-alert" role="alert">
                       Авторизация неудалась <FontAwesomeIcon icon={faClose} size="xl" />
                     </div>
                   )}
   
                   <div>
                    
-                    <p className="mb-0">
-                      <a href="/login" className="link-primary fw-bold link-underline link-underline-opacity-0">
+                    <p className="mb-0 mt-2 custom-grad-login-input py-2">
+                      <a href="/login" className="link-primary text-black fw-bold link-underline link-underline-opacity-0">
                         Уже есть аккаунт?
                       </a>
                     </p>

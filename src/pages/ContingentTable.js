@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import * as XLSX from 'xlsx';
 import { url_api } from '../tech/config';
+import { formatDate } from '../tech/formatterDate';
+import { showAlert } from '../tech/alert';
+
 
 const ContingentTable = () => {
   const [tableData, setTableData] = useState([]);
@@ -17,7 +20,84 @@ const ContingentTable = () => {
     XLSX.writeFile(wb, 'Контингент.xls');
   };
 
-  const handleSave = () => {}
+  const handleSave = () => {
+    let id_doc = new URLSearchParams(window.location.search).get("id_doc");
+    const tableRows = [];
+    
+    tableData.forEach((row) => {
+    const rowObject = {
+      id_doc: id_doc,
+    name_poo: row.col1,
+    specialnost: row.col2,
+    code_of_specialnost: row.col3,
+    counts: {
+    col5: row.col5,
+    col6: row.col6,
+    col7: row.col7,
+    col8: row.col8,
+    col9: row.col9,
+    },
+    diagnoses: {
+    col11: row.col11,
+    col12: row.col12,
+    col13: row.col13,
+    col14: row.col14,
+    col15: row.col15,
+    col16: row.col16,
+    col17: row.col17,
+    col18: row.col18,
+    col19: row.col19,
+    col20: row.col20,
+    col21: row.col21,
+    col22: row.col22,
+    col23: row.col23,
+    col24: row.col24,
+    col25: row.col25,
+    col26: row.col26,
+    col27: row.col27,
+    col28: row.col28,
+    },
+    };
+    
+    tableRows.push(rowObject);
+    });
+    
+    const jsonSchema = {
+    table: tableRows,
+    };
+    var now = new Date();
+    
+    const requestBody = {
+      id_doc: id_doc,
+    timeLastEdit: formatDate(now),
+    user_id: userInfo.id,
+    table: tableRows,
+    };
+    
+    const apiUrl = id_doc !== 'newDoc' ? '/api/updateContingent' : '/api/addContingent';
+    fetch(url_api + apiUrl, {
+    method: 'POST',
+    headers: {
+    'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(requestBody),
+    })
+    .then((response) => response.text())
+    .then((data) => {
+      console.log(JSON.stringify(data))
+    showAlert('Таблица успешно сохранена!');
+    const currentUrl = window.location.href;
+    const targetUrl = `http://localhost:3000/contingent-tables?id_doc=${data.id}`;
+    if (currentUrl !== targetUrl) {
+    //window.location.href = targetUrl;
+    } else {
+    //window.location.reload();
+    }
+    })
+    .catch((error) => {
+    console.error('Ошибка при отправке запроса:', error);
+    });
+    };
   
   const handlerInsert = () => {
     setTableData((prevData) => [
@@ -183,9 +263,11 @@ const ContingentTable = () => {
   };
   const id_doc = new URLSearchParams(window.location.search).get('id_doc');
   return (
+    
     <div>
            { (!id_doc || id_doc === 'newDoc') ? <Header /> : '' }
 	  <div>
+      
 		<div className="d-flex flex-wrap justify-content-center py-1 mb-2">
                 <span className="d-flex align-items-center mb-1 mb-md-0 me-md-auto text-dark fs-5 ms-3"><a href="/contingent">Распределение </a></span>
             <ul className="nav nav-pills me-3">
@@ -283,6 +365,14 @@ const ContingentTable = () => {
                 </td>
               </tr>
             ))}
+              <tr>
+            <td colSpan={21}>
+            </td>
+            <td colSpan={8}>
+              <button className='btn btn-sm btn-primary zoom-5 rounded-pill ms-3 my-1'  onClick={handlerInsert}><i className="fas fa-add"></i> добавить запись</button>
+              <button className='btn btn-sm btn-success zoom-5 rounded-pill ms-1'  onClick={() => handleSave(0)}><i className="fas fa-save"></i> сохранить документ</button>
+            </td>
+          </tr>
 			</tbody>
         </table>
 		<button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>

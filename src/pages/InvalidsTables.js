@@ -8,116 +8,116 @@ import { redirectToLogin } from '../tech/checking';
 import { json } from 'react-router-dom';
 
 const InvalidsTables = () => {
-    const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
-    const [tableData, setTableData] = useState([]);
-    const [author, setAuthor] = useState('');
-    const [lastEditor, setLastEditor] = useState('');
-    const [lastTimeEdit, setLastTimeEdit] = useState('');
-    const [city, setCity] = useState('');
-    const [region, setRegion] = useState('');
-    const [dateCreateDoc, setDateCreateDoc] = useState('');
-  
-    const fetchData = async () => {
-      try {
-        const id_doc = new URLSearchParams(window.location.search).get("id_doc");
-  
-        if (!id_doc || id_doc === "newDoc") {
-          setTableData([
-            {
-              col1: userInfo.complectName,
-              col2: '',
-              col3: 1,
-              col4: 0,
-              col5: 0,
-              col6: 0,
-              col7: 0,
-              col8: 0,
-              col9: 0,
-              col10: 0,
-              col11: 0,
-              col12: 0,
-              col13: 0,
-              col14: 0,
-              col15: 0,
-              col16: 0,
-              col17: 0,
-              col18: 0,
-              col19: 0,
-              col20: 0,
-              col21: 0,
-              col22: 0,
-              col23: 0,
-              col24: 0,
-              col25: 0,
-              col26: 0,
-              col27: 0,
-              col28: 0,
-            },
-          ]);
-        } else {
-          const response = await fetch(url_api + '/api/invalids-table/' + id_doc);
-          const result = await response.json();
-  
-          if (response.ok) {
-            setAuthor(result.complectName);
-            setLastEditor(result.lastEditFrom);
-            setLastTimeEdit(result.timeLastEdit);
-            setCity(result.cityname);
-            setRegion(result.r_name);
-            setDateCreateDoc(result.dateCreate);
-  
-            setTableData(result.map((rowData, index) => {
-              const counts = JSON.parse(rowData.counts);
-              const diagnoses = JSON.parse(rowData.diagnoses);
-  
-              return {
-                col1: rowData.name_poo || '',
-                col2: rowData.specialnost || '',
-                col3: rowData.code_of_specialnost || '',
-                col4: 0, // auto 
-                col5: counts[1] || 0,
-                col6: counts[2] || 0,
-                col7: counts[3] || 0,
-                col8: counts[4] || 0,
-                col9: counts[5] || 0,
-                col10: counts[6] || 0,
-                col11: diagnoses[1] || 0,
-                col12: diagnoses[2] || 0,
-                col13: diagnoses[3] || 0,
-                col14: diagnoses[4] || 0,
-                col15: diagnoses[5] || 0,
-                col16: diagnoses[6] || 0,
-                col17: diagnoses[7] || 0,
-                col18: diagnoses[8] || 0,
-                col19: diagnoses[9] || 0,
-                col20: diagnoses[10] || 0,
-                col21: diagnoses[11] || 0,
-                col22: diagnoses[12] || 0,
-                col23: diagnoses[13] || 0,
-                col24: diagnoses[14] || 0,
-                col25: diagnoses[15] || 0,
-                col26: diagnoses[16] || 0,
-                col27: diagnoses[17] || 0,
-                col28: diagnoses[18] || 0,
-              };
-            }));
+  const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
+  const [tableData, setTableData] = useState([]);
+  const [author, setAuthor] = useState('');
+  const [lastEditor, setLastEditor] = useState('');
+  const [lastTimeEdit, setLastTimeEdit] = useState('');
+  const [city, setCity] = useState('');
+  const [region, setRegion] = useState('');
+  const [dateCreateDoc, setDateCreateDoc] = useState('');
+
+  const fetchData = async () => {
+    try {
+      const id_doc = new URLSearchParams(window.location.search).get("id_doc");
+
+      if (!id_doc || id_doc === "newDoc") {
+        setTableData([
+          {
+            col1: '',
+            col2: '',
+            col3: 1,
+            col4: 0,
+            col5: 0,
+            col6: 0,
+            col7: 0,
+            col8: 0,
+            col9: 0,
+            col10: 0,
+            col11: 0,
+            col12: 0,
+            col13: 0,
+            col14: 0,
+            col15: 0,
+            col16: 0,
+            col17: 0,
+            col18: 0,
+            col19: 0,
+            col20: 0,
+            col21: 0,
+            col22: 0,
+            col23: 0,
+            col24: 0,
+            col25: 0,
+            col26: 0,
+            col27: 0,
+            col28: 0,
+          },
+        ]);
+      } else {
+        const response = await fetch(url_api + '/api/invalids-table/' + id_doc);
+        const result = await response.json();
+        if (response.ok) {
+          console.log(result);
+          setTableData((prevData) => [
+            ...prevData.slice(1),
+            ...result.map((rowData, index) => {
+
+              setAuthor(rowData.complectName);
+              setDateCreateDoc(rowData.dateCreate);
+              setLastTimeEdit(rowData.timeLastEdit);
+
+          const counts = JSON.parse(rowData.counts);
+          const diagnoses = JSON.parse(rowData.diagnoses);
+          console.log(`counts: ${counts}`)
+          return {
+          col1: rowData.name_poo || '',
+          col2: rowData.specialnost || '',
+          col3: rowData.code_of_specialnost || '',
+          col4: ((counts.col5 || 0) + (counts.col6 || 0) + (counts.col7 || 0) + (counts.col8 || 0) + (counts.col9 || 0) + (counts.col10 || 0)),
+          col5: counts.col5 || 0,
+          col6: counts.col6 || 0,
+          col7: counts.col7 || 0,
+          col8: counts.col8 || 0,
+          col9: counts.col9 || 0,
+          col10: counts.col10 || 0,
+          col11: diagnoses.col11 || 0,
+          col12: diagnoses.col12 || 0,
+          col13: diagnoses.col13 || 0,
+          col14: diagnoses.col14 || 0,
+          col15: diagnoses.col15 || 0,
+          col16: diagnoses.col16 || 0,
+          col17: diagnoses.col17 || 0,
+          col18: diagnoses.col18 || 0,
+          col19: diagnoses.col19 || 0,
+          col20: diagnoses.col20 || 0,
+          col21: diagnoses.col21 || 0,
+          col22: diagnoses.col22 || 0,
+          col23: diagnoses.col23 || 0,
+          col24: diagnoses.col24 || 0,
+          col25: diagnoses.col25 || 0,
+          col26: diagnoses.col26 || 0,
+          col27: diagnoses.col27 || 0,
+          col28: diagnoses.col28 || 0,
+          };
+          })
+        ]);
           } else {
-            console.error('Error fetching data:', result.error);
+          console.error('Error fetching data:', result.error);
           }
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
       }
-    };
-  
-    const effectRan = useRef(false);
-    useEffect(() => {
-      if (!effectRan.current) {
-        fetchData();
-      }
-      return () => (effectRan.current = true);
-    }, []);
-  
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  const effectRan = useRef(false);
+  useEffect(() => {
+    if (!effectRan.current) {
+      fetchData();
+    }
+    return () => (effectRan.current = true);
+  }, []);
 
   const handleDelete = (rowIndex) => {
     setTableData((prevData) => {
@@ -128,7 +128,7 @@ const InvalidsTables = () => {
   };
 
   const handleSave = () => {
-    const id_doc = new URLSearchParams(window.location.search).get("id_doc");
+    let id_doc = new URLSearchParams(window.location.search).get("id_doc");
     const tableRows = [];
 
     tableData.forEach((row) => {
@@ -171,9 +171,8 @@ const InvalidsTables = () => {
     const jsonSchema = {
       table: tableRows,
     };
-    console.log(jsonSchema);
     var now = new Date();
-    
+
     const requestBody = {
       timeLastEdit: formatDate(now),
       user_id: userInfo.id,
@@ -181,7 +180,6 @@ const InvalidsTables = () => {
     };
 
     const apiUrl = id_doc !== 'newDoc' ? '/api/updateInvalids' : '/api/addInvalids';
-
     fetch(url_api + apiUrl, {
       method: 'POST',
       headers: {
@@ -190,7 +188,14 @@ const InvalidsTables = () => {
       body: JSON.stringify({
         user_id: userInfo.id,
         id_doc: id_doc,
-        table: tableRows,
+        table: tableRows.map(row => ({
+          id_doc: id_doc,
+          name_poo: row.name_poo,
+          specialnost: row.specialnost,
+          code_of_specialnost: row.code_of_specialnost,
+          counts: JSON.stringify(row.counts), 
+          diagnoses: JSON.stringify(row.diagnoses), 
+        })),
         timeLastEdit: formatDate(now),
       }),
     })
@@ -198,7 +203,7 @@ const InvalidsTables = () => {
       .then((data) => {
         showAlert('Таблица успешно сохранена!');
         const currentUrl = window.location.href;
-        const targetUrl = `http://${url_web}:3000/invalids-table?id_doc=${data.id}`;
+        const targetUrl = `http://localhost:3000/invalids-tables?id_doc=${data.id}`;
         if (currentUrl !== targetUrl) {
           window.location.href = targetUrl;
         } else {
@@ -208,17 +213,17 @@ const InvalidsTables = () => {
       .catch((error) => {
         console.error('Ошибка при отправке запроса:', error);
       });
-  };
+      };
 
   const handleInputChange = (rowIndex, colName, value) => {
     const intValue = parseInt(value, 10);
-    const newValue = colName === 'col2' || colName === 'col3' ? value : isNaN(intValue) ? 0 : Math.min(Math.max(0, intValue), 999);
-    
+    const newValue = colName === 'col1' || colName === 'col2' || colName === 'col3' ? value : isNaN(intValue) ? 0 : Math.min(Math.max(0, intValue), 999);
+
     setTableData((prevData) => {
       const newData = [...prevData];
       newData[rowIndex][colName] = newValue;
 
-      if (colName === 'col5' || colName === 'col6' || colName === 'col7' || colName === 'col8' ) {
+      if (colName === 'col5' || colName === 'col6' || colName === 'col7' || colName === 'col8') {
         newData[rowIndex].col4 = parseInt(newData[rowIndex].col5) + parseInt(newData[rowIndex].col6) + parseInt(newData[rowIndex].col7) + parseInt(newData[rowIndex].col8) + parseInt(newData[rowIndex].col9) + parseInt(newData[rowIndex].col10);
       }
       return newData;
@@ -226,50 +231,50 @@ const InvalidsTables = () => {
   };
 
   const exportToExcel = () => {
-    const ws = XLSX.utils.table_to_sheet(document.getElementById('experinceTable'));
+    const ws = XLSX.utils.table_to_sheet(document.getElementById('invalidsTables'));
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
     XLSX.writeFile(wb, 'Персонал2.xls');
   };
 
-
   const handlerInsert = () => {
     setTableData((prevData) => [
       ...prevData,
       {
-        col1: userInfo.complectName,
-              col2: '',
-              col3: 1,
-              col4: 0,
-              col5: 0,
-              col6: 0,
-              col7: 0,
-              col8: 0,
-              col9: 0,
-              col10: 0,
-              col11: 0,
-              col12: 0,
-              col13: 0,
-              col14: 0,
-              col15: 0,
-              col16: 0,
-              col17: 0,
-              col18: 0,
-              col19: 0,
-              col20: 0,
-              col21: 0,
-              col22: 0,
-              col23: 0,
-              col24: 0,
-              col25: 0,
-              col26: 0,
-              col27: 0,
-              col28: 0,
+        col1: '',
+        col2: '',
+        col3: 1,
+        col4: 0,
+        col5: 0,
+        col6: 0,
+        col7: 0,
+        col8: 0,
+        col9: 0,
+        col10: 0,
+        col11: 0,
+        col12: 0,
+        col13: 0,
+        col14: 0,
+        col15: 0,
+        col16: 0,
+        col17: 0,
+        col18: 0,
+        col19: 0,
+        col20: 0,
+        col21: 0,
+        col22: 0,
+        col23: 0,
+        col24: 0,
+        col25: 0,
+        col26: 0,
+        col27: 0,
+        col28: 0,
       },
     ]);
   };
+
   const id_doc = new URLSearchParams(window.location.search).get("id_doc");
-    return (
+  return (
       <div>
       <Header />
 	  <div>
@@ -382,6 +387,14 @@ const InvalidsTables = () => {
                 </td>
               </tr>
             ))}
+             <tr>
+            <td colSpan={21}>
+            </td>
+            <td colSpan={8}>
+              <button className='btn btn-sm btn-primary zoom-5 rounded-pill ms-3 my-1'  onClick={handlerInsert}><i className="fas fa-add"></i> добавить запись</button>
+              <button className='btn btn-sm btn-success zoom-5 rounded-pill ms-1'  onClick={() => handleSave(0)}><i className="fas fa-save"></i> сохранить документ</button>
+            </td>
+          </tr>
           </tbody>
         </table>
         <button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
