@@ -3579,3 +3579,16 @@
 [Dmitriy] [10.05.2024 - 01:08:23]: POST - http://localhost:3110/api/dataExpEmployee
 [Dmitriy] [10.05.2024 - 01:08:33]: GET - http://localhost:3110/api/testServerApi
 [Dmitriy] [10.05.2024 - 01:08:33]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [10.05.2024 - 01:08:59]: POST - http://localhost:3110/api/login
+[Dmitriy] [10.05.2024 - 01:09:01]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [10.05.2024 - 01:09:01]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [10.05.2024 - 01:09:01]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [10.05.2024 - 01:09:01]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [10.05.2024 - 01:09:01]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [10.05.2024 - 01:09:01]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [10.05.2024 - 01:09:20]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [10.05.2024 - 01:09:20]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [10.05.2024 - 01:09:22]: GET - http://localhost:3110/api/get/regions
+[Dmitriy] [10.05.2024 - 01:09:22]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [10.05.2024 - 01:09:22]: GET - http://localhost:3110/api/get/regions
+[Dmitriy] [10.05.2024 - 01:09:22]: GET - http://localhost:3110/api/testServerApi
