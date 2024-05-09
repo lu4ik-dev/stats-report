@@ -34,7 +34,7 @@ function A_Main() {
           <Header />
           <main>
             <div className="container px-4 py-5" id="featured-3">
-            <h3 className="pb-2 border-bottom text-secondary"><b>{greeting},</b>  <span className={userInfo.complectName === "System Administrator" ? "text-danger" : ""}>{userInfo.complectName}
+            <h3 className="pb-2 border-bottom text-secondary"><b>{greeting},</b>  <span className={["System Administrator", "Administrator", "Администратор", 'Dmitriy'].includes(userInfo.complectName) ? "text-danger" : ""}>{userInfo.complectName}
   </span></h3>
                 <div className="row">
                     <div className="col-sm-6 pb-3">

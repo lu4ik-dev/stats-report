@@ -29,9 +29,9 @@ const Index = () => {
 
     return (
         <div>
-            <main>
+            <main >
             <div className="container px-4 py-5" id="featured-3">
-                <h3 className="pb-2 border-bottom text-secondary"><b>{greeting},</b>  <span className={userInfo.complectName === "System Administrator" ? "text-danger" : ""}>{userInfo.complectName}
+                <h3 className="pb-2 border-bottom text-secondary"><b>{greeting},</b>  <span className={["System Administrator", "Administrator", "Администратор", "Dmitriy"].includes(userInfo.complectName) ? "text-danger" : ""}>{userInfo.complectName}
   </span></h3>
                 <div className="row">
                 <div className="row">
@@ -91,7 +91,7 @@ const Index = () => {
                     </div>*/}
                     </div>
                     <div className="col-sm-12">
-                        <div className="card">
+                        <div className="card mt-3">
                         <div className="card-body">
 
                             <h5 className="card-title">Статистика</h5>

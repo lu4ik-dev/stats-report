@@ -12,6 +12,18 @@ const Signin = () => {
   const [cities, setCities] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState("");
 
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
+
+
+
+
     useEffect(() => {
         if (sessionStorage.getItem('authIs') === 'true') {
           window.location.replace('http://'+url_web+':3000/');
@@ -49,7 +61,7 @@ const Signin = () => {
               <div className="card text-primary" style={{ borderRadius: '1rem', backgroundColor: '#00000000', borderColor: '#0000'}}>
                 <div className="card-body p-5 text-center">
                   <div className="mb-md-1 mt-md-0 pb-0">
-                  <h2 className="fw-bold text-white mb-4 text-uppercase"><span style={{fontSize: '4.8rem'}}>Портал</span> статистической <span style={{fontSize: '2.8rem'}}>отчетности</span></h2>
+                <h2 className="fw-bold text-white mb-4 text-uppercase custom-text-logo"><span>Портал</span> <span>статистической</span> <span>отчетности</span></h2>
 
                     <div className="form-outline form-primary mb-2">
                       <input
@@ -183,6 +195,22 @@ const Signin = () => {
           </div>
           </div>
         </div>
+
+
+        <div class="area" >
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+    </div >
       </section>
     );
 };

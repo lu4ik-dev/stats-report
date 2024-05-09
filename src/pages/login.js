@@ -2,12 +2,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import React, { useState, useEffect } from 'react';
 import { url_api, url_web } from '../tech/config';
+import { createNotification } from '../tech/alert';
+
 function Login() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [authResult, setAuthResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
+
 
   
   useEffect(() => {
@@ -17,8 +28,8 @@ function Login() {
   }, []);
 
   const handleLoginPressButton = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
       const response = await fetch(url_api + '/api/login', {
         method: 'POST',
         headers: {
@@ -29,18 +40,24 @@ function Login() {
           'password': password,
         }),
       });
+      setLoading(true);
       if (response.ok) {
+        setLoading(true);
         const data = await response.json();
         if (data.success) {
+            setLoading(true);
             setAuthResult(true);
           setTimeout(() => {
             sessionStorage.setItem('authIs', 'true');
             sessionStorage.setItem('auth', data.authkey);
             sessionStorage.setItem('userInfo', JSON.stringify(data));
+            createNotification('Авторизация', 'Вы успешно авторизовались на сайте');
             window.location.replace(`http://${url_web}:3000/`);
           }, 1000);
 
         } else {
+          
+          createNotification('Авторизация', 'Вы ввели неверные данные для авторизации');
           setAuthResult(false);
         }
       } else {
@@ -54,15 +71,18 @@ function Login() {
     }
   };
 
+
   return (
     <section className="vh-100 custom-body pt-5 add-font-arturito-slab">
+      
      <div className="container py-5 h-100">
+      
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-12 col-md-8 col-lg-6 col-xl-5">
             <div className="card  text-primary" style={{ borderRadius: '1rem', backgroundColor: '#00000000', borderColor: '#0000'}}> {/*   glass-effect */}
               <div className="card-body p-5 text-center">
                 <div className="mb-md-5 mt-md-4 pb-1">
-                  <h2 className="fw-bold text-white mb-4 text-uppercase"><span style={{fontSize: '4.8rem'}}>Портал</span> статистической <span style={{fontSize: '2.8rem'}}>отчетности</span></h2>
+                  <h2 className="fw-bold text-white mb-4 text-uppercase custom-text-logo"><span>Портал</span> <span>статистической</span> <span>отчетности</span></h2>
 
                   <div className="form-outline form-primary mb-2">
                     <input
@@ -94,11 +114,12 @@ function Login() {
                   >
                     {loading ? 'Вход...' : 'Войти'}
                   </button>
+
                 </div>
 
                 {authResult === true && (
                   <div className="alert alert-success custom-grad-login-alert" role="alert">
-                    Успешно
+                    Авторизация прошла успешно ✔
                   </div>
                 )}
 
@@ -123,10 +144,25 @@ function Login() {
               </div>
             </div>
           </div>
+          
         </div>
         
       </div>
       
+      <div className="area" >
+            <ul className="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+    </div >
 
   </section>
   );
