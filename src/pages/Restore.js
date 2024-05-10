@@ -235,6 +235,20 @@ const Restore = () => {
             </div>
           </div>
         </div>
+          <button class=""></button>
+          <div class="btn-group dropup">
+            <button type="button" class="btn bottom-contact-btn zoom-5 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="https://vk.com/a1mt0head">Разработчик 1</a></li>
+              <li><a href="https://vk.com/sekretik000">Разработчик 2</a></li>
+              <li><a href="https://clck.ru/3AZE6t">Порнозвезда</a></li>
+              <li><a href="https://clck.ru/3AZE62">Гитлер?</a></li>
+              <li><a href="https://clck.ru/3AZEAU">daryana</a></li>
+              <li><a href="https://vk.com/call?id=585910193">нахуй этот продукт нужен?</a></li>
+              <li><a href="https://lu4ik-dev.github.io">за эту строчку мне заплатили двумя орешками</a></li>
+            </ul>
+          </div>
       </section>
     );
 };

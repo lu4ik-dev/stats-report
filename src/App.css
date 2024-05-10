@@ -424,7 +424,7 @@ body{
   width: 15vh;
 }
 
-@media (min-width: 992px) and (max-width: 1299.98px){
+@media (min-width: 992px) and (max-width: 1399.98px){
   .custom-text-logo span:nth-child(1){
     font-size: 5rem;
   }
@@ -451,3 +451,15 @@ body{
     font-size: 3.2rem;
   }
 }
+
+  .bottom-contact-btn{
+    background-image: url(/src/pages/img/logo.svg);
+    position: fixed!important;
+    bottom: 1rem!important;
+    left: 1rem!important;
+    height: 3rem!important;
+    width: 3rem!important;
+    border-radius: 50%!important;
+  }
+
+
