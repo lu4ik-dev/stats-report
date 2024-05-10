@@ -11,6 +11,8 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
 
+
+  
   useEffect(() => {
     document.body.style.overflow = 'hidden';
 
@@ -73,7 +75,7 @@ function Login() {
 
 
   return (
-    <section className="vh-100 custom-body pt-5 add-font-arturito-slab">
+    <section className="vh-100 custom-body  add-font-arturito-slab">
       
      <div className="container py-5 h-100">
       
@@ -129,12 +131,11 @@ function Login() {
                   </div>
                 )}
                 <div>
-                { /* <p className="mb-0">
-                    <a href="/restore-password" className="link-primary fw-bold text-white link-underline link-underline-opacity-0">
+                 <p className="mb-0 custom-grad-login-input py-2 mb-2">
+                    <a href="/restore-password" className="link-primary fw-bold text-black link-underline link-underline-opacity-0">
                       Забыли пароль?
                     </a>
                   </p>
-                */ }
                   <p className="mb-0 custom-grad-login-input py-2">
                     <a href="/registration" className="link-primary fw-bold text-black link-underline link-underline-opacity-0">
                       Зарегистрироваться?

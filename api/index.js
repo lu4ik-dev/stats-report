@@ -6,6 +6,9 @@ const session = require('express-session');
 const crypto = require('crypto');
 var cors = require("cors");
 const os = require('os');
+const { sendMail, checkWork } = require('./sender');
+const multer  = require('multer');
+const { exec } = require('child_process');
 
 const app = express();
 
@@ -32,6 +35,8 @@ function generateRandomString(length) {
   return randomString;
 }
 
+const upload = multer({ dest: 'uploads/' });
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -41,7 +46,7 @@ let configData;
 
 try {
   configData = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-  console.log(`Конфигурационный файл (${configPath}) прочитан`);
+  console.log(`[CFG]:Конфигурационный файл (${configPath}) прочитан`);
 } catch (error) {
   configData = {
     titlePages: 'Портал Статистической Отчетности',
@@ -56,7 +61,7 @@ try {
     apiPort: '3110'
   };
   fs.writeFileSync(configPath, JSON.stringify(configData, null, 2));
-  console.log(`Конфигурационный файл (${configPath}) не был найден, создана копия, записаны стандартные значения переменных.`);
+  console.log(`[CFG]: Конфигурационный файл (${configPath}) не был найден, создана копия, записаны стандартные значения переменных.`);
 }
 
 const port = configData.apiPort;
@@ -70,13 +75,20 @@ const connection = mysql.createConnection({
 
 connection.connect((error) => {
   if (error) {
-    console.error("Ошибка подключения к базе данных:", error);
-    console.error("Попробуй запусти OpenServer и phpmyadmin");
-    console.error("Если запущен, то проверь пароль и логин пользователя базы данных");
+    console.error("[DB]: Ошибка подключения к базе данных:", error);
+    console.error("[DB]: Попробуй запусти OpenServer и phpmyadmin");
+    console.error("[DB]: Если запущен, то проверь пароль и логин пользователя базы данных");
   } else {
-    console.log("Подключение к базе данных успешно установлено");
+    console.log("[DB]: Подключение к базе данных успешно установлено");
   }
 });
+
+try{
+  checkWork('[S]: Второй модуль (sender.js) был успешно подключен..');
+}
+catch (error){
+  console.error('[S]: Ошибка при подключении второго модуля (sender.js): '. error);
+}
 
 function hashPassword(password) {
     const hash = crypto.createHash('sha256');
@@ -1023,12 +1035,48 @@ app.get('/api/get/regions', (req, res) => {
       });
 });
 
+
+
 app.get('/api/get/cities/:id_reg', (req, res) => {
   const id_reg = req.params.id_reg;
   query = `
     SELECT id, text FROM cities where id_region = ?
   `;
 connection.query(query, [id_reg], (err, result) => {
+  if (err) {
+    console.error('Ошибка выполнения запроса:', err);
+    res.status(500).json({ error: 'Ошибка сервера' });
+  } else {
+    res.json(result);
+  }
+});
+});
+
+app.get('/api/get/organizations/:id_city', (req, res) => {
+  const id_city = req.params.id_city;
+  query = `
+  SELECT o.id, o.title, o.inn, o.kpp, o.ogrn, o.ur_address, o.administrator_org, o.id_city, c.text
+  FROM orgazizations AS o
+  JOIN cities AS c ON o.id_city = c.id
+  WHERE o.id_city = ?;
+  `;
+connection.query(query, [id_city], (err, result) => {
+  if (err) {
+    console.error('Ошибка выполнения запроса:', err);
+    res.status(500).json({ error: 'Ошибка сервера' });
+  } else {
+    res.json(result);
+  }
+});
+});
+
+app.get('/api/get/organizations', (req, res) => {
+  query = `
+  SELECT o.id, o.title, o.inn, o.kpp, o.ogrn, o.ur_address, o.administrator_org, o.id_city, c.text
+  FROM orgazizations AS o
+  JOIN cities AS c ON o.id_city = c.id;
+  `;
+connection.query(query, (err, result) => {
   if (err) {
     console.error('Ошибка выполнения запроса:', err);
     res.status(500).json({ error: 'Ошибка сервера' });
@@ -1305,10 +1353,66 @@ app.post('/api/deleteEducation/:id_doc', (req, res) => {
   });
 });
 
+app.post('/backup', upload.single('databaseBackup'), (req, res) => {
+    // Выполняем запрос к базе данных для получения списка всех таблиц
+    connection.query('SHOW TABLES', (error, results, fields) => {
+      if (error) {
+        console.error('Error getting tables:', error);
+        return res.status(500).send('Error creating database backup.');
+      }
+  
+      // Список таблиц в базе данных
+      const tables = results.map(result => result[`Tables_in_${connection.config.database}`]);
+  
+      // Создаем резервную копию для каждой таблицы
+      const backupPromises = tables.map(table => {
+        return new Promise((resolve, reject) => {
+          connection.query(`SELECT * FROM ${table}`, (error, results, fields) => {
+            if (error) {
+              console.error(`Error getting data from table ${table}:`, error);
+              reject(error);
+            } else {
+              // Преобразуем результаты запроса в строку .sql файла
+              const backupData = results.map(row => Object.values(row).join(',')).join('\n');
+              // Сохраняем результаты в файл
+              fs.appendFile('stats-report-backup.sql', `-- Table: ${table}\n${backupData}\n\n`, (err) => {
+                if (err) {
+                  console.error('Error writing backup file:', err);
+                  reject(err);
+                } else {
+                  resolve();
+                }
+              });
+            }
+          });
+        });
+      });
+  
+      Promise.all(backupPromises)
+        .then(() => {
+          // Отправляем файл резервной копии в ответе
+          res.download('stats-report-backup.sql', (err) => {
+            if (err) {
+              console.error('Error sending backup file:', err);
+              return res.status(500).send('Error sending backup file.');
+            }
+  
+            // Удаляем файл резервной копии после отправки
+            fs.unlinkSync('stats-report-backup.sql');
+          });
+        })
+        .catch(error => {
+          console.error('Error creating database backup:', error);
+          res.status(500).send('Error creating database backup.');
+        });
+    });
+  });
+  
+
 
 
 
 app.listen(port, () => {
-    console.log(`Сервер запущен на порту: ${port}`);
-    console.log(`Используй: localhost:${port}/api/testServerApi`);
+    console.log(`[M]: Сервер запущен на порту: ${port}`);
+    console.log(`[M]: Используй: localhost:${port}/api/testServerApi`);
 });

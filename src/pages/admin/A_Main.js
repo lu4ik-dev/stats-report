@@ -2,7 +2,7 @@
 import {  Link  } from 'react-router-dom';
 import Header from '../Header';
 import React, {useState, useEffect} from 'react';
-
+import { url_api } from '../../tech/config';
 function A_Main() {
     const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
     const [greeting, setGreeting] = useState('');
@@ -29,6 +29,42 @@ function A_Main() {
       return () => clearInterval(intervalId);
     }, []); 
   
+
+    const handleBackup = () => {
+      try {    // Выполняем запрос к API для создания резервной копии базы данных
+        const response = fetch(url_api+'/backup', {
+          method: 'POST',
+        });
+
+        if (!response.ok) {
+          throw new Error('Ошибка создания резервной копии базы данных');
+        }
+
+        // Получаем файл резервной копии от сервера
+        const blob =  response.blob();
+        // Создаем ссылку для скачивания файла
+        const url = window.URL.createObjectURL(blob);
+        // Создаем ссылку для загрузки файла
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'stats-report-backup.sql');
+
+        // Проверяем, поддерживается ли симуляция клика
+        if (typeof link.download === 'undefined') {
+          // Если браузер не поддерживает атрибут 'download'
+          window.open(url);
+        } else {
+          // Если поддерживается, симулируем клик по ссылке для загрузки файла
+          document.body.appendChild(link);
+          link.click();
+          // Удаляем ссылку из DOM после загрузки файла
+          document.body.removeChild(link);
+        }
+      } catch (error) {
+        console.error('Error backing up database:', error);
+      }
+};
+    
     return (
         <div>
           <Header />
@@ -109,6 +145,9 @@ function A_Main() {
                             <p className="card-text">
                             ну а рил чё сюда вставить? рекламу? 
                             </p>
+                            <button className="btn btn-primary" onClick={handleBackup}>
+                              Получить базу данных
+                            </button>
                         </div>
                         </div>
                     </div>

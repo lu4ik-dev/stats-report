@@ -381,6 +381,10 @@ body{
   font-size: 4rem;
 }
 
+.logotip-styles-big{
+  width: 15vh;
+}
+
 @media (min-width: 992px) and (max-width: 1299.98px){
   .custom-text-logo span:nth-child(1){
     font-size: 5rem;

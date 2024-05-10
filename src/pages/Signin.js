@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import React, {useEffect, useState} from 'react';
 import { url_api, url_web } from '../tech/config';
-
+import imgLogo from '../pages/img/logo.svg';
 
 const Signin = () => {
   const [authResult, setAuthResult] = useState(null);
@@ -10,16 +10,11 @@ const Signin = () => {
 
   const [regions, setRegions] = useState([]);
   const [cities, setCities] = useState([]);
+  const [organizations, setOrganizations] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
+  const [selectedOrganization, setSelectedOrganization] = useState("");
 
-
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, []);
 
 
 
@@ -48,8 +43,18 @@ const Signin = () => {
         .catch(error => console.error('Ошибка при загрузке городов:', error));
       };
 
+      const handleCitiesChange = (event) => {
+        const selectedCity = event.target.value;
+        setSelectedCity(selectedCity);
 
-      console.log(regions)
+        fetch(`${url_api}/api/get/organizations/${selectedCity}`)
+        .then(response => response.json())
+        .then(data => setOrganizations(data))
+        .catch(error => console.error('Ошибка при загрузке организаций:', error));
+      };
+
+
+      console.log(organizations)
 
   const handleLoginPressButton = async () => {}
 
@@ -61,8 +66,8 @@ const Signin = () => {
               <div className="card text-primary" style={{ borderRadius: '1rem', backgroundColor: '#00000000', borderColor: '#0000'}}>
                 <div className="card-body p-5 text-center">
                   <div className="mb-md-1 mt-md-0 pb-0">
-                <h2 className="fw-bold text-white mb-4 text-uppercase custom-text-logo"><span>Портал</span> <span>статистической</span> <span>отчетности</span></h2>
-
+                    <h2 className="fw-bold text-white mb-4 text-uppercase custom-text-logo"><span>Портал</span> <span>статистической</span> <span>отчетности</span></h2>
+                    <h3 className="fw-bold text-white mb-4 text-uppercase custom-text-logo">Регистрация</h3>
                     <div className="form-outline form-primary mb-2">
                       <input
                         type="email"
@@ -90,24 +95,12 @@ const Signin = () => {
                         type="text"
                         id="typeEmail"
                         className="form-control custom-grad-login-input"
-                        placeholder="Фамилия"
+                        placeholder="ФИО"
                       //  value={login}
                       //  onChange={(e) => setLogin(e.target.value)}
                       />
                     </div>
 
-                    
-                    <div className="form-outline form-primary mb-2">
-                      <input
-                        type="text"
-                        id="typeEmail"
-                        className="form-control custom-grad-login-input"
-                        placeholder="Имя"
-                      //  value={login}
-                      //  onChange={(e) => setLogin(e.target.value)}
-                      />
-                    </div>
-                   
                     <select
                     className="form-control custom-grad-login-input"
                     id="regionSelect"
@@ -124,6 +117,8 @@ const Signin = () => {
                     className={`form-control custom-grad-login-input mt-2 ${selectedRegion === "" ? "disabled" : ""}`}
                     id="citySelect"
                     disabled={selectedRegion === ""}
+                    onChange={handleCitiesChange}
+                    value={selectedCity}
                   >
                     <option value="" selected disabled>Выберите город</option>
                     {cities.map(city => (
@@ -131,13 +126,20 @@ const Signin = () => {
                     ))}
                   </select>
 
-                    <select className="form-control mt-2 custom-grad-login-input" id="exampleFormControlSelect1">
-                        <option selected disabled>Выберите организацию</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
+                  <select 
+                    className="form-control mt-2 custom-grad-login-input" 
+                    id="orgSelect"
+                    disabled={selectedCity === ""}
+                  >
+                    {(organizations.length === 0 || selectedCity === "") && (
+                      <option selected disabled>Организации отсутствуют</option>
+                    )}
+                    <option selected disabled>Выберите организацию</option>
+                    {organizations.map(organization => (
+                      <option key={organization.id} value={organization.id}>{organization.title}</option>
+                    ))}
+                  </select>
+
                  
                     <div className="form-outline form-primary mb-2 mt-2">
                       <input
@@ -166,7 +168,7 @@ const Signin = () => {
                     onClick={handleLoginPressButton}
                     disabled={loading}
                   >
-                    {loading ? 'Вход...' : 'Войти'}
+                    {loading ? 'Регистрация..' : 'Зарегистрироваться'}
                   </button>
 
                   {authResult === true && (
@@ -197,8 +199,8 @@ const Signin = () => {
         </div>
 
 
-        <div class="area" >
-            <ul class="circles">
+        <div className="area" >
+            <ul className="circles">
                     <li></li>
                     <li></li>
                     <li></li>

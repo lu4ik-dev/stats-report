@@ -3,7 +3,7 @@ import { checkAdmin, logout, redirectToLogin } from '../tech/checking';
 import { Link, useLocation  } from 'react-router-dom';
 import { url_api, url_web } from '../tech/config';
 import { showAlert } from '../tech/alert';
-
+import imgLogo from '../pages/img/logo.svg';
 const Header = () => {
 
     redirectToLogin();
@@ -55,7 +55,8 @@ const Header = () => {
    
     const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
 
-    const email = 'bisquirt@lu4ik.com';
+    //const email = 'bisquirt@lu4ik.com';
+    const email = userInfo.login;
     const [useremail, domain] = email.split('@');
 
     const [oldPassword, setOldPassword] = useState('');
@@ -110,13 +111,16 @@ const Header = () => {
 
   };
 
+  const [nameUserHeader, other] = userInfo.complectName.split(' ');
+
     return (
         <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a
             href="/"
             className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
         >
-            <span className="fs-4 ms-3"><span className='font-weight-bold'>Портал</span> статистической отчетности</span>
+           <img src={imgLogo} alt="SVG Image" className='mx-3' width={36} />
+            <span className="fs-4 "><span className='font-weight-bold'>Портал</span> статистической отчетности</span>
         </a>
         <ul className="nav nav-pills">
             <li className="nav-item">
@@ -135,7 +139,7 @@ const Header = () => {
             <li className="nav-item">
                 <div className="btn-group">
                 <button type="button" className="zoom-5 nav-link" data-bs-toggle="dropdown" aria-expanded="false">
-                    {userInfo.login}
+                    {nameUserHeader}
                 </button>
                 <ul className="dropdown-menu">
                     <li><span className="dropdown-item disabled"><b>{useremail}</b><span className='text-secondary'>@{domain}</span></span></li>

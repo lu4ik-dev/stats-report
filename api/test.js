@@ -8,3 +8,6 @@ function hashPassword(password) {
   
 
 console.log(hashPassword('admin'));
+
+
+sendMail('dmitriy_smir1_2_3@mail.ru', 'dima', 'Регистрация', '123fas')
