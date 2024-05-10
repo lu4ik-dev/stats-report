@@ -64,6 +64,78 @@ try {
   console.log(`[CFG]: Конфигурационный файл (${configPath}) не был найден, создана копия, записаны стандартные значения переменных.`);
 }
 
+
+const usersRestorePwdPath = 'users-restore-pwd.json';
+let usersRestorePwdData;
+
+const usersWaitVerifyPath = 'users-wait-verify.json';
+let usersWaitVerifyData;
+
+try {
+  usersRestorePwdData = JSON.parse(fs.readFileSync(usersRestorePwdPath, 'utf8'));
+  console.log(`[CFG]:Конфигурационный файл (${usersRestorePwdPath}) прочитан`);
+} catch (error) {
+  usersRestorePwdData = [];
+  fs.writeFileSync(usersRestorePwdPath, JSON.stringify(usersRestorePwdData, null, 2));
+  console.log(`[CFG]: Конфигурационный файл (${usersRestorePwdPath}) не был найден, создан пустой шаблон.`);
+}
+
+try {
+  usersWaitVerifyData = JSON.parse(fs.readFileSync(usersWaitVerifyPath, 'utf8'));
+  console.log(`[CFG]:Конфигурационный файл (${usersWaitVerifyPath}) прочитан`);
+} catch (error) {
+  usersWaitVerifyData = [];
+  fs.writeFileSync(usersWaitVerifyPath, JSON.stringify(usersWaitVerifyData, null, 2));
+  console.log(`[CFG]: Конфигурационный файл (${usersWaitVerifyPath}) не был найден, создан пустой шаблон.`);
+}
+
+
+
+async function saveUsersRestorePwdPath()
+{
+	fs.writeFileSync(usersRestorePwdPath, JSON.stringify(usersRestorePwdData, null, 2));
+	return true;
+}
+
+async function saveUsersWaitVerifyData()
+{
+	fs.writeFileSync(usersWaitVerifyPath, JSON.stringify(usersWaitVerifyData, null, 2));
+	return true;
+}
+
+setInterval(async () => {
+	await saveUsersRestorePwdPath();
+}, 1000);
+
+setInterval(async () => {
+	await saveUsersWaitVerifyData();
+}, 1000);
+
+
+
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
+
+function checkLoginExists(login) {
+  let data;
+  try {
+    data = JSON.parse(fs.readFileSync(usersRestorePwdPath, 'utf8'));
+  } catch (error) {
+    data = [];
+  }
+
+  // Поиск объекта с указанным login
+  const user = data.find(user => user.login === login);
+  return user;
+}
+
+
 const port = configData.apiPort;
 
 const connection = mysql.createConnection({
@@ -1353,62 +1425,151 @@ app.post('/api/deleteEducation/:id_doc', (req, res) => {
   });
 });
 
-app.post('/backup', upload.single('databaseBackup'), (req, res) => {
-    // Выполняем запрос к базе данных для получения списка всех таблиц
-    connection.query('SHOW TABLES', (error, results, fields) => {
-      if (error) {
-        console.error('Error getting tables:', error);
-        return res.status(500).send('Error creating database backup.');
-      }
-  
-      // Список таблиц в базе данных
-      const tables = results.map(result => result[`Tables_in_${connection.config.database}`]);
-  
-      // Создаем резервную копию для каждой таблицы
-      const backupPromises = tables.map(table => {
-        return new Promise((resolve, reject) => {
-          connection.query(`SELECT * FROM ${table}`, (error, results, fields) => {
-            if (error) {
-              console.error(`Error getting data from table ${table}:`, error);
-              reject(error);
-            } else {
-              // Преобразуем результаты запроса в строку .sql файла
-              const backupData = results.map(row => Object.values(row).join(',')).join('\n');
-              // Сохраняем результаты в файл
-              fs.appendFile('stats-report-backup.sql', `-- Table: ${table}\n${backupData}\n\n`, (err) => {
-                if (err) {
-                  console.error('Error writing backup file:', err);
-                  reject(err);
-                } else {
-                  resolve();
-                }
-              });
-            }
-          });
+
+
+
+const path = require('path');
+
+app.post('/backup', (req, res) => {
+  // Выполняем запрос к базе данных для получения данных из всех таблиц
+  connection.query('SHOW TABLES', (error, results, fields) => {
+    if (error) {
+      console.error('Error getting tables:', error);
+      return res.status(500).send('Error creating database backup.');
+    }
+
+    // Список таблиц в базе данных
+    const tables = results.map(result => result[`Tables_in_${connection.config.database}`]);
+
+    // Создаем резервную копию для каждой таблицы
+    const insertQueries = tables.map(table => {
+      return new Promise((resolve, reject) => {
+        connection.query(`SELECT * FROM ${table}`, (error, results, fields) => {
+          if (error) {
+            console.error(`Error getting data from table ${table}:`, error);
+            reject(error);
+          } else {
+            // Формируем запросы на вставку данных в таблицу
+            const insertQueries = results.map(row => {
+              const columns = Object.keys(row).map(column => `\`${column}\``).join(',');
+              const values = Object.values(row).map(value => connection.escape(value)).join(',');
+              return `INSERT INTO \`${table}\` (${columns}) VALUES (${values});`;
+            });
+            resolve(insertQueries.join('\n'));
+          }
         });
       });
-  
-      Promise.all(backupPromises)
-        .then(() => {
-          // Отправляем файл резервной копии в ответе
-          res.download('stats-report-backup.sql', (err) => {
-            if (err) {
-              console.error('Error sending backup file:', err);
-              return res.status(500).send('Error sending backup file.');
-            }
-  
-            // Удаляем файл резервной копии после отправки
-            fs.unlinkSync('stats-report-backup.sql');
-          });
-        })
-        .catch(error => {
-          console.error('Error creating database backup:', error);
-          res.status(500).send('Error creating database backup.');
-        });
     });
-  });
-  
 
+    // Ожидаем завершения всех асинхронных операций по созданию резервных копий
+    Promise.all(insertQueries)
+      .then(queries => {
+        // Записываем запросы на вставку в файл
+        const backupFile = path.join(__dirname, 'database_backup.sql');
+        fs.writeFileSync(backupFile, queries.join('\n'));
+        // Отправляем файл резервной копии в ответе
+        res.download(backupFile, 'database_backup.sql', (err) => {
+          if (err) {
+            console.error(`Error sending backup file: ${err}`);
+            return res.status(500).send('Error sending backup file.');
+          }
+          // Удаляем файл резервной копии после отправки
+          fs.unlinkSync(backupFile);
+        });
+      })
+      .catch(error => {
+        console.error('Error creating database backup:', error);
+        res.status(500).send('Error creating database backup.');
+      });
+  });
+});
+
+app.post('/api/sendRestoreMail', async (req, res) => {
+  const { login } = req.body;
+  connection.query(
+    'SELECT * FROM users WHERE login = ?',
+    [login],
+    (error, results) => {
+      if (error) {
+        console.error(error);
+        return res.status(500).json({success: false, message: 'Ошибка сервера' });
+      }
+
+      if (results.length === 0) {
+        return res.status(401).json({success: false, message: `Аккаунт с почтой ${login} не найден ✖`, stylecss: 'alert-danger' });
+      }
+      const user = checkLoginExists(login);
+      const currentDate = new Date();
+    
+      const code = generateRandomString(8)
+    
+      if (user) {
+        const index = usersRestorePwdData.findIndex(u => u.login === login);
+        if (index !== -1) {
+          usersRestorePwdData.splice(index, 1);
+        }
+      } 
+        const newUser = {
+          login,
+          dateCreate: currentDate,
+          code
+        };
+        usersRestorePwdData.push(newUser); 
+    
+      fs.writeFileSync(usersRestorePwdPath, JSON.stringify(usersRestorePwdData, null, 2));
+
+      sendMail(login, 'пользователь', 'Восстановление пароля', code)
+      return res.status(200).json({success: true});
+    }
+  );
+});
+
+
+app.post('/api/checkCode', async (req, res) => {
+  const { login, code } = req.body;
+  const user = usersRestorePwdData.find(u => u.login === login && u.code === code);
+
+  if (user) {
+    return res.json({ success: true, message: 'Найдено совпадение' });
+  } else {
+    return res.json({ success: false, message: 'Не найдено' });
+  }
+});
+
+
+
+app.post('/api/restorePassword', (req, res) => {
+  const { login, newpassword, confirmpassword } = req.body;
+  connection.query(
+    'SELECT * FROM users WHERE login = ?',
+    [login],
+    (error, results) => {
+      if (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Ошибка сервера' });
+      }
+
+      if (results.length === 0) {
+        return res.status(401).json({ message: 'Неверные учетные данные' });
+      }
+      if (newpassword === confirmpassword) {
+        connection.query(
+          'UPDATE users SET password = ? WHERE login = ?',
+          [hashPassword(newpassword), login],
+          (updateError) => {
+            if (updateError) {
+              console.error(updateError);
+              return res.status(500).json({ message: 'Ошибка сервера' });
+            }
+            return res.status(200).json({ message: 'Пароль успешно обновлен' });
+          }
+        );
+      } else {
+        return res.status(400).json({ message: 'Новый пароль и подтверждение пароля не совпадают' });
+      }
+    }
+  );
+});
 
 
 

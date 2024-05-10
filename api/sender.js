@@ -154,9 +154,11 @@ function sendMail(email, name, regOrRes='Регистрация',code) {
   // Send the email
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error('Error sending email:', error);
+      console.error('[S]: Error sending email:', error);
+      return
     } else {
-      console.log('Email sent successfully');
+      console.log(`[S]: Email ${email} sent successfully [${regOrRes}]:[${code}]`);
+      return
     }
   });
 }
