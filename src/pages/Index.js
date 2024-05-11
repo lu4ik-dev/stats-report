@@ -39,9 +39,49 @@ const Index = () => {
     return (
         <div>
             <main >
+
+
+
             <div className="container px-4 py-5" id="featured-3">
                 <h3 className="pb-2 border-bottom text-secondary"><b>{greeting},</b>  <span className={["System Administrator", "Administrator", "Администратор", "Dmitriy"].includes(userInfo.complectName) ? "text-danger" : ""}>{userInfo.complectName}
   </span></h3>
+
+  {/*<ul class="tilesWrap">
+	<li>
+		<h2>01</h2>
+		<h3>Стаж</h3>
+		<p>
+        Распределение персонала по стажу работы (без внешних совместителей и работающих по договорам гражданско-правового характера)
+		</p>
+		<button>Перейти</button>
+	</li>
+	<li>
+		<h2>02</h2>
+		<h3>Образование</h3>
+		<p>
+        Распределение численности основного персонала по уровню образования и полу (без внешних совместителей и работающих по договорам ГПХ)
+		</p>
+		<button>Перейти</button>
+	</li>
+	<li>
+		<h2>03</h2>
+		<h3>Инвалиды и лица с ОВЗ</h3>
+		<p>
+        Сведения по численности студентов, относящихся к категории инвалиды и лица с ОВЗ, по специальностям, профессиям
+		</p>
+		<button>Перейти</button>
+	</li>
+	<li>
+		<h2>04</h2>
+		<h3>Программы</h3>
+		<p>
+        Перечень реализуемых образовательных программ среднего профессионального образования и информация по контингенту 
+		</p>
+		<button>Перейти</button>
+	</li>
+    </ul>*/}
+
+
                 <div className="row">
                 <div className="row">
                     <div className="col-sm-6 pb-3">
