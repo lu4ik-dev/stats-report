@@ -107,7 +107,6 @@ const Restore = () => {
 
       case 3: // change pwd
       
-      setLoading(true);
       setErrorCode(null);
         if (pwd !== cpwd || pwd == "" || cpwd == "") {
           console.error('Новый пароль и подтверждение не совпадают');
