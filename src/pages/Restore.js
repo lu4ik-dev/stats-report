@@ -3,15 +3,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, {useState} from 'react';
 import { createNotification } from '../tech/alert';
 import { url_api } from '../tech/config';
-
+import { url_web } from '../tech/config';
 
 const Restore = () => {
     const [login, setLogin] = useState('');
     const [code, setCode] = useState('');
     const [currentPosition, setCurrentPosition] = useState(1);
     const [mailResult, setMailResult] = useState(null);
+    const [errorCode, setErrorCode] = useState(null);
+    const [pwdIsNotEq, setPwdIsNotEq] = useState(null);
     const [loading, setLoading] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
+    const [successChanged, setSuccessChanged] = useState(false);
     const [pwd, setPwd] = useState('');
     const [cpwd, setCpwd] = useState('');
 
@@ -43,9 +46,9 @@ const Restore = () => {
             if (data.success) {
                 setLoading(true);
                 createNotification('Восстановление', 'Код пришел на Вашу почту');
-
                 setMailResult(true)
-                setCurrentPosition(2);
+                  setCurrentPosition(2);
+
             } else {
               setMailResult(false)
               createNotification('Восстановление', 'Аккаунт с указанной почтой не найден!');
@@ -57,12 +60,14 @@ const Restore = () => {
         } catch (error) {
           console.error('Error:', error);
         } finally {
-          setLoading(false);
+
+            setLoading(false);
         } 
       break;
 
       case 2: // send code
       setLoading(true);
+      setMailResult(null);
       try {
         const response = await fetch(url_api + '/api/checkCode', {
           method: 'POST',
@@ -84,7 +89,10 @@ const Restore = () => {
               setMailResult(null);
               console.log(currentPosition)
           } else {
+
             createNotification('Восстановление', 'Вы ввели неверный код!');
+
+            setErrorCode(true);
           }
         } else {
 
@@ -92,15 +100,19 @@ const Restore = () => {
       } catch (error) {
         console.error('Error:', error);
       } finally {
-        setLoading(false);
+          setLoading(false);
       } 
 
         break
 
       case 3: // change pwd
-        if (pwd !== cpwd) {
+      
+      setLoading(true);
+      setErrorCode(null);
+        if (pwd !== cpwd || pwd == "" || cpwd == "") {
           console.error('Новый пароль и подтверждение не совпадают');
           console.log('Новый пароль и подтверждение не совпадают');
+          setPwdIsNotEq(true);
           setPwd('');
           setCpwd('');
           return;
@@ -121,6 +133,13 @@ const Restore = () => {
     
           if (response.ok) {
             console.log('Пароль успешно обновлен');
+            createNotification('Восстановление', 'Пароль был успешно изменен, используйте его для авторизации!');
+            setPwdIsNotEq(false);
+            setSuccessChanged(true);
+            setTimeout(() => {
+              window.location.replace(`http://${url_web}:3000/login`);
+              setLoading(false);
+            }, 2000);
 
           } else {
             const errorData = await response.json();
@@ -212,11 +231,32 @@ const Restore = () => {
                   </div>
                 )}
 
+                {successChanged === true && (
+                  <div className="alert alert-success custom-grad-login-alert" role="alert">
+                     Пароль был успешно изменен ✔
+                  </div>
+                )}
+
                 {mailResult === false && (
                   <div className="alert alert-danger custom-grad-login-alert" role="alert">
                     Аккаунт не найден <FontAwesomeIcon icon={faClose} size="xl" />
                   </div>
                 )}
+
+                
+                {errorCode === true && (
+                  <div className="alert alert-danger custom-grad-login-alert" role="alert">
+                    Вы ввели неверный код <FontAwesomeIcon icon={faClose} size="xl" />
+                  </div>
+                )}
+
+
+              {pwdIsNotEq === true && (
+                  <div className="alert alert-danger custom-grad-login-alert" role="alert">
+                    Пароли не совпадают или пустой <FontAwesomeIcon icon={faClose} size="xl" />
+                  </div>
+                )}
+
 
                 <div>
                  <p className="mb-0 custom-grad-login-input py-2 mb-2 z-4">
@@ -239,14 +279,13 @@ const Restore = () => {
           <div class="btn-group dropup">
             <button type="button" class="btn bottom-contact-btn zoom-5 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             </button>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu custom">
               <li><a href="https://vk.com/a1mt0head">Разработчик 1</a></li>
               <li><a href="https://vk.com/sekretik000">Разработчик 2</a></li>
               <li><a href="https://clck.ru/3AZE6t">Порнозвезда</a></li>
               <li><a href="https://clck.ru/3AZE62">Гитлер?</a></li>
               <li><a href="https://clck.ru/3AZEAU">daryana</a></li>
-              <li><a href="https://vk.com/call?id=585910193">нахуй этот продукт нужен?</a></li>
-              <li><a href="https://lu4ik-dev.github.io">за эту строчку мне заплатили двумя орешками</a></li>
+              <li><a href="https://lu4ik-dev.github.io">мой сайтик</a></li>
             </ul>
           </div>
       </section>

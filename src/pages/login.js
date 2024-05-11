@@ -55,6 +55,7 @@ function Login() {
             sessionStorage.setItem('userInfo', JSON.stringify(data));
             createNotification('Авторизация', 'Вы успешно авторизовались на сайте');
             window.location.replace(`http://${url_web}:3000/`);
+            setLoading(false);
           }, 1000);
 
         } else {
@@ -69,7 +70,9 @@ function Login() {
       console.error('Error:', error);
       setAuthResult(false);
     } finally {
+      setTimeout(() => {
       setLoading(false);
+    }, 1000);
     }
   };
 

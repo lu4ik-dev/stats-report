@@ -13,14 +13,12 @@ const A_Organization = () => {
     useEffect(() => {
         redirectToLogin();
         
-        fetch(url_api+'/api/dataExpEmployee', {
-            method: 'POST',
+        fetch(url_api+'/api/get/organizations', {
+            method: 'GET',
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: new URLSearchParams({
-                'authkey': authkey,
-              }),
+
         })
         .then(response => response.json())
         .then(data => setData(data))
@@ -50,9 +48,11 @@ const A_Organization = () => {
                 <tr>
                 <th>ID (отладка)</th>
                 <th>Наименование организации</th>
-                <th>Дата создания</th>
+                <th>ИНН</th>
+                <th>Адрес</th>
+                <th>Администратор</th>
                 <th>Город</th>
-                <th>Область</th>
+                <th>Действие</th>
                 </tr>
             </thead>
             <tbody id="organizationTableBody"></tbody>
@@ -60,11 +60,11 @@ const A_Organization = () => {
                     item.disabled === 1 ? '' : (
                     <tr className='zoom-5' key={item.id}>
                         <td>{item.id}</td>
-                        <td>{item.userName}</td>
-                        <td>{item.orgName}</td>
-                        <td>{formatDate(item.dateCreate)}</td>
-                        <td>{item.cityName}</td>
-                        <td>{item.regionName}</td>
+                        <td>{item.title}</td>
+                        <td>{item.inn}</td>
+                        <td>{item.ur_address}</td>
+                        <td>{item.administrator_org}</td>
+                        <td>{item.text}</td>
                         <td><a className='btn btn-primary zoom-5'>Редактировать</a><button className='btn btn-danger mx-1 zoom-5'>Удалить</button></td>
                     </tr>
                 )

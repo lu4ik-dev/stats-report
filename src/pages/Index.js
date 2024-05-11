@@ -1,10 +1,19 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import CounterAnimation from '../tech/CounterAnimation';
 
 const Index = () => {
     const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
     const [greeting, setGreeting] = useState('');
+    const [statistics, setStatistics] = useState(null);
 
+    useEffect(() => {
+        // Fetch data from the API
+        fetch('http://localhost:3110/api/get/statistics')
+            .then(response => response.json())
+            .then(data => setStatistics(data))
+            .catch(error => console.error('Error fetching data:', error));
+    }, []);
     useEffect(() => {
       const getCurrentTime = () => {
         const currentTime = new Date().getHours();
@@ -90,6 +99,7 @@ const Index = () => {
                         </div>
                     </div>*/}
                     </div>
+                    {statistics && (
                     <div className="col-sm-12">
                         <div className="card mt-3">
                         <div className="card-body">
@@ -106,7 +116,7 @@ const Index = () => {
                                         Отчетов принято
                                         </p>
                                         <span to='/contingent' className="btn btn-primary zoom-5">
-                                        24 741 003 
+                                        <CounterAnimation value={statistics.totalStatistics.totalAllTimeCount} />
                                         </span> {/* ну да статика и хуле, не успеем - вырежем*/}
                                     </div>
 
@@ -115,7 +125,7 @@ const Index = () => {
                                         Респондентов отчиталось 
                                         </p>
                                         <span to='/contingent' className="btn btn-primary zoom-5">
-                                        2 176 981
+                                        <CounterAnimation value={statistics.totalStatistics.allTimeUniqueUsers} />
                                         </span>
                                     </div>
                                 </div>
@@ -129,7 +139,7 @@ const Index = () => {
                                         Отчетов принято
                                         </p>
                                         <span to='/contingent' className="btn btn-primary zoom-5">
-                                        24 741 003
+                                        <CounterAnimation value={statistics.totalStatistics.totalYear2024Count} />
                                         </span>
                                     </div>
 
@@ -138,7 +148,7 @@ const Index = () => {
                                         Респондентов отчиталось 
                                         </p>
                                         <span to='/contingent' className="btn btn-primary zoom-5">
-                                        2 176 981
+                                        <CounterAnimation value={statistics.totalStatistics.allTimeUniqueUsers} />
                                         </span>
                                     </div>
                                 </div>
@@ -152,7 +162,7 @@ const Index = () => {
                                         Отчетов принято
                                         </p>
                                         <span to='/contingent' className="btn btn-primary zoom-5">
-                                        24 741 003
+                                        <CounterAnimation value={statistics.totalStatistics.totalYear2023Count} />
                                         </span>
                                     </div>
 
@@ -160,8 +170,8 @@ const Index = () => {
                                         <p className="card-text">
                                         Респондентов отчиталось 
                                         </p>
-                                        <span to='/contingent' className="btn btn-primary zoom-5">
-                                        2 176 981
+                                        <span className="btn btn-primary zoom-5">
+                                        <CounterAnimation value={statistics.totalStatistics.allTimeUniqueUsers} />
                                         </span>
                                     </div>
                                 </div>
@@ -173,6 +183,8 @@ const Index = () => {
                         </div>
                         </div>
                     </div>
+                    
+            )}
                 </div>
             </div>
             </main>

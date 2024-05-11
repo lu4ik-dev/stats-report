@@ -460,6 +460,44 @@ body{
     height: 3rem!important;
     width: 3rem!important;
     border-radius: 50%!important;
+    transition: transform 1s; 
   }
 
 
+@keyframes hoverAnimation {
+  0% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-10px) rotate(180deg); }
+  100% { transform: translateY(-10px) rotate(360deg); }
+}
+
+/* При наведении */
+.bottom-contact-btn:hover {
+  animation: hoverAnimation 1s forwards;
+}
+
+
+
+
+  ul.dropdown-menu.custom  {
+    background-color: #1F496F!important;
+    
+}
+
+ul.dropdown-menu.custom li a{
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #ffffff!important; 
+}
+
+
+ul.dropdown-menu.custom li:nth-child(even){
+  text-decoration: none;
+  background-color: #1f62a0!important; 
+}
+
+ul.dropdown-menu.custom li:hover{
+  text-decoration: none;
+  background-color: #0a569e!important; 
+}

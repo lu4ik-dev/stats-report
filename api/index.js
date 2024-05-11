@@ -1573,6 +1573,98 @@ app.post('/api/restorePassword', (req, res) => {
 
 
 
+app.get('/api/get/statistics', async (req, res) => {
+  function query(connection, sql) {
+    return new Promise((resolve, reject) => {
+      connection.query(sql, (error, results) => {
+        if (error) {
+          return reject(error);
+        }
+        resolve(results);
+      });
+    });
+  }
+  try {
+    const [
+      employeeWorkExpStats,
+      enrollmentStats,
+      invalidsStats,
+      obrazovanieStats,
+      employeeWorkExp2023Stats,
+      enrollment2023Stats,
+      invalids2023Stats,
+      obrazovanie2023Stats,
+      employeeWorkExp2024Stats,
+      enrollment2024Stats,
+      invalids2024Stats,
+      obrazovanie2024Stats
+    ] = await Promise.all([
+      query(connection, 'SELECT COUNT(DISTINCT id_user) as uniqueUsers, COUNT(*) as totalCount FROM employee_work_exp'),
+      query(connection, 'SELECT COUNT(DISTINCT id_user) as uniqueUsers, COUNT(*) as totalCount FROM obrazovanie'),
+      query(connection, 'SELECT COUNT(DISTINCT id_user) as uniqueUsers, COUNT(*) as totalCount FROM enrollment'),
+      query(connection, 'SELECT COUNT(DISTINCT id_user) as uniqueUsers, COUNT(*) as totalCount FROM invalids'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM enrollment'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM invalids'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM obrazovanie'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM employee_work_exp WHERE YEAR(dateCreate) = 2023'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM enrollment WHERE YEAR(dateCreate) = 2023'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM invalids WHERE YEAR(dateCreate) = 2023'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM obrazovanie WHERE YEAR(dateCreate) = 2023'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM employee_work_exp WHERE YEAR(dateCreate) = 2024'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM enrollment WHERE YEAR(dateCreate) = 2024'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM invalids WHERE YEAR(dateCreate) = 2024'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM obrazovanie WHERE YEAR(dateCreate) = 2024')
+    ]);
+
+    // Суммируем значения year2023Count и year2024Count для всех таблиц
+    const allTimeUniqueUsers = employeeWorkExpStats[0].uniqueUsers + enrollmentStats[0].uniqueUsers + invalidsStats[0].uniqueUsers + obrazovanieStats[0].uniqueUsers; 
+    const totalYear2023Count = employeeWorkExp2023Stats[0].totalCount + enrollment2023Stats[0].totalCount + invalids2023Stats[0].totalCount + obrazovanie2023Stats[0].totalCount;
+    const totalYear2024Count = employeeWorkExp2024Stats[0].totalCount + enrollment2024Stats[0].totalCount + invalids2024Stats[0].totalCount + obrazovanie2024Stats[0].totalCount;
+
+    // Суммируем значения allTimeTotalCount для всех таблиц
+    const totalAllTimeCount = totalYear2023Count + totalYear2024Count;
+
+    res.json({
+      employeeWorkExp: {
+        allTimeUniqueUsers: employeeWorkExpStats[0].uniqueUsers,
+        allTimeTotalCount: employeeWorkExpStats[0].totalCount,
+        year2023Count: employeeWorkExp2023Stats[0].totalCount,
+        year2024Count: employeeWorkExp2024Stats[0].totalCount
+      },
+      enrollment: {
+        allTimeUniqueUsers: enrollmentStats[0].uniqueUsers,
+        allTimeTotalCount: enrollmentStats[0].totalCount,
+        year2023Count: enrollment2023Stats[0].totalCount,
+        year2024Count: enrollment2024Stats[0].totalCount
+      },
+      invalids: {
+        allTimeUniqueUsers: invalidsStats[0].uniqueUsers,
+        allTimeTotalCount: invalidsStats[0].totalCount,
+        year2023Count: invalids2023Stats[0].totalCount,
+        year2024Count: invalids2024Stats[0].totalCount
+      },
+      obrazovanie: {
+        allTimeUniqueUsers: obrazovanieStats[0].uniqueUsers,
+        allTimeTotalCount: obrazovanieStats[0].totalCount,
+        year2023Count: obrazovanie2023Stats[0].totalCount,
+        year2024Count: obrazovanie2024Stats[0].totalCount
+      },
+      // Добавляем итоговую статистику
+      totalStatistics: {
+        allTimeUniqueUsers,
+        totalYear2023Count,
+        totalYear2024Count,
+        totalAllTimeCount
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching statistics:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
+
 app.listen(port, () => {
     console.log(`[M]: Сервер запущен на порту: ${port}`);
     console.log(`[M]: Используй: localhost:${port}/api/testServerApi`);

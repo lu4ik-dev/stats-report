@@ -13,6 +13,7 @@ const Signin = () => {
   const [organizations, setOrganizations] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
+  const [selectedOrg, setSelectedOrg] = useState("");
   const [selectedOrganization, setSelectedOrganization] = useState("");
 
 
@@ -53,10 +54,16 @@ const Signin = () => {
         .catch(error => console.error('Ошибка при загрузке организаций:', error));
       };
 
+      const handleOrgChange = (event) => {
+        const selectedOrgId = event.target.value;
+        setSelectedOrg(selectedOrgId);
+      };
 
-      console.log(organizations)
-
-  const handleLoginPressButton = async () => {}
+      const handleRegisterPressButton = async () => {
+        console.log(`reg: ${selectedRegion}`)
+        console.log(`city: ${selectedCity}`)
+        console.log(`org: ${selectedOrg}`)
+      }
 
     return (
         <section className="vh-100 custom-body add-font-arturito-slab">
@@ -71,20 +78,8 @@ const Signin = () => {
                     <div className="form-outline form-primary mb-2">
                       <input
                         type="email"
-                        id="typeEmail"
                         className="form-control custom-grad-login-input"
                         placeholder="Почта"
-                      //  value={login}
-                      //  onChange={(e) => setLogin(e.target.value)}
-                      />
-                    </div>
-
-                    <div className="form-outline form-primary mb-2">
-                      <input
-                        type="text"
-                        id="typeEmail"
-                        className="form-control custom-grad-login-input"
-                        placeholder="Логин"
                       //  value={login}
                       //  onChange={(e) => setLogin(e.target.value)}
                       />
@@ -93,7 +88,6 @@ const Signin = () => {
                     <div className="form-outline mt-2 form-primary mb-2">
                       <input
                         type="text"
-                        id="typeEmail"
                         className="form-control custom-grad-login-input"
                         placeholder="ФИО"
                       //  value={login}
@@ -130,6 +124,8 @@ const Signin = () => {
                     className="form-control mt-2 custom-grad-login-input" 
                     id="orgSelect"
                     disabled={selectedCity === ""}
+                    onChange={handleOrgChange}
+                    value={selectedOrg}
                   >
                     {(organizations.length === 0 || selectedCity === "") && (
                       <option selected disabled>Организации отсутствуют</option>
@@ -144,7 +140,6 @@ const Signin = () => {
                     <div className="form-outline form-primary mb-2 mt-2">
                       <input
                         type="password"
-                        id="typeEmail"
                         className="form-control custom-grad-login-input"
                         placeholder="Пароль"
                       //  value={login}
@@ -155,7 +150,6 @@ const Signin = () => {
                     <div className="form-outline form-primary mb-4">
                       <input
                         type="password"
-                        id="typeEmail"
                         className="form-control custom-grad-login-input"
                         placeholder="Подтверждение пароля"
                       //  value={login}
@@ -165,7 +159,7 @@ const Signin = () => {
 
                     <button
                     className="btn btn-outline-primary custom-grad-login-btn w-100 btn-lg me-2 px-5"
-                    onClick={handleLoginPressButton}
+                    onClick={handleRegisterPressButton}
                     disabled={loading}
                   >
                     {loading ? 'Регистрация..' : 'Зарегистрироваться'}
