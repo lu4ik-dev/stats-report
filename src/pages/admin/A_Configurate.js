@@ -1,6 +1,7 @@
 import React from 'react';
 import { redirectToLogin } from '../../tech/checking';
 import Header from '../Header';
+import { Link } from 'react-router-dom';
 
 const A_Configurate = () => {
     redirectToLogin();

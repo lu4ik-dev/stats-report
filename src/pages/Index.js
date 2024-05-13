@@ -39,7 +39,7 @@ const Index = () => {
   return (
     <div>
       <main>
-        <div className="container px-4 py-5" id="featured-3">
+        <div className="container px-4 pt-3" id="featured-3">
           <h3 className="pb-2 border-bottom text-secondary">
             <b>{greeting},</b>{" "}
             <span
@@ -60,9 +60,9 @@ const Index = () => {
           <div className="row">
             <div className="row tilesWrap">
               <div className="col-sm-3 pb-3 ">
-                <li>
+                <li className="first">
                   <h2>01</h2>
-                  <h3>Стаж</h3>
+                  <h3 className="text-dark">Стаж</h3>
                   <p>
                     Распределение персонала по стажу работы (без внешних
                     совместителей и работающих по договорам гражданско-правового
@@ -74,9 +74,9 @@ const Index = () => {
                 </li>
               </div>
               <div className="col-sm-3 pb-3">
-                <li>
+                <li className="second">
                   <h2>02</h2>
-                  <h3>Образование</h3>
+                  <h3 className="text-dark">Образование</h3>
                   <p>
                     Распределение численности основного персонала по уровню
                     образования и полу (без внешних совместителей и работающих
@@ -89,9 +89,9 @@ const Index = () => {
               </div>
 
               <div className="col-sm-3 pb-3">
-                <li>
+                <li className="third">
                   <h2>03</h2>
-                  <h3>Программы</h3>
+                  <h3 className="text-dark">Программы</h3>
                   <p>
                     Перечень реализуемых образовательных программ среднего
                     профессионального образования и информация по контингенту
@@ -102,9 +102,9 @@ const Index = () => {
                 </li>
               </div>
               <div className="col-sm-3 pb-3">
-                <li>
+                <li className="fourth">
                   <h2>04</h2>
-                  <h3>Инвалиды и лица с ОВЗ</h3>
+                  <h3 className="text-dark">Инвалиды и лица с ОВЗ</h3>
                   <p>
                     Сведения по численности студентов, относящихся к категории
                     инвалиды и лица с ОВЗ, по специальностям, профессиям
@@ -115,9 +115,11 @@ const Index = () => {
                 </li>
               </div>
             </div>
+            
+            
             {statistics && (
               <div className="col-sm-12">
-                <div className="card mt-3">
+                <div className="card ">
                   <div className="card-body">
                     <h5 className="card-title">Статистика</h5>
                     <hr />
