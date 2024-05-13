@@ -59,9 +59,9 @@ function A_Main() {
             <h3 className="pb-2 border-bottom text-secondary"><b>{greeting},</b>  <span className={["System Administrator", "Administrator", "Администратор", 'Dmitriy'].includes(userInfo.complectName) ? "text-danger" : ""}>{userInfo.complectName}
   </span></h3>
                 <div className="row">
-                    <div className="col-sm-6 pb-3">
-                        <div className="card">
-                        <div className="card-body">
+                    <div className="col-sm-6 pb-3 zoom-5">
+                        <div className="card ">
+                        <div className="card-body ">
                             <h5 className="card-title">Организации</h5>
                             <p className="card-text">
                             Управление организациями
@@ -71,7 +71,7 @@ function A_Main() {
                         </div>
                         </div>
                     </div>
-                    <div className="col-sm-6 pb-3">
+                    <div className="col-sm-6 pb-3 zoom-5 d-none">
                         <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">Заявки</h5>
@@ -85,7 +85,7 @@ function A_Main() {
                         </div>
                     </div>
 
-                    <div className="col-sm-6 pb-3">
+                    <div className="col-sm-6 pb-3 zoom-5">
                         <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">Настройки</h5>
@@ -98,7 +98,7 @@ function A_Main() {
                         </div>
                         </div>
                     </div>
-                    <div className="col-sm-6 pb-3">
+                    <div className="col-sm-6 pb-3 zoom-5 d-none">
                         <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">Логи</h5>
@@ -111,7 +111,7 @@ function A_Main() {
                         </div>
                         </div>
                     </div>
-                    <div className="col-sm-6 pb-3">
+                    <div className="col-sm-6 pb-3 zoom-5 d-none">
                         <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">Пользователи</h5>
@@ -124,7 +124,7 @@ function A_Main() {
                         </div>
                         </div>
                     </div>
-                    <div className="col-sm-6 pb-3">
+                    <div className="col-sm-6 pb-3 zoom-5 d-none">
                         <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">В разработке</h5>

@@ -19,7 +19,6 @@
 @font-face {
   font-family: 'RobotoMono';
   src: url('./tech/InterTight-VariableFont_wght.ttf') format('truetype');
-  /* Дополнительные параметры, если нужно */
   font-weight: normal;
   font-style: normal;
 }
@@ -696,6 +695,9 @@ ul.dropdown-menu.custom  li::after {
 	background: -webkit-linear-gradient(to right, #0ABFBC, #FC354C);
 	background: linear-gradient(to right, #0ABFBC, #FC354C);
 }
+
+
+
 
 
 .custom-hg{

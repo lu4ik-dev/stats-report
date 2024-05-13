@@ -2214,12 +2214,6 @@
     "education_area_code": "0713"
   },
   {
-    "profession_code": "12.02.05",
-    "profession_name": "Оптические и оптико-электронные приборы и системы",
-    "program_code": "554",
-    "education_area_code": "0714"
-  },
-  {
     "profession_code": "12.02.06",
     "profession_name": "Биотехнические и медицинские аппараты и системы",
     "program_code": "554",
@@ -4608,12 +4602,6 @@
     "education_area_code": "0312"
   },
   {
-    "profession_code": "41.03.06",
-    "profession_name": "Публичная политика и социальные науки",
-    "program_code": "665",
-    "education_area_code": "0312"
-  },
-  {
     "profession_code": "42.00.00",
     "profession_name": "Средства массовой информации и информационно-библиотечное дело",
     "program_code": "",
@@ -4786,12 +4774,6 @@
     "profession_name": "Религиоведение",
     "program_code": "665",
     "education_area_code": "0221"
-  },
-  {
-    "profession_code": "48.00.00",
-    "profession_name": "Теология",
-    "program_code": "",
-    "education_area_code": ""
   },
   {
     "profession_code": "48.03.01",
@@ -6196,12 +6178,6 @@
     "profession_name": "Религиоведение",
     "program_code": "767",
     "education_area_code": "0221"
-  },
-  {
-    "profession_code": "48.00.00",
-    "profession_name": "Теология",
-    "program_code": "",
-    "education_area_code": ""
   },
   {
     "profession_code": "48.04.01",
@@ -7986,12 +7962,6 @@
     "education_area_code": "0223"
   },
   {
-    "profession_code": "48.00.00",
-    "profession_name": "теология",
-    "program_code": "",
-    "education_area_code": ""
-  },
-  {
     "profession_code": "48.06.01",
     "profession_name": "Теология",
     "program_code": "768",
@@ -9114,12 +9084,6 @@
     "education_area_code": "0213"
   },
   {
-    "profession_code": "54.09.07",
-    "profession_name": "Искусство реставрации (по видам)",
-    "program_code": "768",
-    "education_area_code": "0214"
-  },
-  {
     "profession_code": "55.00.00",
     "profession_name": "Экранные искусства",
     "program_code": "",
@@ -9128,12 +9092,6 @@
   {
     "profession_code": "55.09.01",
     "profession_name": "Режиссура аудиовизуальных искусств (по видам)",
-    "program_code": "768",
-    "education_area_code": "0211"
-  },
-  {
-    "profession_code": "55.09.02",
-    "profession_name": "Операторское искусство (по видам)",
     "program_code": "768",
     "education_area_code": "0211"
   },

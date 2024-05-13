@@ -27,6 +27,10 @@ import ErrorPageServer from './pages/ErrorPageServer';
 
 import EductionTable from './pages/EductionTable';
 import { url_api, url_web } from './tech/config'
+import A_Configurate_Cities from './pages/admin/A_Configurate_Cities';
+import A_Configurate_Regions from './pages/admin/A_Configurate_Regions';
+import A_Configurate_Specialnost from './pages/admin/A_Configurate_Specialnost';
+
 function App() {
   const [apiAvailable, setApiAvailable] = useState(true);
 
@@ -110,6 +114,9 @@ function App() {
           <Route path="/admin-panel/accepts" element={apiAvailable ? <A_accepts /> : <Navigate to="/ErrorPageServer" />} />
           <Route path="/admin-panel/logs" element={apiAvailable ? <A_Logs /> : <Navigate to="/ErrorPageServer" />} />
           <Route path="/admin-panel/settings" element={apiAvailable ? <A_Configurate /> : <Navigate to="/ErrorPageServer" />} />
+          <Route path="/admin-panel/settings/cities" element={apiAvailable ? <A_Configurate_Cities /> : <Navigate to="/ErrorPageServer" />} />
+          <Route path="/admin-panel/settings/regions" element={apiAvailable ? <A_Configurate_Regions /> : <Navigate to="/ErrorPageServer" />} />
+          <Route path="/admin-panel/settings/specialnost" element={apiAvailable ? <A_Configurate_Specialnost /> : <Navigate to="/ErrorPageServer" />} />
           
           <Route path="/ErrorPageServer" element={apiAvailable ? <Navigate to="/" /> : <ErrorPageServer />} />
 

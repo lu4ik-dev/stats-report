@@ -73,6 +73,9 @@ let usersRestorePwdData;
 const usersWaitVerifyPath = 'users-wait-verify.json';
 let usersWaitVerifyData;
 
+const specialnostiPath = 'specialnosti.json';
+let specialnostiData;
+
 try {
   usersRestorePwdData = JSON.parse(fs.readFileSync(usersRestorePwdPath, 'utf8'));
   console.log(`[CFG]:Конфигурационный файл (${usersRestorePwdPath}) прочитан`);
@@ -91,6 +94,21 @@ try {
   console.log(`[CFG]: Конфигурационный файл (${usersWaitVerifyPath}) не был найден, создан пустой шаблон.`);
 }
 
+
+try {
+  specialnostiData = JSON.parse(fs.readFileSync(specialnostiPath, 'utf8'));
+  console.log(`[CFG]:Конфигурационный файл (${specialnostiPath}) прочитан`);
+} catch (error) {
+  specialnostiData = [];
+  fs.writeFileSync(specialnostiPath, JSON.stringify(specialnostiData, null, 2));
+  console.log(`[CFG]: Конфигурационный файл (${specialnostiPath}) не был найден, создан пустой шаблон.`);
+}
+
+async function saveSpecialnosti()
+{
+	fs.writeFileSync(specialnostiPath, JSON.stringify(specialnostiData, null, 2));
+	return true;
+}
 
 
 async function saveUsersRestorePwdPath()
@@ -111,6 +129,10 @@ setInterval(async () => {
 
 setInterval(async () => {
 	await saveUsersWaitVerifyData();
+}, 1000);
+
+setInterval(async () => {
+	await saveSpecialnosti();
 }, 1000);
 
 
@@ -607,9 +629,13 @@ app.post('/api/dataExpEmployee', async (req, res) => {
           ewe.dateCreate, 
           ewe.disabled, 
           ewe.timeLastEdit, 
-          u.complectName AS lastEditFrom
+          u.complectName AS lastEditFrom,
+          c.text AS city,
+          r.text AS region
         FROM employee_work_exp ewe
         INNER JOIN users u ON ewe.id_user = u.id
+        INNER JOIN cities c ON u.id_city = c.id
+        INNER JOIN regions r ON c.id_region = r.id
       `;
       queryParams = [];
     } else {
@@ -619,13 +645,18 @@ app.post('/api/dataExpEmployee', async (req, res) => {
           u.complectName AS userName, 
           ewe.dateCreate, 
           ewe.disabled, 
-          ewe.timeLastEdit
+          ewe.timeLastEdit,
+          c.text AS city,
+          r.text AS region
         FROM employee_work_exp ewe
         INNER JOIN users u ON ewe.id_user = u.id
+        INNER JOIN cities c ON u.id_city = c.id
+        INNER JOIN regions r ON c.id_region = r.id
         WHERE u.authkey = ?;
       `;
       queryParams = [authkey];
     }
+  
 
     connection.query(dataQuery, queryParams, (err, results) => {
       if (err) {
@@ -1135,6 +1166,182 @@ connection.query(query, [id_reg], (err, result) => {
 });
 });
 
+
+app.post('/api/search/cities', (req, res) => {
+  const search = req.body.search;
+  const query = `
+    SELECT c.id, c.text, r.text AS region_text
+    FROM cities c
+    LEFT JOIN regions r ON c.id_region = r.id
+    WHERE c.text LIKE CONCAT('%', ?, '%') OR r.text LIKE CONCAT('%', ?, '%');
+  `;
+  connection.query(query, [search, search], (err, result) => {
+    if (err) {
+      console.error('Ошибка выполнения запроса:', err);
+      res.status(500).json({ error: 'Ошибка сервера' });
+    } else {
+      res.status(200).json(result);
+    }
+  });
+});
+
+
+
+app.get('/api/get/settings/regions', (req, res) => {
+  query = `
+    SELECT regions.id, regions.text, COUNT(cities.id) AS city_count
+    FROM regions
+    LEFT JOIN cities ON regions.id = cities.id_region
+    GROUP BY regions.id, regions.text
+  `;
+  connection.query(query, (err, result) => {
+    if (err) {
+      console.error('Ошибка выполнения запроса:', err);
+      res.status(500).json({ error: 'Ошибка сервера' });
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+
+app.post('/api/set/settings/regions', (req, res) => {
+  const { id, text } = req.body;
+  csmsg(`id: ${id}, text: `, text )
+  const query = `
+    UPDATE regions
+    SET text = ?
+    WHERE id = ?
+  `;
+  connection.query(query, [text, id], (err, result) => {
+    if (err) {
+      console.error('Ошибка выполнения запроса:', err);
+      res.status(500).json({ error: 'Ошибка сервера' });
+    } else {
+      res.json({ success: true });
+    }
+  });
+});
+
+
+app.post('/api/del/settings/regions/:id', (req, res) => {
+  const id = req.params.id;
+  const query = `
+    DELETE FROM regions
+    WHERE id = ?
+  `;
+  connection.query(query, [id], (err, result) => {
+    if (err) {
+      console.error('Ошибка выполнения запроса:', err);
+      res.status(500).json({ error: 'Ошибка сервера' });
+    } else {
+      res.json({ success: true });
+    }
+  });
+});
+
+
+app.post('/api/add/settings/regions', (req, res) => {
+  const text = req.body.text;
+  const query = `
+    INSERT INTO regions (text) VALUES (?)
+  `;
+  connection.query(query, [text], (err, result) => {
+    if (err) {
+      console.error('Ошибка выполнения запроса:', err);
+      res.status(500).json({ error: 'Ошибка сервера' });
+    } else {
+      res.json({ success: true });
+    }
+  });
+});
+
+app.post('/api/add/settings/cities', (req, res) => {
+  const {text, id_region} = req.body;
+  const query = `
+    INSERT INTO cities (text, id_region) VALUES (?, ?)
+  `;
+  connection.query(query, [text, id_region], (err, result) => {
+    if (err) {
+      console.error('Ошибка выполнения запроса:', err);
+      res.status(500).json({ error: 'Ошибка сервера' });
+    } else {
+      res.json({ success: true });
+    }
+  });
+});
+
+
+app.get('/api/get/settings/cities', (req, res) => {
+  query = `
+    SELECT cities.id, cities.text, regions.text AS region_text 
+    FROM cities 
+    JOIN regions ON cities.id_region = regions.id
+    ORDER BY regions.id;
+  `;
+  connection.query(query, (err, result) => {
+    if (err) {
+      console.error('Ошибка выполнения запроса:', err);
+      res.status(500).json({ error: 'Ошибка сервера' });
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+
+app.post('/api/set/settings/cities', (req, res) => {
+  const { id, text } = req.body;
+  csmsg(`id: ${id}, text: `, text )
+  const query = `
+    UPDATE cities
+    SET text = ?
+    WHERE id = ?
+  `;
+  connection.query(query, [text, id], (err, result) => {
+    if (err) {
+      console.error('Ошибка выполнения запроса:', err);
+      res.status(500).json({ error: 'Ошибка сервера' });
+    } else {
+      res.status(200).json({ success: true });
+    }
+  });
+});
+
+
+app.post('/api/del/settings/cities/:id', (req, res) => {
+  const id = req.params.id;
+  const query = `
+    DELETE FROM cities
+    WHERE id = ?
+  `;
+  connection.query(query, [id], (err, result) => {
+    if (err) {
+      console.error('Ошибка выполнения запроса:', err);
+      res.status(500).json({ error: 'Ошибка сервера' });
+    } else {
+      res.status(200).json({ success: true });
+    }
+  });
+});
+
+
+app.get('/api/get/cities', (req, res) => {
+    query = `
+      SELECT id, text FROM cities 
+    `;
+  connection.query(query, (err, result) => {
+    if (err) {
+      console.error('Ошибка выполнения запроса:', err);
+      res.status(500).json({ error: 'Ошибка сервера' });
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+
+
 app.get('/api/get/organizations/:id_city', (req, res) => {
   const id_city = req.params.id_city;
   query = `
@@ -1201,6 +1408,8 @@ app.post('/api/updatePassword', (req, res) => {
     }
   );
 });
+// api/get/professions/search
+
 
 app.get('/api/get/professions', (req, res) => {
   fs.readFile('specialnosti.json', 'utf8', (err, data) => {
@@ -1210,13 +1419,104 @@ app.get('/api/get/professions', (req, res) => {
           return;
       }
       try {
-          const schema = JSON.parse(data);
-          res.json(schema);
+          const professions = JSON.parse(data);
+          const uniqueProfessions = {};
+
+          // Фильтруем уникальные профессии по их коду
+          professions.forEach(profession => {
+              if (!uniqueProfessions[profession.profession_code]) {
+                  uniqueProfessions[profession.profession_code] = profession;
+              }
+          });
+
+          // Преобразуем объект обратно в массив
+          const uniqueProfessionsArray = Object.values(uniqueProfessions);
+
+          res.json(uniqueProfessionsArray);
       } catch (error) {
           console.error('Error parsing JSON:', error);
           res.status(500).send('Internal Server Error');
       }
   });
+});
+
+
+
+app.post('/api/update/profession', (req, res) => {
+  const { code, profession_name, program_code, education_area_code } = req.body;
+
+  if (!code) {
+    res.status(400).send('Invalid profession code');
+    return;
+  }
+
+  // Обновление профессии в списке профессий
+  const updatedProfessions = specialnostiData.map(profession => {
+    if (profession.profession_code === code) {
+      return {
+        profession_code: code,
+        profession_name: profession_name || profession.profession_name,
+        program_code: program_code || profession.program_code,
+        education_area_code: education_area_code || profession.education_area_code
+      };
+    }
+    return profession;
+  });
+
+  specialnostiData = updatedProfessions; // Обновляем данные
+
+  res.status(200).send('Profession updated successfully');
+});
+
+
+
+app.post('/api/delete/profession', (req, res) => {
+  const { code } = req.body;
+
+  if (!code) {
+      res.status(400).send('Invalid profession code');
+      return;
+  }
+
+  // Фильтруем профессии, оставляя только те, у которых код не совпадает с переданным
+  const updatedProfessions = specialnostiData.filter(profession => profession.profession_code !== code);
+
+  specialnostiData = updatedProfessions; // Обновляем данные
+
+  res.status(200).send('Profession deleted successfully');
+});
+
+
+
+app.post('/api/settings/add/profession', (req, res) => {
+  const { code, profession_name, program_code, education_area_code } = req.body;
+
+  if (!code || !profession_name) {
+    res.status(400).json({ message: 'Не все параметры указаны'});
+    return;
+  }
+  if (code.length != 8) {
+    res.status(400).json({ message: 'Код профессии указан неверно' });
+    return;
+  }
+
+  const existingProfession = specialnostiData.find(profession => profession.profession_code === code);
+  if (existingProfession) {
+      res.status(400).json({ message: 'Профессия с таким кодом уже существует' });
+      return;
+  }
+  // Создаем новый объект профессии
+  const newProfession = {
+    profession_code: code,
+    profession_name: profession_name,
+    program_code: program_code,
+    education_area_code: education_area_code
+  };
+
+  // Добавляем новую профессию в список профессий
+  specialnostiData.push(newProfession);
+
+  res.status(200).json({ message: 'Профессия успешно добавлена'});
 });
 
 

@@ -1,15 +1,5 @@
 [
   {
-    "login": "logibn@.12312",
-    "complectName": "testBNK",
-    "organization": "1",
-    "city": "1434",
-    "region": "43",
-    "password": "bnk",
-    "confirmPassword": "bnk",
-    "code": "tLd1jnhp"
-  },
-  {
     "login": "213123@mail.ru",
     "complectName": "asd",
     "organization": "notSelected",
@@ -68,5 +58,15 @@
     "password": "123123",
     "confirmPassword": "123123",
     "code": "vOKNUupX"
+  },
+  {
+    "login": "iwantbigcock743@gmail.com",
+    "complectName": "Тимур Даянов",
+    "organization": -1,
+    "city": "1432",
+    "region": "43",
+    "password": "тимур1234",
+    "confirmPassword": "тимур1234",
+    "code": "eBqZKge2"
   }
 ]
