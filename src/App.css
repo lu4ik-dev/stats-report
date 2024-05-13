@@ -267,6 +267,10 @@ body{
 }
 
 
+.registration-page {
+  overflow: hidden;
+}
+
 .context {
     width: 100%;
     position: absolute;
@@ -461,6 +465,7 @@ body{
     width: 3rem!important;
     border-radius: 50%!important;
     transition: transform 1s; 
+    opacity: 0.6!important;
   }
 
 

@@ -3,6 +3,7 @@ import { faClose, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import React, { useState, useEffect } from 'react';
 import { url_api, url_web } from '../tech/config';
 import { createNotification } from '../tech/alert';
+import { useLocation } from 'react-router-dom';
 
 function Login() {
   const [login, setLogin] = useState('');
@@ -20,6 +21,8 @@ function Login() {
       document.body.style.overflow = '';
     };
   }, []);
+
+
 
 
   
@@ -99,7 +102,7 @@ function Login() {
                       onChange={(e) => setLogin(e.target.value)}
                     />
                   </div>
-                  <div className="form-outline  form-primary mb-4">
+                  <div className="form-outline  form-primary mb-2">
                     <div className="input-group">
                       <input
                         type={passwordVisible ? 'text' : 'password'}

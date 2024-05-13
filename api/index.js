@@ -1,3 +1,5 @@
+const process = require('node:process');
+
 const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -172,7 +174,16 @@ function hashPassword(password) {
   Math.random()
     .toString(36)
     .substr(2);
+    const csmsg = (message, add="") => {
+      
+      const currentDate = new Date().toLocaleDateString();
+      const currentTime = new Date().toLocaleTimeString();
+      const username = os.userInfo().username ? `[${os.userInfo().username}] ` : ''; 
 
+      const logMessage = `${username}[${currentDate} - ${currentTime}]: ${message} ${add}\n`;
+      console.log(`${username}[${currentDate}- ${currentTime}]: ${message} ${add}\n`);
+      fs.appendFileSync(logFilePath, logMessage);
+    }
     const cslog = (req, res, next) => {
       const currentDate = new Date().toLocaleDateString();
       const currentTime = new Date().toLocaleTimeString();
@@ -1664,8 +1675,81 @@ app.get('/api/get/statistics', async (req, res) => {
 });
 
 
+app.post('/register', (req, res) => {
+  const { login, complectName, organization, city, region, password, confirmPassword } = req.body;
+  const code = generateRandomString(8)
+  const query = `SELECT * FROM users WHERE login = ?`;
+  connection.query(query, [login], (error, results) => {
+    if (error) {
+      console.error('Ошибка выполнения запроса к базе данных:', error);
+      res.status(500).json({ error: 'Ошибка сервера' });
+      return;
+    }
+
+    if (results.length > 0) {
+      res.status(400).json({ error: 'Пользователь с таким логином уже существует' });
+    } else {
+      const existingUserIndex = usersWaitVerifyData.findIndex(user => user.login === login);
+      if (existingUserIndex !== -1) {
+        usersWaitVerifyData.splice(existingUserIndex, 1);
+      }
+      
+      sendMail(login, complectName, 'Регистрация', code)
+      // Добавляем новую запись
+      usersWaitVerifyData.push({
+        login,
+        complectName,
+        organization,
+        city,
+        region,
+        password,
+        confirmPassword,
+        code
+      });
+
+      fs.writeFileSync(usersWaitVerifyPath, JSON.stringify(usersWaitVerifyData, null, 2));
+      res.status(200).json({ message: 'На почту был отправлен код подтверждения ✔' });
+    }
+  });
+});
+
+
+app.post('/api/checkCodeVerify', async (req, res) => {
+  const { login, code } = req.body;
+  console.log(login);
+  const user = usersWaitVerifyData.find(u => u.login === login && u.code === code);
+  if (user) {
+    // Добавляем данные в базу данных
+    const query = `INSERT INTO users (login, complectName, id_org, id_city,  password, authkey) VALUES (?, ?, ?, ?, ?, ?)`;
+    
+    if(user.organization == 'notSelected')
+    {
+      user.organization = -1;
+    }
+    
+    if(user.organization == 'notFound')
+    {
+      user.organization = -2;
+    }
+    
+    connection.query(query, [user.login, user.complectName, user.organization, user.city, hashPassword(user.password), hashPassword(user.password)], (error, results, fields) => {
+      if (error) {
+        console.error('Ошибка при добавлении данных в базу данных:', error);
+        return res.status(500).json({ success: false, message: 'Ошибка при добавлении данных в базу данных' });
+      }
+      usersWaitVerifyData.splice(user, 1);
+      console.log('Данные успешно добавлены в базу данных');
+      return res.json({ success: true, message: 'Найдено совпадение и данные успешно добавлены в базу данных' });
+    });
+  } else {
+    return res.json({ success: false, message: 'Не найдено' });
+  }
+});
+
+
 
 app.listen(port, () => {
     console.log(`[M]: Сервер запущен на порту: ${port}`);
     console.log(`[M]: Используй: localhost:${port}/api/testServerApi`);
 });
+
