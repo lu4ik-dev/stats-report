@@ -19,7 +19,6 @@ const ContingentTable = () => {
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
     XLSX.writeFile(wb, 'Контингент.xls');
   };
-
   const handleSave = () => {
     let id_doc = new URLSearchParams(window.location.search).get("id_doc");
     const tableRows = [];
@@ -84,14 +83,13 @@ const ContingentTable = () => {
     })
     .then((response) => response.text())
     .then((data) => {
-      console.log(JSON.stringify(data))
     showAlert('Таблица успешно сохранена!');
     const currentUrl = window.location.href;
     const targetUrl = `http://localhost:3000/contingent-tables?id_doc=${data.id}`;
     if (currentUrl !== targetUrl) {
-    //window.location.href = targetUrl;
+    window.location.href = targetUrl;
     } else {
-    //window.location.reload();
+    window.location.reload();
     }
     })
     .catch((error) => {
@@ -139,10 +137,9 @@ const ContingentTable = () => {
       const id_doc = new URLSearchParams(window.location.search).get('id_doc');
 
       if (!id_doc || id_doc === 'newDoc') {
-        setTableData((prevData) => [
-			...prevData,
-			{
-            col1: prevData.length + 1,
+        setTableData([
+          {
+            col1: 1,
             col2: userInfo.complectName,
 			col3: '',
             col4: 0,
@@ -176,39 +173,39 @@ const ContingentTable = () => {
         const result = await response.json();
 
         if (response.ok) {
-			setAuthor(result[0].complectName); // Update to use the correct property
+			setAuthor(result[0].complectName); 
 			setDateCreateDoc(result[0].dateCreate);
-
+            console.log(result);
           setTableData(
             result.map((rowData, index) => {
               return {
-				col1: '     '+rowData.id || '     '+index + 1,
-				col2: rowData.complectName || '',
-				col3: rowData.Training_Program || '', // Training_Program property from your API response
-				col4: rowData.Standard_Category || '',
-				col5: rowData.Occupation_Code || '',
-				col6: rowData.Specialty_Name || '',
-				col7: rowData.Duration_of_Study || '',
-				col8: rowData.Form_of_Education || '',
-				col9: rowData.Course || '',
-				col10: rowData.Average_Grade_of_Certificate || '',
-				col11: rowData.Number_of_KCP_According_to_Founder_Order || '',
-				col12: rowData.Total_Students_Count || '',
-				col13: rowData.Federal_Budget_Students_Count || '',
-				col14: rowData.Regional_Budget_Students_Count || '',
-				col15: rowData.Targeted_Training_Students_Count || '',
-				col16: rowData.Tuition_Paying_Students_Count || '',
-				col17: rowData.Foreign_Students_Count || '',
-				col18: rowData.Orphan_Children_Count || '',
-				col19: rowData.Children_without_Parental_Care_Count || '',
-				col20: rowData.Students_in_Need_of_Housing_Count || '',
-				col21: rowData.Provided_Dormitory_Space_Count || '',
-				col22: rowData.Denied_Dormitory_Space_Count || '',
-				col23: rowData.Graduation_Year_2024_Count || '',
-				col24: rowData.Number_of_Taking_Demonstration_Exam_GIA || '',
-				col25: rowData.Number_of_Taking_Demonstration_Exam_Intermediate_Assessment || '',
-				col26: rowData.Demonstration_Exam_Basic_Level_Count || '',
-				col27: rowData.Demonstration_Exam_Professional_Level_Count || '',
+          col1: '     '+rowData.id || '     '+index + 1,
+          col2: rowData.complectName || '',
+          col3: rowData.Training_Program || '', 
+          col4: rowData.Standard_Category || '',
+          col5: rowData.Occupation_Code || '',
+          col6: rowData.Specialty_Name || '',
+          col7: rowData.Duration_of_Study || '',
+          col8: rowData.Form_of_Education || '',
+          col9: rowData.Course || '',
+          col10: rowData.Average_Grade_of_Certificate || '',
+          col11: rowData.Number_of_KCP_According_to_Founder_Order || '',
+          col12: rowData.Total_Students_Count || '',
+          col13: rowData.Federal_Budget_Students_Count || '',
+          col14: rowData.Regional_Budget_Students_Count || '',
+          col15: rowData.Targeted_Training_Students_Count || '',
+          col16: rowData.Tuition_Paying_Students_Count || '',
+          col17: rowData.Foreign_Students_Count || '',
+          col18: rowData.Orphan_Children_Count || '',
+          col19: rowData.Children_without_Parental_Care_Count || '',
+          col20: rowData.Students_in_Need_of_Housing_Count || '',
+          col21: rowData.Provided_Dormitory_Space_Count || '',
+          col22: rowData.Denied_Dormitory_Space_Count || '',
+          col23: rowData.Graduation_Year_2024_Count || '',
+          col24: rowData.Number_of_Taking_Demonstration_Exam_GIA || '',
+          col25: rowData.Number_of_Taking_Demonstration_Exam_Intermediate_Assessment || '',
+          col26: rowData.Demonstration_Exam_Basic_Level_Count || '',
+          col27: rowData.Demonstration_Exam_Professional_Level_Count || '',
               };
             })
           );
@@ -240,34 +237,15 @@ const ContingentTable = () => {
     setTableData((prevData) => {
       const newData = [...prevData];
       newData[rowIndex][colName] = newValue;
-
-      if (colName === 'col5' || colName === 'col6' || colName === 'col7' || colName === 'col8' || colName === 'col9' || colName === 'col10') {
-        newData[rowIndex].col4 =
-          parseInt(newData[rowIndex].col5) +
-          parseInt(newData[rowIndex].col6) +
-          parseInt(newData[rowIndex].col7) +
-          parseInt(newData[rowIndex].col8) +
-          parseInt(newData[rowIndex].col9) +
-          parseInt(newData[rowIndex].col10);
-      } else if (colName === 'col12' || colName === 'col13' || colName === 'col14' || colName === 'col15' || colName === 'col16' || colName === 'col17') {
-        newData[rowIndex].col11 =
-          parseInt(newData[rowIndex].col13) +
-          parseInt(newData[rowIndex].col14) +
-          parseInt(newData[rowIndex].col15) +
-          parseInt(newData[rowIndex].col16) +
-          parseInt(newData[rowIndex].col17) +
-          parseInt(newData[rowIndex].col12);
-      }
+     
       return newData;
     });
   };
   const id_doc = new URLSearchParams(window.location.search).get('id_doc');
   return (
-    
     <div>
            { (!id_doc || id_doc === 'newDoc') ? <Header /> : '' }
 	  <div>
-      
 		<div className="d-flex flex-wrap justify-content-center py-1 mb-2">
                 <span className="d-flex align-items-center mb-1 mb-md-0 me-md-auto text-dark fs-5 ms-3"><a href="/contingent">Распределение </a></span>
             <ul className="nav nav-pills me-3">
@@ -354,7 +332,7 @@ const ContingentTable = () => {
                       type="text"
                       value={row[colName]}
                       onChange={(e) => handleInputChange(rowIndex, colName, e.target.value)}
-                      disabled={index === 0 || index === 2 || index === 3 || index === 10}
+                      disabled={index === 0 || index === 1 }
                     />
                   </td>
                 ))}
@@ -365,14 +343,6 @@ const ContingentTable = () => {
                 </td>
               </tr>
             ))}
-              <tr>
-            <td colSpan={21}>
-            </td>
-            <td colSpan={8}>
-              <button className='btn btn-sm btn-primary zoom-5 rounded-pill ms-3 my-1'  onClick={handlerInsert}><i className="fas fa-add"></i> добавить запись</button>
-              <button className='btn btn-sm btn-success zoom-5 rounded-pill ms-1'  onClick={() => handleSave(0)}><i className="fas fa-save"></i> сохранить документ</button>
-            </td>
-          </tr>
 			</tbody>
         </table>
 		<button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>

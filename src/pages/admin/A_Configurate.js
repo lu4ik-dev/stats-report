@@ -9,7 +9,7 @@ const A_Configurate = () => {
     return (
         <div>
             <Header />
-            <div className="container-fluid px-5">
+            <div className="container px-5">
                 <div className="card mt-2 zoom-2">
                     <div className="card-body">
                         <h5 className="card-title">Области</h5>

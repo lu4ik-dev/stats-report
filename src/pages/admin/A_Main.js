@@ -48,7 +48,7 @@ function A_Main() {
                         <div className="card-body ">
                             <h5 className="card-title">Организации</h5>
                             <p className="card-text">
-                            Управление организациями
+                            Управление организациями 
                             </p>
 
                             <Link to="/admin-panel/organizations" className="btn btn-primary">Перейти</Link>
@@ -108,12 +108,12 @@ function A_Main() {
                         </div>
                         </div>
                     </div>
-                    <div className="col-sm-6 pb-3 zoom-5 ">
+                    <div className="col-sm-12 pb-3 zoom-5">
                         <div className="card">
                         <div className="card-body">
-                            <h5 className="card-title">В разработке</h5>
+                            <h5 className="card-title">Резервное копирование</h5>
                             <p className="card-text">
-                            ну а рил чё сюда вставить? рекламу? 
+                              Резервная копия базы данных
                             </p>
                             <button className="btn btn-primary" onClick={handleBackup}>
                               Получить базу данных

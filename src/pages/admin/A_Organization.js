@@ -79,7 +79,7 @@ const A_Organization = () => {
                         <td>{item.region_text}</td>
                         <td>{item.city_text}</td>
                         <td>{item.text}</td>
-                        <td>
+                        <td> 
                             <button className='btn btn-danger mx-1 ' onClick={() => handleDelete(item.id)}>Удалить</button>
                         </td>
                     </tr>

@@ -779,7 +779,7 @@ app.post('/api/deleteContingent/:id_doc', (req, res) => {
 
 
 app.post('/api/addContingent', (req, res) => {
-  const { user_id, id_doc, table, timeLastEdit } = req.body;
+  const { user_id,  table, timeLastEdit } = req.body;
 
   connection.query('INSERT INTO enrollment (id_user, timeLastEdit) VALUES (?, ?)', [user_id, timeLastEdit], (err, result) => {
     if (err) {
@@ -1655,12 +1655,10 @@ app.get('/api/eduction-table/:id_doc', async (req, res) => {
 });
 app.post('/api/addEduction', (req, res) => {
   const { user_id, table, timeLastEdit } = req.body;
-  console.log(req.body)
-  console.log(JSON.stringify(table))
 
   connection.query('INSERT INTO obrazovanie (id_user, timeLastEdit) VALUES (?, ?)', [user_id, timeLastEdit], (err, result) => {
     if (err) {
-      console.error('Error inserting into edu:', err);
+      console.error('[M]: Error inserting into edu:', err);
       res.status(500).send('Internal Server Error');
     } else {
 
@@ -1669,17 +1667,31 @@ app.post('/api/addEduction', (req, res) => {
 
       // Вставка записей в таблицу "obrazovanie_body" для каждой строки в таблице "table"
       const insertEducationBodyQuery = 'INSERT INTO obrazovanie_body (id_doc, name_of_indicators, all_obr, have_obr, kval_cat, full_zan) VALUES (?, ?, ?, ?, ?, ?)';
-      table.forEach((row) => {
+      table.forEach((row, index) => {
         const { col1, col2, col5, col6, col7, col8, col9, col10, col11, col12, col13, col14, col15, col16, col17, col18 } = row;
-  
-        // Формирование JSON-схемы для have_obr и kval_cat
-        const have_obr_json = JSON.stringify({ col5, col6, col7, col8, col9, col10, col11, col12, col13, col14 });
-        const kval_cat_json = JSON.stringify({ col15, col16, col17, col18 });
-  
-        connection.query(insertEducationBodyQuery, [id_doc, col2, 'test', have_obr_json, kval_cat_json, ''], (err) => {
+        const have_obr_json = JSON.stringify({
+          col5: col5,
+          col6: col6,
+          col7: col7,
+          col8: col8,
+          col9: col9,
+          col10: col10,
+          col11: col11,
+          col12: col12,
+          col13: col13,
+          col14: col14
+        });
+        const kval_cat_json = JSON.stringify({
+          col15: col15,
+          col16: col16,
+          col17: col17,
+          col18: col18
+        });
+      
+        connection.query(insertEducationBodyQuery, [id_doc, col2, index+1, have_obr_json, kval_cat_json, 99999], (err) => {
           if (err) {
-            console.error('Ошибка вставки в таблицу obrazovanie_body:', err);
-            return res.status(500).json({ error: 'Ошибка сервера' });
+            console.error('[M]: Ошибка вставки в таблицу obrazovanie_body:', err);
+            return res.status(500).json({ error: '[M]: Ошибка сервера' });
           }
         });
       });
