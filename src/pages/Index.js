@@ -76,7 +76,7 @@ const Index = () => {
               <div className="col-sm-3 mx-auto pb-3">
                 <li className="second">
                   <h2>02</h2>
-                  <h3 className="text-dark">Образование!</h3>
+                  <h3 className="text-dark">Образование</h3>
                   <p>
                     Распределение численности основного персонала по уровню
                     образования и полу (без внешних совместителей и работающих

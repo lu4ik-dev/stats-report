@@ -6,7 +6,7 @@ const A_Logs = () => {
         <div>
             <Header />
             <main>
-            <div className="container px-4 py-5" id="featured-3">
+            <div className="container px-4 py-5">
                 <h3 className="pb-2 border-bottom">Admin logs, <span className='font-weight-bold'>welcome</span></h3>
                 <div className="row">
                     <div className="col-sm-6 pb-3">
