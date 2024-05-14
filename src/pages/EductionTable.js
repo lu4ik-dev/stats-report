@@ -61,20 +61,20 @@ const EductionTable = () => {
                 col1: userInfo.complectName || '',
                 col2: rowData.name_of_indicators || '',
                 col4: 0, // auto 
-                col5: have_obr[1] || 0,
-                col6: have_obr[2] || 0,
-                col7: have_obr[3] || 0,
-                col8: have_obr[4] || 0,
-                col9: have_obr[5] || 0,
-                col10: have_obr[6] || 0,
-                col11: have_obr[7] || 0,
-                col12: have_obr[8] || 0,
-                col13: have_obr[9] || 0,
-                col14: have_obr[10] || 0,
-                col15: kval_cat[1] || 0,
-                col16: kval_cat[2] || 0,
-                col17: kval_cat[3] || 0,
-                col18: kval_cat[4] || 0,
+                col5: have_obr.col5 || 0,
+                col6: have_obr.col6 || 0,
+                col7: have_obr.col7 || 0,
+                col8: have_obr.col8 || 0,
+                col9: have_obr.col9 || 0,
+                col10: have_obr.col10 || 0,
+                col11: have_obr.col11 || 0,
+                col12: have_obr.col12 || 0,
+                col13: have_obr.col13 || 0,
+                col14: have_obr.col14 || 0,
+                col15: kval_cat.col15 || 0,
+                col16: kval_cat.col16 || 0,
+                col17: kval_cat.col17 || 0,
+                col18: kval_cat.col18 || 0,
               };
             }));
           } else {
@@ -109,6 +109,7 @@ const EductionTable = () => {
   
     const requestBody = {
       user_id: userInfo.id,
+      id_doc: id_doc,
       table: tableData,
       timeLastEdit: formatDate(now),
     };
@@ -148,17 +149,15 @@ const EductionTable = () => {
       newData[rowIndex][colName] = newValue;
 
       if (colName === 'col5' || colName === 'col6' || colName === 'col7' || colName === 'col8' ) {
-        newData[rowIndex].col4 = parseInt(newData[rowIndex].col5) + parseInt(newData[rowIndex].col6) + parseInt(newData[rowIndex].col7) + parseInt(newData[rowIndex].col8) + parseInt(newData[rowIndex].col9) + parseInt(newData[rowIndex].col10);
+
+        newData[rowIndex].col5 = parseInt(newData[rowIndex].col6) + parseInt(newData[rowIndex].col7) + parseInt(newData[rowIndex].col8) + parseInt(newData[rowIndex].col9) + parseInt(newData[rowIndex].col10) + parseInt(newData[rowIndex].col11);
       }
       return newData;
     });
   };
 
   const exportToExcel = () => {
-    const ws = XLSX.utils.table_to_sheet(document.getElementById('experinceTable'));
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-    XLSX.writeFile(wb, 'Персонал1.xls');
+
   };
 
 

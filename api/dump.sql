@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `cities` (
   PRIMARY KEY (`id`),
   KEY `id_region` (`id_region`),
   CONSTRAINT `cities_ibfk_1` FOREIGN KEY (`id_region`) REFERENCES `regions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 2510 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 2511 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: contingent_body
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `employee_work_exp_body` (
   PRIMARY KEY (`id`),
   KEY `id_doc` (`id_doc`),
   CONSTRAINT `employee_work_exp_body_ibfk_1` FOREIGN KEY (`id_doc`) REFERENCES `employee_work_exp` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 258 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '8164 Персонал2.xlsx';
+) ENGINE = InnoDB AUTO_INCREMENT = 273 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '8164 Персонал2.xlsx';
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: enrollment
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `enrollment` (
   PRIMARY KEY (`id`),
   KEY `enrollment_ibfk_3` (`id_user`),
   CONSTRAINT `enrollment_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: enrollment_body
@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `obrazovanie` (
   `timeLastEdit` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `disabled` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 19 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 34 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: obrazovanie_body
@@ -209,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `obrazovanie_body` (
   `kval_cat` json NOT NULL,
   `full_zan` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: orgazizations
@@ -10063,7 +10063,7 @@ VALUES
     13,
     1,
     '2024-05-05 10:36:42',
-    '09.05.2024 23:54:34',
+    '14.05.2024 20:02:13',
     0
   );
 INSERT INTO
@@ -10758,42 +10758,6 @@ INSERT INTO
   )
 VALUES
   (
-    224,
-    13,
-    '',
-    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
-    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 1, \"col18\": 4}',
-    4
-  );
-INSERT INTO
-  `employee_work_exp_body` (
-    `id`,
-    `id_doc`,
-    `name_of_indicators`,
-    `all_exp`,
-    `teach_exp`,
-    `not_exp`
-  )
-VALUES
-  (
-    225,
-    13,
-    '',
-    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
-    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 44}',
-    44
-  );
-INSERT INTO
-  `employee_work_exp_body` (
-    `id`,
-    `id_doc`,
-    `name_of_indicators`,
-    `all_exp`,
-    `teach_exp`,
-    `not_exp`
-  )
-VALUES
-  (
     226,
     14,
     '',
@@ -10945,6 +10909,276 @@ VALUES
     '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
     0
   );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    258,
+    13,
+    '',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 1, \"col18\": 4}',
+    4
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    259,
+    13,
+    '',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 44}',
+    44
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    260,
+    13,
+    '',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    261,
+    13,
+    '',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    262,
+    13,
+    '',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    263,
+    13,
+    '',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    264,
+    13,
+    '',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    265,
+    13,
+    '',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    266,
+    13,
+    '',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    267,
+    13,
+    '',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    268,
+    13,
+    '',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    269,
+    13,
+    '',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    270,
+    13,
+    '',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    271,
+    13,
+    '',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    272,
+    13,
+    '',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: enrollment
@@ -10980,6 +11214,22 @@ VALUES
     8,
     '2024-05-13 23:01:40',
     '13.05.2024 23:01:40',
+    0
+  );
+INSERT INTO
+  `enrollment` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    4,
+    1,
+    '2024-05-14 15:17:55',
+    '14.05.2024 15:17:55',
     0
   );
 
@@ -11863,7 +12113,7 @@ VALUES
     1,
     '2023-11-16 08:51:36',
     '16.11.2023 13:55:08',
-    1
+    0
   );
 INSERT INTO
   `obrazovanie` (
@@ -11879,7 +12129,7 @@ VALUES
     2,
     '2023-11-16 12:13:30',
     '16.11.2023 14:13:30',
-    1
+    0
   );
 INSERT INTO
   `obrazovanie` (
@@ -11895,7 +12145,7 @@ VALUES
     2,
     '2023-11-16 12:17:21',
     '16.11.2023 14:17:21',
-    1
+    0
   );
 INSERT INTO
   `obrazovanie` (
@@ -11943,7 +12193,7 @@ VALUES
     1,
     '2024-05-07 23:53:08',
     '07.05.2024 23:53:07',
-    1
+    0
   );
 INSERT INTO
   `obrazovanie` (
@@ -11991,7 +12241,7 @@ VALUES
     1,
     '2024-05-08 00:02:04',
     '08.05.2024 00:02:04',
-    1
+    0
   );
 INSERT INTO
   `obrazovanie` (
@@ -12041,11 +12291,391 @@ VALUES
     '13.05.2024 23:01:14',
     0
   );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    19,
+    1,
+    '2024-05-14 15:23:38',
+    '14.05.2024 15:23:38',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    20,
+    1,
+    '2024-05-14 15:29:41',
+    '14.05.2024 15:29:41',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    21,
+    1,
+    '2024-05-14 15:30:28',
+    '14.05.2024 15:30:28',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    22,
+    1,
+    '2024-05-14 15:33:59',
+    '14.05.2024 15:33:59',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    23,
+    1,
+    '2024-05-14 15:34:19',
+    '14.05.2024 15:34:19',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    24,
+    1,
+    '2024-05-14 15:42:07',
+    '14.05.2024 15:42:07',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    25,
+    1,
+    '2024-05-14 15:49:46',
+    '14.05.2024 15:49:46',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    26,
+    1,
+    '2024-05-14 15:53:10',
+    '14.05.2024 15:53:10',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    27,
+    1,
+    '2024-05-14 18:25:11',
+    '14.05.2024 18:25:11',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    28,
+    1,
+    '2024-05-14 18:26:19',
+    '14.05.2024 18:26:19',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    29,
+    1,
+    '2024-05-14 18:26:20',
+    '14.05.2024 18:26:19',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    30,
+    1,
+    '2024-05-14 18:27:04',
+    '14.05.2024 18:27:04',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    31,
+    1,
+    '2024-05-14 18:27:05',
+    '14.05.2024 18:27:04',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    32,
+    1,
+    '2024-05-14 18:28:33',
+    '14.05.2024 18:28:33',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    33,
+    1,
+    '2024-05-14 18:28:55',
+    '14.05.2024 18:28:55',
+    0
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: obrazovanie_body
 # ------------------------------------------------------------
 
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    2,
+    24,
+    '',
+    2,
+    '{\"col5\": 90, \"col6\": 846, \"col7\": 512, \"col8\": 612, \"col9\": 999, \"col10\": 65, \"col11\": 165, \"col12\": 999, \"col13\": 43, \"col14\": 999}',
+    '{\"col15\": 15, \"col16\": 415, \"col17\": 321, \"col18\": 1}',
+    1
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    3,
+    24,
+    '',
+    2,
+    '{\"col5\": 90, \"col6\": 846, \"col7\": 512, \"col8\": 612, \"col9\": 999, \"col10\": 65, \"col11\": 165, \"col12\": 999, \"col13\": 43, \"col14\": 999}',
+    '{\"col15\": 15, \"col16\": 415, \"col17\": 321, \"col18\": 1}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    4,
+    32,
+    'ыфвыв213',
+    1,
+    '{\"col5\": 999, \"col6\": 23, \"col7\": 999, \"col8\": 232, \"col9\": 32, \"col10\": 32, \"col11\": 3, \"col12\": 232, \"col13\": 3, \"col14\": 23}',
+    '{\"col15\": 23, \"col16\": 23, \"col17\": 232, \"col18\": 3}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    5,
+    32,
+    '124м42мм',
+    2,
+    '{\"col5\": 24, \"col6\": 242, \"col7\": 4, \"col8\": 24, \"col9\": 24, \"col10\": 24, \"col11\": 24, \"col12\": 999, \"col13\": 242, \"col14\": 999}',
+    '{\"col15\": 42, \"col16\": 4, \"col17\": 24, \"col18\": 24}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    6,
+    32,
+    'м23ап3а',
+    3,
+    '{\"col5\": 3, \"col6\": 3, \"col7\": 3, \"col8\": 3, \"col9\": 33, \"col10\": 0, \"col11\": 999, \"col12\": 35, \"col13\": 999, \"col14\": 25}',
+    '{\"col15\": 25, \"col16\": 25, \"col17\": 252, \"col18\": 52}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    7,
+    32,
+    'п43п2й',
+    4,
+    '{\"col5\": 4, \"col6\": 34, \"col7\": 999, \"col8\": 24, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    8,
+    33,
+    '123',
+    1,
+    '{\"col5\": 23, \"col6\": 23, \"col7\": 23, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    99999
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: orgazizations
@@ -12623,7 +13253,7 @@ VALUES
     1,
     0,
     'Тимур Даянов',
-    'wedhyfgsyw-0kfsnty12th-ynhxx3n0mn-8;',
+    'rw60trydf8-ipa8zmqox1-91xd0nyvk6e-8;',
     '2024-05-13 22:59:53',
     -1,
     0,

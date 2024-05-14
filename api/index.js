@@ -1711,8 +1711,8 @@ app.post('/api/addEduction', (req, res) => {
 });
 
 app.post('/api/updateEduction', (req, res) => {
-  const { table, timeLastEdit } = req.body;
-  const id_doc = table[0].id_doc;
+  const { table, id_doc, timeLastEdit } = req.body;
+
 
   const deleteQuery = 'DELETE FROM obrazovanie_body WHERE id_doc = ?';
   connection.query(deleteQuery, [id_doc], (err) => {
@@ -1720,23 +1720,36 @@ app.post('/api/updateEduction', (req, res) => {
       console.error('Error deleting old records in edu_body:', err);
       res.status(500).send('Internal Server Error');
     } else {
-      const insertEduBodyQuery =
-        'INSERT INTO obrazovanie_body (id_doc, name_of_indicators, all_obr, have_obr, kval_cat, full_zan ) VALUES (?, ?, ?, ?, ?, ?)';
 
-      table.forEach((row) => {
-        const { name_of_indicators, all_obr, have_obr, kval_cat, full_zan } = row;
-        connection.query(
-          insertEduBodyQuery,
-          [id_doc, name_of_indicators, all_obr, have_obr, kval_cat, full_zan],
-          (err) => {
-            if (err) {
-              console.error('Error inserting into edu_body:', err);
-              res.status(500).send('Internal Server Error');
-            }
+     const insertEducationBodyQuery = 'INSERT INTO obrazovanie_body (id_doc, name_of_indicators, all_obr, have_obr, kval_cat, full_zan) VALUES (?, ?, ?, ?, ?, ?)';
+      table.forEach((row, index) => {
+        const { col1, col2, col5, col6, col7, col8, col9, col10, col11, col12, col13, col14, col15, col16, col17, col18 } = row;
+        const have_obr_json = JSON.stringify({
+          col5: col5,
+          col6: col6,
+          col7: col7,
+          col8: col8,
+          col9: col9,
+          col10: col10,
+          col11: col11,
+          col12: col12,
+          col13: col13,
+          col14: col14
+        });
+        const kval_cat_json = JSON.stringify({
+          col15: col15,
+          col16: col16,
+          col17: col17,
+          col18: col18
+        });
+        connection.query(insertEducationBodyQuery, [id_doc, col2, index+1, have_obr_json, kval_cat_json, 99999], (err) => {
+          if (err) {
+            console.error('[M]: Ошибка вставки в таблицу obrazovanie_body:', err);
+            return res.status(500).json({ error: '[M]: Ошибка сервера' });
           }
-        );
+        });
       });
-
+  
       const updateQuery = 'UPDATE obrazovanie SET timeLastEdit = ? WHERE id = ?';
       connection.query(updateQuery, [timeLastEdit, id_doc], (err) => {
         if (err) {
@@ -1767,63 +1780,6 @@ app.post('/api/deleteEducation/:id_doc', (req, res) => {
 });
 
 
-
-
-const path = require('path');
-
-app.post('/backup', (req, res) => {
-  // Выполняем запрос к базе данных для получения данных из всех таблиц
-  connection.query('SHOW TABLES', (error, results, fields) => {
-    if (error) {
-      console.error('Error getting tables:', error);
-      return res.status(500).send('Error creating database backup.');
-    }
-
-    // Список таблиц в базе данных
-    const tables = results.map(result => result[`Tables_in_${connection.config.database}`]);
-
-    // Создаем резервную копию для каждой таблицы
-    const insertQueries = tables.map(table => {
-      return new Promise((resolve, reject) => {
-        connection.query(`SELECT * FROM ${table}`, (error, results, fields) => {
-          if (error) {
-            console.error(`Error getting data from table ${table}:`, error);
-            reject(error);
-          } else {
-            // Формируем запросы на вставку данных в таблицу
-            const insertQueries = results.map(row => {
-              const columns = Object.keys(row).map(column => `\`${column}\``).join(',');
-              const values = Object.values(row).map(value => connection.escape(value)).join(',');
-              return `INSERT INTO \`${table}\` (${columns}) VALUES (${values});`;
-            });
-            resolve(insertQueries.join('\n'));
-          }
-        });
-      });
-    });
-
-    // Ожидаем завершения всех асинхронных операций по созданию резервных копий
-    Promise.all(insertQueries)
-      .then(queries => {
-        // Записываем запросы на вставку в файл
-        const backupFile = path.join(__dirname, 'database_backup.sql');
-        fs.writeFileSync(backupFile, queries.join('\n'));
-        // Отправляем файл резервной копии в ответе
-        res.download(backupFile, 'database_backup.sql', (err) => {
-          if (err) {
-            console.error(`Error sending backup file: ${err}`);
-            return res.status(500).send('Error sending backup file.');
-          }
-          // Удаляем файл резервной копии после отправки
-          fs.unlinkSync(backupFile);
-        });
-      })
-      .catch(error => {
-        console.error('Error creating database backup:', error);
-        res.status(500).send('Error creating database backup.');
-      });
-  });
-});
 
 app.post('/api/sendRestoreMail', async (req, res) => {
   const { login } = req.body;

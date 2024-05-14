@@ -59,8 +59,8 @@ const Index = () => {
           </h3>
           <div className="row">
             <div className="row tilesWrap">
-              <div className="col-sm-3 pb-3 ">
-                <li className="first">
+              <div className="col-sm-3 mx-auto pb-3 ">
+                <li className="first ">
                   <h2>01</h2>
                   <h3 className="text-dark">Стаж</h3>
                   <p>
@@ -73,7 +73,7 @@ const Index = () => {
                   </Link>
                 </li>
               </div>
-              <div className="col-sm-3 pb-3">
+              <div className="col-sm-3 mx-auto pb-3">
                 <li className="second">
                   <h2>02</h2>
                   <h3 className="text-dark">Образование!</h3>
@@ -88,7 +88,7 @@ const Index = () => {
                 </li>
               </div>
 
-              <div className="col-sm-3 pb-3">
+              <div className="col-sm-3 mx-auto pb-3">
                 <li className="third">
                   <h2>03</h2>
                   <h3 className="text-dark">Инвалиды и лица с ОВЗ</h3>
@@ -101,7 +101,7 @@ const Index = () => {
                   </Link>
                 </li>
               </div>
-              <div className="col-sm-3 pb-3">
+             {/* <div className="col-sm-3 pb-3">
                 <li className="fourth">
                   <h2>04</h2>
                   <h3 className="text-dark">Программы </h3>
@@ -113,7 +113,8 @@ const Index = () => {
                     Перейти
                   </Link>
                 </li>
-              </div>
+                    </div>
+                    */}
             </div>
             
             
@@ -170,8 +171,7 @@ const Index = () => {
                               className="btn btn-primary zoom-5"
                             >
                               <CounterAnimation
-                                value={
-                                  statistics.totalStatistics.totalYear2024Count
+                                value={statistics.totalStatistics.totalYear2023Count
                                 }
                               />
                             </span>
@@ -204,7 +204,8 @@ const Index = () => {
                             >
                               <CounterAnimation
                                 value={
-                                  statistics.totalStatistics.totalYear2023Count
+                                  statistics.totalStatistics.totalYear2024Count
+                                  
                                 }
                               />
                             </span>
