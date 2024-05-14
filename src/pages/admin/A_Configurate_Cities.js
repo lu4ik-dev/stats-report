@@ -171,7 +171,7 @@ const A_Configurate_Cities = () => {
                                     onBlur={(e) => handleSearch(e.target.value)}
                                 />
                         <button className="btn btn-primary zoom-5" onClick={handleOpenModal}>
-                            Добавить новую область
+                            Добавить новый город
                         </button>
                     </div>
                 </div>
