@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "login": "Dimo4ka0015@yandex.ru",
+    "complectName": "123",
+    "organization": "notSelected",
+    "city": "633",
+    "region": "16",
+    "password": "123123",
+    "confirmPassword": "123123",
+    "code": "V7FxVCGj"
+  },
+  {
+    "login": "sekretik000@vk.com",
+    "complectName": "123",
+    "organization": "notSelected",
+    "city": "676",
+    "region": "18",
+    "password": "123123",
+    "confirmPassword": "123123",
+    "code": "8eOrpeD5"
+  }
+]
