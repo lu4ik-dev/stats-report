@@ -14,14 +14,14 @@ const Contingent = () => {
   useEffect(() => {
       redirectToLogin();
       fetch(`${url_api}/api/contingent`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({
-          'authkey': authkey,
-        }),
-      })
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams({
+            'authkey': authkey,
+          }),
+        })
         .then(response => response.json())
         .then(data => setData(data))
         .catch(error => showAlert(error.message));

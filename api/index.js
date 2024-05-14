@@ -2110,7 +2110,41 @@ app.get('/api/getExcelInvalids/:id_doc', async (req, res) => {
   }
 });
 
+async function processMessages() {
+  await delayCsMsg("Стопорные краны закрыты..", 10); 
+  await delayCsMsg("Отключение аварийной защиты по неисправности..", 1000); 
+  await delayCsMsg("Снижение воды впрыска в КНД 1 ( компрессор низкого давления )..", 1300); 
+  await delayCsMsg("АЗ-5 СУЗ (была активированная аварийная защита реактора)..", 10); 
+  await delayCsMsg("Неготовность аварийной защиты..", 10); 
+  await delayCsMsg("Регулирующий стержень П2-1332 подключён при аварийной защите (АЗ)..", 10); 
+  await delayCsMsg("Завершение работы третьего модуля..", 10); 
+  await delayCsMsg("Регулирующий стержень П1-1332 подключён при АЗ..", 30); 
+  await delayCsMsg("Регулятор П2-1332 в режиме АВТ (автоматическом)..", 800); 
+  await delayCsMsg("Отключение АР по неисправности..", 1200); 
+  await delayCsMsg("Завершение работы второго модуля..", 790); 
+  await delayCsMsg("Разгрузка ТГ при АЗ-5..", 1488); 
+  await delayCsMsg("Превышение N аварийный 2 УЗМ-1 (тобишь под высоким давлением все стержни поглотители встали на одном месте)..", 15); 
+  await delayCsMsg("Отключение основного модуля..", 999); 
 
+  process.exit(); 
+}
+
+process.on('SIGINT', async () => {
+  await processMessages();
+});
+const beep = require('beepbeep');
+
+async function delayCsMsg(message, delay) {
+  return new Promise(resolve => {
+    const currentTime = new Date();
+    const timeString = currentTime.toLocaleTimeString('ru-RU', {hour12: false});
+    setTimeout(() => {
+      beep(1, 250); 
+      console.log(`[${timeString}] ${message}`);
+      resolve();
+    }, delay);
+  });
+}
 
 
 app.listen(port, () => {
