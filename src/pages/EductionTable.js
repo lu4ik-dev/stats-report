@@ -16,7 +16,8 @@ const EductionTable = () => {
     const [city, setCity] = useState('');
     const [region, setRegion] = useState('');
     const [dateCreateDoc, setDateCreateDoc] = useState('');
-  
+    const id_doc = new URLSearchParams(window.location.search).get("id_doc");
+
     const fetchData = async () => {
       try {
         const id_doc = new URLSearchParams(window.location.search).get("id_doc");
@@ -41,26 +42,30 @@ const EductionTable = () => {
               col15: 0,
               col16: 0,
               col17: 0,
-              col18: 0,
             },
+            
           ]);
         } else {
           const response = await fetch(url_api + '/api/eduction-table/' + id_doc);
           const result = await response.json();
   
           if (response.ok) {
-            setAuthor(result.complectName);
-            setLastTimeEdit(result.timeLastEdit);
-            setDateCreateDoc(result.dateCreate);
+            setTableData((prevData) => [
+              ...prevData.slice(1),
+              ...result.map((rowData, index) => {
   
-            setTableData(result.map((rowData, index) => {
-              const have_obr = JSON.parse(rowData.have_obr);
-              const kval_cat = JSON.parse(rowData.kval_cat);
+                setAuthor(rowData.complectName);
+                setDateCreateDoc(rowData.dateCreate);
+                setLastTimeEdit(rowData.timeLastEdit);
+
+                const have_obr = JSON.parse(rowData.have_obr);
+                const kval_cat = JSON.parse(rowData.kval_cat);
   
               return {
                 col1: userInfo.complectName || '',
                 col2: rowData.name_of_indicators || '',
-                col4: 0, // auto 
+                col3: prevData.length + 1 + index, // auto 
+                col4: ((have_obr.col5 || 0 ) + (have_obr.col6 || 0) + (have_obr.col7 || 0) + (have_obr.col8 || 0) + (have_obr.col9 || 0) + (have_obr.col10 || 0)+ (have_obr.col11 || 0))     ,
                 col5: have_obr.col5 || 0,
                 col6: have_obr.col6 || 0,
                 col7: have_obr.col7 || 0,
@@ -74,12 +79,12 @@ const EductionTable = () => {
                 col15: kval_cat.col15 || 0,
                 col16: kval_cat.col16 || 0,
                 col17: kval_cat.col17 || 0,
-                col18: kval_cat.col18 || 0,
               };
-            }));
-          } else {
+            })
+          ]);
+            } else {
             console.error('Error fetching data:', result.error);
-          }
+            }
         }
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -148,16 +153,17 @@ const EductionTable = () => {
       const newData = [...prevData];
       newData[rowIndex][colName] = newValue;
 
-      if (colName === 'col5' || colName === 'col6' || colName === 'col7' || colName === 'col8' ) {
+      if (colName === 'col5' || colName === 'col6' || colName === 'col7' || colName === 'col8' || colName === 'col9' || colName === 'col10' || colName === 'col11' ) {
 
-        newData[rowIndex].col5 = parseInt(newData[rowIndex].col6) + parseInt(newData[rowIndex].col7) + parseInt(newData[rowIndex].col8) + parseInt(newData[rowIndex].col9) + parseInt(newData[rowIndex].col10) + parseInt(newData[rowIndex].col11);
+        newData[rowIndex].col4 = parseInt(newData[rowIndex].col5) + parseInt(newData[rowIndex].col6) + parseInt(newData[rowIndex].col7) + parseInt(newData[rowIndex].col8) + parseInt(newData[rowIndex].col9) + parseInt(newData[rowIndex].col10)+ parseInt(newData[rowIndex].col11);
       }
       return newData;
     });
   };
 
   const exportToExcel = () => {
-
+    const url = `${url_api}/api/getExcelEduction/${id_doc}`;
+    window.location.href = url;
   };
 
 
@@ -182,17 +188,23 @@ const EductionTable = () => {
               col15: 0,
               col16: 0,
               col17: 0,
-              col18: 0,
+            //  col18: 0,
 
       },
     ]);
   };
     return (
       <div>
-        
       <Header />
-        <div>
-          
+	  <div>
+		<div className="d-flex flex-wrap justify-content-center py-1 mb-2">
+                <span className="d-flex align-items-center mb-1 mb-md-0 me-md-auto text-dark fs-5 ms-3"><a href="/eductions">Образование</a></span>
+            <ul className="nav nav-pills me-3">
+                <button className="btn btn-primary zoom-5" aria-current="page" onClick={exportToExcel}>
+                    Экспорт в CSV
+                </button>
+            </ul>
+        </div>
             <table className="iksweb">
 	<thead>
 		<tr>
@@ -202,8 +214,8 @@ const EductionTable = () => {
 			<th className='bg-primary'rowSpan="4">Всего, чел</th>
 			<th className='bg-primary'colSpan="10">из них (из гр. 3) имеют образование:</th>
 			<th className='bg-primary'colSpan="3">из гр. 3</th>
-			<th className='bg-primary'rowSpan="4">численность работников в пересчете на полную занятость, ед.</th>
-      <th className='bg-primary' rowSpan="5">Действие</th>
+		{/*	<th className='bg-primary'rowSpan="4">численность работников в пересчете на полную занятость, ед.</th>
+     */} <th className='bg-primary' rowSpan="5">Действие</th>
 		</tr>
 		<tr>
 			<th className='bg-primary'rowSpan="3">высшее</th>
@@ -245,8 +257,9 @@ const EductionTable = () => {
 			<th className='bg-primary'>14</th>
 			<th className='bg-primary'>15</th>
 			<th className='bg-primary'>16</th>
-			<th className='bg-primary'>17</th>
-		</tr>
+	{/* 		<th className='bg-primary'>17</th>
+		*/}
+    </tr>
     </thead>
 		<tbody>
             {tableData.map((row, rowIndex) => (
@@ -274,6 +287,27 @@ const EductionTable = () => {
 <button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
       	<button className='position-relative start-100 btn btn-sm btn-success zoom-5 rounded-pill' style={{'margin': '0px -3rem'}} onClick={() => handleSave(0)}><i className="fas fa-save"></i> </button>
         </div>
+        {id_doc !== "newDoc" && (
+        <div className="container">
+          <h4 className='text-center mt-5'>Общие сведения</h4>
+          <table className="table table-striped text-center">
+            <thead>
+              <tr>
+                <th>Автор</th>
+                <th>Дата создания</th>
+                <th>Время последнего редактирования:</th>
+              </tr>
+            </thead>
+            <tbody id="infoAboutDoc">
+              <tr>
+                <td>{author}</td>
+                <td>{formatDate(dateCreateDoc)}</td>
+                <td>{lastTimeEdit}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )}
         </div>
     );
 };

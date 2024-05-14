@@ -17,7 +17,7 @@ const Restore = () => {
     const [successChanged, setSuccessChanged] = useState(false);
     const [pwd, setPwd] = useState('');
     const [cpwd, setCpwd] = useState('');
-
+    const [pwdIsShort, setPwdIsShort] = useState(false);
     const handleFocus = () => {
       setIsFocused(true);
     };
@@ -106,16 +106,22 @@ const Restore = () => {
         break
 
       case 3: // change pwd
-      
       setErrorCode(null);
-        if (pwd !== cpwd || pwd == "" || cpwd == "") {
-          console.error('Новый пароль и подтверждение не совпадают');
-          console.log('Новый пароль и подтверждение не совпадают');
-          setPwdIsNotEq(true);
-          setPwd('');
-          setCpwd('');
-          return;
-        }
+      if (pwd.length < 6 || cpwd.length < 6) {
+        // Если длина пароля меньше 6 символов, установить соответствующий стейт
+        setPwdIsShort(true);
+        return;
+      }
+      setPwdIsShort(false);
+      // Проверка на совпадение паролей и остальная логика остаются без изменений
+      if (pwd !== cpwd || pwd === "" || cpwd === "") {
+        console.error('Новый пароль и подтверждение не совпадают');
+        console.log('Новый пароль и подтверждение не совпадают');
+        setPwdIsNotEq(true);
+        setPwd('');
+        setCpwd('');
+        return;
+      }
     
         try {
           const response = await fetch(url_api+'/api/restorePassword', {
@@ -256,7 +262,11 @@ const Restore = () => {
                   </div>
                 )}
 
-
+              {pwdIsShort && (
+                <div className="alert alert-danger custom-grad-login-alert" role="alert">
+                  Пароль должен содержать не менее 6 символов
+                </div>
+              )}
                 <div>
                  <p className="mb-0 custom-grad-login-input py-2 mb-2 z-4">
                     <a href="/login" className="link-primary fw-bold text-black link-underline link-underline-opacity-0">

@@ -113,7 +113,7 @@ async function getExcelExperience(id_doc, sourceFileName='exp_template.xlsx', in
 
     // Fill 'not_exp'
     data.table.forEach((item, index) => {
-      sheet.cell(8 + index, 17).value(item.not_exp);
+      sheet.cell(8 + index, 18).value(item.not_exp);
     });
 
     const outputFileName = `experience_${Date.now()}.xlsx`; // Генерация имени файла
@@ -132,10 +132,9 @@ async function getExcelExperience(id_doc, sourceFileName='exp_template.xlsx', in
 }
 
 
-async function getExcelEduction(id_doc, sourceFileName='exp_template.xlsx', intermediateFileName='exp_template_temp.xlsx') {
+async function getExcelEduction(id_doc, sourceFileName='edu_template.xlsx', intermediateFileName='edu_template_temp.xlsx') {
   try {
     await fs.promises.copyFile(sourceFileName, intermediateFileName);
-
     console.log(`[T]: Файл ${sourceFileName} успешно скопирован как ${intermediateFileName}`);
 
     const response = await fetch(`http://localhost:3110/api/eduction-table/${id_doc}`);
@@ -144,33 +143,50 @@ async function getExcelEduction(id_doc, sourceFileName='exp_template.xlsx', inte
     const workbook = await XlsxPopulate.fromFileAsync(intermediateFileName);
     const sheet = workbook.sheet(0);
 
+    // Starting row index
+    let rowIndex = 10;
 
-    // Fill 'name_of_indicators' in the second column
-    data.table.forEach((item, index) => {
-      sheet.cell(8+index,1).value(data.complectName);
+    // Fill data for each item in the API response
+    data.forEach((item, index) => {
+      sheet.cell(rowIndex, 1).value(item.complectName); // complectName
+      sheet.cell(rowIndex, 2).value(item.name_of_indicators); // name_of_indicators
+      sheet.cell(rowIndex, 3).value(index + 1); // Row number
 
-      sheet.cell(8 + index, 2).value(item.name_of_indicators);
-      sheet.cell(8 + index, 3).value(index+1);
+      // Sum of have_obr
+
+
+      // Fill have_obr columns col5 to col14
+      const haveObr = JSON.parse(item.have_obr);
+      const haveObrSum = [5, 6, 7, 8, 9, 10,11].reduce((acc, col) => acc + (haveObr[`col${col}`] || 0), 0);
+sheet.cell(rowIndex, 4).value(haveObrSum); // Sum of have_obr col5 to col10
+      for (let i = 5; i <= 14; i++) {
+        sheet.cell(rowIndex, i).value(haveObr[`col${i}`]);
+      }
+
+      // Fill kval_cat columns col15 to col17
+      const kvalCat = JSON.parse(item.kval_cat);
+      for (let i = 15; i <= 17; i++) {
+        sheet.cell(rowIndex, i).value(kvalCat[`col${i}`]);
+      }
+
+      rowIndex++; // Move to the next row
     });
 
-
-    const outputFileName = `experience_${Date.now()}.xlsx`; // Генерация имени файла
-    const outputPath = path.join(__dirname, outputFileName); // Формирование пути к файлу
-
-    await workbook.toFileAsync(outputPath); // Сохранение файла по сформированному пути
+    // Save the workbook
+    const outputFileName = `eduction_${Date.now()}.xlsx`;
+    const outputPath = path.join(__dirname, outputFileName);
+    await workbook.toFileAsync(outputPath);
     console.log(`[T]: Результат сохранен в файл ${outputPath}`);
 
+    // Delete the intermediate file
     await fs.promises.unlink(intermediateFileName);
     console.log(`[T]: Промежуточный файл ${intermediateFileName} удален`);
-    
-    return outputPath; // Возврат полного пути к файлу
+
+    return outputPath; // Return the full path to the file
   } catch (error) {
     console.error('[T]: Произошла ошибка:', error);
   }
 }
-
-
-
 
 function checkWorkExcel(message) {
   console.log(message);

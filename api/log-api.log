@@ -33814,3 +33814,1085 @@
 [Dmitriy] [14.05.2024 - 21:51:37]: GET - http://localhost:3110/api/testServerApi
 [Dmitriy] [14.05.2024 - 21:51:37]: GET - http://localhost:3110/api/testServerApi
 [Dmitriy] [14.05.2024 - 21:51:37]: GET - http://localhost:3110/api/get/statistics
+[Dmitriy] [14.05.2024 - 21:56:24]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 21:56:24]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 21:56:24]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 21:56:24]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 21:56:26]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 21:56:26]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 21:56:26]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 21:56:26]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 21:56:26]: GET - http://localhost:3110/api/eduction-table/9
+[Dmitriy] [14.05.2024 - 21:56:26]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 21:56:26]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 21:56:28]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 21:56:28]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 21:56:28]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 21:56:28]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 21:56:28]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 21:56:28]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 21:56:30]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 21:56:30]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 21:56:30]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 21:56:30]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 21:56:30]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 21:56:30]: GET - http://localhost:3110/api/eduction-table/35
+[Dmitriy] [14.05.2024 - 21:56:30]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:00:34]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:00:34]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:00:34]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:00:34]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:00:34]: GET - http://localhost:3110/api/eduction-table/35
+[Dmitriy] [14.05.2024 - 22:00:34]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:00:34]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:00:41]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:00:42]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:00:42]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:00:42]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:00:42]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:00:42]: GET - http://localhost:3110/api/eduction-table/35
+[Dmitriy] [14.05.2024 - 22:00:42]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:00:42]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:04:20]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:04:20]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:04:20]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:04:20]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:04:20]: GET - http://localhost:3110/api/eduction-table/35
+[Dmitriy] [14.05.2024 - 22:04:20]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:04:20]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:13:32]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:13:32]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:13:33]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:13:33]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:13:33]: GET - http://localhost:3110/api/eduction-table/35
+[Dmitriy] [14.05.2024 - 22:13:33]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:13:33]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:14:05]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:14:05]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:14:05]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:14:05]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:14:05]: GET - http://localhost:3110/api/eduction-table/35
+[Dmitriy] [14.05.2024 - 22:14:05]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:14:05]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:14:14]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:14:14]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:14:14]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:14:14]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:14:14]: GET - http://localhost:3110/api/get/statistics
+[Dmitriy] [14.05.2024 - 22:14:14]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:14:14]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:14:14]: GET - http://localhost:3110/api/get/statistics
+[Dmitriy] [14.05.2024 - 22:14:15]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:14:15]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:14:15]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:14:15]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:14:16]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:14:16]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:14:16]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:14:16]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:14:16]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:14:16]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:14:20]: POST - http://localhost:3110/api/addEduction
+[Dmitriy] [14.05.2024 - 22:14:21]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:14:21]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:14:21]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:14:21]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:14:21]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:14:21]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:14:21]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:15:01]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:15:01]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:15:01]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:15:01]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:15:01]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:15:01]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:15:01]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:15:22]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:15:22]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:15:22]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:15:22]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:15:22]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:15:22]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:15:22]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:15:30]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:15:30]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:15:30]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:15:30]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:15:30]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:15:30]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:15:30]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:03]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:16:04]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:04]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:04]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:04]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:04]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:16:04]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:04]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:09]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:16:10]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:10]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:10]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:10]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:10]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:16:10]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:10]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:12]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:16:12]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:12]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:12]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:12]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:12]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:16:12]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:12]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:14]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:16:14]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:14]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:14]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:14]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:14]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:16:14]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:14]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:16]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:16:16]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:16]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:16]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:16]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:16]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:16:16]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:16]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:18]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:16:19]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:19]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:19]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:19]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:19]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:16:19]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:19]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:21]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:16:21]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:21]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:21]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:21]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:21]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:16:21]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:21]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:23]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:16:23]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:23]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:23]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:23]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:23]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:16:23]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:23]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:26]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:16:26]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:26]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:27]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:27]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:27]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:16:27]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:27]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:28]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:16:29]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:29]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:29]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:29]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:29]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:16:29]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:29]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:30]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:16:30]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:30]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:30]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:30]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:30]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:16:30]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:31]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:32]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:16:32]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:32]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:32]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:32]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:32]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:16:32]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:32]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:34]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:16:34]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:34]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:34]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:34]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:34]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:16:34]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:34]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:37]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:16:37]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:37]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:37]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:16:37]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:16:37]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:16:37]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:16:37]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:17:11]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:17:11]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:17:11]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:17:12]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:17:12]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:17:12]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:17:12]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:17:12]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:17:30]: GET - http://localhost:3110/api/eduction-table/34
+[Dmitriy] [14.05.2024 - 22:17:36]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:19:23]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:19:24]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:19:24]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:19:24]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:19:24]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:19:24]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:19:24]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:19:24]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:19:38]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:20:41]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:20:42]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:20:42]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:20:42]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:20:42]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:20:42]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:20:42]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:20:42]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:20:43]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:20:44]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:20:44]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:20:44]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:20:44]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:20:44]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:20:44]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:20:44]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:20:50]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:20:50]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:20:50]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:20:50]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:20:50]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:20:51]: GET - http://localhost:3110/api/eduction-table/37
+[Dmitriy] [14.05.2024 - 22:20:51]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:20:51]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:20:52]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:20:52]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:20:52]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:20:52]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:20:52]: GET - http://localhost:3110/api/get/statistics
+[Dmitriy] [14.05.2024 - 22:20:52]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:20:52]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:20:52]: GET - http://localhost:3110/api/get/statistics
+[Dmitriy] [14.05.2024 - 22:20:53]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:20:53]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:20:53]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:20:54]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:20:55]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:20:56]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:20:56]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:20:56]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:20:56]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:20:56]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:21:20]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:21:20]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:21:20]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:21:20]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:21:20]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:21:20]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:21:26]: POST - http://localhost:3110/api/addEduction
+[Dmitriy] [14.05.2024 - 22:21:27]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:21:27]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:21:27]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:21:27]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:21:27]: GET - http://localhost:3110/api/eduction-table/38
+[Dmitriy] [14.05.2024 - 22:21:27]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:21:27]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:21:36]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:21:37]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:21:37]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:21:37]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:21:37]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:21:37]: GET - http://localhost:3110/api/eduction-table/38
+[Dmitriy] [14.05.2024 - 22:21:37]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:21:37]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:21:38]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:21:38]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:21:38]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:21:38]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:21:38]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:21:38]: GET - http://localhost:3110/api/eduction-table/38
+[Dmitriy] [14.05.2024 - 22:21:38]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:21:38]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:21:44]: GET - http://localhost:3110/api/eduction-table/38
+[Dmitriy] [14.05.2024 - 22:22:08]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:22:08]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:22:08]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:22:08]: GET - http://localhost:3110/api/eduction-table/38
+[Dmitriy] [14.05.2024 - 22:22:08]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:22:08]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:22:08]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:22:10]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:22:10]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:22:10]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:22:10]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:22:10]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:22:10]: GET - http://localhost:3110/api/eduction-table/38
+[Dmitriy] [14.05.2024 - 22:22:10]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:22:10]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:22:15]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:22:15]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:22:15]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:22:15]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:22:15]: GET - http://localhost:3110/api/get/statistics
+[Dmitriy] [14.05.2024 - 22:22:15]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:22:15]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:22:15]: GET - http://localhost:3110/api/get/statistics
+[Dmitriy] [14.05.2024 - 22:22:16]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:22:16]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:22:16]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:22:16]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:22:23]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:22:23]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:22:23]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:22:23]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:22:23]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:22:23]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:22:26]: POST - http://localhost:3110/api/addEduction
+[Dmitriy] [14.05.2024 - 22:22:26]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:22:26]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:22:26]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:22:26]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:22:26]: GET - http://localhost:3110/api/eduction-table/39
+[Dmitriy] [14.05.2024 - 22:22:26]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:22:26]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:22:35]: GET - http://localhost:3110/api/eduction-table/39
+[Dmitriy] [14.05.2024 - 22:22:42]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:22:43]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:22:43]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:22:43]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:22:43]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:22:43]: GET - http://localhost:3110/api/eduction-table/39
+[Dmitriy] [14.05.2024 - 22:22:43]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:22:43]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:23:06]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:23:06]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:23:06]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:23:06]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:23:06]: GET - http://localhost:3110/api/eduction-table/39
+[Dmitriy] [14.05.2024 - 22:23:06]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:23:06]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:25:53]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:25:54]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:25:54]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:25:54]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:25:54]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:25:54]: GET - http://localhost:3110/api/eduction-table/35
+[Dmitriy] [14.05.2024 - 22:25:54]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:25:54]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:25:56]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:25:56]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:25:56]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:25:56]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:25:56]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:25:56]: GET - http://localhost:3110/api/eduction-table/35
+[Dmitriy] [14.05.2024 - 22:25:56]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:25:56]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:25:58]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:25:58]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:25:58]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:25:58]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:25:58]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:25:58]: GET - http://localhost:3110/api/eduction-table/35
+[Dmitriy] [14.05.2024 - 22:25:58]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:25:58]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:26:00]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:26:00]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:26:00]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:26:00]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:26:00]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:26:00]: GET - http://localhost:3110/api/eduction-table/35
+[Dmitriy] [14.05.2024 - 22:26:00]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:26:00]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:26:37]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:26:37]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:26:37]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:26:37]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:26:37]: GET - http://localhost:3110/api/get/statistics
+[Dmitriy] [14.05.2024 - 22:26:37]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:26:37]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:26:37]: GET - http://localhost:3110/api/get/statistics
+[Dmitriy] [14.05.2024 - 22:26:38]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:26:39]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:26:39]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:26:39]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:26:40]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:26:40]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:26:40]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:26:40]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:26:40]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:26:40]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:26:56]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:26:56]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:26:56]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:26:56]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:26:56]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:26:56]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:28:11]: POST - http://localhost:3110/api/addEduction
+[Dmitriy] [14.05.2024 - 22:28:13]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:28:13]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:28:13]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:28:13]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:28:13]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:28:13]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:28:13]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:28:15]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:28:20]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:28:20]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:28:20]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:28:20]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:28:20]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:28:20]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:28:20]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:28:27]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:28:28]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:28:28]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:28:28]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:28:28]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:28:28]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:28:28]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:28:28]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:29:22]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:29:22]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:29:22]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:29:22]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:29:22]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:29:22]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:29:22]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:29:55]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:29:56]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:29:56]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:29:56]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:29:56]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:29:56]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:29:56]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:29:56]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:30:14]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:31:28]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:31:28]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:31:28]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:31:28]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:31:28]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:31:28]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:31:28]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:31:32]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:31:32]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:31:32]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:31:32]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:31:32]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:31:32]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:31:32]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:31:32]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:36:52]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:36:52]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:36:52]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:36:52]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:36:52]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:36:52]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:36:52]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:36:59]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:36:59]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:36:59]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:36:59]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:36:59]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:36:59]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:36:59]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:37:07]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:37:08]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:37:08]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:37:08]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:37:08]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:37:08]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:37:08]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:37:08]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:37:12]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:37:12]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:37:12]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:37:12]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:37:12]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:37:12]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:37:12]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:37:12]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:37:31]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:37:31]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:37:31]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:37:31]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:37:31]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:37:31]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:37:31]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:37:33]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:37:34]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:37:34]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:37:34]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:37:34]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:37:34]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:37:34]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:37:34]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:37:57]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:37:57]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:37:57]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:37:57]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:37:57]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:37:57]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:37:57]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:38:33]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:38:33]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:38:33]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:38:33]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:38:33]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:38:33]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:38:34]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:38:47]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:38:47]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:38:47]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:38:47]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:38:47]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:38:47]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:38:47]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:39:18]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:18]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:39:18]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:18]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:39:18]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:39:18]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:39:18]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:39:25]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:25]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:39:25]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:25]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:39:25]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:39:25]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:39:25]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:39:36]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:39:36]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:36]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:39:36]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:36]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:39:36]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:39:36]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:39:36]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:39:41]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:39:42]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:42]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:39:42]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:42]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:39:42]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:39:42]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:39:42]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:39:43]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:43]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:39:43]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:43]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:39:43]: GET - http://localhost:3110/api/get/statistics
+[Dmitriy] [14.05.2024 - 22:39:43]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:39:43]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:39:43]: GET - http://localhost:3110/api/get/statistics
+[Dmitriy] [14.05.2024 - 22:39:45]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:45]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:39:45]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:45]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:39:46]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:46]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:39:46]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:46]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:39:46]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:39:46]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:39:56]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:56]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:39:56]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:56]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:39:56]: GET - http://localhost:3110/api/get/statistics
+[Dmitriy] [14.05.2024 - 22:39:56]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:39:56]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:39:56]: GET - http://localhost:3110/api/get/statistics
+[Dmitriy] [14.05.2024 - 22:39:57]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:57]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:39:57]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:57]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:39:58]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:58]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:39:58]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:39:58]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:39:58]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:39:58]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:41:01]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:41:01]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:41:01]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:41:01]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:41:01]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:41:01]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:41:21]: POST - http://localhost:3110/api/addEduction
+[Dmitriy] [14.05.2024 - 22:41:22]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:41:22]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:41:22]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:41:22]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:41:22]: GET - http://localhost:3110/api/eduction-table/41
+[Dmitriy] [14.05.2024 - 22:41:22]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:41:22]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:41:26]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:41:27]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:41:27]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:41:27]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:41:27]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:41:27]: GET - http://localhost:3110/api/eduction-table/41
+[Dmitriy] [14.05.2024 - 22:41:27]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:41:27]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:41:29]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:41:29]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:41:29]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:41:29]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:41:29]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:41:29]: GET - http://localhost:3110/api/eduction-table/41
+[Dmitriy] [14.05.2024 - 22:41:29]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:41:29]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:41:31]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:41:31]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:41:31]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:41:31]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:41:31]: GET - http://localhost:3110/api/get/statistics
+[Dmitriy] [14.05.2024 - 22:41:31]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:41:31]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:41:31]: GET - http://localhost:3110/api/get/statistics
+[Dmitriy] [14.05.2024 - 22:41:32]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:41:32]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:41:32]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:41:32]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:41:33]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:41:33]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:41:33]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:41:33]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:41:33]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:41:33]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:41:35]: POST - http://localhost:3110/api/addEduction
+[Dmitriy] [14.05.2024 - 22:41:35]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:41:35]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:41:35]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:41:35]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:41:35]: GET - http://localhost:3110/api/eduction-table/42
+[Dmitriy] [14.05.2024 - 22:41:35]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:41:35]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:44:29]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:44:29]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:44:29]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:44:29]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:44:29]: GET - http://localhost:3110/api/eduction-table/42
+[Dmitriy] [14.05.2024 - 22:44:29]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:44:29]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:44:30]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:44:30]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:44:30]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:44:30]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:44:31]: GET - http://localhost:3110/api/get/statistics
+[Dmitriy] [14.05.2024 - 22:44:31]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:44:31]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:44:31]: GET - http://localhost:3110/api/get/statistics
+[Dmitriy] [14.05.2024 - 22:44:31]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:44:32]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:44:32]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:44:32]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:44:33]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:44:33]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:44:33]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:44:33]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:44:33]: GET - http://localhost:3110/api/eduction-table/9
+[Dmitriy] [14.05.2024 - 22:44:33]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:44:33]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:44:35]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:44:35]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:44:35]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:44:35]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:44:35]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:44:35]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:44:36]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:44:36]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:44:36]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:44:36]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:44:36]: GET - http://localhost:3110/api/eduction-table/42
+[Dmitriy] [14.05.2024 - 22:44:36]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:44:36]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:44:52]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:44:52]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:44:52]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:44:52]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:44:52]: GET - http://localhost:3110/api/eduction-table/42
+[Dmitriy] [14.05.2024 - 22:44:52]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:44:52]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:44:59]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:44:59]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:44:59]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:44:59]: GET - http://localhost:3110/api/eduction-table/42
+[Dmitriy] [14.05.2024 - 22:44:59]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:44:59]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:44:59]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:45:51]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:45:51]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:45:51]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:45:51]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:45:51]: GET - http://localhost:3110/api/eduction-table/42
+[Dmitriy] [14.05.2024 - 22:45:51]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:45:51]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:46:10]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:46:10]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:46:10]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:46:10]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:46:10]: GET - http://localhost:3110/api/eduction-table/42
+[Dmitriy] [14.05.2024 - 22:46:10]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:46:10]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:46:17]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:46:17]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:46:17]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:46:17]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:46:17]: GET - http://localhost:3110/api/eduction-table/42
+[Dmitriy] [14.05.2024 - 22:46:17]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:46:17]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:47:17]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:47:17]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:47:17]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:47:17]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:47:17]: GET - http://localhost:3110/api/eduction-table/42
+[Dmitriy] [14.05.2024 - 22:47:17]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:47:17]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:47:27]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:47:27]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:47:27]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:47:27]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:47:27]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:47:27]: GET - http://localhost:3110/api/eduction-table/42
+[Dmitriy] [14.05.2024 - 22:47:27]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:47:28]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:48:00]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:48:00]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:48:00]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:48:00]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:48:00]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:48:00]: GET - http://localhost:3110/api/eduction-table/42
+[Dmitriy] [14.05.2024 - 22:48:00]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:48:00]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:48:41]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:48:41]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:48:41]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:48:41]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:48:41]: POST - http://localhost:3110/api/dataEduction
+[Dmitriy] [14.05.2024 - 22:48:41]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:48:55]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:48:55]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:48:55]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:48:55]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:48:55]: GET - http://localhost:3110/api/eduction-table/42
+[Dmitriy] [14.05.2024 - 22:48:55]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:48:55]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:53:19]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:53:19]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:53:19]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:53:19]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:53:19]: GET - http://localhost:3110/api/eduction-table/42
+[Dmitriy] [14.05.2024 - 22:53:19]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:53:19]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:54:42]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:54:46]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:54:46]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:54:46]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:54:46]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:54:46]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:54:46]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:54:46]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:54:51]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 22:54:51]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:54:51]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:54:51]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:54:51]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:54:51]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:54:51]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:54:51]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:54:55]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:59:53]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:59:53]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:59:53]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 22:59:54]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 22:59:54]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 22:59:54]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 22:59:54]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 23:06:41]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 23:09:51]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 23:09:52]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 23:09:53]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:09:53]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:09:53]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:09:53]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:09:53]: GET - http://localhost:3110/api/eduction-table/undefined
+[Dmitriy] [14.05.2024 - 23:09:53]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 23:09:53]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 23:10:00]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:10:01]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:10:01]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:10:01]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:10:19]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 23:10:22]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 23:10:23]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:10:23]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:10:23]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:10:23]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:10:23]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 23:10:23]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 23:10:23]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 23:10:26]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 23:10:54]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 23:11:05]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 23:11:06]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:11:06]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:11:06]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:11:06]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:11:06]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 23:11:06]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 23:11:06]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 23:11:34]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:11:34]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:11:34]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:11:34]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:11:34]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 23:11:34]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 23:11:34]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 23:13:44]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 23:13:45]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:13:45]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:13:45]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:13:45]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:13:45]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 23:13:45]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 23:13:45]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 23:13:46]: GET - http://localhost:3110/api/getExcelEduction/40
+[Dmitriy] [14.05.2024 - 23:13:46]: GET - http://localhost:3110/favicon.ico
+[Dmitriy] [14.05.2024 - 23:14:03]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:14:03]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:14:03]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:14:03]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:14:06]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 23:14:07]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:14:07]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:14:07]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:14:07]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:14:07]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 23:14:07]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 23:14:07]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 23:14:10]: POST - http://localhost:3110/api/updateEduction
+[Dmitriy] [14.05.2024 - 23:14:10]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:14:10]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:14:10]: POST - http://localhost:3110/api/checkAdmin
+[Dmitriy] [14.05.2024 - 23:14:10]: POST - http://localhost:3110/api/getUserInfo
+[Dmitriy] [14.05.2024 - 23:14:10]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 23:14:10]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 23:14:10]: GET - http://localhost:3110/api/testServerApi
+[Dmitriy] [14.05.2024 - 23:14:11]: GET - http://localhost:3110/api/getExcelEduction/40
+[Dmitriy] [14.05.2024 - 23:14:11]: GET - http://localhost:3110/api/eduction-table/40
+[Dmitriy] [14.05.2024 - 23:15:26]: GET - http://localhost:3110/api/getExcelEduction/40
+[Dmitriy] [14.05.2024 - 23:15:26]: GET - http://localhost:3110/api/eduction-table/40
+[M]:  [Dmitriy] [14.05.2024 - 23:23:06]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:23:06]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:23:07]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:23:07]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:23:21]: POST - http://localhost:3110/api/sendRestoreMail
+[M]:  [Dmitriy] [14.05.2024 - 23:23:26]: POST - http://localhost:3110/api/checkCode
+[M]:  [Dmitriy] [14.05.2024 - 23:23:35]: POST - http://localhost:3110/api/restorePassword
+[M]:  [Dmitriy] [14.05.2024 - 23:23:37]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:23:37]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:24:09]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:24:09]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:24:16]: POST - http://localhost:3110/api/sendRestoreMail
+[M]:  [Dmitriy] [14.05.2024 - 23:24:21]: POST - http://localhost:3110/api/checkCode
+[M]:  [Dmitriy] [14.05.2024 - 23:24:32]: POST - http://localhost:3110/api/restorePassword
+[M]:  [Dmitriy] [14.05.2024 - 23:24:35]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:24:35]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:25:13]: GET - http://localhost:3110/api/getExcelEduction/40
+[M]:  [Dmitriy] [14.05.2024 - 23:25:13]: GET - http://localhost:3110/api/eduction-table/40
+[M]:  [Dmitriy] [14.05.2024 - 23:25:15]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:25:15]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:25:30]: POST - http://localhost:3110/api/login
+[M]:  [Dmitriy] [14.05.2024 - 23:25:34]: POST - http://localhost:3110/api/login
+[M]:  [Dmitriy] [14.05.2024 - 23:25:35]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:25:35]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:25:35]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:25:35]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:25:35]: GET - http://localhost:3110/api/get/statistics
+[M]:  [Dmitriy] [14.05.2024 - 23:25:35]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:25:35]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:25:35]: GET - http://localhost:3110/api/get/statistics
+[M]:  [Dmitriy] [14.05.2024 - 23:25:36]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:25:36]: POST - http://localhost:3110/api/dataEduction
+[M]:  [Dmitriy] [14.05.2024 - 23:25:36]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:25:36]: POST - http://localhost:3110/api/dataEduction
+[M]:  [Dmitriy] [14.05.2024 - 23:25:39]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:25:39]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:25:39]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:25:39]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:25:39]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:25:39]: GET - http://localhost:3110/api/eduction-table/1
+[M]:  [Dmitriy] [14.05.2024 - 23:25:39]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:25:40]: GET - http://localhost:3110/api/getExcelEduction/1
+[M]:  [Dmitriy] [14.05.2024 - 23:25:40]: GET - http://localhost:3110/api/eduction-table/1
+[M]:  [Dmitriy] [14.05.2024 - 23:25:47]: POST - http://localhost:3110/api/updateEduction
+[M]:  [Dmitriy] [14.05.2024 - 23:25:48]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:25:48]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:25:48]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:25:48]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:25:48]: GET - http://localhost:3110/api/eduction-table/1
+[M]:  [Dmitriy] [14.05.2024 - 23:25:48]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:25:48]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:25:49]: GET - http://localhost:3110/api/getExcelEduction/1
+[M]:  [Dmitriy] [14.05.2024 - 23:25:49]: GET - http://localhost:3110/api/eduction-table/1
+[M]:  [Dmitriy] [14.05.2024 - 23:25:55]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:25:55]: POST - http://localhost:3110/api/dataEduction
+[M]:  [Dmitriy] [14.05.2024 - 23:25:55]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:25:55]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:25:55]: POST - http://localhost:3110/api/dataEduction
+[M]:  [Dmitriy] [14.05.2024 - 23:25:55]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:25:57]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:25:57]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:25:57]: GET - http://localhost:3110/api/get/statistics
+[M]:  [Dmitriy] [14.05.2024 - 23:25:57]: GET - http://localhost:3110/api/get/statistics
+[M]:  [Dmitriy] [14.05.2024 - 23:25:58]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:25:58]: POST - http://localhost:3110/api/dataExpEmployee
+[M]:  [Dmitriy] [14.05.2024 - 23:25:58]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:25:58]: POST - http://localhost:3110/api/dataExpEmployee
+[M]:  [Dmitriy] [14.05.2024 - 23:25:59]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:25:59]: POST - http://localhost:3110/api/dataExpEmployee
+[M]:  [Dmitriy] [14.05.2024 - 23:25:59]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:25:59]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:25:59]: GET - http://localhost:3110/api/dataExpEmployee/13
+[M]:  [Dmitriy] [14.05.2024 - 23:25:59]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:25:59]: POST - http://localhost:3110/api/dataExpEmployee
+[M]:  [Dmitriy] [14.05.2024 - 23:25:59]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:25:59]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:26:00]: GET - http://localhost:3110/api/getExcelExperience/13
+[M]:  [Dmitriy] [14.05.2024 - 23:26:00]: GET - http://localhost:3110/api/dataExpEmployee/13
+[M]:  [Dmitriy] [14.05.2024 - 23:28:04]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:28:04]: POST - http://localhost:3110/api/dataExpEmployee
+[M]:  [Dmitriy] [14.05.2024 - 23:28:04]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:28:04]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:28:04]: POST - http://localhost:3110/api/dataExpEmployee
+[M]:  [Dmitriy] [14.05.2024 - 23:28:04]: GET - http://localhost:3110/api/dataExpEmployee/13
+[M]:  [Dmitriy] [14.05.2024 - 23:28:04]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:28:04]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:28:04]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:28:12]: POST - http://localhost:3110/api/updateWorkExperienceBody
+[M]:  [Dmitriy] [14.05.2024 - 23:28:13]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:28:13]: POST - http://localhost:3110/api/dataExpEmployee
+[M]:  [Dmitriy] [14.05.2024 - 23:28:13]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:28:13]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:28:13]: POST - http://localhost:3110/api/dataExpEmployee
+[M]:  [Dmitriy] [14.05.2024 - 23:28:13]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:28:13]: GET - http://localhost:3110/api/dataExpEmployee/13
+[M]:  [Dmitriy] [14.05.2024 - 23:28:13]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:28:13]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:28:14]: GET - http://localhost:3110/api/getExcelExperience/13
+[M]:  [Dmitriy] [14.05.2024 - 23:28:14]: GET - http://localhost:3110/api/dataExpEmployee/13
+[M]:  [Dmitriy] [14.05.2024 - 23:28:19]: POST - http://localhost:3110/api/updateWorkExperienceBody
+[M]:  [Dmitriy] [14.05.2024 - 23:28:20]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:28:20]: POST - http://localhost:3110/api/dataExpEmployee
+[M]:  [Dmitriy] [14.05.2024 - 23:28:20]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:28:20]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:28:20]: POST - http://localhost:3110/api/dataExpEmployee
+[M]:  [Dmitriy] [14.05.2024 - 23:28:20]: GET - http://localhost:3110/api/dataExpEmployee/13
+[M]:  [Dmitriy] [14.05.2024 - 23:28:20]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:28:20]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:28:20]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:28:21]: GET - http://localhost:3110/api/getExcelExperience/13
+[M]:  [Dmitriy] [14.05.2024 - 23:28:21]: GET - http://localhost:3110/api/dataExpEmployee/13
+[M]:  [Dmitriy] [14.05.2024 - 23:29:06]: POST - http://localhost:3110/api/updateWorkExperienceBody
+[M]:  [Dmitriy] [14.05.2024 - 23:29:06]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:06]: POST - http://localhost:3110/api/dataExpEmployee
+[M]:  [Dmitriy] [14.05.2024 - 23:29:06]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:29:06]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:06]: GET - http://localhost:3110/api/dataExpEmployee/13
+[M]:  [Dmitriy] [14.05.2024 - 23:29:06]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:29:06]: POST - http://localhost:3110/api/dataExpEmployee
+[M]:  [Dmitriy] [14.05.2024 - 23:29:06]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:29:06]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:29:07]: GET - http://localhost:3110/api/getExcelExperience/13
+[M]:  [Dmitriy] [14.05.2024 - 23:29:07]: GET - http://localhost:3110/api/dataExpEmployee/13
+[M]:  [Dmitriy] [14.05.2024 - 23:29:21]: GET - http://localhost:3110/api/getExcelExperience/13
+[M]:  [Dmitriy] [14.05.2024 - 23:29:21]: GET - http://localhost:3110/api/dataExpEmployee/13
+[M]:  [Dmitriy] [14.05.2024 - 23:29:27]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:27]: POST - http://localhost:3110/api/dataExpEmployee
+[M]:  [Dmitriy] [14.05.2024 - 23:29:27]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:29:27]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:27]: POST - http://localhost:3110/api/dataExpEmployee
+[M]:  [Dmitriy] [14.05.2024 - 23:29:27]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:29:32]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:32]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:32]: GET - http://localhost:3110/api/get/statistics
+[M]:  [Dmitriy] [14.05.2024 - 23:29:32]: GET - http://localhost:3110/api/get/statistics
+[M]:  [Dmitriy] [14.05.2024 - 23:29:34]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:34]: POST - http://localhost:3110/api/dataExpEmployee
+[M]:  [Dmitriy] [14.05.2024 - 23:29:34]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:34]: POST - http://localhost:3110/api/dataExpEmployee
+[M]:  [Dmitriy] [14.05.2024 - 23:29:34]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:35]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:35]: GET - http://localhost:3110/api/get/statistics
+[M]:  [Dmitriy] [14.05.2024 - 23:29:35]: GET - http://localhost:3110/api/get/statistics
+[M]:  [Dmitriy] [14.05.2024 - 23:29:35]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:35]: POST - http://localhost:3110/api/dataEduction
+[M]:  [Dmitriy] [14.05.2024 - 23:29:35]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:36]: POST - http://localhost:3110/api/dataEduction
+[M]:  [Dmitriy] [14.05.2024 - 23:29:37]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:37]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:29:37]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:37]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:29:37]: GET - http://localhost:3110/api/eduction-table/1
+[M]:  [Dmitriy] [14.05.2024 - 23:29:37]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:29:37]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:29:40]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:40]: POST - http://localhost:3110/api/dataEduction
+[M]:  [Dmitriy] [14.05.2024 - 23:29:40]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:29:40]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:40]: POST - http://localhost:3110/api/dataEduction
+[M]:  [Dmitriy] [14.05.2024 - 23:29:40]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:29:41]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:41]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:29:41]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:41]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:29:41]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:29:42]: GET - http://localhost:3110/api/eduction-table/42
+[M]:  [Dmitriy] [14.05.2024 - 23:29:42]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:29:43]: GET - http://localhost:3110/api/getExcelEduction/42
+[M]:  [Dmitriy] [14.05.2024 - 23:29:43]: GET - http://localhost:3110/api/eduction-table/42
+[M]:  [Dmitriy] [14.05.2024 - 23:29:48]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:48]: POST - http://localhost:3110/api/dataEduction
+[M]:  [Dmitriy] [14.05.2024 - 23:29:48]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:48]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:29:48]: POST - http://localhost:3110/api/dataEduction
+[M]:  [Dmitriy] [14.05.2024 - 23:29:48]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:29:52]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:52]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:52]: GET - http://localhost:3110/api/get/statistics
+[M]:  [Dmitriy] [14.05.2024 - 23:29:52]: GET - http://localhost:3110/api/get/statistics
+[M]:  [Dmitriy] [14.05.2024 - 23:29:53]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:53]: POST - http://localhost:3110/api/dataInvalids
+[M]:  [Dmitriy] [14.05.2024 - 23:29:53]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:53]: POST - http://localhost:3110/api/dataInvalids
+[M]:  [Dmitriy] [14.05.2024 - 23:29:54]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:54]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:29:54]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:29:54]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:29:54]: GET - http://localhost:3110/api/invalids-table/20
+[M]:  [Dmitriy] [14.05.2024 - 23:29:54]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:29:54]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:30:01]: POST - http://localhost:3110/api/updateInvalids
+[M]:  [Dmitriy] [14.05.2024 - 23:30:02]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:30:02]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:30:02]: POST - http://localhost:3110/api/checkAdmin
+[M]:  [Dmitriy] [14.05.2024 - 23:30:02]: POST - http://localhost:3110/api/getUserInfo
+[M]:  [Dmitriy] [14.05.2024 - 23:30:02]: GET - http://localhost:3110/api/invalids-table/20
+[M]:  [Dmitriy] [14.05.2024 - 23:30:02]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:30:02]: GET - http://localhost:3110/api/testServerApi
+[M]:  [Dmitriy] [14.05.2024 - 23:30:02]: GET - http://localhost:3110/api/getExcelInvalids/20
+[M]:  [Dmitriy] [14.05.2024 - 23:30:02]: GET - http://localhost:3110/api/invalids-table/20

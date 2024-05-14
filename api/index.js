@@ -9,7 +9,7 @@ const crypto = require('crypto');
 var cors = require("cors");
 const os = require('os');
 const { sendMail, checkWork } = require('./sender');
-const { getExcelExperience, getExcelInvalids, checkWorkExcel } = require('./excel');
+const { getExcelExperience, getExcelInvalids, getExcelEduction, checkWorkExcel } = require('./excel');
 const multer  = require('multer');
 const { exec } = require('child_process');
 
@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 function generateRandomString(length) {
-  const symbols = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const symbols = 'ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789';
   let randomString = '';
 
   for (let i = 0; i < length; i++) {
@@ -214,7 +214,7 @@ function hashPassword(password) {
       const username = os.userInfo().username ? `[${os.userInfo().username}] ` : ''; 
 
       const logMessage = `${username}[${currentDate} - ${currentTime}]: ${message} ${add}\n`;
-      console.log(`${username}[${currentDate}- ${currentTime}]: ${message} ${add}\n`);
+      console.log(`[M]:  ${username}[${currentDate}- ${currentTime}]: ${message} ${add}\n`);
       fs.appendFileSync(logFilePath, logMessage);
     }
     const cslog = (req, res, next) => {
@@ -228,11 +228,11 @@ function hashPassword(password) {
         const logData = fs.readFileSync(logFilePath, 'utf8');
       } catch (error) {
         fs.writeFileSync(logFilePath, '');
-        console.log(`Файл журнала действий (${logFilePath}) не был найден, создан новый.`);
+        console.log(`[M]: Файл журнала действий (${logFilePath}) не был найден, создан новый.`);
       }
 
-     const logMessage = `${username}[${currentDate} - ${currentTime}]: ${method} - ${req.protocol}://${req.hostname}:${port}${route}\n`;
-      console.log(`${username}[${currentDate}- ${currentTime}]: ${method} - ${req.protocol}://${req.hostname}:${port}${route}`);
+     const logMessage = `[M]:  ${username}[${currentDate} - ${currentTime}]: ${method} - ${req.protocol}://${req.hostname}:${port}${route}\n`;
+      console.log(`[M]:  ${username}[${currentDate}- ${currentTime}]: ${method} - ${req.protocol}://${req.hostname}:${port}${route}`);
       fs.appendFileSync(logFilePath, logMessage);
     
       next();
@@ -250,14 +250,14 @@ function hashPassword(password) {
 
   app.get('/generateExcel/:id_doc', (req, res) => {
     const id_doc = req.params.id_doc;
-    console.log(`Получен запрос для id: ${id_doc}`);
+    console.log(`[M]: Получен запрос для id: ${id_doc}`);
     connection.query('SELECT * FROM employee_work_exp WHERE id = ?', [id_doc], (error, expResults, fields) => {
       if (error) {
         console.error('Ошибка выполнения запроса к employee_work_exp:', error);
         res.status(500).send('Ошибка выполнения запроса к employee_work_exp');
         return;
       }
-      console.log('Результаты запроса к employee_work_exp:', expResults);
+      console.log('[M]: Результаты запроса к employee_work_exp:', expResults);
       
       connection.query('SELECT * FROM employee_work_exp_body WHERE id_doc = ?', [id_doc], (error, bodyResults, fields) => {
         if (error) {
@@ -265,7 +265,7 @@ function hashPassword(password) {
           res.status(500).send('Ошибка выполнения запроса к employee_work_exp_body');
           return;
         }
-        console.log('Результаты запроса к employee_work_exp_body:', bodyResults);
+        console.log('[M]: Результаты запроса к employee_work_exp_body:', bodyResults);
         
         const sourceFileName = 'exp_template.xlsx';
         const intermediateFileName = 'exp_template_temp.xlsx';
@@ -277,7 +277,7 @@ function hashPassword(password) {
             res.status(500).send(`Ошибка копирования файла ${sourceFileName}`);
             return;
           }
-          console.log(`Файл ${sourceFileName} успешно скопирован как ${intermediateFileName}`);
+          console.log(`[M]: Файл ${sourceFileName} успешно скопирован как ${intermediateFileName}`);
   
           XlsxPopulate.fromFileAsync(intermediateFileName)
           .then(workbook => {
@@ -291,21 +291,21 @@ function hashPassword(password) {
               return workbook.toFileAsync(resultFileName);
             })
             .then(() => {
-              console.log(`Результат сохранен в файл ${resultFileName}`);
+              console.log(`[M]: Результат сохранен в файл ${resultFileName}`);
               fs.unlink(intermediateFileName, (err) => {
                 if (err) {
                   console.error(`Ошибка удаления промежуточного файла ${intermediateFileName}:`, err);
                   res.status(500).send(`Ошибка удаления промежуточного файла ${intermediateFileName}`);
                   return;
                 }
-                console.log(`Промежуточный файл ${intermediateFileName} удален`);
+                console.log(`[M]: Промежуточный файл ${intermediateFileName} удален`);
                 res.download(resultFileName, (err) => {
                   if (err) {
                     console.error(`Ошибка отправки файла ${resultFileName}:`, err);
                     res.status(500).send(`Ошибка отправки файла ${resultFileName}`);
                     return;
                   }
-                  console.log(`Файл ${resultFileName} успешно отправлен`);
+                  console.log(`[M]: Файл ${resultFileName} успешно отправлен`);
                 });
               });
             })
@@ -341,7 +341,7 @@ app.post('/api/updateWebsiteConfig', (req, res) => {
 
 app.get('/api/getUserInfo/:uid', (req, res) => {
  	 const userid = req.params.uid;
- 	 console.log(`GET INFO ID: ${userid}`);
+ 	 console.log(`[M]: GET INFO ID: ${userid}`);
 	 const query = 'SELECT * FROM users WHERE id = ?';
 	 connection.query(query, [userid], (err, results) => {
 	    if (err) throw err;
@@ -464,7 +464,7 @@ app.post('/api/getUserInfo', (req, res) => {
   }
   catch
   {
-    console.log(`заглушка, а вообще то тут критическая ошибка, было бы круто её пофиксить`)
+    console.log(`[M]: заглушка, а вообще то тут критическая ошибка, было бы круто её пофиксить`)
   }
 });
 
@@ -899,7 +899,7 @@ connection.query(updateQuery, [timeLastEdit, id_doc], (err, result) => {
 
 app.post('/api/checkAdmin', (req, res) => {
   const { authkey } = req.body;
-  console.log('was checked')
+  console.log('[M]: was checked')
   const query = `
     SELECT admin_lvl FROM users WHERE authkey = ?;
   `;
@@ -2027,7 +2027,7 @@ app.post('/api/checkCodeVerify', async (req, res) => {
         return res.status(500).json({ success: false, message: 'Ошибка при добавлении данных в базу данных' });
       }
       usersWaitVerifyData.splice(user, 1);
-      console.log('Данные успешно добавлены в базу данных');
+      console.log('[M]: Данные успешно добавлены в базу данных');
       return res.json({ success: true, message: 'Найдено совпадение и данные успешно добавлены в базу данных' });
     });
   } else {
@@ -2048,7 +2048,7 @@ app.get('/api/getExcelExperience/:id_doc', async (req, res) => {
         console.error('Произошла ошибка при отправке файла:', err);
         res.status(500).send('Произошла ошибка при отправке файла');
       } else {
-        console.log('Файл успешно отправлен клиенту');
+        console.log('[M]: Файл успешно отправлен клиенту');
       }
     });
   } catch (error) {
@@ -2067,6 +2067,27 @@ app.get('/api/getExcelInvalids/:id_doc', async (req, res) => {
     const filePath = await getExcelInvalids(id_doc);
 
     res.download(filePath, 'invalids.xlsx', (err) => {
+      if (err) {
+        console.error('Произошла ошибка при отправке файла:', err);
+        res.status(500).send('Произошла ошибка при отправке файла');
+      } else {
+        console.log('[T]: Файл успешно отправлен клиенту');
+      }
+    });
+  } catch (error) {
+    console.error('Произошла ошибка:', error);
+    res.status(500).send('Произошла ошибка при генерации файла');
+  }
+});
+
+
+app.get('/api/getExcelEduction/:id_doc', async (req, res) => {
+  const id_doc = req.params.id_doc;
+
+  try {
+    const filePath = await getExcelEduction(id_doc);
+
+    res.download(filePath, 'eduction.xlsx', (err) => {
       if (err) {
         console.error('Произошла ошибка при отправке файла:', err);
         res.status(500).send('Произошла ошибка при отправке файла');
@@ -2144,7 +2165,7 @@ async function delayCsMsg(message, delay) {
     const timeString = currentTime.toLocaleTimeString('ru-RU', {hour12: false});
     setTimeout(() => {
       beep(1, 250); 
-      console.log(`[${timeString}] ${message}`);
+      console.log(`[M]: [${timeString}] ${message}`);
       resolve();
     }, delay);
   });
