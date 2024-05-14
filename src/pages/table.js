@@ -52,7 +52,7 @@ const DynamicTable = () => {
                 col8: allExpObject.col8 || 0,
                 col9: allExpObject.col9 || 0,
                 col10: allExpObject.col10 || 0,
-                col11: ((teachExpObject.col12 || 0) + (teachExpObject.col12 || 0) + (teachExpObject.col13 || 0) + (teachExpObject.col14 || 0) + (teachExpObject.col15 || 0) + (teachExpObject.col16 || 0) + (teachExpObject.col17 || 0)) ||  0,
+                col11: ((teachExpObject.col12 || 0) + (teachExpObject.col13 || 0) + (teachExpObject.col14 || 0) + (teachExpObject.col15 || 0) + (teachExpObject.col16 || 0) + (teachExpObject.col17 || 0)) ||  0,
                 col12: teachExpObject.col12 || 0,
                 col13: teachExpObject.col13 || 0,
                 col14: teachExpObject.col14 || 0,
@@ -169,17 +169,15 @@ const DynamicTable = () => {
       if (colName === 'col5' || colName === 'col6' || colName === 'col7' || colName === 'col8' || colName === 'col9' || colName === 'col10') {
         newData[rowIndex].col4 = parseInt(newData[rowIndex].col5) + parseInt(newData[rowIndex].col6) + parseInt(newData[rowIndex].col7) + parseInt(newData[rowIndex].col8) + parseInt(newData[rowIndex].col9) + parseInt(newData[rowIndex].col10);
       } else if (colName === 'col12' || colName === 'col13' || colName === 'col14' || colName === 'col15' || colName === 'col16' || colName === 'col17') {
-        newData[rowIndex].col11 = parseInt(newData[rowIndex].col13) + parseInt(newData[rowIndex].col14) + parseInt(newData[rowIndex].col15) + parseInt(newData[rowIndex].col16) + parseInt(newData[rowIndex].col17) + parseInt(newData[rowIndex].col12);
+        newData[rowIndex].col11 = parseInt(newData[rowIndex].col12 + parseInt(newData[rowIndex].col13) + parseInt(newData[rowIndex].col14) + parseInt(newData[rowIndex].col15) + parseInt(newData[rowIndex].col16) + parseInt(newData[rowIndex].col17) );
       }
       return newData;
     });
   };
 
   const exportToExcel = () => {
-    const ws = XLSX.utils.table_to_sheet(document.getElementById('experinceTable'));
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-    XLSX.writeFile(wb, 'Персонал2.xls');
+    const url = `${url_api}/api/getExcelExperience/${id_doc}`;
+    window.location.href = url;
   };
 
 

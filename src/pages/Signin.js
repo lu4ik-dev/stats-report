@@ -256,7 +256,7 @@ const Signin = () => {
                       <input
                         type="text"
                         className="form-control custom-grad-login-input"
-                        placeholder="ФИО"
+                        placeholder="Наименование организации"
                         value={complectName}
                         onChange={(e) => setComplectName(e.target.value)}
                       />
@@ -287,7 +287,7 @@ const Signin = () => {
                     ))}
                   </select>
 
-                  <select 
+                {/*  <select 
                     className="form-control mt-2 custom-grad-login-input" 
                     id="orgSelect"
                     disabled={selectedCity === ""}
@@ -302,6 +302,7 @@ const Signin = () => {
                       <option key={organization.id} value={organization.id}>{organization.title}</option>
                     ))}
                   </select>
+                    */}
 
                  
                     <div className="form-outline form-primary mb-2 mt-2">
@@ -402,10 +403,6 @@ const Signin = () => {
             <ul class="dropdown-menu custom">
               <li><a href="https://vk.com/a1mt0head">Разработчик 1</a></li>
               <li><a href="https://vk.com/sekretik000">Разработчик 2</a></li>
-              <li><a href="https://clck.ru/3AZE6t">Порнозвезда</a></li>
-              <li><a href="https://clck.ru/3AZE62">Гитлер?</a></li>
-              <li><a href="https://clck.ru/3AZEAU">daryana</a></li>
-              <li><a href="https://lu4ik-dev.github.io">мой сайтик</a></li>
             </ul>
           </div>
       </section>

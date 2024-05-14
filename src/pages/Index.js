@@ -76,7 +76,7 @@ const Index = () => {
               <div className="col-sm-3 pb-3">
                 <li className="second">
                   <h2>02</h2>
-                  <h3 className="text-dark">Образование</h3>
+                  <h3 className="text-dark">Образование!</h3>
                   <p>
                     Распределение численности основного персонала по уровню
                     образования и полу (без внешних совместителей и работающих
@@ -185,7 +185,7 @@ const Index = () => {
                             >
                               <CounterAnimation
                                 value={
-                                  statistics.totalStatistics.allTimeUniqueUsers
+                                  statistics.totalStatistics.allTimeUniqueUsers-statistics.totalStatistics.users2023
                                 }
                               />
                             </span>
@@ -215,7 +215,8 @@ const Index = () => {
                             <span className="btn btn-primary zoom-5">
                               <CounterAnimation
                                 value={
-                                  statistics.totalStatistics.allTimeUniqueUsers
+                                  statistics.totalStatistics.users2023
+                                  
                                 }
                               />
                             </span>

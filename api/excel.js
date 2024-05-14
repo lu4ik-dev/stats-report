@@ -1,48 +1,78 @@
 const fs = require('fs');
 const XlsxPopulate = require('xlsx-populate');
+const fetch = require('node-fetch');
+const path = require('path'); // Добавлен модуль path для работы с путями
 
 
-a = 1;
-switch (a) {
-  case 1:
-    const sourceFileName = 'exp_template.xlsx';
-    const intermediateFileName = 'exp_template_temp.xlsx';
-    const resultFileName = `res_${Date.now()}.xlsx`;
-    fs.copyFile(sourceFileName, intermediateFileName, (err) => {
-      if (err) {
-        console.error(`Ошибка копирования файла ${sourceFileName}:`, err);
-        return;
-      }
-      console.log(`Файл ${sourceFileName} успешно скопирован как ${intermediateFileName}`);
-      XlsxPopulate.fromFileAsync(intermediateFileName)
-        .then(workbook => {
-          const sheet = workbook.sheet(0);
-          for (let i = 8; i <= 29; i++) {
-            sheet.cell(`A${i}`).value('ГАПОУ "БНК"');
-          }
-          for (let row = 8; row <= 29; row++) {
-            for (let col = 4; col <= 18; col++) {
-              sheet.cell(row, col).value(Math.floor(Math.random() * 21));
-            }
-          }
-          return workbook.toFileAsync(resultFileName);
-        })
-        .then(() => {
-          console.log(`Результат сохранен в файл ${resultFileName}`);
-          fs.unlink(intermediateFileName, (err) => {
-            if (err) {
-              console.error(`Ошибка удаления промежуточного файла ${intermediateFileName}:`, err);
-              return;
-            }
-            console.log(`Промежуточный файл ${intermediateFileName} удален`);
-          });
-        })
-        .catch((error) => {
-          console.error('Произошла ошибка:', error);
-        });
+async function getExcelExperience(id_doc, sourceFileName='exp_template.xlsx', intermediateFileName='exp_template_temp.xlsx') {
+  try {
+    await fs.promises.copyFile(sourceFileName, intermediateFileName);
+
+    console.log(`[T]: Файл ${sourceFileName} успешно скопирован как ${intermediateFileName}`);
+
+    const response = await fetch(`http://localhost:3110/api/dataExpEmployee/${id_doc}`);
+    const data = await response.json();
+
+    const workbook = await XlsxPopulate.fromFileAsync(intermediateFileName);
+    const sheet = workbook.sheet(0);
+
+    // Fill 'complectName' in column A for each row
+
+
+    // Fill 'name_of_indicators' in the second column
+    data.table.forEach((item, index) => {
+      sheet.cell(8+index,1).value(data.complectName);
+
+      sheet.cell(8 + index, 2).value(item.name_of_indicators);
+      sheet.cell(8 + index, 3).value(index+1);
     });
-    break;
 
-  default:
-    break;
+    // Fill 'all_exp'
+    data.table.forEach((item, index) => {
+      const allExp = JSON.parse(item.all_exp);
+      Object.keys(allExp).forEach(key => {
+        sheet.cell(8 + index, parseInt(key.substring(3)) + 0).value(allExp[key]);
+      });
+    });
+
+    // Fill 'teach_exp'
+    data.table.forEach((item, index) => {
+      const teachExp = JSON.parse(item.teach_exp);
+      Object.keys(teachExp).forEach(key => {
+        sheet.cell(8 + index, parseInt(key.substring(3)) + 0).value(teachExp[key]);
+      });
+    });
+
+    // Fill 'not_exp'
+    data.table.forEach((item, index) => {
+      sheet.cell(8 + index, 17).value(item.not_exp);
+    });
+
+    const outputFileName = `experience_${Date.now()}.xlsx`; // Генерация имени файла
+    const outputPath = path.join(__dirname, outputFileName); // Формирование пути к файлу
+
+    await workbook.toFileAsync(outputPath); // Сохранение файла по сформированному пути
+    console.log(`[T]: Результат сохранен в файл ${outputPath}`);
+
+    await fs.promises.unlink(intermediateFileName);
+    console.log(`[T]: Промежуточный файл ${intermediateFileName} удален`);
+    
+    return outputPath; // Возврат полного пути к файлу
+  } catch (error) {
+    console.error('[T]: Произошла ошибка:', error);
+  }
 }
+
+// Пример вызова функции
+
+
+
+function checkWorkExcel(message) {
+  console.log(message);
+}
+
+
+module.exports = {
+  getExcelExperience,
+  checkWorkExcel
+};

@@ -9,6 +9,7 @@ const crypto = require('crypto');
 var cors = require("cors");
 const os = require('os');
 const { sendMail, checkWork } = require('./sender');
+const { getExcelExperience, checkWorkExcel } = require('./excel');
 const multer  = require('multer');
 const { exec } = require('child_process');
 
@@ -65,6 +66,7 @@ try {
   fs.writeFileSync(configPath, JSON.stringify(configData, null, 2));
   console.log(`[CFG]: Конфигурационный файл (${configPath}) не был найден, создана копия, записаны стандартные значения переменных.`);
 }
+
 
 
 const usersRestorePwdPath = 'users-restore-pwd.json';
@@ -185,6 +187,15 @@ try{
 catch (error){
   console.error('[S]: Ошибка при подключении второго модуля (sender.js): '. error);
 }
+
+try{
+  checkWorkExcel('[T]: Третий модуль (excel.js) был успешно подключен..');
+
+}
+catch (error){
+  console.error('[T]: Ошибка при подключении третьего модуля (excel.js): '. error);
+}
+
 
 function hashPassword(password) {
     const hash = crypto.createHash('sha256');
@@ -1096,42 +1107,23 @@ app.post('/api/updateInvalids', (req, res) => {
 
 
 
-app.post('/api/users', (req, res) => {
-  const authkey = req.body.authkey;
-
-  // Проверка аутентификации пользователя
-  const authCheckQuery = 'SELECT admin_lvl FROM users WHERE authkey = ?';
-
-  connection.query(authCheckQuery, [authkey], (authErr, authResult) => {
-    if (authErr) {
-      console.error('Ошибка выполнения запроса:', authErr);
-      res.status(500).json({ error: 'Ошибка сервера' });
-    } else {
-      const adminLvl = authResult[0]?.admin_lvl || 0;
-
-      let query = '';
-      if (adminLvl > 0) {
-        query = `
-          SELECT users.id, users.dateCreate, users.banned, users.userName
-          FROM users
+app.get('/api/users', (req, res) => {
+  
+    const query = `
+        SELECT u.id, u.dateCreate, u.login, u.complectName, u.id_city, c.text AS city_text, r.text AS region_text
+        FROM users AS u
+        JOIN cities AS c ON u.id_city = c.id
+        JOIN regions AS r ON c.id_region = r.id;
         `;
-      } else {
-        query = `
-          SELECT users.id, users.dateCreate, users.banned, users.complectName
-          FROM users
-          WHERE users.authkey = ?
-        `;
-      }
+    
 
-      connection.query(query, [authkey], (err, result) => {
+      connection.query(query, (err, result) => {
         if (err) {
           console.error('Ошибка выполнения запроса:', err);
           res.status(500).json({ error: 'Ошибка сервера' });
         } else {
           res.json(result);
         }
-      });
-    }
   });
 });
 
@@ -1239,6 +1231,24 @@ app.post('/api/del/settings/regions/:id', (req, res) => {
     }
   });
 });
+
+
+app.post('/api/del/settings/users/:id', (req, res) => {
+  const id = req.params.id;
+  const query = `
+    DELETE FROM users
+    WHERE id = ?
+  `;
+  connection.query(query, [id], (err, result) => {
+    if (err) {
+      console.error('Ошибка выполнения запроса:', err);
+      res.status(500).json({ error: 'Ошибка сервера' });
+    } else {
+      res.json({ success: true });
+    }
+  });
+});
+
 
 
 app.post('/api/add/settings/regions', (req, res) => {
@@ -1897,6 +1907,7 @@ app.get('/api/get/statistics', async (req, res) => {
   }
   try {
     const [
+      users,
       employeeWorkExpStats,
       enrollmentStats,
       invalidsStats,
@@ -1910,6 +1921,7 @@ app.get('/api/get/statistics', async (req, res) => {
       invalids2024Stats,
       obrazovanie2024Stats
     ] = await Promise.all([
+      query(connection, 'SELECT COUNT(DISTINCT id) as uniqueUsers, COUNT(*) as totalCount FROM users WHERE YEAR(dateCreate) = 2023'),
       query(connection, 'SELECT COUNT(DISTINCT id_user) as uniqueUsers, COUNT(*) as totalCount FROM employee_work_exp'),
       query(connection, 'SELECT COUNT(DISTINCT id_user) as uniqueUsers, COUNT(*) as totalCount FROM obrazovanie'),
       query(connection, 'SELECT COUNT(DISTINCT id_user) as uniqueUsers, COUNT(*) as totalCount FROM enrollment'),
@@ -1962,6 +1974,7 @@ app.get('/api/get/statistics', async (req, res) => {
       },
       // Добавляем итоговую статистику
       totalStatistics: {
+        users2023: users[0].totalCount,
         allTimeUniqueUsers,
         totalYear2023Count,
         totalYear2024Count,
@@ -2045,6 +2058,29 @@ app.post('/api/checkCodeVerify', async (req, res) => {
     return res.json({ success: false, message: 'Не найдено' });
   }
 });
+
+
+
+app.get('/api/getExcelExperience/:id_doc', async (req, res) => {
+  const id_doc = req.params.id_doc;
+
+  try {
+    const filePath = await getExcelExperience(id_doc);
+
+    res.download(filePath, 'experience.xlsx', (err) => {
+      if (err) {
+        console.error('Произошла ошибка при отправке файла:', err);
+        res.status(500).send('Произошла ошибка при отправке файла');
+      } else {
+        console.log('Файл успешно отправлен клиенту');
+      }
+    });
+  } catch (error) {
+    console.error('Произошла ошибка:', error);
+    res.status(500).send('Произошла ошибка при генерации файла');
+  }
+});
+
 
 
 

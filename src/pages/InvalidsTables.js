@@ -400,6 +400,27 @@ const InvalidsTables = () => {
         <button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
       	<button className='position-relative start-100 btn btn-sm btn-success zoom-5 rounded-pill' style={{'margin': '0px -3rem'}} onClick={() => handleSave(0)}><i className="fas fa-save"></i> </button>
   </div>
+  {id_doc !== "newDoc" && (
+        <div className="container">
+          <h4 className='text-center mt-5'>Общие сведения</h4>
+          <table className="table table-striped text-center">
+            <thead>
+              <tr>
+                <th>Автор</th>
+                <th>Дата создания</th>
+                <th>Время последнего редактирования:</th>
+              </tr>
+            </thead>
+            <tbody id="infoAboutDoc">
+              <tr>
+                <td>{author}</td>
+                <td>{formatDate(dateCreateDoc)}</td>
+                <td>{lastTimeEdit}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
     );
 };

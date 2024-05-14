@@ -11,10 +11,12 @@ const Experince = () => {
     const [data, setData] = useState([]);
     const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
     const authkey = JSON.parse(sessionStorage.getItem("userInfo")).authkey;
-
+    const [cities, setCities] = useState([]);
+    const [regions, setRegions] = useState([]); 
+    
     useEffect(() => {
         redirectToLogin();
-fetch(url_api+'/api/dataExpEmployee', {
+        fetch(url_api+'/api/dataExpEmployee', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
@@ -24,9 +26,24 @@ fetch(url_api+'/api/dataExpEmployee', {
               }),
         })
         .then(response => response.json())
-        .then(data => setData(data))
+        .then(data => {
+            setData(data);
+            const uniqueCities = [];
+            const uniqueRegions = [];
+            data.forEach(item => {
+                if (!uniqueCities.includes(item.city)) {
+                    uniqueCities.push(item.city);
+                }
+                if (!uniqueRegions.includes(item.region)) {
+                    uniqueRegions.push(item.region);
+                }
+            });
+            setCities(uniqueCities);
+            setRegions(uniqueRegions);
+        })
         .catch(error => showAlert(error.message));
-      }, []);
+    }, []);
+
     const queryParams = new URLSearchParams(window.location.search);
     const idDocParam = queryParams.get('id_doc');
 
@@ -50,10 +67,14 @@ fetch(url_api+'/api/dataExpEmployee', {
           });
       }
       
+    const [selectedRegion, setSelectedRegion] = useState('notSelected');
 
-    const handlerTest = () => {
-        showAlert('Кнопка для напоминания!!! Фильтры по городу / области / организации\nИ возможно сортировка');
+    const handleSearchChanged = (text) => {
+      setSelectedRegion(text)
     }
+
+
+
     return (        
     <div>
         <Header />
@@ -65,10 +86,19 @@ fetch(url_api+'/api/dataExpEmployee', {
             <div className="col-md-auto">
                 <h1>Документы</h1>
             </div>
-            <div className="col-md-auto mt-2">
-                <button className="btn btn-danger zoom-5 mx-3" onClick={handlerTest}>
-                    для администратора добавить фильтры по организации / области / городу*
-                </button>
+            <div className="col-md-auto mt-2 d-flex w-50">
+                  <select
+                    className="form-control form-login-input me-3"
+                    onChange={(e) => handleSearchChanged(e.target.value)}
+                    value={selectedRegion}
+                  >
+                    <option value="notSelected" selected>Выберите область</option>
+                    {regions.map((region, index) => (
+                      <option key={index} value={region}>{region}</option> // Используем индекс в качестве ключа, так как данные уникальны и не имеют идентификатора
+                    ))}
+                  </select>
+
+
                 <a href="experience?id_doc=newDoc" className="btn btn-primary zoom-5">
                     Добавить новый документ
                 </a>
@@ -81,21 +111,28 @@ fetch(url_api+'/api/dataExpEmployee', {
                 <th>ID</th>
                 <th>Наименование организации</th>
                 <th>Дата создания</th>
+                <th>Город</th>
                 <th>Действие</th>
                 </tr>
             </thead>
             <tbody id="organizationsTable">
                 {data.map((item) => (
-                    item.disabled === 1 ? '' : (
-                <tr className='zoom-5' key={item.id}>
-                    <td>{item.id}</td>
-                    <td>{item.userName}</td>
-                    <td>{formatDate(item.dateCreate)}</td>
-                    <td><a href={`/experience?id_doc=${item.id}`} className='btn btn-primary zoom-5'>Перейти</a><button className='btn btn-danger mx-1 zoom-5' onClick={() => handleDelete(item.id)}>Удалить</button></td>
-                </tr>
-                )
+                  item.disabled === 1 ? '' : (
+                    selectedRegion === 'notSelected' || item.region === selectedRegion ? ( // Проверка на выбранный регион
+                      <tr className='zoom-5' key={item.id}>
+                        <td>{item.id}</td>
+                        <td>{item.userName}</td>
+                        <td>{formatDate(item.dateCreate)}</td>
+                        <td>{item.city}</td>
+                        <td>
+                          <a href={`/experience?id_doc=${item.id}`} className='btn btn-primary zoom-5'>Перейти</a>
+                          <button className='btn btn-danger mx-1 zoom-5' onClick={() => handleDelete(item.id)}>Удалить</button>
+                        </td>
+                      </tr>
+                    ) : null
+                  )
                 ))}
-            </tbody>
+              </tbody>
             </table>
         </div>
       )}

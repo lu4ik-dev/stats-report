@@ -97,7 +97,7 @@ function Login() {
                       type="email"
                       id="typeEmail"
                       className="form-control custom-grad-login-input form-control-lg"
-                      placeholder="Логин"
+                      placeholder="Почта"
                       value={login}
                       onChange={(e) => setLogin(e.target.value)}
                     />
@@ -176,10 +176,6 @@ function Login() {
             <ul class="dropdown-menu custom">
               <li><a href="https://vk.com/a1mt0head">Разработчик 1</a></li>
               <li><a href="https://vk.com/sekretik000">Разработчик 2</a></li>
-              <li><a href="https://clck.ru/3AZE6t">Порнозвезда</a></li>
-              <li><a href="https://clck.ru/3AZE62">Гитлер?</a></li>
-              <li><a href="https://clck.ru/3AZEAU">daryana</a></li>
-              <li><a href="https://lu4ik-dev.github.io">мой сайтик</a></li>
             </ul>
           </div>
   </section>

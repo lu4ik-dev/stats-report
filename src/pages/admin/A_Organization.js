@@ -13,7 +13,7 @@ const A_Organization = () => {
     useEffect(() => {
         redirectToLogin();
         
-        fetch(url_api+'/api/get/organizations', {
+        fetch(url_api+'/api/users', {
             method: 'GET',
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
@@ -28,6 +28,26 @@ const A_Organization = () => {
     const queryParams = new URLSearchParams(window.location.search);
     const idDocParam = queryParams.get('id_doc');
     
+    const handleDelete = (id) => {
+        fetch(`${url_api}/api/del/settings/users/${id}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+          .then(response => {
+            if (response.ok) {
+              showAlert('Пользователь успешно удален');
+              setData(prevData => prevData.filter(item => item.id !== id));
+            } else {
+              console.error('Failed to delete work experience');
+            }
+          })
+          .catch(error => {
+            console.error('Error deleting work experience:', error);
+          });
+      }
+
     return (
         <div>
         <Header />
@@ -37,20 +57,15 @@ const A_Organization = () => {
                 <h1>Организации</h1>
             </div>
             <div className="col-md-auto mt-2">
-                <a href="#!" className="btn btn-primary zoom-5">
-                Добавить организацию
-                </a>
             </div>
 
             </div>
             <table className="table table-striped">
             <thead>
                 <tr>
-                <th>ID (отладка)</th>
+                <th>Почта</th>
                 <th>Наименование организации</th>
-                <th>ИНН</th>
-                <th>Адрес</th>
-                <th>Администратор</th>
+                <th>Область</th>
                 <th>Город</th>
                 <th>Действие</th>
                 </tr>
@@ -59,13 +74,14 @@ const A_Organization = () => {
             {data.map((item) => (
                     item.disabled === 1 ? '' : (
                     <tr className='zoom-5' key={item.id}>
-                        <td>{item.id}</td>
-                        <td>{item.title}</td>
-                        <td>{item.inn}</td>
-                        <td>{item.ur_address}</td>
-                        <td>{item.administrator_org}</td>
+                        <td>{item.login}</td>
+                        <td>{item.complectName}</td>
+                        <td>{item.region_text}</td>
+                        <td>{item.city_text}</td>
                         <td>{item.text}</td>
-                        <td><a className='btn btn-primary zoom-5'>Редактировать</a><button className='btn btn-danger mx-1 zoom-5'>Удалить</button></td>
+                        <td>
+                            <button className='btn btn-danger mx-1 ' onClick={() => handleDelete(item.id)}>Удалить</button>
+                        </td>
                     </tr>
                 )
                 ))}
