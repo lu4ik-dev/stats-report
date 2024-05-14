@@ -8,7 +8,7 @@ import { url_api } from '../tech/config';
 
 
 const EductionTable = () => {
-  const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
+  const userInfo = JSON.parse(localStorage.getItem("userInfo")).userInfo;
     const [tableData, setTableData] = useState([]);
     const [author, setAuthor] = useState('');
     const [lastEditor, setLastEditor] = useState('');

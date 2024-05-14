@@ -9,8 +9,11 @@ import InvalidsTables from './InvalidsTables';
 const Invalids = () => {
     redirectToLogin();
     const [data, setData] = useState([]);
-    const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
-    const authkey = JSON.parse(sessionStorage.getItem("userInfo")).authkey;
+    const userInfo = JSON.parse(localStorage.getItem("userInfo")).userInfo;
+    const authkey = JSON.parse(localStorage.getItem("userInfo")).authkey;
+    const [selectedRegion, setSelectedRegion] = useState('notSelected');
+    const [regions, setRegions] = useState([]); 
+
     useEffect(() => {
         redirectToLogin();
         fetch(url_api+'/api/dataInvalids', {
@@ -23,7 +26,16 @@ const Invalids = () => {
                   }),
             })
             .then(response => response.json())
-            .then(data => setData(data))
+            .then(data => {
+                setData(data);
+                const uniqueRegions = [];
+                data.forEach(item => {
+                    if (item.regionText && !uniqueRegions.includes(item.regionText)) {
+                        uniqueRegions.push(item.regionText);
+                    }
+                });
+                setRegions(uniqueRegions);
+            })
             .catch(error => showAlert(error.message));
           }, []);
     const queryParams = new URLSearchParams(window.location.search);
@@ -49,10 +61,10 @@ const Invalids = () => {
           });
       }
       
+      const handleSearchChanged = (text) => {
+        setSelectedRegion(text)
+      }
 
-    const handlerTest = () => {
-        showAlert('Кнопка для напоминания!!! Фильтры по городу / области / организации\nИ возможно сортировка');
-    }
     return (
     <div>
         <Header />
@@ -64,10 +76,17 @@ const Invalids = () => {
             <div className="col-md-auto">
                 <h1>Документы</h1>
             </div>
-            <div className="col-md-auto mt-2">
-                <button className="btn btn-danger zoom-5 mx-3" onClick={handlerTest}>
-                    для администратора добавить фильтры по организации / области / городу*
-                </button>
+            <div className="col-md-auto mt-2 d-flex w-50">
+                  <select
+                      className="form-control form-login-input me-3"
+                      onChange={(e) => handleSearchChanged(e.target.value)}
+                      value={selectedRegion}
+                    >
+                      <option value="notSelected" selected>Выберите область</option>
+                      {regions.map((region, index) => (
+                        <option key={index} value={region}>{region}</option> // Используем индекс в качестве ключа, так как данные уникальны и не имеют идентификатора
+                      ))}
+                  </select>
                 <a href="invalids-tables?id_doc=newDoc" className="btn btn-primary zoom-5">
                     Добавить новый документ
                 </a>
@@ -84,17 +103,20 @@ const Invalids = () => {
                 </tr>
             </thead>
             <tbody id="invalidsTables">
-                {data.map((item) => (
-                    item.disabled === 1 ? '' : (
+            {data.map((item) => (
+                  item.disabled === 1 ? '' : (
+                    selectedRegion === 'notSelected' || item.regionText === selectedRegion ? ( 
                 <tr className='zoom-5' key={item.id}>
                     <td>{item.id}</td>
                     <td>{item.userName}</td>
                     <td>{formatDate(item.dateCreate)}</td>
-                    <td><a href={`/invalids-tables?id_doc=${item.id}`} className='btn btn-primary zoom-5'>Перейти</a><button className='btn btn-danger mx-1 zoom-5' onClick={() => handleDelete(item.id)}>Удалить</button></td>
-                </tr>
-                )
+                    <td><a href={`/invalids-tables?id_doc=${item.id}`} className='btn btn-primary zoom-5'>Перейти</a>
+                    <button className='btn btn-danger mx-1 zoom-5' onClick={() => handleDelete(item.id)}>Удалить</button></td>
+                    </tr>
+                    ) : null
+                  )
                 ))}
-            </tbody>
+              </tbody>
             </table>
         </div>
       )}

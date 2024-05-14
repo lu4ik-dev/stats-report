@@ -8,7 +8,7 @@ import { url_api } from '../../tech/config';
 
 const A_Organization = () => {
     const [data, setData] = useState([]);
-    const authkey = JSON.parse(sessionStorage.getItem("userInfo")).authkey;
+    const authkey = JSON.parse(localStorage.getItem("userInfo")).authkey;
 
     useEffect(() => {
         redirectToLogin();

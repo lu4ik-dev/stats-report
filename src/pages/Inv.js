@@ -7,7 +7,7 @@ const Invalid = () => {
     useEffect(() => {
         redirectToLogin();
       }, []);
-    const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
+    const userInfo = JSON.parse(localStorage.getItem("userInfo")).userInfo;
       
     return (        
     <div>

@@ -4,7 +4,7 @@ import Header from '../Header';
 import React, {useState, useEffect} from 'react';
 import { url_api } from '../../tech/config';
 function A_Main() {
-    const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
+    const userInfo = JSON.parse(localStorage.getItem("userInfo")).userInfo;
     const [greeting, setGreeting] = useState('');
 
     useEffect(() => {

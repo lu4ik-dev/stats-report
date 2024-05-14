@@ -9,8 +9,8 @@ import InvalidsTables from './InvalidsTables';
 const Eduction = () => {
     redirectToLogin();
     const [data, setData] = useState([]);
-    const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
-    const authkey = JSON.parse(sessionStorage.getItem("userInfo")).authkey;
+    const userInfo = JSON.parse(localStorage.getItem("userInfo")).userInfo;
+    const authkey = JSON.parse(localStorage.getItem("userInfo")).authkey;
     useEffect(() => {
         redirectToLogin();
         fetch(url_api+'/api/dataEduction', {

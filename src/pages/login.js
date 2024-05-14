@@ -27,7 +27,7 @@ function Login() {
 
   
   useEffect(() => {
-    if (sessionStorage.getItem('authIs') === 'true') {
+    if (localStorage.getItem('authIs') === 'true') {
       window.location.replace(`http://${url_web}:3000/`);
     }
   }, []);
@@ -53,9 +53,9 @@ function Login() {
             setLoading(true);
             setAuthResult(true);
           setTimeout(() => {
-            sessionStorage.setItem('authIs', 'true');
-            sessionStorage.setItem('auth', data.authkey);
-            sessionStorage.setItem('userInfo', JSON.stringify(data));
+            localStorage.setItem('authIs', 'true');
+            localStorage.setItem('auth', data.authkey);
+            localStorage.setItem('userInfo', JSON.stringify(data));
             createNotification('Авторизация', 'Вы успешно авторизовались на сайте');
             window.location.replace(`http://${url_web}:3000/`);
             setLoading(false);

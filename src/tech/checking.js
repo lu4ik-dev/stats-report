@@ -1,6 +1,6 @@
 import {url_api, url_web} from './config'
 export const isAuthenticated = () => {
-    return sessionStorage.getItem('authIs') && sessionStorage.getItem('authIs') === 'true';
+    return localStorage.getItem('authIs') && localStorage.getItem('authIs') === 'true';
   };
   
   export const redirectToLogin = () => {
@@ -16,9 +16,9 @@ export const isAuthenticated = () => {
   };
   
   export const logout = () => {
-    sessionStorage.removeItem('authIs');
-    sessionStorage.removeItem('auth');
-    sessionStorage.removeItem('userInfo');
+    localStorage.removeItem('authIs');
+    localStorage.removeItem('auth');
+    localStorage.removeItem('userInfo');
     window.location.replace('http://'+url_web+':3000/login');
   };
 

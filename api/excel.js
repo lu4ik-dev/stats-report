@@ -4,6 +4,74 @@ const fetch = require('node-fetch');
 const path = require('path'); // Добавлен модуль path для работы с путями
 
 
+async function getExcelInvalids(id_doc, sourceFileName = 'ovz_template.xlsx', intermediateFileName = 'ovz_template_temp.xlsx') {
+  try {
+    await fs.promises.copyFile(sourceFileName, intermediateFileName);
+    console.log(`[T]: Файл ${sourceFileName} успешно скопирован как ${intermediateFileName}`);
+
+    const response = await fetch(`http://localhost:3110/api/invalids-table/${id_doc}`);
+    const data = await response.json();
+
+    const workbook = await XlsxPopulate.fromFileAsync(intermediateFileName);
+    const sheet = workbook.sheet(0);
+
+    // Переместить A10:AB16 вниз на количество строк данных из API
+    const numRows = data.length;
+    const startRow = 10;
+    const endRow = 16 + numRows - 1; // Вычисляем конечную строку после смещения
+    sheet.cell("A1").value("Значение ячейки A1");
+    console.log(`[T]: Проверочная запись успешно выполнена`)
+
+    data.forEach((obj, index) => {
+      const rowIndex = 10 + index; // Начинаем заполнение с 10 строки
+      sheet.cell(rowIndex, 1).value(obj.name_poo);
+      sheet.cell(rowIndex, 2).value(obj.specialnost);
+      sheet.cell(rowIndex, 3).value(obj.code_of_specialnost);
+    
+      // Заполнение counts (5-9 столбцы)
+      const counts = JSON.parse(obj.counts);
+      Object.keys(counts).forEach((key, i) => {
+        const columnIndex = 5 + i; // Начальный индекс столбца, с которого начинаются counts (col5)
+        sheet.cell(rowIndex, columnIndex).value(counts[key]);
+      });
+    
+      // Сумма counts (4 столбец)
+      const countsSum = Object.values(counts).reduce((acc, curr) => acc + curr, 0);
+      sheet.cell(rowIndex, 4).value(countsSum);
+      
+      // Заполнение diagnoses (11-28 столбцы)
+      const diagnoses = JSON.parse(obj.diagnoses);
+      Object.keys(diagnoses).forEach((key, i) => {
+        const columnIndex = 11 + i; // Начальный индекс столбца, с которого начинаются diagnoses (col11)
+        const value = diagnoses[key];
+        sheet.cell(rowIndex, columnIndex).value(value);
+      });
+    
+      // Вычисление суммы значений в столбцах с 11 по 28
+      const sum = Object.values(diagnoses).reduce((acc, curr) => acc + curr, 0);
+    
+      // Запись суммы в 10 столбец
+      sheet.cell(rowIndex, 10).value(sum);
+    });
+    
+
+    const outputFileName = `invalids_${Date.now()}.xlsx`;
+    const outputPath = path.join(__dirname, outputFileName);
+
+    await workbook.toFileAsync(outputPath);
+    console.log(`[T]: Результат сохранен в файл ${outputPath}`);
+
+    await fs.promises.unlink(intermediateFileName);
+    console.log(`[T]: Промежуточный файл ${intermediateFileName} удален`);
+
+    return outputPath;
+  } catch (error) {
+    console.error('[T]: Произошла ошибка:', error);
+    
+  }
+}
+
+
 async function getExcelExperience(id_doc, sourceFileName='exp_template.xlsx', intermediateFileName='exp_template_temp.xlsx') {
   try {
     await fs.promises.copyFile(sourceFileName, intermediateFileName);
@@ -74,5 +142,6 @@ function checkWorkExcel(message) {
 
 module.exports = {
   getExcelExperience,
+  getExcelInvalids,
   checkWorkExcel
 };

@@ -8,7 +8,7 @@ import * as XLSX from 'xlsx';
 
 
 const DynamicTable = () => {
-  const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
+  const userInfo = JSON.parse(localStorage.getItem("userInfo")).userInfo;
   const [tableData, setTableData] = useState([
     { col1: userInfo.complectName, col2: '', col3: 1, col4: 0, col5: 0, col6: 0, col7: 0, col8: 0, col9: 0, col10: 0, col11: 0, col12: 0, col13: 0, col14: 0, col15: 0, col16: 0, col17: 0, col18: 0 },
   ]);

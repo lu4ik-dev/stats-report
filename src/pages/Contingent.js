@@ -8,7 +8,7 @@ import { formatDate } from '../tech/formatterDate';
 
 const Contingent = () => {
   const [data, setData] = useState([]);
-  const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   const authkey = userInfo.authkey;
 
   useEffect(() => {

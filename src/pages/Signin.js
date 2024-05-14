@@ -69,7 +69,7 @@ const Signin = () => {
 
 
     useEffect(() => {
-        if (sessionStorage.getItem('authIs') === 'true') {
+        if (localStorage.getItem('authIs') === 'true') {
           window.location.replace('http://'+url_web+':3000/');
         } 
 

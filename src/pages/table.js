@@ -5,7 +5,7 @@ import * as XLSX from 'xlsx';
 import { formatDate } from '../tech/formatterDate';
 
 const DynamicTable = () => {
-  const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
+  const userInfo = JSON.parse(localStorage.getItem("userInfo")).userInfo;
   const [tableData, setTableData] = useState([ ]);
   const [author, setAuthor] = useState('');
   const [lastEditor, setLastEditor] = useState('');

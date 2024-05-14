@@ -7,7 +7,7 @@ import { redirectToLogin } from '../../tech/checking';
 
 const A_users = () => {
     const [data, setData] = useState([]);
-    const authkey = JSON.parse(sessionStorage.getItem("userInfo")).authkey;
+    const authkey = JSON.parse(localStorage.getItem("userInfo")).authkey;
     useEffect(() => {
         redirectToLogin();
         

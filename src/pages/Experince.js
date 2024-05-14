@@ -9,8 +9,8 @@ import { url_api } from '../tech/config';
 const Experince = () => {
     redirectToLogin();
     const [data, setData] = useState([]);
-    const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
-    const authkey = JSON.parse(sessionStorage.getItem("userInfo")).authkey;
+    const userInfo = JSON.parse(localStorage.getItem("userInfo")).userInfo;
+    const authkey = JSON.parse(localStorage.getItem("userInfo")).authkey;
     const [cities, setCities] = useState([]);
     const [regions, setRegions] = useState([]); 
     

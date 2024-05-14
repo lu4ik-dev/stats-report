@@ -9,7 +9,7 @@ const crypto = require('crypto');
 var cors = require("cors");
 const os = require('os');
 const { sendMail, checkWork } = require('./sender');
-const { getExcelExperience, checkWorkExcel } = require('./excel');
+const { getExcelExperience, getExcelInvalids, checkWorkExcel } = require('./excel');
 const multer  = require('multer');
 const { exec } = require('child_process');
 
@@ -945,9 +945,13 @@ app.post('/api/dataInvalids', async (req, res) => {
           inv.id, 
           u.complectName AS userName, 
           inv.dateCreate, 
-          inv.disabled
+          inv.disabled,
+          c.text AS cityText,
+          r.text AS regionText
         FROM invalids inv
         INNER JOIN users u ON inv.id_user = u.id
+        LEFT JOIN cities c ON u.id_city = c.id
+        LEFT JOIN regions r ON c.id_region = r.id
       `;
       queryParams = [];
     } else {
@@ -956,9 +960,13 @@ app.post('/api/dataInvalids', async (req, res) => {
           inv.id, 
           u.complectName AS userName, 
           inv.dateCreate, 
-          inv.disabled
+          inv.disabled,
+          c.text AS cityText,
+          r.text AS regionText
         FROM invalids inv
         INNER JOIN users u ON inv.id_user = u.id
+        LEFT JOIN cities c ON u.id_city = c.id
+        LEFT JOIN regions r ON c.id_region = r.id
         WHERE u.authkey = ?;
       `;
       queryParams = [authkey];
@@ -1018,16 +1026,16 @@ app.post('/api/deleteInvalids/:id_doc', (req, res) => {
 
 
 app.post('/api/addInvalids', (req, res) => {
-  const { id_doc, table, timeLastEdit } = req.body;
+  const { table, timeLastEdit } = req.body;
 
   // Insert id_doc into invalids table and get the id
-  const insertInvalidsQuery = 'INSERT INTO invalids (id_user) VALUES (?) RETURNING id';
+  const insertInvalidsQuery = 'INSERT INTO invalids (id_user) VALUES (?)';
   connection.query(insertInvalidsQuery, [req.body.user_id], (err, result) => {
     if (err) {
       console.error('Error inserting into invalids:', err);
       res.status(500).send('Internal Server Error');
     } else {
-      const id = result.rows[0].id;
+      const id_doc = result.insertId; 
       const insertInvalidsBodyQuery =
       'INSERT INTO invalids_body (id_doc, name_poo, specialnost, code_of_specialnost, counts, diagnoses) VALUES (?, ?, ?, ?, ?, ?)';
     
@@ -1048,12 +1056,12 @@ app.post('/api/addInvalids', (req, res) => {
       // Update the timeLastEdit in the invalids table
       const updateInvalidsQuery = 'UPDATE invalids SET timeLastEdit = ? WHERE id = ?';
 
-      connection.query(updateInvalidsQuery, [timeLastEdit, id], (err) => {
+      connection.query(updateInvalidsQuery, [timeLastEdit, id_doc], (err) => {
         if (err) {
           console.error('Error updating timeLastEdit in invalids:', err);
           res.status(500).send('Internal Server Error');
         } else {
-          res.status(200).json({ success: true, id: id });
+          res.status(200).json({ success: true, id: id_doc });
         }
       });
     }
@@ -2073,6 +2081,27 @@ app.get('/api/getExcelExperience/:id_doc', async (req, res) => {
         res.status(500).send('Произошла ошибка при отправке файла');
       } else {
         console.log('Файл успешно отправлен клиенту');
+      }
+    });
+  } catch (error) {
+    console.error('Произошла ошибка:', error);
+    res.status(500).send('Произошла ошибка при генерации файла');
+  }
+});
+
+
+app.get('/api/getExcelInvalids/:id_doc', async (req, res) => {
+  const id_doc = req.params.id_doc;
+
+  try {
+    const filePath = await getExcelInvalids(id_doc);
+
+    res.download(filePath, 'invalids.xlsx', (err) => {
+      if (err) {
+        console.error('Произошла ошибка при отправке файла:', err);
+        res.status(500).send('Произошла ошибка при отправке файла');
+      } else {
+        console.log('[T]: Файл успешно отправлен клиенту');
       }
     });
   } catch (error) {

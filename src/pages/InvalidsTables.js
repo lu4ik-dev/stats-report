@@ -8,7 +8,7 @@ import { redirectToLogin } from '../tech/checking';
 import { json } from 'react-router-dom';
 
 const InvalidsTables = () => {
-  const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
+  const userInfo = JSON.parse(localStorage.getItem("userInfo")).userInfo;
   const [tableData, setTableData] = useState([]);
   const [author, setAuthor] = useState('');
   const [lastEditor, setLastEditor] = useState('');
@@ -24,7 +24,7 @@ const InvalidsTables = () => {
       if (!id_doc || id_doc === "newDoc") {
         setTableData([
           {
-            col1: '',
+            col1: userInfo.complectName,
             col2: '',
             col3: 1,
             col4: 0,
@@ -231,17 +231,18 @@ const InvalidsTables = () => {
   };
 
   const exportToExcel = () => {
-    const ws = XLSX.utils.table_to_sheet(document.getElementById('invalidsTables'));
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-    XLSX.writeFile(wb, 'Персонал2.xls');
+    const url = `${url_api}/api/getExcelInvalids/${id_doc}`;
+    window.location.href = url;
   };
+
+  
+
 
   const handlerInsert = () => {
     setTableData((prevData) => [
       ...prevData,
       {
-        col1: '',
+        col1: userInfo.complectName,
         col2: '',
         col3: 1,
         col4: 0,

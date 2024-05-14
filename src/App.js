@@ -58,18 +58,18 @@ function App() {
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        if(sessionStorage.getItem('auth')){
+        if(localStorage.getItem('auth')){
         const response = await fetch(url_api + '/api/getUserInfo', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
-          body: new URLSearchParams({ authkey: sessionStorage.getItem('auth') }),
+          body: new URLSearchParams({ authkey: localStorage.getItem('auth') }),
         });
         const data = await response.json();
         if (data.success) {
-          // Store userInfo in sessionStorage
-          sessionStorage.setItem('userInfo', JSON.stringify(data));
+          // Store userInfo in localStorage
+          localStorage.setItem('userInfo', JSON.stringify(data));
         }
       }
       } catch (error) {
@@ -82,7 +82,7 @@ function App() {
 
 
   useEffect(() => {
-    const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     if (userInfo && userInfo.userInfo && userInfo.userInfo.darktheme === 1) {
       document.body.setAttribute('dark-bs-theme', 'true');
     } else {

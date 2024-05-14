@@ -11,7 +11,7 @@ const Header = () => {
 
     
     useEffect(() => {
-        const authKey = sessionStorage.getItem("auth");
+        const authKey = localStorage.getItem("auth");
         const currentUrl = window.location.href;
         if (!checkAdmin(authKey) && currentUrl.includes("admin-panel")) {
           window.location.replace('http://'+url_web+':3000/');
@@ -53,7 +53,7 @@ const Header = () => {
     const location = useLocation();
     
    
-    const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
+    const userInfo = JSON.parse(localStorage.getItem("userInfo")).userInfo;
 
     //const email = 'bisquirt@lu4ik.com';
     const email = userInfo.login;
@@ -79,7 +79,7 @@ const Header = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          authkey: sessionStorage.getItem('auth'),
+          authkey: localStorage.getItem('auth'),
           oldpassword: oldPassword,
           newpassword: newPassword,
           confirmpassword: confirmNewPassword,

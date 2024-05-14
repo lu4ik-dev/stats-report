@@ -11,7 +11,7 @@ const ContingentTable = () => {
   const [author, setAuthor] = useState('');
   const [lastTimeEdit, setLastTimeEdit] = useState('');
   const [dateCreateDoc, setDateCreateDoc] = useState('');
-  const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
+  const userInfo = JSON.parse(localStorage.getItem("userInfo")).userInfo;
 
   const exportToExcel = () => {
     const ws = XLSX.utils.table_to_sheet(document.getElementById('contingent'));

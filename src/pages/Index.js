@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import CounterAnimation from "../tech/CounterAnimation";
 
 const Index = () => {
-  const userInfo = JSON.parse(sessionStorage.getItem("userInfo")).userInfo;
+  const userInfo = JSON.parse(localStorage.getItem("userInfo")).userInfo;
   const [greeting, setGreeting] = useState("");
   const [statistics, setStatistics] = useState(null);
 
@@ -91,10 +91,10 @@ const Index = () => {
               <div className="col-sm-3 pb-3">
                 <li className="third">
                   <h2>03</h2>
-                  <h3 className="text-dark">Программы</h3>
+                  <h3 className="text-dark">Инвалиды и лица с ОВЗ</h3>
                   <p>
-                    Перечень реализуемых образовательных программ среднего
-                    профессионального образования и информация по контингенту
+                    Сведения по численности студентов, относящихся к категории
+                    инвалиды и лица с ОВЗ, по специальностям, профессиям
                   </p>
                   <Link to="/invalids" className="btn btn-primary zoom-5">
                     Перейти
@@ -104,10 +104,10 @@ const Index = () => {
               <div className="col-sm-3 pb-3">
                 <li className="fourth">
                   <h2>04</h2>
-                  <h3 className="text-dark">Инвалиды и лица с ОВЗ</h3>
+                  <h3 className="text-dark">Программы </h3>
                   <p>
-                    Сведения по численности студентов, относящихся к категории
-                    инвалиды и лица с ОВЗ, по специальностям, профессиям
+                    Перечень реализуемых образовательных программ среднего
+                    профессионального образования и информация по контингенту
                   </p>
                   <Link to="/contingent" className="btn btn-primary zoom-5">
                     Перейти

@@ -19,11 +19,11 @@ const Admin_panel = () => {
         .catch(error => showAlert(error.message));
       }, []);
       console.log(data);
-    const userInfo = sessionStorage.getItem('userInfo').userInfo;
+    const userInfo = localStorage.getItem('userInfo').userInfo;
     
     const handleAdminLevelUpdate = (admin_target) => {
         const userId = admin_target; 
-        const authKey = sessionStorage.getItem('auth'); 
+        const authKey = localStorage.getItem('auth'); 
         
         fetch(url_api+'/api/updateAdminLevel', {
         method: 'POST',
