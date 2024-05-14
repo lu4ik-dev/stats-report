@@ -1,5 +1,5 @@
 const process = require('node:process');
-
+const mysqldump = require('mysqldump')
 const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -2090,6 +2090,8 @@ app.get('/api/getExcelExperience/:id_doc', async (req, res) => {
 });
 
 
+
+
 app.get('/api/getExcelInvalids/:id_doc', async (req, res) => {
   const id_doc = req.params.id_doc;
 
@@ -2109,6 +2111,38 @@ app.get('/api/getExcelInvalids/:id_doc', async (req, res) => {
     res.status(500).send('Произошла ошибка при генерации файла');
   }
 });
+
+
+
+app.get('/backup', async (req, res) => {
+  try {
+    await mysqldump({
+      connection: {
+        host: 'localhost',
+        user: 'root',
+        password: '',
+        database: 'stats-report',
+      },
+      dumpToFile: './dump.sql',
+    });
+    
+    res.download('./dump.sql', 'backup.sql', (err) => {
+      if (err) {
+        console.error('[M]: Произошла ошибка при отправке файла:', err);
+        return res.status(500).send('Произошла ошибка при отправке файла');
+      }
+      console.log('[M]: Файл успешно отправлен клиенту');
+    });
+  } catch (error) {
+    console.error('[M]: Произошла ошибка:', error);
+    res.status(500).send('Произошла ошибка при генерации файла');
+  }
+});
+ 
+// dump the result straight to a file
+
+
+
 
 async function processMessages() {
   await delayCsMsg("Стопорные краны закрыты..", 10); 
@@ -2130,7 +2164,9 @@ async function processMessages() {
 }
 
 process.on('SIGINT', async () => {
-  await processMessages();
+ // await processMessages();
+ 
+ process.exit(); 
 });
 const beep = require('beepbeep');
 

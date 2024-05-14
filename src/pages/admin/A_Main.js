@@ -29,27 +29,11 @@ function A_Main() {
       return () => clearInterval(intervalId);
     }, []); 
   
-
-      const handleBackup = async () => {
-        try {
-          // Выполняем запрос к API для создания резервной копии базы данных
-          const response = await fetch('/backup');
-          const blob = await response.blob();
+  
     
-          // Создаем ссылку для скачивания файла
-          const url = window.URL.createObjectURL(blob);
-          // Создаем ссылку для загрузки файла
-          const link = document.createElement('a');
-          link.href = url;
-          link.setAttribute('download', 'database_backup.sql');
-          // Эмулируем клик по ссылке для загрузки файла
-          document.body.appendChild(link);
-          link.click();
-          // Удаляем ссылку из DOM после загрузки файла
-          document.body.removeChild(link);
-        } catch (error) {
-          console.error('Error backing up database:', error);
-        }
+      const handleBackup = async () => {
+        const url = `${url_api}/backup`;
+        window.location.href = url;
       };
     return (
         <div>
@@ -124,7 +108,7 @@ function A_Main() {
                         </div>
                         </div>
                     </div>
-                    <div className="col-sm-6 pb-3 zoom-5 d-none">
+                    <div className="col-sm-6 pb-3 zoom-5 ">
                         <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">В разработке</h5>
