@@ -17,6 +17,70 @@ const InvalidsTables = () => {
   const [region, setRegion] = useState('');
   const [dateCreateDoc, setDateCreateDoc] = useState('');
 
+
+  const fetchProfessionName = async (professionCode) => {
+    try {
+        const response = await fetch(`${url_api}/api/get/professions`);
+        const data = await response.json();
+
+        // Ищем профессию с соответствующим кодом
+        const profession = data.find(prof => prof.profession_code === professionCode);
+
+        return profession ? profession.profession_name : ''; // Возвращаем название профессии или пустую строку
+    } catch (error) {
+        console.error('Error fetching profession data:', error);
+        return ''; // В случае ошибки также возвращаем пустую строку
+    }
+};
+
+const handleInputChange = (rowIndex, colName, value) => {
+  // Условие для проверки, что введенное значение содержит только цифры и точки, и что его длина не превышает 8 символов
+  if (colName === 'col3') {
+    // Фильтруем только цифры и точки из введенного значения
+    const filteredValue = value.replace(/[^\d.]/g, '');
+
+    // Разбиваем отфильтрованное значение на группы по две цифры и объединяем их с точками
+    const formattedValueArray = filteredValue.match(/\d{1,2}/g);
+    const formattedValue = formattedValueArray ? formattedValueArray.join('.') : '';
+
+    // Обновляем значение введенного поля
+    value = formattedValue;
+}
+  const intValue = parseInt(value, 10);
+  console.log(`${colName}: ${value}`);
+  const newValue = colName === 'col1' || colName === 'col2' || colName === 'col3' ? value : isNaN(intValue) ? 0 : Math.min(Math.max(0, intValue), 999);
+
+  setTableData((prevData) => {
+    const newData = [...prevData];
+    newData[rowIndex][colName] = newValue;
+
+    if (colName === 'col5' || colName === 'col6' || colName === 'col7' || colName === 'col8') {
+      newData[rowIndex].col4 = parseInt(newData[rowIndex].col5) + parseInt(newData[rowIndex].col6) + parseInt(newData[rowIndex].col7) + parseInt(newData[rowIndex].col8);
+    }
+
+    if (colName === 'col3' && value.match(/^\d{2}\.\d{2}\.\d{2}$/)) {
+      // Создаем promise для выполнения асинхронного запроса
+      const professionNamePromise = fetchProfessionName(value); // Получаем название профессии
+
+      // Обновляем значение поля с индексом 1 после получения результата запроса
+      professionNamePromise.then(professionName => {
+        newData[rowIndex]['col2'] = professionName;
+        setTableData(newData); // Обновляем данные после получения названия профессии
+      }).catch(error => {
+        console.error('Error fetching profession name:', error);
+      });
+    } else if (colName === 'col3' && !value.match(/^\d{2}\.\d{2}\.\d{2}$/)) {
+      newData[rowIndex]['col2'] = '';
+      setTableData(newData); // Обновляем данные после получения названия профессии
+    }
+
+    return newData;
+  });
+};
+
+
+
+  
   const fetchData = async () => {
     try {
       const id_doc = new URLSearchParams(window.location.search).get("id_doc");
@@ -26,7 +90,7 @@ const InvalidsTables = () => {
           {
             col1: userInfo.complectName,
             col2: '',
-            col3: 1,
+            col3: '00.00.00',
             col4: 0,
             col5: 0,
             col6: 0,
@@ -215,20 +279,6 @@ const InvalidsTables = () => {
       });
       };
 
-  const handleInputChange = (rowIndex, colName, value) => {
-    const intValue = parseInt(value, 10);
-    const newValue = colName === 'col1' || colName === 'col2' || colName === 'col3' ? value : isNaN(intValue) ? 0 : Math.min(Math.max(0, intValue), 999);
-
-    setTableData((prevData) => {
-      const newData = [...prevData];
-      newData[rowIndex][colName] = newValue;
-
-      if (colName === 'col5' || colName === 'col6' || colName === 'col7' || colName === 'col8') {
-        newData[rowIndex].col4 = parseInt(newData[rowIndex].col5) + parseInt(newData[rowIndex].col6) + parseInt(newData[rowIndex].col7) + parseInt(newData[rowIndex].col8) + parseInt(newData[rowIndex].col9) + parseInt(newData[rowIndex].col10);
-      }
-      return newData;
-    });
-  };
 
   const exportToExcel = () => {
     const url = `${url_api}/api/getExcelInvalids/${id_doc}`;
@@ -244,7 +294,7 @@ const InvalidsTables = () => {
       {
         col1: userInfo.complectName,
         col2: '',
-        col3: 1,
+        col3: '00.00.00',
         col4: 0,
         col5: 0,
         col6: 0,
@@ -379,7 +429,7 @@ const InvalidsTables = () => {
                       type="text"
                       value={row[colName]}
                       onChange={(e) => handleInputChange(rowIndex, colName, e.target.value)}
-                      disabled={index === 0 || index === 3 }
+                      disabled={index === 0 || index === 3 || index === 1 }
                     />
                   </td>
                 ))}
@@ -392,16 +442,16 @@ const InvalidsTables = () => {
             <td colSpan={21}>
             </td>
             <td colSpan={8}>
-            { userInfo.admin_lvl >= 1 ? <button className='btn btn-sm btn-primary zoom-5 rounded-pill ms-3 my-1'  onClick={handlerInsert}><i className="fas fa-add"></i> добавить запись</button>   : '' }
+              <button className='btn btn-sm btn-primary zoom-5 rounded-pill ms-3 my-1'  onClick={handlerInsert}><i className="fas fa-add"></i> добавить запись</button>  
               <button className='btn btn-sm btn-success zoom-5 rounded-pill ms-1'  onClick={() => handleSave(0)}><i className="fas fa-save"></i> сохранить документ</button>
             </td>
           </tr>
           </tbody>
         </table>
-        { userInfo.admin_lvl >= 1 ?   <button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
-         : '' }
+        {/* 
+        <button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
         <button className='position-relative start-100 btn btn-sm btn-success zoom-5 rounded-pill' style={  userInfo.admin_lvl >= 1 ?  {'margin': '0px -3rem'}  : {'margin': '0px -9rem'} } onClick={() => handleSave(0)}><i className="fas fa-save"></i>  { userInfo.admin_lvl >= 1 ?  ''  : 'Сохранить' }</button>
-
+                */}
   </div>
   {id_doc !== "newDoc" && (
         <div className="container">

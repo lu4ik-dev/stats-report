@@ -111,6 +111,19 @@ async function getExcelExperience(id_doc, sourceFileName='exp_template.xlsx', in
       });
     });
 
+    data.table.forEach((item, index) => {
+      const teachExp = JSON.parse(item.teach_exp);
+      
+      // Исключаем последний объект из teachExp
+      const keys = Object.keys(teachExp).slice(0, -1);
+      
+      // Вычисляем сумму значений, исключая последний объект
+      const teachExpSum = keys.reduce((acc, key) => acc + teachExp[key], 0);
+      
+      sheet.cell(8 + index, 11).value(teachExpSum);
+    });
+
+
     // Fill 'not_exp'
     data.table.forEach((item, index) => {
       sheet.cell(8 + index, 18).value(item.not_exp);

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { redirectToLogin } from '../../tech/checking';
 import Header from '../Header';
 import { url_api } from '../../tech/config';
+import { formatDate } from '../../tech/formatterDate';
+
 const A_accepts = () => {
     const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
@@ -11,8 +13,17 @@ const A_accepts = () => {
 
     // Загрузка пользователей при загрузке компонента
     useEffect(() => {
+        // Выполняем fetchUsers() при монтировании компонента
         fetchUsers();
-    }, []);
+    
+        // Устанавливаем интервал для выполнения fetchUsers() каждые 2 секунды
+        const interval = setInterval(() => {
+            fetchUsers();
+        }, 2000);
+    
+        // Возвращаем функцию очистки для очистки интервала при размонтировании компонента
+        return () => clearInterval(interval);
+    }, []); // Пустой массив зависимостей означает, что эффект будет запущен только один раз при монтировании компонента
 
     // Функция для получения списка пользователей
     const fetchUsers = () => {
@@ -65,7 +76,6 @@ const A_accepts = () => {
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID (отладка)</th>
                             <th>Email</th>
                             <th>Название организации</th>
                             <th>Дата создания</th>
@@ -79,15 +89,14 @@ const A_accepts = () => {
                         {users.map(user => (
                             user.disabled === 1 ? '' : 
                             <tr key={user.id}>
-                                <td>{user.id}</td>
                                 <td>{user.login}</td>
                                 <td>{user.complectName}</td>
-                                <td>{user.dateCreate}</td>
+                                <td>{formatDate(user.dateCreate)}</td>
                                 <td>{user.region_text}</td>
                                 <td>{user.city_text}</td>
                                 <td>
-                                    <button className="btn btn-danger" onClick={() => deactivateUser(user.id)}>Деактивировать</button>
-                                    <button className="btn btn-primary ml-2 ms-1" onClick={() => handleOpenModal(user)}>Перейти</button>
+                                    <button className="btn btn-primary ml-2 me-1" onClick={() => handleOpenModal(user)}>Перейти</button>
+                                    <button className="btn btn-danger" onClick={() => deactivateUser(user.id)}>Удалить</button>
                                 </td>
                             </tr>
                         ))}
@@ -106,7 +115,7 @@ const A_accepts = () => {
                             <div className="modal-body">
                                 <p><strong>Email:</strong> {selectedUser.login}</p>
                                 <p><strong>Название организации:</strong> {selectedUser.complectName}</p>
-                                <p><strong>Дата создания:</strong> {selectedUser.dateCreate}</p>
+                                <p><strong>Дата создания:</strong> {formatDate(selectedUser.dateCreate)}</p>
                                 <p><strong>Регион:</strong> {selectedUser.region_text}</p>
                                 <p><strong>Город:</strong> {selectedUser.city_text}</p>
                                 {/* Дополнительные детали пользователя */}

@@ -1,15 +1,5 @@
 [
   {
-    "login": "Dimo4ka0015@yandex.ru",
-    "complectName": "123",
-    "organization": "notSelected",
-    "city": "633",
-    "region": "16",
-    "password": "123123",
-    "confirmPassword": "123123",
-    "code": "V7FxVCGj"
-  },
-  {
     "login": "sekretik000@vk.com",
     "complectName": "123",
     "organization": "notSelected",
@@ -18,5 +8,15 @@
     "password": "123123",
     "confirmPassword": "123123",
     "code": "8eOrpeD5"
+  },
+  {
+    "login": "samolet@mail.ru",
+    "complectName": "samolet",
+    "organization": -1,
+    "city": "677",
+    "region": "18",
+    "password": "123123",
+    "confirmPassword": "123123",
+    "code": "Y4RXA0nt"
   }
 ]

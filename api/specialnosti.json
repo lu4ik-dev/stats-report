@@ -9100,5 +9100,11 @@
     "profession_name": "Звукорежиссура аудиовизуальных искусств",
     "program_code": "768",
     "education_area_code": "0211"
+  },
+  {
+    "profession_code": "05.01.03",
+    "profession_name": "Проверка",
+    "program_code": "",
+    "education_area_code": ""
   }
 ]

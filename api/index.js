@@ -8,7 +8,7 @@ const session = require('express-session');
 const crypto = require('crypto');
 var cors = require("cors");
 const os = require('os');
-const { sendMail, checkWork } = require('./sender');
+const { sendMail, checkWork, sendMailVerification } = require('./sender');
 const { getExcelExperience, getExcelInvalids, getExcelEduction, checkWorkExcel } = require('./excel');
 const multer  = require('multer');
 const { exec } = require('child_process');
@@ -2138,7 +2138,24 @@ app.post('/api/users/activate/:id', (req, res) => {
   const userId = req.params.id;
   connection.query('UPDATE users SET verify = 1 WHERE id = ?', userId, (error, results, fields) => {
     if (error) throw error;
-    res.status(200).send('Пользователь активирован');
+
+    // Если успешно обновлено, делаем дополнительный запрос
+    connection.query('SELECT complectName, login FROM users WHERE id = ?', userId, (error, results, fields) => {
+      if (error) throw error;
+
+      // Проверяем, есть ли результаты запроса
+      if (results.length > 0) {
+        const { complectName, login } = results[0];
+
+        // Выполняем функцию sendMailVerification
+        sendMailVerification(login, complectName);
+
+        // Отправляем ответ клиенту
+        res.status(200).send('Пользователь активирован и отправлено письмо подтверждения');
+      } else {
+        res.status(404).send('Пользователь не найден');
+      }
+    });
   });
 });
 
