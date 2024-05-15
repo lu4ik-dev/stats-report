@@ -55,7 +55,7 @@ function A_Main() {
                         </div>
                         </div>
                     </div>
-                    <div className="col-sm-6 pb-3 zoom-5 d-none">
+                    <div className="col-sm-6 pb-3 zoom-5">
                         <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">Заявки</h5>
@@ -108,7 +108,7 @@ function A_Main() {
                         </div>
                         </div>
                     </div>
-                    <div className="col-sm-12 pb-3 zoom-5">
+                    <div className="col-sm-6 pb-3 zoom-5">
                         <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">Резервное копирование</h5>

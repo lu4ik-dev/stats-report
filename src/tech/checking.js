@@ -1,14 +1,28 @@
 import {url_api, url_web} from './config'
 export const isAuthenticated = () => {
-    return localStorage.getItem('authIs') && localStorage.getItem('authIs') === 'true';
-  };
-  
+  return localStorage.getItem('authIs') && localStorage.getItem('authIs') === 'true';
+};
+
+
+export const isVerify = () => {
+  return localStorage.getItem('authIs') && localStorage.getItem('verify') === '1';
+};
+
+
+
   export const redirectToLogin = () => {
     if (!isAuthenticated()) {
       window.location.replace('http://'+url_web+':3000/login');
     }
   };
   
+  export const redirectToVerify = () => {
+    if (!isVerify()) {
+      window.location.replace('http://'+url_web+':3000/inverify');
+    }
+  };
+  
+
   export const redirectToDashboard = () => {
     if (isAuthenticated()) {
       window.location.replace('http://'+url_web+':3000/');
@@ -17,6 +31,7 @@ export const isAuthenticated = () => {
   
   export const logout = () => {
     localStorage.removeItem('authIs');
+    localStorage.removeItem('verify');
     localStorage.removeItem('auth');
     localStorage.removeItem('userInfo');
     window.location.replace('http://'+url_web+':3000/login');

@@ -24,7 +24,6 @@ function Login() {
 
 
 
-
   
   useEffect(() => {
     if (localStorage.getItem('authIs') === 'true') {
@@ -53,6 +52,7 @@ function Login() {
             setLoading(true);
             setAuthResult(true);
           setTimeout(() => {
+            localStorage.setItem('verify', data.userInfo.verify);
             localStorage.setItem('authIs', 'true');
             localStorage.setItem('auth', data.authkey);
             localStorage.setItem('userInfo', JSON.stringify(data));

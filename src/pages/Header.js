@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { checkAdmin, logout, redirectToLogin } from '../tech/checking';
+import { checkAdmin, logout, redirectToLogin, redirectToVerify } from '../tech/checking';
 import { Link, useLocation  } from 'react-router-dom';
 import { url_api, url_web } from '../tech/config';
 import { showAlert } from '../tech/alert';
 import imgLogo from '../pages/img/logo.svg';
-const Header = () => {
 
+const Header = () => {
+    redirectToVerify();
     redirectToLogin();
 
 

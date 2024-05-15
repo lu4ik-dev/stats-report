@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `employee_work_exp` (
   PRIMARY KEY (`id`),
   KEY `id_user` (`id_user`),
   CONSTRAINT `employee_work_exp_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: employee_work_exp_body
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `employee_work_exp_body` (
   PRIMARY KEY (`id`),
   KEY `id_doc` (`id_doc`),
   CONSTRAINT `employee_work_exp_body_ibfk_1` FOREIGN KEY (`id_doc`) REFERENCES `employee_work_exp` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 273 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '8164 Персонал2.xlsx';
+) ENGINE = InnoDB AUTO_INCREMENT = 319 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '8164 Персонал2.xlsx';
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: enrollment
@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `invalids_body` (
   PRIMARY KEY (`id`),
   KEY `id_doc` (`id_doc`),
   CONSTRAINT `invalids_body_ibfk_1` FOREIGN KEY (`id_doc`) REFERENCES `invalids` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 73 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 89 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: logs
@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `obrazovanie` (
   `timeLastEdit` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `disabled` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 34 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 43 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: obrazovanie_body
@@ -209,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `obrazovanie_body` (
   `kval_cat` json NOT NULL,
   `full_zan` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 9 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 165 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: orgazizations
@@ -10063,7 +10063,7 @@ VALUES
     13,
     1,
     '2024-05-05 10:36:42',
-    '14.05.2024 20:02:13',
+    '14.05.2024 23:29:06',
     0
   );
 INSERT INTO
@@ -10112,22 +10112,6 @@ VALUES
     4,
     '2024-05-13 15:28:20',
     '13.05.2024 15:28:20',
-    0
-  );
-INSERT INTO
-  `employee_work_exp` (
-    `id`,
-    `id_user`,
-    `dateCreate`,
-    `timeLastEdit`,
-    `disabled`
-  )
-VALUES
-  (
-    18,
-    8,
-    '2024-05-13 23:00:42',
-    '14.05.2024 03:03:57',
     0
   );
 
@@ -10830,42 +10814,6 @@ INSERT INTO
   )
 VALUES
   (
-    247,
-    18,
-    'фывыфвыфв',
-    '{\"col4\": 22, \"col5\": 0, \"col6\": 0, \"col7\": 11, \"col8\": 11, \"col9\": 0, \"col10\": 0}',
-    '{\"col12\": 0, \"col13\": 2, \"col14\": 3, \"col15\": 2, \"col16\": 11, \"col17\": 11, \"col18\": 0}',
-    0
-  );
-INSERT INTO
-  `employee_work_exp_body` (
-    `id`,
-    `id_doc`,
-    `name_of_indicators`,
-    `all_exp`,
-    `teach_exp`,
-    `not_exp`
-  )
-VALUES
-  (
-    248,
-    18,
-    '1',
-    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
-    '{\"col12\": 1, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 22, \"col17\": 0, \"col18\": 3}',
-    3
-  );
-INSERT INTO
-  `employee_work_exp_body` (
-    `id`,
-    `id_doc`,
-    `name_of_indicators`,
-    `all_exp`,
-    `teach_exp`,
-    `not_exp`
-  )
-VALUES
-  (
     255,
     15,
     '',
@@ -10920,7 +10868,7 @@ INSERT INTO
   )
 VALUES
   (
-    258,
+    304,
     13,
     '',
     '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
@@ -10938,11 +10886,11 @@ INSERT INTO
   )
 VALUES
   (
-    259,
+    305,
     13,
     '',
     '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
-    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 44}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 11, \"col18\": 44}',
     44
   );
 INSERT INTO
@@ -10956,7 +10904,7 @@ INSERT INTO
   )
 VALUES
   (
-    260,
+    306,
     13,
     '',
     '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
@@ -10974,7 +10922,7 @@ INSERT INTO
   )
 VALUES
   (
-    261,
+    307,
     13,
     '',
     '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
@@ -10992,7 +10940,7 @@ INSERT INTO
   )
 VALUES
   (
-    262,
+    308,
     13,
     '',
     '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
@@ -11010,7 +10958,7 @@ INSERT INTO
   )
 VALUES
   (
-    263,
+    309,
     13,
     '',
     '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
@@ -11028,7 +10976,7 @@ INSERT INTO
   )
 VALUES
   (
-    264,
+    310,
     13,
     '',
     '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
@@ -11046,7 +10994,7 @@ INSERT INTO
   )
 VALUES
   (
-    265,
+    311,
     13,
     '',
     '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
@@ -11064,7 +11012,7 @@ INSERT INTO
   )
 VALUES
   (
-    266,
+    312,
     13,
     '',
     '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
@@ -11082,7 +11030,7 @@ INSERT INTO
   )
 VALUES
   (
-    267,
+    313,
     13,
     '',
     '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
@@ -11100,7 +11048,7 @@ INSERT INTO
   )
 VALUES
   (
-    268,
+    314,
     13,
     '',
     '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
@@ -11118,7 +11066,7 @@ INSERT INTO
   )
 VALUES
   (
-    269,
+    315,
     13,
     '',
     '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
@@ -11136,7 +11084,7 @@ INSERT INTO
   )
 VALUES
   (
-    270,
+    316,
     13,
     '',
     '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
@@ -11154,7 +11102,7 @@ INSERT INTO
   )
 VALUES
   (
-    271,
+    317,
     13,
     '',
     '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
@@ -11172,7 +11120,7 @@ INSERT INTO
   )
 VALUES
   (
-    272,
+    318,
     13,
     '',
     '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
@@ -11198,23 +11146,7 @@ VALUES
     2,
     '2023-11-15 07:09:08',
     '14.05.2024 06:33:14',
-    0
-  );
-INSERT INTO
-  `enrollment` (
-    `id`,
-    `id_user`,
-    `dateCreate`,
-    `timeLastEdit`,
-    `disabled`
-  )
-VALUES
-  (
-    3,
-    8,
-    '2024-05-13 23:01:40',
-    '13.05.2024 23:01:40',
-    0
+    1
   );
 INSERT INTO
   `enrollment` (
@@ -11437,7 +11369,13 @@ INSERT INTO
     `disabled`
   )
 VALUES
-  (13, 1, '2024-05-14 04:12:52', NULL, 1);
+  (
+    13,
+    1,
+    '2024-05-14 04:12:52',
+    '16.11.2023 15:18:22',
+    1
+  );
 INSERT INTO
   `invalids` (
     `id`,
@@ -11447,7 +11385,13 @@ INSERT INTO
     `disabled`
   )
 VALUES
-  (14, 1, '2024-05-14 04:13:08', NULL, 1);
+  (
+    14,
+    1,
+    '2024-05-14 04:13:08',
+    '16.11.2023 15:18:22',
+    1
+  );
 INSERT INTO
   `invalids` (
     `id`,
@@ -11457,7 +11401,13 @@ INSERT INTO
     `disabled`
   )
 VALUES
-  (15, 1, '2024-05-14 04:13:45', NULL, 1);
+  (
+    15,
+    1,
+    '2024-05-14 04:13:45',
+    '16.11.2023 15:18:22',
+    1
+  );
 INSERT INTO
   `invalids` (
     `id`,
@@ -11467,7 +11417,13 @@ INSERT INTO
     `disabled`
   )
 VALUES
-  (16, 1, '2024-05-14 04:13:45', NULL, 1);
+  (
+    16,
+    1,
+    '2024-05-14 04:13:45',
+    '16.11.2023 15:18:22',
+    1
+  );
 INSERT INTO
   `invalids` (
     `id`,
@@ -11497,7 +11453,7 @@ VALUES
     18,
     1,
     '2024-05-14 04:14:18',
-    '14.05.2024 04:14:17',
+    '14.05.2024 21:26:37',
     0
   );
 INSERT INTO
@@ -11529,7 +11485,7 @@ VALUES
     20,
     1,
     '2024-05-14 04:14:30',
-    '14.05.2024 04:14:29',
+    '14.05.2024 23:30:01',
     0
   );
 INSERT INTO
@@ -11861,66 +11817,6 @@ INSERT INTO
   )
 VALUES
   (
-    61,
-    18,
-    'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
-    '',
-    '1',
-    '{\"col5\": 1, \"col6\": 1, \"col7\": 1, \"col8\": 1, \"col9\": 1}',
-    '{\"col11\": 313, \"col12\": 999, \"col13\": 141, \"col14\": 4, \"col15\": 14, \"col16\": 14, \"col17\": 14, \"col18\": 141, \"col19\": 4, \"col20\": 14, \"col21\": 14, \"col22\": 14, \"col23\": 14, \"col24\": 14, \"col25\": 14, \"col26\": 14, \"col27\": 14, \"col28\": 14}'
-  );
-INSERT INTO
-  `invalids_body` (
-    `id`,
-    `id_doc`,
-    `name_poo`,
-    `specialnost`,
-    `code_of_specialnost`,
-    `counts`,
-    `diagnoses`
-  )
-VALUES
-  (
-    62,
-    18,
-    'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
-    '14',
-    '14',
-    '{\"col5\": 14, \"col6\": 14, \"col7\": 14, \"col8\": 14, \"col9\": 14}',
-    '{\"col11\": 14, \"col12\": 41, \"col13\": 414, \"col14\": 154, \"col15\": 15, \"col16\": 15, \"col17\": 15, \"col18\": 15, \"col19\": 15, \"col20\": 154, \"col21\": 14, \"col22\": 14, \"col23\": 14, \"col24\": 14, \"col25\": 14, \"col26\": 14, \"col27\": 14, \"col28\": 14}'
-  );
-INSERT INTO
-  `invalids_body` (
-    `id`,
-    `id_doc`,
-    `name_poo`,
-    `specialnost`,
-    `code_of_specialnost`,
-    `counts`,
-    `diagnoses`
-  )
-VALUES
-  (
-    63,
-    18,
-    'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
-    '',
-    '1',
-    '{\"col5\": 13, \"col6\": 999, \"col7\": 3, \"col8\": 13, \"col9\": 0}',
-    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
-  );
-INSERT INTO
-  `invalids_body` (
-    `id`,
-    `id_doc`,
-    `name_poo`,
-    `specialnost`,
-    `code_of_specialnost`,
-    `counts`,
-    `diagnoses`
-  )
-VALUES
-  (
     64,
     19,
     'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
@@ -11963,66 +11859,6 @@ VALUES
   (
     66,
     19,
-    'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
-    '',
-    '1',
-    '{\"col5\": 13, \"col6\": 999, \"col7\": 3, \"col8\": 13, \"col9\": 0}',
-    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
-  );
-INSERT INTO
-  `invalids_body` (
-    `id`,
-    `id_doc`,
-    `name_poo`,
-    `specialnost`,
-    `code_of_specialnost`,
-    `counts`,
-    `diagnoses`
-  )
-VALUES
-  (
-    67,
-    20,
-    'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
-    '',
-    '1',
-    '{\"col5\": 1, \"col6\": 1, \"col7\": 1, \"col8\": 1, \"col9\": 1}',
-    '{\"col11\": 313, \"col12\": 999, \"col13\": 141, \"col14\": 4, \"col15\": 14, \"col16\": 14, \"col17\": 14, \"col18\": 141, \"col19\": 4, \"col20\": 14, \"col21\": 14, \"col22\": 14, \"col23\": 14, \"col24\": 14, \"col25\": 14, \"col26\": 14, \"col27\": 14, \"col28\": 14}'
-  );
-INSERT INTO
-  `invalids_body` (
-    `id`,
-    `id_doc`,
-    `name_poo`,
-    `specialnost`,
-    `code_of_specialnost`,
-    `counts`,
-    `diagnoses`
-  )
-VALUES
-  (
-    68,
-    20,
-    'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
-    '14',
-    '14',
-    '{\"col5\": 14, \"col6\": 14, \"col7\": 14, \"col8\": 14, \"col9\": 14}',
-    '{\"col11\": 14, \"col12\": 41, \"col13\": 414, \"col14\": 154, \"col15\": 15, \"col16\": 15, \"col17\": 15, \"col18\": 15, \"col19\": 15, \"col20\": 154, \"col21\": 14, \"col22\": 14, \"col23\": 14, \"col24\": 14, \"col25\": 14, \"col26\": 14, \"col27\": 14, \"col28\": 14}'
-  );
-INSERT INTO
-  `invalids_body` (
-    `id`,
-    `id_doc`,
-    `name_poo`,
-    `specialnost`,
-    `code_of_specialnost`,
-    `counts`,
-    `diagnoses`
-  )
-VALUES
-  (
-    69,
-    20,
     'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
     '',
     '1',
@@ -12089,6 +11925,146 @@ VALUES
     '{\"col5\": 999, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0}',
     '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
   );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    82,
+    18,
+    'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
+    '',
+    '1',
+    '{\"col5\": 1, \"col6\": 1, \"col7\": 1, \"col8\": 1, \"col9\": 1}',
+    '{\"col11\": 313, \"col12\": 999, \"col13\": 141, \"col14\": 4, \"col15\": 14, \"col16\": 14, \"col17\": 14, \"col18\": 141, \"col19\": 4, \"col20\": 14, \"col21\": 14, \"col22\": 14, \"col23\": 123, \"col24\": 5, \"col25\": 14, \"col26\": 14, \"col27\": 14, \"col28\": 14}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    83,
+    18,
+    'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
+    '14',
+    '14',
+    '{\"col5\": 14, \"col6\": 14, \"col7\": 14, \"col8\": 14, \"col9\": 14}',
+    '{\"col11\": 14, \"col12\": 41, \"col13\": 414, \"col14\": 154, \"col15\": 15, \"col16\": 15, \"col17\": 15, \"col18\": 15, \"col19\": 15, \"col20\": 154, \"col21\": 14, \"col22\": 14, \"col23\": 14, \"col24\": 14, \"col25\": 14, \"col26\": 14, \"col27\": 14, \"col28\": 14}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    84,
+    18,
+    'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
+    '',
+    '1',
+    '{\"col5\": 13, \"col6\": 999, \"col7\": 3, \"col8\": 13, \"col9\": 0}',
+    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 2, \"col19\": 0, \"col20\": 33, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    85,
+    20,
+    'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
+    '',
+    '1',
+    '{\"col5\": 1, \"col6\": 1, \"col7\": 1, \"col8\": 1, \"col9\": 1}',
+    '{\"col11\": 313, \"col12\": 999, \"col13\": 141, \"col14\": 4, \"col15\": 14, \"col16\": 14, \"col17\": 14, \"col18\": 141, \"col19\": 4, \"col20\": 14, \"col21\": 14, \"col22\": 14, \"col23\": 14, \"col24\": 14, \"col25\": 14, \"col26\": 14, \"col27\": 14, \"col28\": 14}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    86,
+    20,
+    'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
+    '14',
+    '14',
+    '{\"col5\": 14, \"col6\": 14, \"col7\": 14, \"col8\": 14, \"col9\": 14}',
+    '{\"col11\": 14, \"col12\": 41, \"col13\": 414, \"col14\": 154, \"col15\": 15, \"col16\": 15, \"col17\": 15, \"col18\": 15, \"col19\": 15, \"col20\": 154, \"col21\": 14, \"col22\": 14, \"col23\": 14, \"col24\": 14, \"col25\": 14, \"col26\": 14, \"col27\": 14, \"col28\": 9}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    87,
+    20,
+    'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
+    '',
+    '1',
+    '{\"col5\": 13, \"col6\": 999, \"col7\": 3, \"col8\": 13, \"col9\": 0}',
+    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    88,
+    20,
+    'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
+    '',
+    '1',
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0}',
+    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 7, \"col28\": 0}'
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: logs
@@ -12112,7 +12088,7 @@ VALUES
     1,
     1,
     '2023-11-16 08:51:36',
-    '16.11.2023 13:55:08',
+    '14.05.2024 23:25:47',
     0
   );
 INSERT INTO
@@ -12129,7 +12105,7 @@ VALUES
     2,
     '2023-11-16 12:13:30',
     '16.11.2023 14:13:30',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12193,7 +12169,7 @@ VALUES
     1,
     '2024-05-07 23:53:08',
     '07.05.2024 23:53:07',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12241,7 +12217,7 @@ VALUES
     1,
     '2024-05-08 00:02:04',
     '08.05.2024 00:02:04',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12257,7 +12233,7 @@ VALUES
     1,
     '2024-05-08 00:03:14',
     '08.05.2024 00:03:14',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12273,7 +12249,7 @@ VALUES
     1,
     '2024-05-11 03:56:16',
     '11.05.2024 03:56:16',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12289,7 +12265,7 @@ VALUES
     8,
     '2024-05-13 23:01:14',
     '13.05.2024 23:01:14',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12305,7 +12281,7 @@ VALUES
     1,
     '2024-05-14 15:23:38',
     '14.05.2024 15:23:38',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12321,7 +12297,7 @@ VALUES
     1,
     '2024-05-14 15:29:41',
     '14.05.2024 15:29:41',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12337,7 +12313,7 @@ VALUES
     1,
     '2024-05-14 15:30:28',
     '14.05.2024 15:30:28',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12353,7 +12329,7 @@ VALUES
     1,
     '2024-05-14 15:33:59',
     '14.05.2024 15:33:59',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12369,7 +12345,7 @@ VALUES
     1,
     '2024-05-14 15:34:19',
     '14.05.2024 15:34:19',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12385,7 +12361,7 @@ VALUES
     1,
     '2024-05-14 15:42:07',
     '14.05.2024 15:42:07',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12401,7 +12377,7 @@ VALUES
     1,
     '2024-05-14 15:49:46',
     '14.05.2024 15:49:46',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12417,7 +12393,7 @@ VALUES
     1,
     '2024-05-14 15:53:10',
     '14.05.2024 15:53:10',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12433,7 +12409,7 @@ VALUES
     1,
     '2024-05-14 18:25:11',
     '14.05.2024 18:25:11',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12449,7 +12425,7 @@ VALUES
     1,
     '2024-05-14 18:26:19',
     '14.05.2024 18:26:19',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12465,7 +12441,7 @@ VALUES
     1,
     '2024-05-14 18:26:20',
     '14.05.2024 18:26:19',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12481,7 +12457,7 @@ VALUES
     1,
     '2024-05-14 18:27:04',
     '14.05.2024 18:27:04',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12497,7 +12473,7 @@ VALUES
     1,
     '2024-05-14 18:27:05',
     '14.05.2024 18:27:04',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12513,7 +12489,7 @@ VALUES
     1,
     '2024-05-14 18:28:33',
     '14.05.2024 18:28:33',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12529,6 +12505,150 @@ VALUES
     1,
     '2024-05-14 18:28:55',
     '14.05.2024 18:28:55',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    34,
+    1,
+    '2024-05-14 20:38:02',
+    '14.05.2024 21:12:33',
+    1
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    35,
+    1,
+    '2024-05-14 21:14:50',
+    '14.05.2024 22:26:00',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    36,
+    1,
+    '2024-05-14 21:28:45',
+    '14.05.2024 21:28:45',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    37,
+    1,
+    '2024-05-14 22:14:20',
+    '14.05.2024 22:20:50',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    38,
+    1,
+    '2024-05-14 22:21:26',
+    '14.05.2024 22:22:10',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    39,
+    1,
+    '2024-05-14 22:22:26',
+    '14.05.2024 22:22:42',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    40,
+    1,
+    '2024-05-14 22:28:11',
+    '14.05.2024 23:14:10',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    41,
+    1,
+    '2024-05-14 22:41:21',
+    '14.05.2024 22:41:29',
+    0
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    42,
+    1,
+    '2024-05-14 22:41:35',
+    '14.05.2024 22:47:59',
     0
   );
 
@@ -12674,6 +12794,366 @@ VALUES
     1,
     '{\"col5\": 23, \"col6\": 23, \"col7\": 23, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
     '{\"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    11,
+    34,
+    'фывфыв',
+    1,
+    '{\"col5\": 51, \"col6\": 1, \"col7\": 2, \"col8\": 1, \"col9\": 1, \"col10\": 42, \"col11\": 4, \"col12\": 24, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    17,
+    36,
+    '',
+    1,
+    '{\"col5\": 1998, \"col6\": 0, \"col7\": 0, \"col8\": 999, \"col9\": 999, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    54,
+    37,
+    '',
+    1,
+    '{\"col5\": 13, \"col6\": 1, \"col7\": 1, \"col8\": 1, \"col9\": 1, \"col10\": 2, \"col11\": 3, \"col12\": 4, \"col13\": 5, \"col14\": 6}',
+    '{\"col15\": 7, \"col16\": 8, \"col17\": 9, \"col18\": 10}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    55,
+    37,
+    '',
+    2,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    56,
+    37,
+    '',
+    3,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 123, \"col18\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    57,
+    37,
+    '',
+    4,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 123}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    58,
+    37,
+    '',
+    5,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 321}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    62,
+    38,
+    '',
+    1,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 123, \"col18\": 1}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    64,
+    39,
+    '',
+    1,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 55, \"col18\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    68,
+    35,
+    '',
+    1,
+    '{\"col5\": 7, \"col6\": 1, \"col7\": 1, \"col8\": 1, \"col9\": 1, \"col10\": 1, \"col11\": 1, \"col12\": 1, \"col13\": 1, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 4, \"col18\": 123}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    145,
+    41,
+    'asdsad',
+    1,
+    '{\"col5\": 7, \"col6\": 1, \"col7\": 1, \"col8\": 1, \"col9\": 1, \"col10\": 1, \"col11\": 1, \"col12\": 1, \"col13\": 1, \"col14\": 1}',
+    '{\"col15\": 1, \"col16\": 1, \"col17\": 1, \"col18\": 55}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    146,
+    41,
+    '312as',
+    2,
+    '{\"col5\": 16, \"col6\": 1, \"col7\": 1, \"col8\": 1, \"col9\": 10, \"col10\": 1, \"col11\": 1, \"col12\": 1, \"col13\": 1, \"col14\": 10}',
+    '{\"col15\": 10, \"col16\": 1, \"col17\": 10, \"col18\": 123}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    149,
+    42,
+    'asdasd',
+    1,
+    '{\"col5\": 1, \"col6\": 1, \"col7\": 1, \"col8\": 1, \"col9\": 1, \"col10\": 1, \"col11\": 1, \"col12\": 1, \"col13\": 1, \"col14\": 1}',
+    '{\"col15\": 1, \"col16\": 33, \"col17\": 213}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    160,
+    40,
+    'samolet',
+    1,
+    '{\"col5\": 28, \"col6\": 11, \"col7\": 2, \"col8\": 22, \"col9\": 4, \"col10\": 5, \"col11\": 222, \"col12\": 7, \"col13\": 9, \"col14\": 10}',
+    '{\"col15\": 11, \"col16\": 12, \"col17\": 13}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    161,
+    40,
+    'тест',
+    2,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    162,
+    1,
+    '',
+    1,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 2}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    163,
+    1,
+    '',
+    2,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    164,
+    1,
+    '',
+    3,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
     99999
   );
 
@@ -13099,14 +13579,14 @@ VALUES
     1,
     '',
     'dmitriy_smir1_2_3@mail.ru',
-    '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b',
+    '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',
     1,
     0,
-    'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
-    'ao01sb9zr0s-popkfyypylm-72tv1x634ky-1;',
+    'Администратор',
+    'ef97o3vhbfb-q5whda2i55-0n1113aymdbm-1;',
     '2023-11-09 16:49:21',
     1,
-    0,
+    1,
     1111
   );
 INSERT INTO
@@ -13132,7 +13612,7 @@ VALUES
     '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',
     1,
     0,
-    'МОСКОВСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ ИМЕНИ М.В.Л...',
+    'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
     'cqeg2l861fh-s3xaxw0y42-ouvppiaz01f-2;',
     '2023-11-12 01:12:38',
     1,
@@ -13189,14 +13669,14 @@ VALUES
     4,
     'ne_znau.com',
     'CrazyCuts@mail.ru',
-    'cf23dc33d6aba13592a72190564ed18b2c0dae295f681ee0fddc4862f01225cf',
-    1,
+    '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',
     0,
-    'ГАПОУ \"Педагогический колледж\"',
-    'jemsyfwtva-quu1od0lz4-h58y3yhkenm-4;',
+    0,
+    'Администратор (без админки)',
+    '8ylvmp32qv5-4qq3yb3dw4l-1xq1j5mvne3-4;',
     '2024-04-13 13:14:55',
     1,
-    0,
+    1,
     1
   );
 INSERT INTO
@@ -13219,45 +13699,15 @@ VALUES
     6,
     NULL,
     'luciano_aventador@mail.ru',
-    'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',
+    '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',
     0,
     0,
-    'ГАПОУ \"ООМК\"',
+    'ГАПОУ \"Педагогический колледж\"',
     'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',
     '2024-05-13 18:11:01',
     -1,
     0,
     674
-  );
-INSERT INTO
-  `users` (
-    `id`,
-    `email`,
-    `login`,
-    `password`,
-    `admin_lvl`,
-    `darktheme`,
-    `complectName`,
-    `authkey`,
-    `dateCreate`,
-    `id_org`,
-    `verify`,
-    `id_city`
-  )
-VALUES
-  (
-    8,
-    NULL,
-    'iwantbigcock743@gmail.com',
-    'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',
-    1,
-    0,
-    'Тимур Даянов',
-    'rw60trydf8-ipa8zmqox1-91xd0nyvk6e-8;',
-    '2024-05-13 22:59:53',
-    -1,
-    0,
-    1432
   );
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

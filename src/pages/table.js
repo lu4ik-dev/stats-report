@@ -20,7 +20,446 @@ const DynamicTable = () => {
 
       if (!id_doc || id_doc === "newDoc") {
         setTableData([
-          { col1: userInfo.complectName, col2: '', col3: 1, col4: 0, col5: 0, col6: 0, col7: 0, col8: 0, col9: 0, col10: 0, col11: 0, col12: 0, col13: 0, col14: 0, col15: 0, col16: 0, col17: 0, col18: 0 },
+          { 
+            col1: userInfo.complectName, 
+            col2: 'Численность работников - всего (сумма строк 02, 06, 21, 22)',
+            col3: 1, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: 'в том числе: руководящие работники - всего',
+            col3: 2, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: 'из них: директор (начальник)',
+            col3: 3, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: 'из них: заместители директора (начальника)',
+            col3: 4, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: 'из них: руководитель филиала',
+            col3: 5, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: 'в том числе: педагогические работники - всего (сумма строк 07,12-20)',
+            col3: 6, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: 'в том числе: преподаватели - всего (сумма строк 8-11)',
+            col3: 7, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: 'из них: общеобразовательных дисциплин',
+            col3: 8, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: "из них: общего гуманитарного и социально-экономического учебного цикла",
+            col3: 9, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: "из них: математического и общего естественнонаучного учебного цикла",
+            col3: 10, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: "из них: профессионального учебного цикла",
+            col3: 11, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: "в том числе: мастера производственного обучения",
+            col3: 12, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: "в том числе: социальные педагоги",
+            col3: 13, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: "в том числе: педагоги-психологи",
+            col3: 14, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: "в том числе: педагоги-организаторы",
+            col3: 15, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: "в том числе: преподаватели-организаторы (основ безопасности жизнедеятельности, допризывной подготовки)",
+            col3: 16, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: "в том числе: руководители физического воспитания",
+            col3: 17, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: "в том числе: методисты",
+            col3: 18, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: "в том числе: тьюторы",
+            col3: 19, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: "в том числе: прочие",
+            col3: 20, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: "в том числе: учебно-вспомогательный персонал",
+            col3: 21, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          },
+          { 
+            col1: userInfo.complectName, 
+            col2: "в том числе: обслуживающий персонал",
+            col3: 22, 
+            col4: 0, 
+            col5: 0, 
+            col6: 0, 
+            col7: 0, 
+            col8: 0, 
+            col9: 0, 
+            col10: 0, 
+            col11: 0, 
+            col12: 0, 
+            col13: 0, 
+            col14: 0, 
+            col15: 0, 
+            col16: 0, 
+            col17: 0, 
+            col18: 0 
+          }
         ]);
       } else {
 
@@ -219,22 +658,22 @@ const DynamicTable = () => {
         </div>
       <table className="iksweb" id="experinceTable">
         <tr className='bg-primary'>
-            <th className='bg-primary' rowSpan={3} width="10%">
+            <th className='bg-primary' rowSpan={3} width="8%">
               Наименование образовательной организации (филиала)(повторять в
               каждой строке)
             </th>
             <th className='bg-primary' width="15%" rowSpan={2}>Наименование показателей</th>
             <th className='bg-primary' rowSpan={2} width="3%">№ строки</th>
-            <th className='bg-primary' rowSpan={2} width="5%">Всего (сумма гр. 4-9)</th>
-            <th className='bg-primary' colSpan={6} width="5%">из гр. 3 - имеют общий стаж работы, лет</th>
-            <th className='bg-primary' rowSpan={2}>
+            <th className='bg-primary' rowSpan={2} width="4%">Всего (сумма гр. 4-9)</th>
+            <th className='bg-primary' colSpan={6} width="4%">из гр. 3 - имеют общий стаж работы, лет</th>
+            <th className='bg-primary' rowSpan={2} width="7%">
               из гр. 3 имеют педагогический стаж работы, всего (сумма гр. 11-16)
             </th>
-            <th className='bg-primary' colSpan={6}>
+            <th className='bg-primary' colSpan={6} width="7%">
               из гр. 10 - имеют педагогический стаж работы, лет
             </th>
             <th className='bg-primary' rowSpan={2} width="7%">Не имеют педагогического стажа работы</th>
-            <th className='bg-primary' rowSpan={3}>Действие</th>
+            { userInfo.admin_lvl >= 1 ?  <th className='bg-primary' rowSpan={3} width="4%">Действие</th>   : '' }
           </tr>
           <tr>
             <th className='bg-primary' width="7%">до 3</th>
@@ -281,27 +720,28 @@ const DynamicTable = () => {
                     type="text"
                     value={row[colName]}
                     onChange={(e) => handleInputChange(rowIndex, colName, e.target.value)}
-                    disabled={index === 0 || index === 2 || index === 3 || index === 10}
+                    disabled={index === 0 || index === 2 || index === 3 || index === 10 || index === 1}
                   />
                 </td>
               ))}
-              <td className='position-relative'>
+            { userInfo.admin_lvl >= 1 ?    <td className='position-relative'>
                 <button className='btn btn-danger position-absolute start-50 translate-middle' onClick={() => handleDelete(rowIndex)}><i className="fas fa-window-close"></i> </button>
-              </td>
+              </td>  : '' }
             </tr>
           ))}
           <tr>
             <td colSpan={17}>
             </td>
             <td colSpan={2}>
-              <button className='btn btn-sm btn-primary zoom-5 rounded-pill ms-3 my-1'  onClick={handlerInsert}><i className="fas fa-add"></i> добавить запись</button>
+            { userInfo.admin_lvl >= 1 ? <button className='btn btn-sm btn-primary zoom-5 rounded-pill ms-3 my-1'  onClick={handlerInsert}><i className="fas fa-add"></i> добавить запись</button> : '' }
               <button className='btn btn-sm btn-success zoom-5 rounded-pill ms-1'  onClick={() => handleSave(0)}><i className="fas fa-save"></i> сохранить документ</button>
             </td>
           </tr>
         </tbody>
       </table>
-      <button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
-      <button className='position-relative start-100 btn btn-sm btn-success zoom-5 rounded-pill' style={{'margin': '0px -3rem'}} onClick={() => handleSave(0)}><i className="fas fa-save"></i> </button>
+      { userInfo.admin_lvl >= 1 ?   <button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
+         : '' }
+        <button className='position-relative start-100 btn btn-sm btn-success zoom-5 rounded-pill' style={  userInfo.admin_lvl >= 1 ?  {'margin': '0px -3rem'}  : {'margin': '0px -9rem'} } onClick={() => handleSave(0)}><i className="fas fa-save"></i>  { userInfo.admin_lvl >= 1 ?  ''  : 'Сохранить' }</button>
 
       {id_doc !== "newDoc" && (
         <div className="container">

@@ -24,6 +24,7 @@ import Testiq from './pages/test';
 import ContingentTable from './pages/ContingentTable';
 import InvalidsTables from './pages/InvalidsTables';
 import ErrorPageServer from './pages/ErrorPageServer';
+import InVerifycation from './pages/InVerifycation';
 
 import EductionTable from './pages/EductionTable';
 import { url_api, url_web } from './tech/config'
@@ -107,6 +108,7 @@ function App() {
           <Route path="/restore-password" element={apiAvailable ? <Restore /> : <Navigate to="/ErrorPageServer" />} />
 
           <Route path="/test" element={apiAvailable ? <Testiq /> : <Navigate to="/ErrorPageServer" />} />
+          <Route path="/inverify" element={apiAvailable ? <InVerifycation /> : <Navigate to="/ErrorPageServer" />} />
 
           <Route path="/admin-panel" element={apiAvailable ? <A_Main /> : <Navigate to="/ErrorPageServer" />} />
           <Route path="/admin-panel/users" element={apiAvailable ? <A_users /> : <Navigate to="/ErrorPageServer" />} />

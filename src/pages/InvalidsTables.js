@@ -296,7 +296,7 @@ const InvalidsTables = () => {
 			<th className='bg-primary' rowSpan="3">Всего инвалидов с ОВЗ</th>
 			<th className='bg-primary' colSpan="4">(из 3 графы)Из них количество студентов и источник</th>
 			<th className='bg-primary' colSpan="20">Из них (из графы 4):</th>
-			<th className='bg-primary' rowSpan="4">Действие</th>
+      { userInfo.admin_lvl >= 1 ? 	<th className='bg-primary' rowSpan="4">Действие</th>   : '' }
 		</tr>
 		<tr>
 			<th className='bg-primary'>Количество студентов, обучающихся за счет средств федерального бюджета</th>
@@ -383,23 +383,25 @@ const InvalidsTables = () => {
                     />
                   </td>
                 ))}
-                <td className='position-relative'>
+                { userInfo.admin_lvl >= 1 ?  <td className='position-relative'>
                   <button className='btn btn-danger position-absolute start-50 translate-middle' onClick={() => handleDelete(rowIndex)}><i className="fas fa-window-close"></i> </button>
-                </td>
+                </td>   : '' }
               </tr>
             ))}
              <tr>
             <td colSpan={21}>
             </td>
             <td colSpan={8}>
-              <button className='btn btn-sm btn-primary zoom-5 rounded-pill ms-3 my-1'  onClick={handlerInsert}><i className="fas fa-add"></i> добавить запись</button>
+            { userInfo.admin_lvl >= 1 ? <button className='btn btn-sm btn-primary zoom-5 rounded-pill ms-3 my-1'  onClick={handlerInsert}><i className="fas fa-add"></i> добавить запись</button>   : '' }
               <button className='btn btn-sm btn-success zoom-5 rounded-pill ms-1'  onClick={() => handleSave(0)}><i className="fas fa-save"></i> сохранить документ</button>
             </td>
           </tr>
           </tbody>
         </table>
-        <button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
-      	<button className='position-relative start-100 btn btn-sm btn-success zoom-5 rounded-pill' style={{'margin': '0px -3rem'}} onClick={() => handleSave(0)}><i className="fas fa-save"></i> </button>
+        { userInfo.admin_lvl >= 1 ?   <button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
+         : '' }
+        <button className='position-relative start-100 btn btn-sm btn-success zoom-5 rounded-pill' style={  userInfo.admin_lvl >= 1 ?  {'margin': '0px -3rem'}  : {'margin': '0px -9rem'} } onClick={() => handleSave(0)}><i className="fas fa-save"></i>  { userInfo.admin_lvl >= 1 ?  ''  : 'Сохранить' }</button>
+
   </div>
   {id_doc !== "newDoc" && (
         <div className="container">

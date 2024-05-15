@@ -23,6 +23,8 @@
   font-style: normal;
 }
 
+
+
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
   font-family: 'RobotoMono', sans-serif!important;
 }
@@ -705,3 +707,19 @@ background: rgb(255, 255, 255);
 background: linear-gradient(90deg, rgb(70, 121, 136) 0%, rgb(7, 51, 65) 100%);
 }
 
+
+table .bg-primary{
+  background-color: rgb(23,69,83)!important;
+}
+
+span a {
+  color: rgb(23,69,83)!important;
+}
+
+span a:hover {
+  color: #165b9b!important;
+}
+
+span a:active {
+  color: rgb(23,69,83)!important;
+}
