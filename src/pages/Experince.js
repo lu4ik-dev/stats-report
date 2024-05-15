@@ -108,7 +108,6 @@ const Experince = () => {
             <table className="table table-striped">
             <thead>
                 <tr>
-                <th>ID</th>
                 <th>Наименование организации</th>
                 <th>Дата создания</th>
                 <th>Город</th>
@@ -120,7 +119,6 @@ const Experince = () => {
                   item.disabled === 1 ? '' : (
                     selectedRegion === 'notSelected' || item.region === selectedRegion ? ( // Проверка на выбранный регион
                       <tr className='zoom-5' key={item.id}>
-                        <td>{item.id}</td>
                         <td>{item.userName}</td>
                         <td>{formatDate(item.dateCreate)}</td>
                         <td>{item.city}</td>

@@ -208,7 +208,7 @@ const A_Configurate_Specialnost = () => {
             <div className="container">
                 <div className="row justify-content">
                     <div className="col-md-auto">
-                        <h3><a href="/admin-panel">Админ-панель</a> / <a href="/admin-panel/settings">настройки</a></h3>
+                        <h3><a href="/admin-panel">Админ-панель</a> / <a href="/admin-panel/settings">настройки</a> / специальности</h3>
                     </div>
                     <div className="w-50 mt-2  d-flex">
                             <input

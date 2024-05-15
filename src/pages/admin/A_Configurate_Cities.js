@@ -159,7 +159,7 @@ const A_Configurate_Cities = () => {
             <div className="container">
                 <div className="row justify-content">
                     <div className="col-md-auto">
-                        <h3><a href="/admin-panel">Админ-панель</a> / <a href="/admin-panel/settings">настройки</a></h3>
+                        <h3><a href="/admin-panel">Админ-панель</a> / <a href="/admin-panel/settings">настройки</a> / города</h3>
                     </div>
                     <div className="col-md-auto mt-2 d-flex">
                     <input
@@ -178,7 +178,7 @@ const A_Configurate_Cities = () => {
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
+   
                             <th>Название области</th>
                             <th>Название города</th>
                             <th>Действия</th>
@@ -187,7 +187,6 @@ const A_Configurate_Cities = () => {
                     <tbody>
                         {cities.map(city => (
                             <tr key={city.id}>
-                                <td>{city.id}</td>
                                 <td>{city.region_text}</td>
                                 <td>{city.text}</td>
                                 <td>

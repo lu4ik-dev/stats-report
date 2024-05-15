@@ -42,7 +42,6 @@ const A_users = () => {
             <table className="table table-striped">
             <thead>
                 <tr>
-                <th>ID (отладка)</th>
                 <th>ФИО</th>
                 <th>Логин</th>
                 <th>Email</th>
@@ -56,7 +55,6 @@ const A_users = () => {
                 {data.map((item) => (
                     item.disabled === 1 ? '' : (
                     <tr className='zoom-5' key={item.id}>
-                        <td>{item.id}</td>
                         <td>{item.userName}</td>
                         <td>{item.orgName}</td>
                         <td>{formatDate(item.dateCreate)}</td>
