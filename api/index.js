@@ -1118,12 +1118,11 @@ app.post('/api/updateInvalids', (req, res) => {
 app.get('/api/users', (req, res) => {
   
     const query = `
-        SELECT u.id, u.dateCreate, u.login, u.complectName, u.id_city, c.text AS city_text, r.text AS region_text
+        SELECT u.id, u.dateCreate, u.login, u.complectName, u.disabled as disabled, u.id_city, c.text AS city_text, r.text AS region_text
         FROM users AS u
         JOIN cities AS c ON u.id_city = c.id
         JOIN regions AS r ON c.id_region = r.id;
         `;
-    
 
       connection.query(query, (err, result) => {
         if (err) {
@@ -1244,8 +1243,7 @@ app.post('/api/del/settings/regions/:id', (req, res) => {
 app.post('/api/del/settings/users/:id', (req, res) => {
   const id = req.params.id;
   const query = `
-    DELETE FROM users
-    WHERE id = ?
+  UPDATE users SET disabled= 1 WHERE id = ?
   `;
   connection.query(query, [id], (err, result) => {
     if (err) {
@@ -2128,10 +2126,30 @@ app.get('/backup', async (req, res) => {
   }
 });
  
-// dump the result straight to a file
+app.get('/api/users/getVerify', (req, res) => {
+  connection.query('SELECT users.*, cities.text AS city_text, regions.text AS region_text FROM users INNER JOIN cities ON users.id_city = cities.id INNER JOIN regions ON cities.id_region = regions.id WHERE verify = 0', (error, results, fields) => {
+    if (error) throw error;
+    res.json(results);
+  });
+});
 
+// Установка значения verify в 1 (активация)
+app.post('/api/users/activate/:id', (req, res) => {
+  const userId = req.params.id;
+  connection.query('UPDATE users SET verify = 1 WHERE id = ?', userId, (error, results, fields) => {
+    if (error) throw error;
+    res.status(200).send('Пользователь активирован');
+  });
+});
 
-
+// Установка значения verify в 0 (деактивация)
+app.post('/api/users/deactivate/:id', (req, res) => {
+  const userId = req.params.id;
+  connection.query('UPDATE users SET disabled = 1 WHERE ID =  ?', userId, (error, results, fields) => {
+    if (error) throw error;
+    res.status(200).send('Пользователь деактивирован');
+  });
+});
 
 async function processMessages() {
   await delayCsMsg("Стопорные краны закрыты..", 10); 

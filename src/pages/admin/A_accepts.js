@@ -1,48 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { redirectToLogin } from '../../tech/checking';
 import Header from '../Header';
+import { url_api } from '../../tech/config';
 const A_accepts = () => {
-    const [cities, setCities] = useState([]);
-    const [selectedCity, setSelectedCity] = useState(null);
-    const [newCityText, setNewCityText] = useState('');
+    const [users, setUsers] = useState([]);
+    const [selectedUser, setSelectedUser] = useState(null);
     const [showModal, setShowModal] = useState(false);
-    const [regions, setRegions] = useState([]);
-    const [selectedRegion, setSelectedRegion] = useState('notSelected');
 
     redirectToLogin();
 
-    const handleEditCity = (city) => {
-        setSelectedCity(city);
-        setNewCityText(city.text);
+    // Загрузка пользователей при загрузке компонента
+    useEffect(() => {
+        fetchUsers();
+    }, []);
+
+    // Функция для получения списка пользователей
+    const fetchUsers = () => {
+        fetch(`${url_api}/api/users/getVerify`)
+            .then(response => response.json())
+            .then(data => setUsers(data))
+            .catch(error => console.error('Ошибка загрузки пользователей:', error));
     };
 
-    const handleAddCity = (city) => {
-        setSelectedCity(city);
-        setNewCityText(city.text);
+    // Функция для активации пользователя
+    const activateUser = (userId) => {
+        fetch(`${url_api}/api/users/activate/${userId}`, { method: 'POST' })
+            .then(() => {
+                fetchUsers(); // После активации обновляем список пользователей
+                handleCloseModal();
+            })
+            .catch(error => console.error('Ошибка активации пользователя:', error));
     };
 
-    const handleCancelEdit = () => {
-        setSelectedCity(null);
-        setNewCityText('');
+    // Функция для деактивации пользователя
+    const deactivateUser = (userId) => {
+        fetch(`${url_api}/api/users/deactivate/${userId}`, { method: 'POST' })
+            .then(() => {
+                fetchUsers(); // После деактивации обновляем список пользователей
+            })
+            .catch(error => console.error('Ошибка деактивации пользователя:', error));
     };
 
-    const handleCancelAdd = () => {
-        setSelectedRegion(null);
-        setNewCityText('');
-        setShowModal(false)
-    };
-
-
-    const handleOpenModal = () => {
+    // Функция для открытия модального окна и выбора пользователя
+    const handleOpenModal = (user) => {
+        setSelectedUser(user);
         setShowModal(true);
-        setNewCityText('');
     };
 
-    const handleRegionChange = (event) => {
-        setSelectedRegion(event.target.value);
-        // Сброс выбранного города
-        setSelectedCity(null);
-        setNewCityText('');
+    // Функция для закрытия модального окна
+    const handleCloseModal = () => {
+        setSelectedUser(null);
+        setShowModal(false);
     };
 
     return (
@@ -51,7 +59,7 @@ const A_accepts = () => {
             <div className="container">
                 <div className="row justify-content">
                     <div className="col-md-auto">
-                        <h3><a href="/admin-panel">Админ-панель</a> / заявки</h3>
+                        <h3><a href="/admin-panel">Админ-панель</a> / пользователи</h3>
                     </div>
                 </div>
                 <table className="table table-striped">
@@ -60,34 +68,26 @@ const A_accepts = () => {
                             <th>ID (отладка)</th>
                             <th>Email</th>
                             <th>Название организации</th>
-                            <th>Дата создания заявки</th>
+                            <th>Дата создания</th>
                             <th>Область</th>
                             <th>Город</th>
                             <th>Действия</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {cities.map(city => (
-                            <tr key={city.id}>
-                                <td>{city.id}</td>
-                                <td>{city.region_text}</td>
-                                <td>{city.text}</td>
+
+                        {users.map(user => (
+                            user.disabled === 1 ? '' : 
+                            <tr key={user.id}>
+                                <td>{user.id}</td>
+                                <td>{user.login}</td>
+                                <td>{user.complectName}</td>
+                                <td>{user.dateCreate}</td>
+                                <td>{user.region_text}</td>
+                                <td>{user.city_text}</td>
                                 <td>
-
-                                {city.id !== -1 && (
-                            <>
-                                    <button className="btn btn-danger">Удалить</button>
-                                    <button className="btn btn-primary ml-2 ms-1" onClick={() => handleEditCity(city)}>Редактировать</button>
-                            </>
-                        )}
-                        {city.id === -1 && (
-                            <>
-                                <button className="btn btn-danger" disabled>Удалить</button>
-                                <button className="btn btn-primary ml-2 ms-1" disabled>Редактировать</button>
-                            </>
-                        )}
-
-
+                                    <button className="btn btn-danger" onClick={() => deactivateUser(user.id)}>Деактивировать</button>
+                                    <button className="btn btn-primary ml-2 ms-1" onClick={() => handleOpenModal(user)}>Перейти</button>
                                 </td>
                             </tr>
                         ))}
@@ -96,36 +96,24 @@ const A_accepts = () => {
             </div>
 
             {showModal && (
-                <div id="confirmModal2" className={`modal fade show d-block`} tabIndex="-1" aria-labelledby="confirmModalLabel2" aria-modal="true" role="dialog" >
+                <div id="userDetailsModal" className={`modal fade show d-block`} tabIndex="-1" aria-labelledby="userDetailsModalLabel" aria-modal="true" role="dialog" >
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="confirmModalLabel2">Добавление города</h5>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Закрыть" onClick={handleCancelAdd}></button>
+                                <h5 className="modal-title" id="userDetailsModalLabel">Детали пользователя</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Закрыть" onClick={handleCloseModal}></button>
                             </div>
                             <div className="modal-body">
-                                <p>Выберите область:</p>
-                                <select
-                                    className="form-control"
-                                    onChange={handleRegionChange}
-                                    value={selectedRegion}
-                                >
-                                    <option value="notSelected" disabled>Выберите область</option>
-                                    {regions.map(region => (
-                                        <option key={region.id} value={region.id}>{region.text}</option>
-                                    ))}
-                                </select>
-                                <p>Введите название нового города:</p>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    value={newCityText}
-                                    onChange={(e) => setNewCityText(e.target.value)}
-                                />
+                                <p><strong>Email:</strong> {selectedUser.login}</p>
+                                <p><strong>Название организации:</strong> {selectedUser.complectName}</p>
+                                <p><strong>Дата создания:</strong> {selectedUser.dateCreate}</p>
+                                <p><strong>Регион:</strong> {selectedUser.region_text}</p>
+                                <p><strong>Город:</strong> {selectedUser.city_text}</p>
+                                {/* Дополнительные детали пользователя */}
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" onClick={handleCancelAdd}>Отмена</button>
-                                <button type="button" className="btn btn-primary" onClick={handleAddCity}>Добавить</button>
+                                <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>Закрыть</button>
+                                {selectedUser.verify === 0 && <button type="button" className="btn btn-primary" onClick={() => activateUser(selectedUser.id)}>Активировать</button>}
                             </div>
                         </div>
                     </div>

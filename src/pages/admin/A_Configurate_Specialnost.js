@@ -226,7 +226,7 @@ const A_Configurate_Specialnost = () => {
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Код специальности</th>
                             <th>Название профессии</th>
                             <th>Код программы</th>
                             <th>Код области обучения</th>

@@ -257,6 +257,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id_org` int DEFAULT NULL,
   `verify` tinyint(1) NOT NULL DEFAULT '0',
   `id_city` int DEFAULT '1',
+  `disabled` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `id_org` (`id_org`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id_org`) REFERENCES `orgazizations` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -13572,7 +13573,8 @@ INSERT INTO
     `dateCreate`,
     `id_org`,
     `verify`,
-    `id_city`
+    `id_city`,
+    `disabled`
   )
 VALUES
   (
@@ -13587,7 +13589,8 @@ VALUES
     '2023-11-09 16:49:21',
     1,
     1,
-    1111
+    1111,
+    0
   );
 INSERT INTO
   `users` (
@@ -13602,7 +13605,8 @@ INSERT INTO
     `dateCreate`,
     `id_org`,
     `verify`,
-    `id_city`
+    `id_city`,
+    `disabled`
   )
 VALUES
   (
@@ -13617,6 +13621,7 @@ VALUES
     '2023-11-12 01:12:38',
     1,
     0,
+    1,
     1
   );
 INSERT INTO
@@ -13632,7 +13637,8 @@ INSERT INTO
     `dateCreate`,
     `id_org`,
     `verify`,
-    `id_city`
+    `id_city`,
+    `disabled`
   )
 VALUES
   (
@@ -13647,6 +13653,7 @@ VALUES
     '2023-11-13 07:14:48',
     1,
     0,
+    1,
     1
   );
 INSERT INTO
@@ -13662,7 +13669,8 @@ INSERT INTO
     `dateCreate`,
     `id_org`,
     `verify`,
-    `id_city`
+    `id_city`,
+    `disabled`
   )
 VALUES
   (
@@ -13677,7 +13685,8 @@ VALUES
     '2024-04-13 13:14:55',
     1,
     1,
-    1
+    1,
+    0
   );
 INSERT INTO
   `users` (
@@ -13692,7 +13701,8 @@ INSERT INTO
     `dateCreate`,
     `id_org`,
     `verify`,
-    `id_city`
+    `id_city`,
+    `disabled`
   )
 VALUES
   (
@@ -13707,7 +13717,8 @@ VALUES
     '2024-05-13 18:11:01',
     -1,
     0,
-    674
+    674,
+    0
   );
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

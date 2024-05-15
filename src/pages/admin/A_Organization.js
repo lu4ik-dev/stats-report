@@ -9,6 +9,7 @@ import { url_api } from '../../tech/config';
 const A_Organization = () => {
     const [data, setData] = useState([]);
     const authkey = JSON.parse(localStorage.getItem("userInfo")).authkey;
+    const userId = JSON.parse(localStorage.getItem("userInfo")).id;
 
     useEffect(() => {
         redirectToLogin();
@@ -27,7 +28,6 @@ const A_Organization = () => {
 
     const queryParams = new URLSearchParams(window.location.search);
     const idDocParam = queryParams.get('id_doc');
-    
     const handleDelete = (id) => {
         fetch(`${url_api}/api/del/settings/users/${id}`, {
           method: 'POST',
@@ -80,7 +80,7 @@ const A_Organization = () => {
                         <td>{item.city_text}</td>
                         <td>{item.text}</td>
                         <td> 
-                            <button className='btn btn-danger mx-1 ' onClick={() => handleDelete(item.id)}>Удалить</button>
+                            <button className="btn btn-danger mx-1" disabled={userId == item.id} onClick={() => handleDelete(item.id)}>Удалить</button>
                         </td>
                     </tr>
                 )
