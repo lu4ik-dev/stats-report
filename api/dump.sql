@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `employee_work_exp` (
   PRIMARY KEY (`id`),
   KEY `id_user` (`id_user`),
   CONSTRAINT `employee_work_exp_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 20 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: employee_work_exp_body
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `employee_work_exp_body` (
   PRIMARY KEY (`id`),
   KEY `id_doc` (`id_doc`),
   CONSTRAINT `employee_work_exp_body_ibfk_1` FOREIGN KEY (`id_doc`) REFERENCES `employee_work_exp` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 319 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '8164 Персонал2.xlsx';
+) ENGINE = InnoDB AUTO_INCREMENT = 407 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '8164 Персонал2.xlsx';
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: enrollment
@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `invalids` (
   PRIMARY KEY (`id`),
   KEY `id_user` (`id_user`),
   CONSTRAINT `invalids_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 23 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 24 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: invalids_body
@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `invalids_body` (
   PRIMARY KEY (`id`),
   KEY `id_doc` (`id_doc`),
   CONSTRAINT `invalids_body_ibfk_1` FOREIGN KEY (`id_doc`) REFERENCES `invalids` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 89 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 96 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: logs
@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `obrazovanie` (
   `timeLastEdit` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `disabled` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 43 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 44 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: obrazovanie_body
@@ -209,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `obrazovanie_body` (
   `kval_cat` json NOT NULL,
   `full_zan` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 165 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 209 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: orgazizations
@@ -261,7 +261,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   KEY `id_org` (`id_org`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id_org`) REFERENCES `orgazizations` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 9 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: cities
@@ -9959,7 +9959,7 @@ VALUES
     2,
     '2023-11-10 00:15:35',
     '16.11.2023 12:55:48',
-    0
+    1
   );
 INSERT INTO
   `employee_work_exp` (
@@ -10033,7 +10033,7 @@ VALUES
     2,
     '2023-11-16 13:10:44',
     '16.11.2023 15:11:15',
-    0
+    1
   );
 INSERT INTO
   `employee_work_exp` (
@@ -10065,7 +10065,7 @@ VALUES
     1,
     '2024-05-05 10:36:42',
     '14.05.2024 23:29:06',
-    0
+    1
   );
 INSERT INTO
   `employee_work_exp` (
@@ -10081,7 +10081,7 @@ VALUES
     1,
     '2024-05-11 03:56:54',
     '11.05.2024 03:56:54',
-    0
+    1
   );
 INSERT INTO
   `employee_work_exp` (
@@ -10097,7 +10097,7 @@ VALUES
     1,
     '2024-05-11 20:00:28',
     '14.05.2024 03:32:41',
-    0
+    1
   );
 INSERT INTO
   `employee_work_exp` (
@@ -10113,6 +10113,38 @@ VALUES
     4,
     '2024-05-13 15:28:20',
     '13.05.2024 15:28:20',
+    1
+  );
+INSERT INTO
+  `employee_work_exp` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    20,
+    4,
+    '2024-05-15 22:12:45',
+    '15.05.2024 22:13:07',
+    1
+  );
+INSERT INTO
+  `employee_work_exp` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    21,
+    4,
+    '2024-05-15 22:16:01',
+    '15.05.2024 22:17:30',
     0
   );
 
@@ -11128,6 +11160,798 @@ VALUES
     '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
     0
   );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    341,
+    20,
+    'Численность работников - всего (сумма строк 02, 06, 21, 22)',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 1, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    342,
+    20,
+    'в том числе: руководящие работники - всего',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    343,
+    20,
+    'из них: директор (начальник)',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 2, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    344,
+    20,
+    'из них: заместители директора (начальника)',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    345,
+    20,
+    'из них: руководитель филиала',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 3, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    346,
+    20,
+    'в том числе: педагогические работники - всего (сумма строк 07,12-20)',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    347,
+    20,
+    'в том числе: преподаватели - всего (сумма строк 8-11)',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    348,
+    20,
+    'из них: общеобразовательных дисциплин',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    349,
+    20,
+    'из них: общего гуманитарного и социально-экономического учебного цикла',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    350,
+    20,
+    'из них: математического и общего естественнонаучного учебного цикла',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    351,
+    20,
+    'из них: профессионального учебного цикла',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    352,
+    20,
+    'в том числе: мастера производственного обучения',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    353,
+    20,
+    'в том числе: социальные педагоги',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    354,
+    20,
+    'в том числе: педагоги-психологи',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    355,
+    20,
+    'в том числе: педагоги-организаторы',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    356,
+    20,
+    'в том числе: преподаватели-организаторы (основ безопасности жизнедеятельности, допризывной подготовки)',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    357,
+    20,
+    'в том числе: руководители физического воспитания',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    358,
+    20,
+    'в том числе: методисты',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    359,
+    20,
+    'в том числе: тьюторы',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    360,
+    20,
+    'в том числе: прочие',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    361,
+    20,
+    'в том числе: учебно-вспомогательный персонал',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    362,
+    20,
+    'в том числе: обслуживающий персонал',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    385,
+    21,
+    'Численность работников - всего (сумма строк 02, 06, 21, 22)',
+    '{\"col4\": 2, \"col5\": 1, \"col6\": 1, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 1, \"col13\": 1, \"col14\": 1, \"col15\": 1, \"col16\": 1, \"col17\": 1, \"col18\": 1}',
+    1
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    386,
+    21,
+    'в том числе: руководящие работники - всего',
+    '{\"col4\": 240, \"col5\": 10, \"col6\": 230, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 10, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 20}',
+    20
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    387,
+    21,
+    'из них: директор (начальник)',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 30, \"col14\": 0, \"col15\": 20, \"col16\": 30, \"col17\": 2, \"col18\": 30}',
+    30
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    388,
+    21,
+    'из них: заместители директора (начальника)',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 2, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    389,
+    21,
+    'из них: руководитель филиала',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    390,
+    21,
+    'в том числе: педагогические работники - всего (сумма строк 07,12-20)',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    391,
+    21,
+    'в том числе: преподаватели - всего (сумма строк 8-11)',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    392,
+    21,
+    'из них: общеобразовательных дисциплин',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    393,
+    21,
+    'из них: общего гуманитарного и социально-экономического учебного цикла',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    394,
+    21,
+    'из них: математического и общего естественнонаучного учебного цикла',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    395,
+    21,
+    'из них: профессионального учебного цикла',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    396,
+    21,
+    'в том числе: мастера производственного обучения',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    397,
+    21,
+    'в том числе: социальные педагоги',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    398,
+    21,
+    'в том числе: педагоги-психологи',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    399,
+    21,
+    'в том числе: педагоги-организаторы',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    400,
+    21,
+    'в том числе: преподаватели-организаторы (основ безопасности жизнедеятельности, допризывной подготовки)',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    401,
+    21,
+    'в том числе: руководители физического воспитания',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    402,
+    21,
+    'в том числе: методисты',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    403,
+    21,
+    'в том числе: тьюторы',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    404,
+    21,
+    'в том числе: прочие',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    405,
+    21,
+    'в том числе: учебно-вспомогательный персонал',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
+INSERT INTO
+  `employee_work_exp_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_exp`,
+    `teach_exp`,
+    `not_exp`
+  )
+VALUES
+  (
+    406,
+    21,
+    'в том числе: обслуживающий персонал',
+    '{\"col4\": 0, \"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0}',
+    '{\"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0}',
+    0
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: enrollment
@@ -11343,7 +12167,7 @@ VALUES
     2,
     '2023-11-16 13:16:09',
     '14.05.2024 03:58:47',
-    0
+    1
   );
 INSERT INTO
   `invalids` (
@@ -11359,7 +12183,7 @@ VALUES
     2,
     '2023-11-16 13:18:22',
     '16.11.2023 15:18:22',
-    0
+    1
   );
 INSERT INTO
   `invalids` (
@@ -11439,7 +12263,7 @@ VALUES
     1,
     '2024-05-14 04:14:17',
     '14.05.2024 04:14:17',
-    0
+    1
   );
 INSERT INTO
   `invalids` (
@@ -11455,7 +12279,7 @@ VALUES
     1,
     '2024-05-14 04:14:18',
     '14.05.2024 21:26:37',
-    0
+    1
   );
 INSERT INTO
   `invalids` (
@@ -11471,7 +12295,7 @@ VALUES
     1,
     '2024-05-14 04:14:29',
     '14.05.2024 04:14:29',
-    0
+    1
   );
 INSERT INTO
   `invalids` (
@@ -11487,7 +12311,7 @@ VALUES
     1,
     '2024-05-14 04:14:30',
     '14.05.2024 23:30:01',
-    0
+    1
   );
 INSERT INTO
   `invalids` (
@@ -11503,7 +12327,7 @@ VALUES
     1,
     '2024-05-14 04:14:41',
     '14.05.2024 04:14:41',
-    0
+    1
   );
 INSERT INTO
   `invalids` (
@@ -11519,6 +12343,22 @@ VALUES
     1,
     '2024-05-14 04:15:23',
     '14.05.2024 04:15:23',
+    1
+  );
+INSERT INTO
+  `invalids` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    23,
+    1,
+    '2024-05-15 23:33:23',
+    '15.05.2024 23:36:37',
     0
   );
 
@@ -12066,6 +12906,86 @@ VALUES
     '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0}',
     '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 7, \"col28\": 0}'
   );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    92,
+    23,
+    'Министерство Просвящения',
+    'Архитектура',
+    '07.02.01',
+    '{\"col5\": 1, \"col6\": 1, \"col7\": 3, \"col8\": 4, \"col9\": 1}',
+    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 1, \"col15\": 0, \"col16\": 0, \"col17\": 3, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 1, \"col22\": 0, \"col23\": 0, \"col24\": 1, \"col25\": 0, \"col26\": 10, \"col27\": 0, \"col28\": 0}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    93,
+    23,
+    'Министерство Просвящения',
+    'Программирование в компьютерных системах',
+    '09.02.03',
+    '{\"col5\": 0, \"col6\": 1, \"col7\": 2, \"col8\": 3, \"col9\": 0}',
+    '{\"col11\": 0, \"col12\": 1, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 1, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 1, \"col23\": 0, \"col24\": 0, \"col25\": 1, \"col26\": 0, \"col27\": 0, \"col28\": 2}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    94,
+    23,
+    'Министерство Просвящения',
+    'Машинист паровых турбин',
+    '13.01.02',
+    '{\"col5\": 1, \"col6\": 3, \"col7\": 0, \"col8\": 3, \"col9\": 0}',
+    '{\"col11\": 1, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 2, \"col16\": 0, \"col17\": 0, \"col18\": 3, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 1, \"col27\": 0, \"col28\": 0}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    95,
+    23,
+    'Министерство Просвящения',
+    'Проверка',
+    '05.01.03',
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0}',
+    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: logs
@@ -12090,7 +13010,7 @@ VALUES
     1,
     '2023-11-16 08:51:36',
     '14.05.2024 23:25:47',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12122,7 +13042,7 @@ VALUES
     2,
     '2023-11-16 12:17:21',
     '16.11.2023 14:17:21',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12506,7 +13426,7 @@ VALUES
     1,
     '2024-05-14 18:28:55',
     '14.05.2024 18:28:55',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12538,7 +13458,7 @@ VALUES
     1,
     '2024-05-14 21:14:50',
     '14.05.2024 22:26:00',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12554,7 +13474,7 @@ VALUES
     1,
     '2024-05-14 21:28:45',
     '14.05.2024 21:28:45',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12570,7 +13490,7 @@ VALUES
     1,
     '2024-05-14 22:14:20',
     '14.05.2024 22:20:50',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12586,7 +13506,7 @@ VALUES
     1,
     '2024-05-14 22:21:26',
     '14.05.2024 22:22:10',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12602,7 +13522,7 @@ VALUES
     1,
     '2024-05-14 22:22:26',
     '14.05.2024 22:22:42',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12618,7 +13538,7 @@ VALUES
     1,
     '2024-05-14 22:28:11',
     '14.05.2024 23:14:10',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12634,7 +13554,7 @@ VALUES
     1,
     '2024-05-14 22:41:21',
     '14.05.2024 22:41:29',
-    0
+    1
   );
 INSERT INTO
   `obrazovanie` (
@@ -12650,6 +13570,22 @@ VALUES
     1,
     '2024-05-14 22:41:35',
     '14.05.2024 22:47:59',
+    1
+  );
+INSERT INTO
+  `obrazovanie` (
+    `id`,
+    `id_user`,
+    `dateCreate`,
+    `timeLastEdit`,
+    `disabled`
+  )
+VALUES
+  (
+    43,
+    4,
+    '2024-05-15 22:13:32',
+    '15.05.2024 23:34:25',
     0
   );
 
@@ -13157,6 +14093,446 @@ VALUES
     '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
     99999
   );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    187,
+    43,
+    'Численность работников - всего (сумма строк 02, 06, 21, 22)',
+    1,
+    '{\"col5\": 1, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    188,
+    43,
+    'в том числе: руководящие работники - всего',
+    2,
+    '{\"col5\": 2, \"col6\": 2, \"col7\": 2, \"col8\": 2, \"col9\": 2, \"col10\": 2, \"col11\": 2, \"col12\": 2, \"col13\": 2, \"col14\": 1}',
+    '{\"col15\": 1, \"col16\": 1, \"col17\": 1}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    189,
+    43,
+    'из них: директор (начальник)',
+    3,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    190,
+    43,
+    'из них: заместители директора (начальника)',
+    4,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    191,
+    43,
+    'из них: руководитель филиала',
+    5,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    192,
+    43,
+    'в том числе: педагогические работники - всего (сумма строк 07,12-20)',
+    6,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    193,
+    43,
+    'в том числе: преподаватели - всего (сумма строк 8-11)',
+    7,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    194,
+    43,
+    'из них: общеобразовательных дисциплин',
+    8,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    195,
+    43,
+    'из них: общего гуманитарного и социально-экономического учебного цикла',
+    9,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    196,
+    43,
+    'из них: математического и общего естественнонаучного учебного цикла',
+    10,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    197,
+    43,
+    'из них: профессионального учебного цикла',
+    11,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    198,
+    43,
+    'в том числе: мастера производственного обучения',
+    12,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    199,
+    43,
+    'в том числе: социальные педагоги',
+    13,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    200,
+    43,
+    'в том числе: педагоги-психологи',
+    14,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    201,
+    43,
+    'в том числе: педагоги-организаторы',
+    15,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    202,
+    43,
+    'в том числе: преподаватели-организаторы (основ безопасности жизнедеятельности, допризывной подготовки)',
+    16,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    203,
+    43,
+    'в том числе: руководители физического воспитания',
+    17,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    204,
+    43,
+    'в том числе: методисты',
+    18,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    205,
+    43,
+    'в том числе: тьюторы',
+    19,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    206,
+    43,
+    'в том числе: прочие',
+    20,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    207,
+    43,
+    'в том числе: учебно-вспомогательный персонал',
+    21,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
+INSERT INTO
+  `obrazovanie_body` (
+    `id`,
+    `id_doc`,
+    `name_of_indicators`,
+    `all_obr`,
+    `have_obr`,
+    `kval_cat`,
+    `full_zan`
+  )
+VALUES
+  (
+    208,
+    43,
+    'в том числе: обслуживающий персонал',
+    22,
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0, \"col10\": 0, \"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0}',
+    '{\"col15\": 0, \"col16\": 0, \"col17\": 0}',
+    99999
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: orgazizations
@@ -13584,12 +14960,12 @@ VALUES
     '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',
     1,
     0,
-    'Администратор',
+    'Министерство Просвящения',
     'ef97o3vhbfb-q5whda2i55-0n1113aymdbm-1;',
     '2023-11-09 16:49:21',
     1,
     1,
-    1111,
+    1434,
     0
   );
 INSERT INTO
@@ -13612,17 +14988,17 @@ VALUES
   (
     2,
     '',
-    'dmitriy',
+    'admin@mail.ru',
     '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',
     1,
     0,
-    'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
+    'Министерство Просвящения',
     'cqeg2l861fh-s3xaxw0y42-ouvppiaz01f-2;',
     '2023-11-12 01:12:38',
     1,
-    0,
     1,
-    1
+    1434,
+    0
   );
 INSERT INTO
   `users` (
@@ -13643,18 +15019,18 @@ INSERT INTO
 VALUES
   (
     3,
-    'hz@hz.hz',
-    'BSHT',
+    '123',
+    'user@mail.ru',
     '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',
-    1,
     0,
-    'ГАПОУ \"Сельскохозяйственный техникум города Бугуруслана\"',
-    'kr0fotma5ng-it5ml3wgwvs-h4nv2wngm2-3;',
+    0,
+    'ГАПОУ \"БНК\" Г. БУГУРУСЛАНА ОРЕНБУРГСКОЙ ОБЛАСТИ',
+    '4rezerpimwi-e4v5dadazk-l7x47io9mpr-3;',
     '2023-11-13 07:14:48',
     1,
-    0,
     1,
-    1
+    1434,
+    0
   );
 INSERT INTO
   `users` (
@@ -13680,12 +15056,12 @@ VALUES
     '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',
     0,
     0,
-    'Администратор (без админки)',
-    '8ylvmp32qv5-4qq3yb3dw4l-1xq1j5mvne3-4;',
+    'ГАПОУ \"БСХТ\"',
+    'oagsiitpfd-w4vqdt5xfu-zq8zafetc9-4;',
     '2024-04-13 13:14:55',
     1,
-    1,
-    1,
+    0,
+    1434,
     0
   );
 INSERT INTO
@@ -13717,7 +15093,39 @@ VALUES
     '2024-05-13 18:11:01',
     -1,
     0,
-    674,
+    1434,
+    0
+  );
+INSERT INTO
+  `users` (
+    `id`,
+    `email`,
+    `login`,
+    `password`,
+    `admin_lvl`,
+    `darktheme`,
+    `complectName`,
+    `authkey`,
+    `dateCreate`,
+    `id_org`,
+    `verify`,
+    `id_city`,
+    `disabled`
+  )
+VALUES
+  (
+    9,
+    NULL,
+    'samolet@mail.ru',
+    '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',
+    0,
+    0,
+    'samolet',
+    '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e',
+    '2024-05-15 22:10:12',
+    -1,
+    0,
+    1434,
     0
   );
 

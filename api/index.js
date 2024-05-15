@@ -2211,4 +2211,3 @@ app.listen(port, () => {
     console.log(`[M]: Сервер запущен на порту: ${port}`);
     console.log(`[M]: Используй: localhost:${port}/api/testServerApi`);
 });
-
