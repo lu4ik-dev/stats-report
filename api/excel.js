@@ -53,6 +53,19 @@ async function getExcelInvalids(id_doc, sourceFileName = 'ovz_template.xlsx', in
       // Запись суммы в 10 столбец
       sheet.cell(rowIndex, 10).value(sum);
     });
+
+    const lastRowIndex = startRow + numRows;
+    sheet.cell(lastRowIndex + 1, 1).value("Программы профессионального обучения");
+    sheet.cell(lastRowIndex + 1, 3).value("Всего");
+
+    for (let columnIndex = 4; columnIndex <= 28; columnIndex++) {
+      let columnSum = 0;
+      for (let rowIndex = startRow; rowIndex <= lastRowIndex; rowIndex++) {
+        columnSum += sheet.cell(rowIndex, columnIndex).value() || 0; 
+      }
+      sheet.cell(lastRowIndex + 1, columnIndex).value(columnSum);
+    }
+
     
 
     const outputFileName = `invalids_${Date.now()}.xlsx`;

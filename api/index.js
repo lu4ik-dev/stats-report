@@ -2057,7 +2057,6 @@ app.get('/api/getExcelExperience/:id_doc', async (req, res) => {
 
 
 
-
 app.get('/api/getExcelInvalids/:id_doc', async (req, res) => {
   const id_doc = req.params.id_doc;
 
