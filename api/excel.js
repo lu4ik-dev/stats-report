@@ -56,6 +56,9 @@ async function getExcelInvalids(id_doc, sourceFileName = 'ovz_template.xlsx', in
 
     const lastRowIndex = startRow + numRows;
     sheet.cell(lastRowIndex + 1, 1).value("Программы профессионального обучения");
+    sheet.cell(lastRowIndex, 1).value('');
+    sheet.cell(lastRowIndex, 2).value('');
+    sheet.cell(lastRowIndex, 3).value('');
     sheet.cell(lastRowIndex + 1, 3).value("Всего");
 
     for (let columnIndex = 4; columnIndex <= 28; columnIndex++) {
@@ -67,6 +70,12 @@ async function getExcelInvalids(id_doc, sourceFileName = 'ovz_template.xlsx', in
     }
 
     
+    const startColumn = 'A'; // Column D corresponds to column number 4
+    const endColumn = 'AB'; // Column AB corresponds to column number 28
+    const borderRange = sheet.range(`${startColumn}${startRow}:${endColumn}${lastRowIndex + 1}`);
+    borderRange.style({
+      border: true
+    });
 
     const outputFileName = `invalids_${Date.now()}.xlsx`;
     const outputPath = path.join(__dirname, outputFileName);
