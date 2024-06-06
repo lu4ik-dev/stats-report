@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CounterAnimation from "../tech/CounterAnimation";
+import StatisticsComponent from "../tech/StatisticsComponent";
+
 
 const Index = () => {
   const userInfo = JSON.parse(localStorage.getItem("userInfo")).userInfo;
@@ -125,7 +127,8 @@ const Index = () => {
                     <h5 className="card-title">Статистика</h5>
                     <hr />
 
-                    <div className="d-inline-flex">
+                    <div className="d-inline">
+                      <div className="d-inline-flex mx-auto">
                       <div className="me-4">
                         <h6 className="card-title">Статистика за все время</h6>
                         <div className="d-flex">
@@ -151,7 +154,7 @@ const Index = () => {
                             >
                               <CounterAnimation
                                 value={
-                                  statistics.totalStatistics.allTimeUniqueUsers
+                                  statistics.totalStatistics.allTimeUniqueUsers-3
                                 }
                               />
                             </span>
@@ -171,7 +174,7 @@ const Index = () => {
                               className="btn btn-primary zoom-5"
                             >
                               <CounterAnimation
-                                value={statistics.totalStatistics.totalYear2023Count
+                                value={statistics.totalStatistics.totalYear2023Count-1
                                 }
                               />
                             </span>
@@ -216,7 +219,7 @@ const Index = () => {
                             <span className="btn btn-primary zoom-5">
                               <CounterAnimation
                                 value={
-                                  statistics.totalStatistics.users2023
+                                  statistics.totalStatistics.users2023-1
                                   
                                 }
                               />
@@ -224,6 +227,9 @@ const Index = () => {
                           </div>
                         </div>
                       </div>
+                      </div>
+                    <hr />
+                        <StatisticsComponent statistics={statistics} />
                     </div>
                   </div>
                 </div>

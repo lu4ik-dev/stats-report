@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 import { createNotification } from '../tech/alert';
 import { url_api } from '../tech/config';
 import { url_web } from '../tech/config';
+import LinksDev from '../tech/LinksDev';
 
 const Restore = () => {
     const [login, setLogin] = useState('');
@@ -284,14 +285,7 @@ const Restore = () => {
             </div>
           </div>
         </div>
-          <div class="btn-group dropup">
-            <button type="button" class="btn bottom-contact-btn zoom-5 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            </button>
-            <ul class="dropdown-menu custom">
-              <li><a href="https://vk.com/a1mt0head">Разработчик 1</a></li>
-              <li><a href="https://vk.com/sekretik000">Разработчик 2</a></li>
-            </ul>
-          </div>
+    <LinksDev/>
       </section>
     );
 };

@@ -202,8 +202,8 @@ const Header = () => {
     </div>
 
     <div id="confirmModal" className={`modal fade ${confirmExit}`} tabIndex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true" role={`${confirmExitRole}`}>
-    <div className="modal-dialog modal-dialog-centered">
-      <div className="modal-content">
+    <div className="modal-dialog modal-dialog-centered" >
+      <div className="modal-content custom-rounded-style">
         <div className="modal-header">
           <h5 className="modal-title" id="confirmModalLabel">Подтверждение</h5>
           <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Закрыть" onClick={handleConfirmExit}></button>

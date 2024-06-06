@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `invalids_body` (
   PRIMARY KEY (`id`),
   KEY `id_doc` (`id_doc`),
   CONSTRAINT `invalids_body_ibfk_1` FOREIGN KEY (`id_doc`) REFERENCES `invalids` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 96 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 132 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: logs
@@ -209,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `obrazovanie_body` (
   `kval_cat` json NOT NULL,
   `full_zan` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 209 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 253 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: orgazizations
@@ -12358,7 +12358,7 @@ VALUES
     23,
     1,
     '2024-05-15 23:33:23',
-    '15.05.2024 23:36:37',
+    '16.05.2024 07:39:57',
     0
   );
 
@@ -12918,7 +12918,7 @@ INSERT INTO
   )
 VALUES
   (
-    92,
+    117,
     23,
     'Министерство Просвящения',
     'Архитектура',
@@ -12938,7 +12938,7 @@ INSERT INTO
   )
 VALUES
   (
-    93,
+    118,
     23,
     'Министерство Просвящения',
     'Программирование в компьютерных системах',
@@ -12958,7 +12958,7 @@ INSERT INTO
   )
 VALUES
   (
-    94,
+    119,
     23,
     'Министерство Просвящения',
     'Машинист паровых турбин',
@@ -12978,11 +12978,231 @@ INSERT INTO
   )
 VALUES
   (
-    95,
+    120,
     23,
     'Министерство Просвящения',
     'Проверка',
     '05.01.03',
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 2, \"col8\": 0, \"col9\": 0}',
+    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 2, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    121,
+    23,
+    'Министерство Просвящения',
+    '',
+    '00.00.00',
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0}',
+    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    122,
+    23,
+    'Министерство Просвящения',
+    '',
+    '00.00.00',
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0}',
+    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    123,
+    23,
+    'Министерство Просвящения',
+    '',
+    '00.00.00',
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0}',
+    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    124,
+    23,
+    'Министерство Просвящения',
+    '',
+    '00.00.00',
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0}',
+    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    125,
+    23,
+    'Министерство Просвящения',
+    '',
+    '00.00.00',
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0}',
+    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    126,
+    23,
+    'Министерство Просвящения',
+    '',
+    '00.00.00',
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0}',
+    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    127,
+    23,
+    'Министерство Просвящения',
+    '',
+    '00.00.00',
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0}',
+    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    128,
+    23,
+    'Министерство Просвящения',
+    '',
+    '00.00.00',
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0}',
+    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    129,
+    23,
+    'Министерство Просвящения',
+    '',
+    '00.00.00',
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0}',
+    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    130,
+    23,
+    'Министерство Просвящения',
+    '',
+    '00.00.00',
+    '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0}',
+    '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
+  );
+INSERT INTO
+  `invalids_body` (
+    `id`,
+    `id_doc`,
+    `name_poo`,
+    `specialnost`,
+    `code_of_specialnost`,
+    `counts`,
+    `diagnoses`
+  )
+VALUES
+  (
+    131,
+    23,
+    'Министерство Просвящения',
+    '',
+    '00.00.00',
     '{\"col5\": 0, \"col6\": 0, \"col7\": 0, \"col8\": 0, \"col9\": 0}',
     '{\"col11\": 0, \"col12\": 0, \"col13\": 0, \"col14\": 0, \"col15\": 0, \"col16\": 0, \"col17\": 0, \"col18\": 0, \"col19\": 0, \"col20\": 0, \"col21\": 0, \"col22\": 0, \"col23\": 0, \"col24\": 0, \"col25\": 0, \"col26\": 0, \"col27\": 0, \"col28\": 0}'
   );
@@ -13585,7 +13805,7 @@ VALUES
     43,
     4,
     '2024-05-15 22:13:32',
-    '15.05.2024 23:34:25',
+    '16.05.2024 00:54:22',
     0
   );
 
@@ -14105,7 +14325,7 @@ INSERT INTO
   )
 VALUES
   (
-    187,
+    231,
     43,
     'Численность работников - всего (сумма строк 02, 06, 21, 22)',
     1,
@@ -14125,7 +14345,7 @@ INSERT INTO
   )
 VALUES
   (
-    188,
+    232,
     43,
     'в том числе: руководящие работники - всего',
     2,
@@ -14145,7 +14365,7 @@ INSERT INTO
   )
 VALUES
   (
-    189,
+    233,
     43,
     'из них: директор (начальник)',
     3,
@@ -14165,7 +14385,7 @@ INSERT INTO
   )
 VALUES
   (
-    190,
+    234,
     43,
     'из них: заместители директора (начальника)',
     4,
@@ -14185,7 +14405,7 @@ INSERT INTO
   )
 VALUES
   (
-    191,
+    235,
     43,
     'из них: руководитель филиала',
     5,
@@ -14205,7 +14425,7 @@ INSERT INTO
   )
 VALUES
   (
-    192,
+    236,
     43,
     'в том числе: педагогические работники - всего (сумма строк 07,12-20)',
     6,
@@ -14225,7 +14445,7 @@ INSERT INTO
   )
 VALUES
   (
-    193,
+    237,
     43,
     'в том числе: преподаватели - всего (сумма строк 8-11)',
     7,
@@ -14245,7 +14465,7 @@ INSERT INTO
   )
 VALUES
   (
-    194,
+    238,
     43,
     'из них: общеобразовательных дисциплин',
     8,
@@ -14265,7 +14485,7 @@ INSERT INTO
   )
 VALUES
   (
-    195,
+    239,
     43,
     'из них: общего гуманитарного и социально-экономического учебного цикла',
     9,
@@ -14285,7 +14505,7 @@ INSERT INTO
   )
 VALUES
   (
-    196,
+    240,
     43,
     'из них: математического и общего естественнонаучного учебного цикла',
     10,
@@ -14305,7 +14525,7 @@ INSERT INTO
   )
 VALUES
   (
-    197,
+    241,
     43,
     'из них: профессионального учебного цикла',
     11,
@@ -14325,7 +14545,7 @@ INSERT INTO
   )
 VALUES
   (
-    198,
+    242,
     43,
     'в том числе: мастера производственного обучения',
     12,
@@ -14345,7 +14565,7 @@ INSERT INTO
   )
 VALUES
   (
-    199,
+    243,
     43,
     'в том числе: социальные педагоги',
     13,
@@ -14365,7 +14585,7 @@ INSERT INTO
   )
 VALUES
   (
-    200,
+    244,
     43,
     'в том числе: педагоги-психологи',
     14,
@@ -14385,7 +14605,7 @@ INSERT INTO
   )
 VALUES
   (
-    201,
+    245,
     43,
     'в том числе: педагоги-организаторы',
     15,
@@ -14405,7 +14625,7 @@ INSERT INTO
   )
 VALUES
   (
-    202,
+    246,
     43,
     'в том числе: преподаватели-организаторы (основ безопасности жизнедеятельности, допризывной подготовки)',
     16,
@@ -14425,7 +14645,7 @@ INSERT INTO
   )
 VALUES
   (
-    203,
+    247,
     43,
     'в том числе: руководители физического воспитания',
     17,
@@ -14445,7 +14665,7 @@ INSERT INTO
   )
 VALUES
   (
-    204,
+    248,
     43,
     'в том числе: методисты',
     18,
@@ -14465,7 +14685,7 @@ INSERT INTO
   )
 VALUES
   (
-    205,
+    249,
     43,
     'в том числе: тьюторы',
     19,
@@ -14485,7 +14705,7 @@ INSERT INTO
   )
 VALUES
   (
-    206,
+    250,
     43,
     'в том числе: прочие',
     20,
@@ -14505,7 +14725,7 @@ INSERT INTO
   )
 VALUES
   (
-    207,
+    251,
     43,
     'в том числе: учебно-вспомогательный персонал',
     21,
@@ -14525,7 +14745,7 @@ INSERT INTO
   )
 VALUES
   (
-    208,
+    252,
     43,
     'в том числе: обслуживающий персонал',
     22,
@@ -14961,7 +15181,7 @@ VALUES
     1,
     0,
     'Министерство Просвящения',
-    'ef97o3vhbfb-q5whda2i55-0n1113aymdbm-1;',
+    '8gem6x5gb0i-3lt1ho23hmj-mmds3ze3t5-1;',
     '2023-11-09 16:49:21',
     1,
     1,
@@ -14998,7 +15218,7 @@ VALUES
     1,
     1,
     1434,
-    0
+    1
   );
 INSERT INTO
   `users` (

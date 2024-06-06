@@ -9106,5 +9106,11 @@
     "profession_name": "Проверка",
     "program_code": "",
     "education_area_code": ""
+  },
+  {
+    "profession_code": "09.02.07",
+    "profession_name": "Информационные системы и программирование",
+    "program_code": "",
+    "education_area_code": ""
   }
 ]

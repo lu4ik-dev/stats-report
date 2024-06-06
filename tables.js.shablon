@@ -282,8 +282,8 @@ const DynamicTable = () => {
           ))}
         </tbody>
       </table>
-      <button className='position-absolute start-100 btn btn-sm btn-primary zoom-5 rounded-pill' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
-      <button className='position-absolute start-100 btn btn-sm btn-success zoom-5 rounded-pill' style={{'margin': '0px -3rem'}} onClick={() => handleSave(0)}><i className="fas fa-save"></i> </button>
+      <button className='position-absolute start-100 btn btn-sm btn-primary zoom-5 rounded-pill-deactive' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
+      <button className='position-absolute start-100 btn btn-sm btn-success zoom-5 rounded-pill-deactive' style={{'margin': '0px -3rem'}} onClick={() => handleSave(0)}><i className="fas fa-save"></i> </button>
     </div>
   );
 };

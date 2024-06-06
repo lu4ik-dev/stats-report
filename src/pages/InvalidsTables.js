@@ -138,7 +138,7 @@ const handleInputChange = (rowIndex, colName, value) => {
           col1: rowData.name_poo || '',
           col2: rowData.specialnost || '',
           col3: rowData.code_of_specialnost || '',
-          col4: ((counts.col5 || 0) + (counts.col6 || 0) + (counts.col7 || 0) + (counts.col8 || 0) + (counts.col9 || 0) + (counts.col10 || 0)),
+          col4: ((counts.col5 || 0) + (counts.col6 || 0) + (counts.col7 || 0) + (counts.col8 || 0)),
           col5: counts.col5 || 0,
           col6: counts.col6 || 0,
           col7: counts.col7 || 0,
@@ -267,7 +267,7 @@ const handleInputChange = (rowIndex, colName, value) => {
       .then((data) => {
         showAlert('Таблица успешно сохранена!');
         const currentUrl = window.location.href;
-        const targetUrl = `http://localhost:3000/invalids-tables?id_doc=${data.id}`;
+        const targetUrl = `http://${url_web}:3000/invalids-tables?id_doc=${data.id}`;
         if (currentUrl !== targetUrl) {
           window.location.href = targetUrl;
         } else {
@@ -324,13 +324,25 @@ const handleInputChange = (rowIndex, colName, value) => {
     ]);
   };
 
+  const adjustHeight = (textarea) => {
+    textarea.style.minHeight = '100%'; // Reset height to auto to calculate scroll height
+    textarea.style.height = textarea.scrollHeight + 'px'; // Set height to scroll height
+  };
+
+  useEffect(() => {
+    // Adjust the height of all textareas on initial render
+    const textareas = document.querySelectorAll('textarea.form-control');
+    textareas.forEach((textarea) => adjustHeight(textarea));
+  }, [tableData]);
+
+
   const id_doc = new URLSearchParams(window.location.search).get("id_doc");
   return (
       <div>
       <Header />
 	  <div>
 		<div className="d-flex flex-wrap justify-content-center py-1 mb-2">
-                <span className="d-flex align-items-center mb-1 mb-md-0 me-md-auto text-dark fs-5 ms-3"><a href="/invalids">Инвалиды и люди с ОВЗ</a></span>
+                <span className="d-flex align-items-center mb-1 mb-md-0 me-md-auto text-dark fs-5 ms-3"><a href="/invalids">Сведения по численности студентов, относящихся к категории инвалиды и лица с ОВЗ, по специальностям, профессиям</a></span>
             <ul className="nav nav-pills me-3">
                 <button className="btn btn-primary zoom-5" aria-current="page" onClick={exportToExcel}>
                     Экспорт в CSV
@@ -423,7 +435,7 @@ const handleInputChange = (rowIndex, colName, value) => {
                 {Object.keys(row).map((colName, index) => (
                   <td key={colName}>
                     <span className='d-none'>{row[colName]}</span>
-                    <input
+                    <textarea
                       className="form-control"
                       id={row[colName]}
                       type="text"
@@ -442,15 +454,15 @@ const handleInputChange = (rowIndex, colName, value) => {
             <td colSpan={21}>
             </td>
             <td colSpan={8}>
-              <button className='btn btn-sm btn-primary zoom-5 rounded-pill ms-3 my-1'  onClick={handlerInsert}><i className="fas fa-add"></i> добавить запись</button>  
-              <button className='btn btn-sm btn-success zoom-5 rounded-pill ms-1'  onClick={() => handleSave(0)}><i className="fas fa-save"></i> сохранить документ</button>
+              <button className='btn btn-sm btn-primary zoom-5 rounded-pill-deactive ms-3 my-1'  onClick={handlerInsert}><i className="fas fa-add"></i> добавить запись</button>  
+              <button className='btn btn-sm btn-success zoom-5 rounded-pill-deactive ms-1'  onClick={() => handleSave(0)}><i className="fas fa-save"></i> сохранить документ</button>
             </td>
           </tr>
           </tbody>
         </table>
         {/* 
-        <button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
-        <button className='position-relative start-100 btn btn-sm btn-success zoom-5 rounded-pill' style={  userInfo.admin_lvl >= 1 ?  {'margin': '0px -3rem'}  : {'margin': '0px -9rem'} } onClick={() => handleSave(0)}><i className="fas fa-save"></i>  { userInfo.admin_lvl >= 1 ?  ''  : 'Сохранить' }</button>
+        <button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill-deactive' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
+        <button className='position-relative start-100 btn btn-sm btn-success zoom-5 rounded-pill-deactive' style={  userInfo.admin_lvl >= 1 ?  {'margin': '0px -3rem'}  : {'margin': '0px -9rem'} } onClick={() => handleSave(0)}><i className="fas fa-save"></i>  { userInfo.admin_lvl >= 1 ?  ''  : 'Сохранить' }</button>
                 */}
   </div>
   {id_doc !== "newDoc" && (

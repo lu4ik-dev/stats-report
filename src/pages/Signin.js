@@ -3,6 +3,7 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
 import { url_api, url_web } from '../tech/config';
 import { createNotification } from '../tech/alert';
+import LinksDev from '../tech/LinksDev';
 
 
 const Signin = () => {
@@ -397,14 +398,7 @@ const Signin = () => {
             </ul>
     </div >
 
-    <div class="btn-group dropup">
-            <button type="button" class="btn bottom-contact-btn zoom-5 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            </button>
-            <ul class="dropdown-menu custom">
-              <li><a href="https://vk.com/a1mt0head">Разработчик 1</a></li>
-              <li><a href="https://vk.com/sekretik000">Разработчик 2</a></li>
-            </ul>
-          </div>
+    <LinksDev/>
       </section>
     );
 };

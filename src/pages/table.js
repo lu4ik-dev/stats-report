@@ -645,11 +645,24 @@ const DynamicTable = () => {
       },
     ]);
   };
+
+  const adjustHeight = (textarea) => {
+    textarea.style.minHeight = '100%'; // Reset height to auto to calculate scroll height
+    textarea.style.height = textarea.scrollHeight + 'px'; // Set height to scroll height
+  };
+
+  useEffect(() => {
+    // Adjust the height of all textareas on initial render
+    const textareas = document.querySelectorAll('textarea.form-control');
+    textareas.forEach((textarea) => adjustHeight(textarea));
+  }, [tableData]);
+
+
   const id_doc = new URLSearchParams(window.location.search).get("id_doc");
   return (
     <div>
         <div className="d-flex flex-wrap justify-content-center py-1 mb-2">
-                <span className="d-flex align-items-center mb-1 mb-md-0 me-md-auto text-dark fs-5 ms-3"><a href="/experience">Распределение персонала по стажу работы</a></span>
+                <span className="d-flex align-items-center mb-1 mb-md-0 me-md-auto text-dark fs-5 ms-3"><a href="/experience">Распределение персонала по стажу работы (без внешних совместителей и работающих по договорам гражданско-правового характера)</a></span>
             <ul className="nav nav-pills me-3">
                 <button className="btn btn-primary zoom-5" aria-current="page" onClick={exportToExcel}>
                     Экспорт в CSV
@@ -714,7 +727,7 @@ const DynamicTable = () => {
               {Object.keys(row).map((colName, index) => (
                 <td key={colName}>
                   <span className='d-none'>{row[colName]}</span>
-                  <input
+                  <textarea
                     className="form-control"
                     id={row[colName]}
                     type="text"
@@ -733,15 +746,15 @@ const DynamicTable = () => {
             <td colSpan={17}>
             </td>
             <td colSpan={2}>
-            { userInfo.admin_lvl >= 1 ? <button className='btn btn-sm btn-primary zoom-5 rounded-pill ms-3 my-1'  onClick={handlerInsert}><i className="fas fa-add"></i> добавить запись</button> : '' }
-              <button className='btn btn-sm btn-success zoom-5 rounded-pill ms-1'  onClick={() => handleSave(0)}><i className="fas fa-save"></i> сохранить документ</button>
+            { userInfo.admin_lvl >= 1 ? <button className='btn btn-sm btn-primary zoom-5 rounded-pill-deactive ms-3 my-1'  onClick={handlerInsert}><i className="fas fa-add"></i> добавить запись</button> : '' }
+              <button className='btn btn-sm btn-success zoom-5 rounded-pill-deactive ms-1'  onClick={() => handleSave(0)}><i className="fas fa-save"></i> сохранить документ</button>
             </td>
           </tr>
         </tbody>
       </table>
-     {/* { userInfo.admin_lvl >= 1 ?   <button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
+     {/* { userInfo.admin_lvl >= 1 ?   <button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill-deactive' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
          : '' }
-        <button className='position-relative start-100 btn btn-sm btn-success zoom-5 rounded-pill' style={  userInfo.admin_lvl >= 1 ?  {'margin': '0px -3rem'}  : {'margin': '0px -9rem'} } onClick={() => handleSave(0)}><i className="fas fa-save"></i>  { userInfo.admin_lvl >= 1 ?  ''  : 'Сохранить' }</button>
+        <button className='position-relative start-100 btn btn-sm btn-success zoom-5 rounded-pill-deactive' style={  userInfo.admin_lvl >= 1 ?  {'margin': '0px -3rem'}  : {'margin': '0px -9rem'} } onClick={() => handleSave(0)}><i className="fas fa-save"></i>  { userInfo.admin_lvl >= 1 ?  ''  : 'Сохранить' }</button>
               */}
       {id_doc !== "newDoc" && (
         <div className="container">

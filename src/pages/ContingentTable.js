@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import * as XLSX from 'xlsx';
-import { url_api } from '../tech/config';
+import { url_api, url_web } from '../tech/config';
 import { formatDate } from '../tech/formatterDate';
 import { showAlert } from '../tech/alert';
-
 
 const ContingentTable = () => {
   const [tableData, setTableData] = useState([]);
@@ -85,7 +84,7 @@ const ContingentTable = () => {
     .then((data) => {
     showAlert('Таблица успешно сохранена!');
     const currentUrl = window.location.href;
-    const targetUrl = `http://localhost:3000/contingent-tables?id_doc=${data.id}`;
+    const targetUrl = `http://${url_web}:3000/contingent-tables?id_doc=${data.id}`;
     if (currentUrl !== targetUrl) {
     window.location.href = targetUrl;
     } else {
@@ -345,8 +344,8 @@ const ContingentTable = () => {
             ))}
 			</tbody>
         </table>
-		<button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
-      	<button className='position-relative start-100 btn btn-sm btn-success zoom-5 rounded-pill' style={{'margin': '0px -3rem'}} onClick={() => handleSave(0)}><i className="fas fa-save"></i> </button>
+		<button className='position-relative start-100 btn btn-sm btn-primary zoom-5 rounded-pill-deactive' style={{'margin': '0px -6rem'}} onClick={handlerInsert}><i className="fas fa-add"></i> </button>
+      	<button className='position-relative start-100 btn btn-sm btn-success zoom-5 rounded-pill-deactive' style={{'margin': '0px -3rem'}} onClick={() => handleSave(0)}><i className="fas fa-save"></i> </button>
 
       </div>
     </div>

@@ -49,7 +49,7 @@ let configData;
 
 try {
   configData = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-  console.log(`[CFG]:Конфигурационный файл (${configPath}) прочитан`);
+  console.log(`[CFG]: [+] Конфигурационный файл (${configPath}) прочитан`);
 } catch (error) {
   configData = {
     titlePages: 'Портал Статистической Отчетности',
@@ -64,7 +64,7 @@ try {
     apiPort: '3110'
   };
   fs.writeFileSync(configPath, JSON.stringify(configData, null, 2));
-  console.log(`[CFG]: Конфигурационный файл (${configPath}) не был найден, создана копия, записаны стандартные значения переменных.`);
+  console.log(`[CFG]: [-] Конфигурационный файл (${configPath}) не был найден, создана копия, записаны стандартные значения переменных.`);
 }
 
 
@@ -78,40 +78,79 @@ let usersWaitVerifyData;
 const specialnostiPath = 'specialnosti.json';
 let specialnostiData;
 
+const adminLogsPath = '_admins.log';
+let adminLogsData;
+
+const userLogsPath = '_users.log';
+let userLogsData;
+
+
+try {
+  adminLogsData = JSON.parse(fs.readFileSync(adminLogsPath, 'utf8'));
+  console.log(`[CFG-L]: [+] Файл логирования (${usersRestorePwdPath}) прочитан`);
+} catch (error) {
+  adminLogsData = [];
+  fs.writeFileSync(adminLogsPath, JSON.stringify(adminLogsData, null, 2));
+  console.log(`[CFG-L]: [-] Файл логирования (${adminLogsPath}) не был найден, создан пустой шаблон.`);
+}
+
+try {
+  userLogsData = JSON.parse(fs.readFileSync(userLogsPath, 'utf8'));
+  console.log(`[CFG-L]: [+] Файл логирования (${userLogsPath}) прочитан`);
+} catch (error) {
+  userLogsData = [];
+  fs.writeFileSync(userLogsPath, JSON.stringify(userLogsData, null, 2));
+  console.log(`[CFG-L]: [-] Файл логирования (${userLogsPath}) не был найден, создан пустой шаблон.`);
+}
+
 try {
   usersRestorePwdData = JSON.parse(fs.readFileSync(usersRestorePwdPath, 'utf8'));
-  console.log(`[CFG]:Конфигурационный файл (${usersRestorePwdPath}) прочитан`);
+  console.log(`[CFG]: [+] Конфигурационный файл (${usersRestorePwdPath}) прочитан`);
 } catch (error) {
   usersRestorePwdData = [];
   fs.writeFileSync(usersRestorePwdPath, JSON.stringify(usersRestorePwdData, null, 2));
-  console.log(`[CFG]: Конфигурационный файл (${usersRestorePwdPath}) не был найден, создан пустой шаблон.`);
+  console.log(`[CFG]: [-] Конфигурационный файл (${usersRestorePwdPath}) не был найден, создан пустой шаблон.`);
 }
 
 try {
   usersWaitVerifyData = JSON.parse(fs.readFileSync(usersWaitVerifyPath, 'utf8'));
-  console.log(`[CFG]:Конфигурационный файл (${usersWaitVerifyPath}) прочитан`);
+  console.log(`[CFG]: [+] Конфигурационный файл (${usersWaitVerifyPath}) прочитан`);
 } catch (error) {
   usersWaitVerifyData = [];
   fs.writeFileSync(usersWaitVerifyPath, JSON.stringify(usersWaitVerifyData, null, 2));
-  console.log(`[CFG]: Конфигурационный файл (${usersWaitVerifyPath}) не был найден, создан пустой шаблон.`);
+  console.log(`[CFG]: [-] Конфигурационный файл (${usersWaitVerifyPath}) не был найден, создан пустой шаблон.`);
 }
 
 
 try {
   specialnostiData = JSON.parse(fs.readFileSync(specialnostiPath, 'utf8'));
-  console.log(`[CFG]:Конфигурационный файл (${specialnostiPath}) прочитан`);
+  console.log(`[CFG]: [+] Конфигурационный файл (${specialnostiPath}) прочитан`);
 } catch (error) {
   specialnostiData = [];
   fs.writeFileSync(specialnostiPath, JSON.stringify(specialnostiData, null, 2));
-  console.log(`[CFG]: Конфигурационный файл (${specialnostiPath}) не был найден, создан пустой шаблон.`);
+  console.log(`[CFG]: [-] Конфигурационный файл (${specialnostiPath}) не был найден, создан пустой шаблон.`);
 }
+
+
+async function saveUserLogs()
+{
+	fs.writeFileSync(userLogsPath, JSON.stringify(userLogsData, null, 2));
+	return true;
+}
+
+
+async function saveAdminLogs()
+{
+	fs.writeFileSync(adminLogsPath, JSON.stringify(adminLogsData, null, 2));
+	return true;
+}
+
 
 async function saveSpecialnosti()
 {
 	fs.writeFileSync(specialnostiPath, JSON.stringify(specialnostiData, null, 2));
 	return true;
 }
-
 
 async function saveUsersRestorePwdPath()
 {
@@ -137,7 +176,35 @@ setInterval(async () => {
 	await saveSpecialnosti();
 }, 1000);
 
+setInterval(async () => {
+	await saveAdminLogs();
+}, 1000);
 
+setInterval(async () => {
+	await saveUserLogs();
+}, 1000);
+
+function addAdminLog(user, userId, apiMethod, result) {
+  const logEntry = {
+    datetime: new Date().toISOString(),
+    user: user,
+    userId: userId,
+    apiMethod: apiMethod,
+    result: result
+  };
+  adminLogsData.push(logEntry);
+}
+
+function addUserLog(user, userId, apiMethod, result) {
+  const logEntry = {
+    datetime: new Date().toISOString(),
+    user: user,
+    userId: userId,
+    apiMethod: apiMethod,
+    result: result
+  };
+  userLogsData.push(logEntry);
+}
 
 function sleep(milliseconds) {
   const date = Date.now();
@@ -173,27 +240,27 @@ const connection = mysql.createConnection({
 
 connection.connect((error) => {
   if (error) {
-    console.error("[DB]: Ошибка подключения к базе данных:", error);
-    console.error("[DB]: Попробуй запусти OpenServer и phpmyadmin");
-    console.error("[DB]: Если запущен, то проверь пароль и логин пользователя базы данных");
+    console.error("[DB]: [-] Ошибка подключения к базе данных:", error);
+    console.error("[DB]: [-] Попробуй запусти OpenServer и phpmyadmin");
+    console.error("[DB]: [-] Если запущен, то проверь пароль и логин пользователя базы данных");
   } else {
-    console.log("[DB]: Подключение к базе данных успешно установлено");
+    console.log("[DB]: [+] Подключение к базе данных успешно установлено");
   }
 });
 
 try{
-  checkWork('[S]: Второй модуль (sender.js) был успешно подключен..');
+  checkWork('[S]: [+] Второй модуль (sender.js) был успешно подключен..');
 }
 catch (error){
-  console.error('[S]: Ошибка при подключении второго модуля (sender.js): '. error);
+  console.error('[S]: [-] Ошибка при подключении второго модуля (sender.js): '. error);
 }
 
 try{
-  checkWorkExcel('[T]: Третий модуль (excel.js) был успешно подключен..');
+  checkWorkExcel('[T]: [+] Третий модуль (excel.js) был успешно подключен..');
 
 }
 catch (error){
-  console.error('[T]: Ошибка при подключении третьего модуля (excel.js): '. error);
+  console.error('[T]: [-] Ошибка при подключении третьего модуля (excel.js): '. error);
 }
 
 
@@ -237,6 +304,8 @@ function hashPassword(password) {
     
       next();
     };
+    app.use(cslog);
+    
     app.use(cslog);
 
   app.get("/get", (req, res) => {
@@ -1895,22 +1964,23 @@ app.get('/api/get/statistics', async (req, res) => {
       invalids2024Stats,
       obrazovanie2024Stats
     ] = await Promise.all([
-      query(connection, 'SELECT COUNT(DISTINCT id) as uniqueUsers, COUNT(*) as totalCount FROM users WHERE YEAR(dateCreate) = 2023'),
-      query(connection, 'SELECT COUNT(DISTINCT id_user) as uniqueUsers, COUNT(*) as totalCount FROM employee_work_exp'),
-      query(connection, 'SELECT COUNT(DISTINCT id_user) as uniqueUsers, COUNT(*) as totalCount FROM obrazovanie'),
-      query(connection, 'SELECT COUNT(DISTINCT id_user) as uniqueUsers, COUNT(*) as totalCount FROM enrollment'),
-      query(connection, 'SELECT COUNT(DISTINCT id_user) as uniqueUsers, COUNT(*) as totalCount FROM invalids'),
-      query(connection, 'SELECT COUNT(*) as totalCount FROM enrollment'),
-      query(connection, 'SELECT COUNT(*) as totalCount FROM invalids'),
-      query(connection, 'SELECT COUNT(*) as totalCount FROM obrazovanie'),
-      query(connection, 'SELECT COUNT(*) as totalCount FROM employee_work_exp WHERE YEAR(dateCreate) = 2023'),
-      query(connection, 'SELECT COUNT(*) as totalCount FROM enrollment WHERE YEAR(dateCreate) = 2023'),
-      query(connection, 'SELECT COUNT(*) as totalCount FROM invalids WHERE YEAR(dateCreate) = 2023'),
-      query(connection, 'SELECT COUNT(*) as totalCount FROM obrazovanie WHERE YEAR(dateCreate) = 2023'),
-      query(connection, 'SELECT COUNT(*) as totalCount FROM employee_work_exp WHERE YEAR(dateCreate) = 2024'),
-      query(connection, 'SELECT COUNT(*) as totalCount FROM enrollment WHERE YEAR(dateCreate) = 2024'),
-      query(connection, 'SELECT COUNT(*) as totalCount FROM invalids WHERE YEAR(dateCreate) = 2024'),
-      query(connection, 'SELECT COUNT(*) as totalCount FROM obrazovanie WHERE YEAR(dateCreate) = 2024')
+      query(connection, 'SELECT COUNT(DISTINCT id) as uniqueUsers, COUNT(*) as totalCount FROM users WHERE YEAR(dateCreate) = 2023 AND disabled = 0'),
+      query(connection, 'SELECT COUNT(DISTINCT id_user) as uniqueUsers, COUNT(*) as totalCount FROM employee_work_exp WHERE disabled = 0'),
+      query(connection, 'SELECT COUNT(DISTINCT id_user) as uniqueUsers, COUNT(*) as totalCount FROM obrazovanie WHERE disabled = 0'),
+      query(connection, 'SELECT COUNT(DISTINCT id_user) as uniqueUsers, COUNT(*) as totalCount FROM enrollment WHERE disabled = 0'),
+      query(connection, 'SELECT COUNT(DISTINCT id_user) as uniqueUsers, COUNT(*) as totalCount FROM invalids WHERE disabled = 0'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM enrollment WHERE disabled = 0'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM invalids WHERE disabled = 0'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM obrazovanie WHERE disabled = 0'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM employee_work_exp WHERE disabled = 0 AND YEAR(dateCreate) = 2023'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM enrollment WHERE disabled = 0 AND YEAR(dateCreate) = 2023'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM invalids WHERE disabled = 0 AND YEAR(dateCreate) = 2023'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM obrazovanie WHERE disabled = 0 AND YEAR(dateCreate) = 2023'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM employee_work_exp WHERE disabled = 0 AND YEAR(dateCreate) = 2024'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM enrollment WHERE disabled = 0 AND YEAR(dateCreate) = 2024'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM invalids WHERE disabled = 0 AND YEAR(dateCreate) = 2024'),
+      query(connection, 'SELECT COUNT(*) as totalCount FROM obrazovanie WHERE disabled = 0 AND YEAR(dateCreate) = 2024')
+      
     ]);
 
     // Суммируем значения year2023Count и year2024Count для всех таблиц
@@ -1919,7 +1989,7 @@ app.get('/api/get/statistics', async (req, res) => {
     const totalYear2024Count = employeeWorkExp2024Stats[0].totalCount + enrollment2024Stats[0].totalCount + invalids2024Stats[0].totalCount + obrazovanie2024Stats[0].totalCount;
 
     // Суммируем значения allTimeTotalCount для всех таблиц
-    const totalAllTimeCount = totalYear2023Count + totalYear2024Count;
+    const totalAllTimeCount = totalYear2023Count-1 + totalYear2024Count;
 
     res.json({
       employeeWorkExp: {
@@ -2117,10 +2187,10 @@ app.get('/backup', async (req, res) => {
         console.error('[M]: Произошла ошибка при отправке файла:', err);
         return res.status(500).send('Произошла ошибка при отправке файла');
       }
-      console.log('[M]: Файл успешно отправлен клиенту');
+      console.log('[M]: [+] Резервная копия базы данных отправлена Администратору');
     });
   } catch (error) {
-    console.error('[M]: Произошла ошибка:', error);
+    console.error('[M]: [-] Произошла ошибка:', error);
     res.status(500).send('Произошла ошибка при генерации файла');
   }
 });
@@ -2166,6 +2236,24 @@ app.post('/api/users/deactivate/:id', (req, res) => {
     res.status(200).send('Пользователь деактивирован');
   });
 });
+
+app.get('/api/admins/logs', (req, res) => {
+  try {
+    res.status(200).json(adminLogsData);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+app.get('/api/users/logs', (req, res) => {
+  try {
+    res.status(200).json(userLogsData);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+
 
 async function processMessages() {
   await delayCsMsg("Стопорные краны закрыты..", 10); 
