@@ -70,7 +70,7 @@ const A_accepts = () => {
             <div className="container">
                 <div className="row justify-content">
                     <div className="col-md-auto">
-                        <h3><a href="/admin-panel">Админ-панель</a> / пользователи</h3>
+                        <h3><a href="/admin-panel">Админ-панель</a> / пользователи ({users.filter(item => item.disabled !== 1).length})</h3>
                     </div>
                 </div>
                 <table className="table table-striped">

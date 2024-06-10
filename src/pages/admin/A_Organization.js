@@ -7,9 +7,54 @@ import { url_api } from '../../tech/config';
 
 
 const A_Organization = () => {
+    
     const [data, setData] = useState([]);
     const authkey = JSON.parse(localStorage.getItem("userInfo")).authkey;
     const userId = JSON.parse(localStorage.getItem("userInfo")).id;
+    const [user, setUser] = useState([]);
+    const [selectedUser, setSelectedUser] = useState(null);
+    const [showModal, setShowModal] = useState(false);
+
+    const handleOpenModal = (user) => {
+        setSelectedUser(user);
+        setShowModal(true);
+    };
+
+    // Функция для закрытия модального окна
+    const handleCloseModal = () => {
+        setSelectedUser(null);
+        setShowModal(false);
+    };
+    const changeAdminRight = (id, admin_lvl) => {
+        fetch(`${url_api}/api/changeadmin/settings/users/${id}/${admin_lvl === 0 ? 1 : 0}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          })
+            .then(response => {
+              if (response.ok) {
+                fetch(url_api+'/api/users', {
+                    method: 'GET',
+                    headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+        
+                })
+                .then(response => response.json())
+                .then(data => setData(data))
+                .catch(error => showAlert(error.message));
+                setSelectedUser(null);
+                setShowModal(false);
+                showAlert('Пользователь успешно обновлен');
+              } else {
+                console.error('Failed to delete work experience');
+              }
+            })
+            .catch(error => {
+              console.error('Error deleting work experience:', error);
+            });
+    };
 
     useEffect(() => {
         redirectToLogin();
@@ -54,7 +99,7 @@ const A_Organization = () => {
         <div className="container">
             <div className="row justify-content">
             <div className="col-md-auto">
-                <h1>Организации</h1>
+            <h3><a href="/admin-panel">Админ-панель</a> / организации ({data.filter(item => item.disabled !== 1).length})</h3>
             </div>
             <div className="col-md-auto mt-2">
             </div>
@@ -81,6 +126,7 @@ const A_Organization = () => {
                         <td>{item.text}</td>
                         <td> 
                             <button className="btn btn-danger mx-1" disabled={userId == item.id} onClick={() => handleDelete(item.id)}>Удалить</button>
+                                    <button className="btn btn-primary ml-2 me-1" onClick={() => handleOpenModal(item)}>Перейти</button>
                         </td>
                     </tr>
                 )
@@ -131,6 +177,32 @@ const A_Organization = () => {
             </div>
             </div>
         </div>
+
+
+        {showModal && (
+                <div id="userDetailsModal" className={`modal fade show d-block`} tabIndex="-1" aria-labelledby="userDetailsModalLabel" aria-modal="true" role="dialog" >
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="userDetailsModalLabel">Детали пользователя</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Закрыть" onClick={handleCloseModal}></button>
+                            </div>
+                            <div className="modal-body">
+                                <p><strong>Email:</strong> {selectedUser.login}  {selectedUser.admin_lvl !== 0 ? <strong className='text-danger'>   Администратор</strong> : ''}</p>
+                                <p><strong>Название организации:</strong> {selectedUser.complectName}</p>
+                                <p><strong>Дата создания:</strong> {formatDate(selectedUser.dateCreate)}</p>
+                                <p><strong>Регион:</strong> {selectedUser.region_text}</p>
+                                <p><strong>Город:</strong> {selectedUser.city_text}</p>
+                                {/* Дополнительные детали пользователя */}
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>Закрыть</button>
+                                <button type="button" className="btn btn-primary" disabled={userId == selectedUser.id} onClick={() => changeAdminRight(selectedUser.id, selectedUser.admin_lvl)} >{selectedUser.admin_lvl === 0 ? 'Выдать права администратора' : 'Снять права администратора'}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
 
         </div>
     );

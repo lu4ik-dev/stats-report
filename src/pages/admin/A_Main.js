@@ -108,6 +108,21 @@ function A_Main() {
                         </div>
                         </div>
                     </div>
+
+                    <div className="col-sm-6 pb-3 zoom-5 ">
+                        <div className="card">
+                        <div className="card-body">
+                            <h5 className="card-title">Редактирование шаблонов</h5>
+                            <p className="card-text">
+                            В разработке 
+                            </p>
+                            <button disabled className="btn btn-primary">
+                            Перейти
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+
                     <div className="col-sm-6 pb-3 zoom-5">
                         <div className="card">
                         <div className="card-body">
@@ -121,6 +136,19 @@ function A_Main() {
                         </div>
                         </div>
                     </div>
+
+                    <div className="col-sm-6 pb-3 zoom-5 ">
+                        <div className="card">
+                        <div className="card-body">
+                            <h5 className="card-title">Спасибо за использование нашего ресурса</h5>
+                            <p className="card-text mt-5 mb-3">
+                             С уважением, портал статистической отчетности
+                            </p>
+                        </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
             </main>

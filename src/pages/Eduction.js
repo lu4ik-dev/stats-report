@@ -59,7 +59,7 @@ const Eduction = () => {
         <div className="container">
             <div className="row justify-content">
             <div className="col-md-auto">
-                <h1>Документы</h1>
+            <h1>Документы ({data.filter(item => item.disabled !== 1).length})</h1>
             </div>
             <div className="col-md-auto mt-2">
                 

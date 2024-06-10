@@ -1187,7 +1187,7 @@ app.post('/api/updateInvalids', (req, res) => {
 app.get('/api/users', (req, res) => {
   
     const query = `
-        SELECT u.id, u.dateCreate, u.login, u.complectName, u.disabled as disabled, u.id_city, c.text AS city_text, r.text AS region_text
+        SELECT u.id, u.dateCreate, u.login, u.admin_lvl, u.complectName, u.disabled as disabled, u.id_city, c.text AS city_text, r.text AS region_text
         FROM users AS u
         JOIN cities AS c ON u.id_city = c.id
         JOIN regions AS r ON c.id_region = r.id;
@@ -2227,6 +2227,18 @@ app.post('/api/users/activate/:id', (req, res) => {
     });
   });
 });
+
+
+
+app.post('/api/changeadmin/settings/users/:id/:admin_lvl', (req, res) => {
+  const userId = req.params.id;
+  const admin_lvl = req.params.admin_lvl;
+  connection.query('UPDATE users SET admin_lvl = ? WHERE id = ?', [admin_lvl, userId],  (error, results, fields) => {
+    if (error) throw error;
+    res.status(200).send('успех')
+   });
+});
+
 
 // Установка значения verify в 0 (деактивация)
 app.post('/api/users/deactivate/:id', (req, res) => {

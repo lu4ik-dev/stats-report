@@ -16,7 +16,7 @@ const InvalidsTables = () => {
   const [city, setCity] = useState('');
   const [region, setRegion] = useState('');
   const [dateCreateDoc, setDateCreateDoc] = useState('');
-
+  const [professions, setProfessions] = useState([]);
 
   const fetchProfessionName = async (professionCode) => {
     try {
@@ -32,6 +32,42 @@ const InvalidsTables = () => {
         return ''; // В случае ошибки также возвращаем пустую строку
     }
 };
+
+const fetchProfessionCode = async (professionCode) => {
+  try {
+    const response = await fetch(`${url_api}/api/get/professions`);
+    const data = await response.json();
+
+    // Ищем профессию с соответствующим кодом
+    const profession = data.find(prof => prof.profession_name === professionCode);
+
+    return profession ? profession.profession_code : ''; // Возвращаем название профессии или пустую строку
+  } catch (error) {
+    console.error('Error fetching profession data:', error);
+    return ''; // В случае ошибки также возвращаем пустую строку
+  }
+};
+
+
+
+useEffect(() => {
+  const fetchProfessions = async () => {
+    try {
+      const response = await fetch(`${url_api}/api/get/professions`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setProfessions(data);
+    } catch (error) {
+      console.error('Error fetching professions:', error);
+    }
+  };
+
+  fetchProfessions();
+}, [url_web]);
+
+
 
 const handleInputChange = (rowIndex, colName, value) => {
   // Условие для проверки, что введенное значение содержит только цифры и точки, и что его длина не превышает 8 символов
@@ -61,6 +97,7 @@ const handleInputChange = (rowIndex, colName, value) => {
     if (colName === 'col3' && value.match(/^\d{2}\.\d{2}\.\d{2}$/)) {
       // Создаем promise для выполнения асинхронного запроса
       const professionNamePromise = fetchProfessionName(value); // Получаем название профессии
+      const test = fetchProfessionName(value); // Получаем название профессии
 
       // Обновляем значение поля с индексом 1 после получения результата запроса
       professionNamePromise.then(professionName => {
@@ -69,11 +106,62 @@ const handleInputChange = (rowIndex, colName, value) => {
       }).catch(error => {
         console.error('Error fetching profession name:', error);
       });
+
+      test.then(professionName => {
+        newData[rowIndex]['col2'] = professionName;
+        setTableData(newData); // Обновляем данные после получения названия профессии
+      }).catch(error => {
+        console.error('Error fetching profession name:', error);
+      });
+
     } else if (colName === 'col3' && !value.match(/^\d{2}\.\d{2}\.\d{2}$/)) {
       newData[rowIndex]['col2'] = '';
       setTableData(newData); // Обновляем данные после получения названия профессии
     }
 
+    if (colName === 'col3' && value.match(/^\d{2}\.\d{2}\.\d{2}$/)) {
+      // Создаем promise для выполнения асинхронного запроса
+      const professionNamePromise = fetchProfessionName(value); // Получаем название профессии
+      const test = fetchProfessionName(value); // Получаем название профессии
+
+      // Обновляем значение поля с индексом 1 после получения результата запроса
+      professionNamePromise.then(professionName => {
+        newData[rowIndex]['col2'] = professionName;
+        setTableData(newData); // Обновляем данные после получения названия профессии
+      }).catch(error => {
+        console.error('Error fetching profession name:', error);
+      });
+
+      test.then(professionName => {
+        newData[rowIndex]['col2'] = professionName;
+        setTableData(newData); // Обновляем данные после получения названия профессии
+      }).catch(error => {
+        console.error('Error fetching profession name:', error);
+      });
+
+    } else if (colName === 'col3' && !value.match(/^\d{2}\.\d{2}\.\d{2}$/)) {
+      newData[rowIndex]['col2'] = '';
+      setTableData(newData); // Обновляем данные после получения названия профессии
+    }
+
+
+    if (colName === 'col2') {
+      console.log('col2: ');
+    
+      // Используем IIFE (Immediately Invoked Function Expression) для выполнения асинхронного кода синхронно
+      (async () => {
+        try {
+          const professionCode = await fetchProfessionCode(value); // Получаем название профессии
+          newData[rowIndex]['col3'] = professionCode;
+          const test = await fetchProfessionCode(value); // Получаем название профессии
+          newData[rowIndex]['col3'] = test;
+          setTableData(newData); // Обновляем данные после получения названия профессии
+        } catch (error) {
+          console.error('Error fetching profession name:', error);
+        }
+      })();
+    }
+    
     return newData;
   });
 };
@@ -430,21 +518,38 @@ const handleInputChange = (rowIndex, colName, value) => {
 		</tr>
     </thead>
     <tbody>
-            {tableData.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {Object.keys(row).map((colName, index) => (
-                  <td key={colName}>
-                    <span className='d-none'>{row[colName]}</span>
-                    <textarea
-                      className="form-control"
-                      id={row[colName]}
-                      type="text"
-                      value={row[colName]}
-                      onChange={(e) => handleInputChange(rowIndex, colName, e.target.value)}
-                      disabled={index === 0 || index === 3 || index === 1 }
-                    />
-                  </td>
-                ))}
+    {tableData.map((row, rowIndex) => (
+          <tr key={rowIndex}>
+            {Object.keys(row).map((colName, index) => (
+              <td key={colName}>
+                <span className="d-none">{row[colName]}</span>
+                {index === 1 ? (
+                  <select
+                    className="form-control"
+                    value={row[colName]}
+                    onChange={(e) => handleInputChange(rowIndex, colName, e.target.value)}
+                    disabled={index === 0 || index === 3 }
+                  >
+                    {professions.map((profession) => (
+                      <option key={profession.profession_code} value={profession.profession_name}>
+                        {profession.profession_name}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <textarea
+                    className="form-control"
+                    id={row[colName]}
+                    type="text"
+                    value={row[colName]}
+                    onChange={(e) => handleInputChange(rowIndex, colName, e.target.value)}
+                    disabled={index === 0 || index === 3 || index === 1 }
+                    maxLength={index === 2 ? 8 : undefined}
+
+                  />
+                )}
+              </td>
+            ))}
                 { userInfo.admin_lvl >= 1 ?  <td className='position-relative'>
                   <button className='btn btn-danger position-absolute start-50 translate-middle' onClick={() => handleDelete(rowIndex)}><i className="fas fa-window-close"></i> </button>
                 </td>   : '' }
@@ -455,7 +560,7 @@ const handleInputChange = (rowIndex, colName, value) => {
             </td>
             <td colSpan={8}>
               <button className='btn btn-sm btn-primary zoom-5 rounded-pill-deactive ms-3 my-1'  onClick={handlerInsert}><i className="fas fa-add"></i> добавить запись</button>  
-              <button className='btn btn-sm btn-success zoom-5 rounded-pill-deactive ms-1'  onClick={() => handleSave(0)}><i className="fas fa-save"></i> сохранить документ</button>
+              <button className='btn btn-sm btn-primary zoom-5 rounded-pill-deactive ms-1'  onClick={() => handleSave(0)}><i className="fas fa-save"></i> сохранить документ</button>
             </td>
           </tr>
           </tbody>

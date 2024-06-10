@@ -3,7 +3,7 @@ import Header from './Header';
 import * as XLSX from 'xlsx';
 import { showAlert } from '../tech/alert';
 import { formatDate } from '../tech/formatterDate';
-import { url_api } from '../tech/config';
+import { url_api, url_web } from '../tech/config';
 import { checkAdmin } from '../tech/checking';
 
 
@@ -627,6 +627,11 @@ const EductionTable = () => {
   }, [tableData]);
 
 
+  const importFromExcel = () => {
+
+
+  }
+
     return (
       <div>
       <Header />
@@ -634,6 +639,9 @@ const EductionTable = () => {
 		<div className="d-flex flex-wrap justify-content-center py-1 mb-2">
                 <span className="d-flex align-items-center mb-1 mb-md-0 me-md-auto text-dark fs-5 ms-3"><a href="/eductions">Распределение численности основного персонала по уровню образования и полу (без внешних совместителей и работающих по договорам гражданско-правового характера)</a></span>
             <ul className="nav nav-pills me-3">
+                <button className="btn btn-primary zoom-5" aria-current="page" onClick={importFromExcel}>
+                    Импорт
+                </button>
                 <button className="btn btn-primary zoom-5" aria-current="page" onClick={exportToExcel}>
                     Экспорт в CSV
                 </button>
@@ -722,7 +730,7 @@ const EductionTable = () => {
             </td>
             <td colSpan={4}>
             { userInfo.admin_lvl >= 1 ? <button className='btn btn-sm btn-primary zoom-5 rounded-pill-deactive ms-3 my-1'  onClick={handlerInsert}><i className="fas fa-add"></i> добавить запись</button> : '' }
-              <button className='btn btn-sm btn-success zoom-5 rounded-pill-deactive ms-1'  onClick={() => handleSave(0)}><i className="fas fa-save"></i> сохранить документ</button>
+              <button className='btn btn-sm btn-primary zoom-5 rounded-pill-deactive ms-1'  onClick={() => handleSave(0)}><i className="fas fa-save"></i> сохранить документ</button>
             </td>
           </tr>
           </tbody>

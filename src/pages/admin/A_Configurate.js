@@ -9,7 +9,13 @@ const A_Configurate = () => {
     return (
         <div>
             <Header />
+
             <div className="container px-5">
+            <div className="row justify-content">
+                    <div className="col-md-auto">
+                        <h3><a href="/admin-panel">Админ-панель</a> / настройки</h3>
+                    </div>
+                </div>
                 <div className="card mt-2 zoom-2">
                     <div className="card-body">
                         <h5 className="card-title">Области</h5>

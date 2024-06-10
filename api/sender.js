@@ -8,7 +8,7 @@ function sendMail(email, name, regOrRes='Регистрация',code) {
     secure: false, // Set to true if using port 465 with SSL
     auth: {
       user: 'elis.chat.bot@bk.ru',
-      pass: 'BxZudP1cbb21xTxm4fKS'
+      pass: 'Udzeq9FpXZ0KUwsr06tT'
     }
   });
 
@@ -173,7 +173,7 @@ function sendMailVerification(email, name) {
       secure: false, // Set to true if using port 465 with SSL
       auth: {
         user: 'elis.chat.bot@bk.ru',
-        pass: 'BxZudP1cbb21xTxm4fKS'
+        pass: 'Udzeq9FpXZ0KUwsr06tT'
       }
     });
   
