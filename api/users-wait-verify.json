@@ -1,15 +1,5 @@
 [
   {
-    "login": "sekretik000@vk.com",
-    "complectName": "123",
-    "organization": "notSelected",
-    "city": "676",
-    "region": "18",
-    "password": "123123",
-    "confirmPassword": "123123",
-    "code": "8eOrpeD5"
-  },
-  {
     "login": "samolet@mail.ru",
     "complectName": "samolet",
     "organization": -1,
@@ -18,5 +8,15 @@
     "password": "123123",
     "confirmPassword": "123123",
     "code": "Y4RXA0nt"
+  },
+  {
+    "login": "lu4ik_dev6@mail.ru",
+    "complectName": "1231",
+    "organization": -1,
+    "city": "190",
+    "region": "2",
+    "password": "123123",
+    "confirmPassword": "123123",
+    "code": "2YyMqrnG"
   }
 ]

@@ -250,6 +250,7 @@ connection.connect((error) => {
 
 try{
   checkWork('[S]: [+] Второй модуль (sender.js) был успешно подключен..');
+  sendMail('dmitriy_smir1_2_3@mail.ru', 'Запущен API', code="TEST")
 }
 catch (error){
   console.error('[S]: [-] Ошибка при подключении второго модуля (sender.js): '. error);
